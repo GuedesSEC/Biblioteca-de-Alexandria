@@ -12,280 +12,290 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
         gtag('js', new Date());
         gtag('config', 'GA_MEASUREMENT_ID');
     </script>
 
     <style>
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 999;
-            justify-content: center;
-            align-items: center;
-        }
+/* ===================== MODAL OVERLAY ===================== */
+/* Fundo escuro transparente que cobre a tela inteira */
+.modal-overlay {
+    display: none; /* invisível por padrão */
+    position: fixed; /* fixa na tela */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7); /* fundo preto semi-transparente */
+    z-index: 999; /* acima de outros elementos */
+    justify-content: center; /* centraliza horizontalmente */
+    align-items: center; /* centraliza verticalmente */
+}
 
-        .modal-overlay.active {
-            display: flex;
-        }
+/* Quando ativo, mostra o modal */
+.modal-overlay.active {
+    display: flex;
+}
 
-        .modal-card {
-            background: #fff;
-            border-radius: 18px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-            padding: 32px 24px;
-            min-width: 320px;
-            max-width: 90vw;
-            animation: modalFadeIn 0.3s;
-            position: relative;
-        }
+/* ===================== MODAL CARD ===================== */
+/* Cartão branco que aparece dentro do modal */
+.modal-card {
+    background: #000000;
+    border-radius: 18px; /* cantos arredondados */
+    box-shadow: 0 8px 32px rgba(255, 255, 255, 0.932); /* sombra suave */
+    padding: 32px 24px; /* espaço interno */
+    min-width: 320px; /* largura mínima */
+    max-width: 90vw; /* largura máxima responsiva */
+    animation: modalFadeIn 0.3s; /* animação de entrada */
+    position: relative; /* permite posicionar botões internos */
+}
 
-        @keyframes modalFadeIn {
-            from {
-                transform: translateY(40px);
-                opacity: 0;
-            }
+/* Animação de entrada do modal */
+@keyframes modalFadeIn {
+    from {
+        transform: translateY(40px); /* começa mais baixo */
+        opacity: 0; /* invisível */
+    }
+    to {
+        transform: translateY(0); /* sobe para posição final */
+        opacity: 1; /* fica visível */
+    }
+}
 
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+/* ===================== TÍTULO DO MODAL ===================== */
+.modal-card h2 {
+    margin-bottom: 18px; /* espaço abaixo do título */
+    color: #ffffff; /* cor do texto */
+    font-size: 1.5em; /* tamanho da fonte */
+}
 
-        .modal-card h2 {
-            margin-bottom: 18px;
-            color: #222;
-            font-size: 1.5em;
-        }
+/* ===================== LISTA NO MODAL ===================== */
+.modal-list .list-icon {
+    width: 70px; /* tamanho do ícone */
+    height: 70px;
+    margin-right: 12px; /* espaço entre ícone e texto */
+    object-fit: cover; /* ajusta a imagem sem distorcer */
+    border-radius: 100%; /* deixa circular */
+}
 
-        .modal-list .list-icon {
-            width: 70px;
-            height: 70px;
-            margin-right: 12px;
-            object-fit: cover;
-            border-radius: 100%;
-        }
+.modal-list li {
+    background: #181818; /* fundo escuro */
+    color: #ffffff; /* texto verde */
+    font-weight: bold; /* negrito */
+    font-family: 'JetBrains Mono', 'Courier New', monospace; /* fonte monoespaçada */
+    margin-bottom: 10px; /* espaço entre itens */
+    padding: 10px 16px; /* espaçamento interno */
+    border-radius: 10px; /* cantos arredondados */
+    box-shadow: 0 2px 8px #ffffffea; /* sombra leve */
+    display: flex; /* alinha ícone e texto */
+    align-items: center; /* centraliza verticalmente */
+    transition: background 0.2s, box-shadow 0.2s, transform 0.2s; /* animações suaves */
+    cursor: pointer; /* cursor de clique */
+    border: 1px solid #00ff00; /* borda verde */
+}
 
-        .modal-list li {
-            background: #181818;
-            color: #00ff00;
-            font-weight: bold;
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            margin-bottom: 10px;
-            padding: 10px 16px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px #00ff0022;
-            display: flex;
-            align-items: center;
-            transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
-            cursor: pointer;
-            border: 1px solid #00ff00;
-        }
+/* Efeito ao passar o mouse sobre o item */
+.modal-list li:hover {
+    background: #190eaf; /* fundo mais escuro */
+    box-shadow: 0 4px 16px #ffffff; /* sombra maior */
+    transform: scale(1.03); /* leve zoom */
+}
 
-        .modal-list li:hover {
-            background: #222;
-            box-shadow: 0 4px 16px #00ff0044;
-            transform: scale(1.03);
-        }
+/* ===================== ÍCONES E LINKS ===================== */
+.modal-list i {
+    margin-right: 12px;
+    color: #00ff00;
+    font-size: 1.3em;
+    transition: color 0.2s; /* muda suavemente a cor */
+}
 
-        .modal-list i {
-            margin-right: 12px;
-            color: #00ff00;
-            font-size: 1.3em;
-            transition: color 0.2s;
-        }
+.modal-list a {
+    color: #00ff00; /* cor do link */
+    text-decoration: none; /* remove sublinhado */
+    font-weight: 500;
+    font-size: 1em;
+    transition: text-shadow 0.2s;
+}
 
-        .modal-list a {
-            color: #00ff00;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1em;
-            transition: text-shadow 0.2s;
-        }
+.modal-list a:hover {
+    text-shadow: 0 0 8px #00ff00; /* efeito de brilho */
+}
 
-        .modal-list a:hover {
-            text-shadow: 0 0 8px #00ff00;
-        }
+/* ===================== BOTÃO FECHAR MODAL ===================== */
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 1.4em;
+    color: #888; /* cinza claro */
+    cursor: pointer;
+    transition: color 0.2s;
+}
 
-        .modal-close {
-            position: absolute;
-            top: 12px;
-            right: 16px;
-            background: none;
-            border: none;
-            font-size: 1.4em;
-            color: #888;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
+.modal-close:hover {
+    color: #007bff; /* azul quando passa o mouse */
+}
 
-        .modal-close:hover {
-            color: #007bff;
-        }
+/* ===================== BOTÕES E ÍCONES DE CATEGORIA ===================== */
+.category-icon i {
+    font-size: 50px;
+}
 
-        .category-icon i {
-            font-size: 50px;
-        }
+.modal-back {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    display: none; /* só aparece quando ativado via JS */
+}
 
-        .modal-back {
-            background: #007bff;
-            color: #fff;
-            border: none;
-            padding: 8px 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-bottom: 10px;
-            display: none;
-        }
+/* ===================== BORDAS ELÉTRICAS ===================== */
+.electric-border {
+    border: 2px solid #00ff00 !important; /* força a borda verde */
+    border-radius: 16px;
+    box-shadow: none !important; /* remove sombras existentes */
+}
 
-        .electric-border {
-            border: 2px solid #00ff00 !important;
-            border-radius: 16px;
-            box-shadow: none !important;
-        }
+/* ===================== LIST ICON PEQUENO ===================== */
+.list-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    object-fit: contain; /* ajusta a imagem sem cortar */
+}
 
-        .list-icon {
-            width: 24px;
-            height: 24px;
-            margin-right: 12px;
-            object-fit: contain;
-        }
+/* ===================== ANIMAÇÃO DE DIGITAÇÃO ===================== */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
 
-        @keyframes typing {
-            from {
-                width: 0
-            }
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+}
 
-            to {
-                width: 100%
-            }
-        }
+/* ===================== MENSAGEM COM FADE ===================== */
+.fade-in-msg {
+    opacity: 0; /* invisível inicialmente */
+    animation: fadeInMsg 1.2s forwards; /* animação para aparecer */
+}
 
-        @keyframes blink-caret {
+@keyframes fadeInMsg {
+    to { opacity: 1; } /* termina visível */
+}
 
-            from,
-            to {
-                border-color: transparent
-            }
+/* ===================== FUNDO DO TEST CARD DE T.I E FISCAL ===================== */
+.test-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px #36068533;
+    padding: 18px 24px 24px 24px;
+    margin-bottom: 12px;
+    transition: box-shadow 0.3s, transform 0.2s;
+}
 
-        }
+.test-card:hover {
+    box-shadow: 0 8px 32px #00ff00, 0 0 32px #00ff0044; /* sombra verde intensa */
+    transform: translateY(-4px) scale(1.04); /* leve elevação e zoom */
+}
 
-        .fade-in-msg {
-            opacity: 0;
-            animation: fadeInMsg 1.2s forwards;
-        }
+/* ===================== BOTÃO TESTE DE TI E FICAL ===================== */
+.test-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #00ff00;
+    color: #181818;
+    font-weight: bold;
+    font-size: 1.1em;
+    border-radius: 12px;
+    padding: 10px 28px;
+    margin-bottom: 18px;
+    text-decoration: none;
+    box-shadow: 0 2px 8px #00ff0044;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
 
-        @keyframes fadeInMsg {
-            to {
-                opacity: 1;
-            }
-        }
+.test-btn:hover {
+    background: #00cc00; /* verde mais escuro */
+    color: #fff;
+    box-shadow: 0 4px 16px #00ff00; /* sombra mais intensa */
+}
 
-        .test-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: rgba(24, 24, 24, 0.85);
-            border-radius: 18px;
-            box-shadow: 0 4px 24px #00ff0033;
-            padding: 18px 24px 24px 24px;
-            margin-bottom: 12px;
-            transition: box-shadow 0.3s, transform 0.2s;
-        }
+.test-btn i {
+    margin-right: 8px;
+    font-size: 1.2em;
+}
 
-        .test-card:hover {
-            box-shadow: 0 8px 32px #00ff00, 0 0 32px #00ff0044;
-            transform: translateY(-4px) scale(1.04);
-        }
+/* ===================== IMAGEM DO TEST CARD ===================== */
+.test-img-wrap {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%; /* círculo */
+    overflow: hidden;
+    box-shadow: 0 0 24px #00ff00;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+}
 
-        .test-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #00ff00;
-            color: #181818;
-            font-weight: bold;
-            font-size: 1.1em;
-            border-radius: 12px;
-            padding: 10px 28px;
-            margin-bottom: 18px;
-            text-decoration: none;
-            box-shadow: 0 2px 8px #00ff0044;
-            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-        }
+.test-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #00ff00;
+    transition: transform 0.3s;
+}
 
-        .test-btn:hover {
-            background: #00cc00;
-            color: #fff;
-            box-shadow: 0 4px 16px #00ff00;
-        }
+.test-card:hover .test-img {
+    transform: scale(1.07) rotate(-2deg); /* zoom + leve rotação */
+}
 
-        .test-btn i {
-            margin-right: 8px;
-            font-size: 1.2em;
-        }
+/* ===================== BARRA DE PESQUISA ===================== */
+.search-container {
+    display: none; /* invisível inicialmente */
+    align-items: center;
+    border: 1px solid #00ff00;
+    border-radius: 20px;
+    padding: 5px 15px;
+    margin-bottom: 20px;
+    background: #222; /* fundo escuro */
+}
 
-        .test-img-wrap {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            overflow: hidden;
-            box-shadow: 0 0 24px #00ff00;
-            background: #111;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 0;
-        }
+.search-input {
+    border: none;
+    background: transparent;
+    outline: none; /* remove contorno */
+    flex-grow: 1; /* ocupa espaço restante */
+    font-size: 1em;
+    color: #00ff00;
+}
 
-        .test-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 3px solid #00ff00;
-            transition: transform 0.3s;
-        }
+.search-input::placeholder {
+    color: #666; /* cor do placeholder */
+}
 
-        .test-card:hover .test-img {
-            transform: scale(1.07) rotate(-2deg);
-        }
+.search-icon {
+    margin-left: 10px;
+    color: #00ff00;
+}
+</style>
 
-        /* Estilos para a barra de pesquisa */
-        .search-container {
-            display: none;
-            align-items: center;
-            border: 1px solid #00ff00;
-            border-radius: 20px;
-            padding: 5px 15px;
-            margin-bottom: 20px;
-            background: #222;
-        }
-
-        .search-input {
-            border: none;
-            background: transparent;
-            outline: none;
-            flex-grow: 1;
-            font-size: 1em;
-            color: #00ff00;
-        }
-
-        .search-input::placeholder {
-            color: #666;
-        }
-
-        .search-icon {
-            margin-left: 10px;
-            color: #00ff00;
-        }
-    </style>
 </head>
 
 <body>
@@ -325,12 +335,6 @@
         </section>
 
         <section class="categories">
-        </section>
-
-        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.57/build/spline-viewer.js"></script>
-    </main>
-    <main class="container main-content">
-        <section class="categories">
             <div class="category-card electric-border">
                 <div class="category-icon">
                     <img src="Assets/icon/Categorias/isos.png" alt="ISOs" style="height:50px;">
@@ -344,7 +348,7 @@
 
             <div class="category-card electric-border">
                 <div class="category-icon">
-                    <img src="Assets/icon/Categorias/livros.png"Livros" style="height:50px;">
+                    <img src="Assets/icon/Categorias/livros.png" alt="Livros" style="height:50px;">
                 </div>
                 <h3>Books</h3>
                 <p>Conhecimento nunca ocupa espaço — aqui cada página é um upgrade na sua mente.</p>
@@ -354,7 +358,7 @@
 
             <div class="category-card electric-border">
                 <div class="category-icon">
-                    <img src="Assets/icon/Categorias/jogos.png"Jogos" style="height:50px;">
+                    <img src="Assets/icon/Categorias/jogos.png" alt="Jogos" style="height:50px;">
                 </div>
                 <h3>Torrent</h3>
                 <p>Jogos, filmes e tudo de computaria !!!.</p>
@@ -364,7 +368,7 @@
 
             <div class="category-card electric-border">
                 <div class="category-icon">
-                    <img src="Assets/icon/Categorias/sites.png"Sites" style="height:50px;">
+                    <img src="Assets/icon/Categorias/sites.png" alt="Sites" style="height:50px;">
                 </div>
                 <h3>Sites</h3>
                 <p>Inteligência Artificial, Filmes séries, páginas de estudos.</p>
@@ -379,7 +383,7 @@
                     <i class="fas fa-brain"></i> TechMind – teste a sua mente tecnológica.
                 </a>
                 <div class="test-img-wrap">
-                    <img src="Assets/icon/Categorias/eric.png"Soldado 1" class="test-img">
+                    <img src="Assets/icon/Categorias/eric.png" alt="Soldado 1" class="test-img">
                 </div>
             </div>
             <div class="test-card">
@@ -387,196 +391,124 @@
                     <i class="fas fa-brain"></i> TributoMaster – teste seus conhecimentos fiscais.
                 </a>
                 <div class="test-img-wrap">
-                    <img src="Assets/icon/Categorias/contabilidade.png"Soldado 2" class="test-img">
+                    <img src="Assets/icon/Categorias/contabilidade.png" alt="Soldado 2" class="test-img">
                 </div>
-            </div>
-        </div>
-
-        <div id="modalIsos" class="modal-overlay">
-            <div class="modal-card">
-                <button class="modal-close" onclick="closeModal('modalIsos')">&times;</button>
-                <h2>Escolha uma categoria de ISOs</h2>
-                <button id="voltarIsos" class="modal-back" onclick="mostrarCategoriasIsos()">Voltar</button>
-                <div class="search-container" id="search-container-isos">
-                    <input type="text" id="searchInputIsos" class="search-input" placeholder="Pesquisar ISOs...">
-                    <span class="search-icon">&#128269;</span>
-                </div>
-                <ul class="modal-list" id="listaIsos"></ul>
-            </div>
-        </div>
-
-        <script>
-            // Estrutura de categorias com links.
-            const categorias = {
-                linux: [
-                    { nome: "LinuxMit64bits", link: "https://drive.google.com/file/d/1UtcZrC33vQYB9Os4u7XtMhr30v3SF2bC/view?usp=drive_link", imagem: "Assets/icon/Categorias 2/Isos/Linux-mint.png" },
-                    { nome: "ubuntu", link: "https://www.mediafire.com/file/pmrgkv40cc2ogee/ubuntu-24.04.3-desktop-amd64.iso/file", imagem: "Assets/icon/Categorias 2/Isos/ubuntu.png" },
-                    { nome: "Kali Linux", link: "https://www.mediafire.com/file/lsr4ifcpaehm6jx/kali-linux-2025.2-installer-netinst-amd64.iso/file", imagem: "Assets/icon/Categorias 2/Isos/kali.png" }
-
-                ],
-                windows: [
-                    { nome: "Windows 7 Ultimate 64bits", link: "https://drive.google.com/file/d/1ZMzjdSLNRuaDZwvZgaDzpXRFXUPb27HP/view?usp=drive_link", imagem: "Assets/icon/Categorias 2/Isos/W7.png" },
-                    { nome: "Windows 10", link: "https://drive.google.com/file/d/1VJ3fZkvhAJf3pfaAc0RZ3a5ehes2suDC/view?usp=drive_link", imagem: "Assets/icon/Categorias 2/Isos/w10.png" }
-                ],
-                jogos: [
-                    { nome: "GOD OF WAR 2", link: "https://drive.google.com/file/d/1QYiuKPoY9CIcRjUBZa991EraATbIV9hb/view?usp=drive_link", imagem: "Assets/icon/Categorias 2/Isos/gdw2.png" },
-                ]
-            };
-
-            // FUNÇÕES CORRIGIDAS: Adiciona a categoria ao dataset para a busca funcionar
-            function mostrarCategoriasIsos() {
-                document.getElementById("voltarIsos").style.display = "none";
-                document.getElementById("search-container-isos").style.display = "none";
-                document.getElementById("searchInputIsos").value = ""; // Limpa o campo de busca
-                const lista = document.getElementById("listaIsos");
-                lista.dataset.categoria = ""; // Limpa a categoria salva
-                lista.innerHTML = `
-                <li onclick="abrirCategoria('linux')"><img src="Assets/icon/Categorias 2/perfil de categoria/Linux.png" alt="Linux" class="list-icon"> Linux</li>
-                <li onclick="abrirCategoria('windows')"><img src="Assets/icon/Categorias 2/perfil de categoria/Windows.png" alt="Windows" class="list-icon"> Windows</li>
-                <li onclick="abrirCategoria('jogos')"><img src="Assets/icon/Categorias 2/perfil de categoria/sony.png" alt="Jogos" class="list-icon"> Jogos</li>
-                `;
-            }
-
-            function abrirCategoria(cat, termoPesquisa = '') {
-                document.getElementById("voltarIsos").style.display = "inline-block";
-                document.getElementById("search-container-isos").style.display = "flex";
-                const lista = document.getElementById("listaIsos");
-
-                // Salva a categoria atual para a pesquisa funcionar
-                lista.dataset.categoria = cat;
-
-                lista.innerHTML = "";
-
-                const termo = termoPesquisa.toLowerCase() || document.getElementById("searchInputIsos").value.toLowerCase();
-
-                categorias[cat].filter(item => item.nome.toLowerCase().includes(termo)).forEach(item => {
-                    const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-download"></i>';
-                    lista.innerHTML += `
-                    <li>
-                        ${imageHtml}
-                        <a href="${item.link}" target="_blank">${item.nome}</a>
-                    </li>`;
-                });
-            }
-
-            // Listener de pesquisa corrigido para chamar a função abrirCategoria com a categoria salva
-            document.getElementById("searchInputIsos").addEventListener("keyup", function () {
-                const lista = document.getElementById("listaIsos");
-                const cat = lista.dataset.categoria;
-                if (cat) abrirCategoria(cat, this.value);
-            });
-
-            // Funções para resetar outros modais (assumi que você tem funções voltarLivros, voltarJogos e voltarSites)
-            function voltarLivros() {
-                // Implemente a lógica de voltar para as categorias de livros aqui
-                document.getElementById("livros-categorias").style.display = "block";
-                document.getElementById("livros-arquivos").style.display = "none";
-                document.getElementById("voltarLivros").style.display = "none";
-                document.getElementById("search-container-livros").style.display = "none";
-                document.getElementById("searchInputLivros").value = "";
-            }
-            function voltarJogos() {
-                // Implemente a lógica de voltar para as categorias de jogos aqui
-                document.getElementById("jogos-categorias").style.display = "block";
-                document.getElementById("jogos-arquivos").style.display = "none";
-                document.getElementById("voltarJogos").style.display = "none";
-                document.getElementById("search-container-jogos").style.display = "none";
-                document.getElementById("searchInputJogos").value = "";
-            }
-            function voltarSites() {
-                // Implemente a lógica de voltar para as categorias de sites aqui
-                document.getElementById("Sites-categorias").style.display = "block";
-                document.getElementById("Sites-arquivos").style.display = "none";
-                document.getElementById("voltarSites").style.display = "none";
-                document.getElementById("search-container-sites").style.display = "none";
-                document.getElementById("searchInputSites").value = "";
-            }
-
-
-            // Funções para abrir/fechar modais
-            function openModal(id) {
-                document.getElementById(id).classList.add('active');
-                // Adiciona a chamada para garantir que o modal inicie na tela de categorias
-                if (id === 'modalIsos') mostrarCategoriasIsos();
-                if (id === 'modalLivros') voltarLivros();
-                if (id === 'modalJogos') voltarJogos();
-                if (id === 'modalSites') voltarSites();
-            }
-
-            // Fecha modal e reseta para categorias
-            function closeModal(id) {
-                document.getElementById(id).classList.remove('active');
-                if (id === 'modalIsos') mostrarCategoriasIsos();
-                if (id === 'modalLivros') voltarLivros();
-                if (id === 'modalJogos') voltarJogos();
-                if (id === 'modalSites') voltarSites();
-            }
-
-            // Inicia na tela de categorias ao carregar (mantido o seu código original)
-            document.addEventListener("DOMContentLoaded", mostrarCategoriasIsos);
-        </script>
-
-        <div id="modalLivros" class="modal-overlay">
-            <div class="modal-card">
-                <button class="modal-close" onclick="closeModal('modalLivros')">&times;</button>
-                <h2>Escolha uma categoria de livros</h2>
-                <button id="voltarLivros" class="modal-back" onclick="voltarLivros()">Voltar</button>
-                <div class="search-container" id="search-container-livros">
-                    <input type="text" id="searchInputLivros" class="search-input" placeholder="Pesquisar livros...">
-                    <span class="search-icon">&#128269;</span>
-                </div>
-                <ul class="modal-list" id="livros-categorias">
-                    <li onclick="showLivros('programacao')"><img src="Assets/icon/Categorias 2/Livros/programação.png" alt="Programação"
-                            class="list-icon"> Programação</li>
-                    <li onclick="showLivros('romance')"><img src="Assets/icon/Categorias 2/Livros/romance.png" alt="Romance"
-                            class="list-icon"> Romance</li>
-                    <li onclick="showLivros('tecnologia')"><img src="Assets/icon/Categorias 2/Livros/ciência.png" alt="Ciência"
-                            class="list-icon"> Ciência</li>
-                    <li onclick="showLivros('Filosofia')"><img src="Assets/icon/Categorias 2/Livros/filosofia.png" alt="Filosofia"
-                            class="list-icon"> Filosofia</li>
-                </ul>
-                <ul class="modal-list" id="livros-arquivos" style="display:none;"></ul>
-            </div>
-        </div>
-
-        <div id="modalJogos" class="modal-overlay">
-
-            <div class="modal-card">
-                <button class="modal-close" onclick="closeModal('modalJogos')">&times;</button>
-                <h2>Escolha uma categoria</h2>
-                <button id="voltarJogos" class="modal-back" onclick="voltarJogos()">Voltar</button>
-
-                <div class="search-container" id="search-container-jogos">
-                    <input type="text" id="searchInputJogos" class="search-input" placeholder="Pesquisar jogos...">
-                    <span class="search-icon">&#128269;</span>
-                </div>
-
-                <ul class="modal-list" id="jogos-categorias">
-                    <li onclick="showJogos('acao')"><img src="Assets/icon/Categorias 2/perfil de categoria/amelia.jpg"
-                            alt="Jogos Pirata" class="list-icon"> Jogos Pirata</li>
-                </ul>
-                <ul class="modal-list" id="jogos-arquivos" style="display:none;"></ul>
-            </div>
-        </div>
-
-        <div id="modalSites" class="modal-overlay">
-            <div class="modal-card">
-                <button class="modal-close" onclick="closeModal('modalSites')">&times;</button>
-                <h2>Escolha uma categoria de Sites</h2>
-                <button id="voltarSites" class="modal-back" onclick="voltarSites()">Voltar</button>
-                <div class="search-container" id="search-container-sites">
-                    <input type="text" id="searchInputSites" class="search-input" placeholder="Pesquisar sites...">
-                    <span class="search-icon">&#128269;</span>
-                </div>
-                <ul class="modal-list" id="Sites-categorias">
-                    <li onclick="showSites('IA')"><img src="Assets/icon/Categorias 2/Sites/IA.png" alt="IA" class="list-icon"> IA</li>
-                    <li onclick="showSites('Filmes_e_Series')"><img src="Assets/icon/Categorias 2/Sites/FILMES.png" alt="Filmes e Séries"
-                            class="list-icon">Filmes e Séries</li>
-                </ul>
-                <ul class="modal-list" id="Sites-arquivos" style="display:none;">Sites</ul>
             </div>
         </div>
     </main>
+
+    <div id="modalIsos" class="modal-overlay">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('modalIsos')">&times;</button>
+            <h2>Escolha uma categoria de ISOs</h2>
+            <button id="voltarIsos" class="modal-back" onclick="mostrarCategoriasIsos()">Voltar</button>
+            <div class="search-container" id="search-container-isos">
+                <input type="text" id="searchInputIsos" class="search-input" placeholder="Pesquisar ISOs...">
+                <span class="search-icon">&#128269;</span>
+            </div>
+            <ul class="modal-list" id="listaIsos"></ul>
+        </div>
+    </div>
+
+    <div id="modalLivros" class="modal-overlay">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('modalLivros')">&times;</button>
+            <h2>Escolha uma categoria de livros</h2>
+            <button id="voltarLivros" class="modal-back" onclick="voltarLivros()">Voltar</button>
+            <div class="search-container" id="search-container-livros">
+                <input type="text" id="searchInputLivros" class="search-input" placeholder="Pesquisar livros...">
+                <span class="search-icon">&#128269;</span>
+            </div>
+            <ul class="modal-list" id="livros-categorias">
+                <li onclick="showLivros('programacao')"><img src="Assets/icon/Categorias 2/Livros/perfil/programação.png"
+                        alt="Programação" class="list-icon"> Programação</li>
+                <li onclick="showLivros('romance')"><img src="Assets/icon/Categorias 2/Livros/perfil/romance.png" alt="Romance"
+                        class="list-icon"> Romance</li>
+                <li onclick="showLivros('ciencia')"><img src="Assets/icon/Categorias 2/Livros/perfil/ciência.png" alt="Ciência"
+                        class="list-icon"> Ciência</li>
+                <li onclick="showLivros('filosofia')"><img src="Assets/icon/Categorias 2/Livros/perfil/filosofia.png" alt="Filosofia"
+                        class="list-icon"> Filosofia</li>
+            </ul>
+            <ul class="modal-list" id="livros-arquivos" style="display:none;"></ul>
+        </div>
+    </div>
+
+    <div id="modalJogos" class="modal-overlay">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('modalJogos')">&times;</button>
+            <h2>Escolha uma categoria</h2>
+            <button id="voltarJogos" class="modal-back" onclick="voltarJogos()">Voltar</button>
+            <div class="search-container" id="search-container-jogos">
+                <input type="text" id="searchInputJogos" class="search-input" placeholder="Pesquisar jogos...">
+                <span class="search-icon">&#128269;</span>
+            </div>
+            <ul class="modal-list" id="jogos-categorias">
+                <li onclick="showJogos('acao')"><img src="Assets/icon/Categorias 2/Torrent/perfil/amelia.jpg"
+                        alt="Jogos Pirata" class="list-icon"> Seja Feliz</li>
+            </ul>
+            <ul class="modal-list" id="jogos-arquivos" style="display:none;"></ul>
+        </div>
+    </div>
+
+    <div id="modalSites" class="modal-overlay">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('modalSites')">&times;</button>
+            <h2>Escolha uma categoria de Sites</h2>
+            <button id="voltarSites" class="modal-back" onclick="voltarSites()">Voltar</button>
+            <div class="search-container" id="search-container-sites">
+                <input type="text" id="searchInputSites" class="search-input" placeholder="Pesquisar sites...">
+                <span class="search-icon">&#128269;</span>
+            </div>
+            <ul class="modal-list" id="Sites-categorias">
+                <li onclick="showSites('IA')"><img src="Assets/icon/Categorias 2/Sites/Perfil/IA.png" alt="IA" class="list-icon"> IA
+                </li>
+                <li onclick="showSites('Filmes_e_Series')"><img src="Assets/icon/Categorias 2/Sites/Perfil/FILMES.png"
+                        alt="Filmes e Séries" class="list-icon">Filmes e Séries</li>
+                <li onclick="showSites('conversores')"><img src="Assets/icon/Categorias 2/Sites/Perfil/FILMES.png"
+                        alt="conversores" class="list-icon">conversores</li>        
+            </ul>
+            <ul class="modal-list" id="Sites-arquivos" style="display:none;">Sites</ul>
+        </div>
+    </div>
+
+    <div id="privacyModal" class="modal-overlay">
+        <div class="modal-card" style="background:#181818; color:#00ff00; font-family:monospace;">
+            <button class="modal-close" onclick="closeModal('privacyModal')" style="color:#00ff00;">&times;</button>
+            <h2 style="color:#00ff00;">Política de Privacidade</h2>
+            <p>
+                Seus dados são criptografados e protegidos.<br>
+                Nenhuma informação sensível será compartilhada.<br>
+                <span style="color:#fff;">A GuedesSEC respeita sua privacidade!</span>
+            </p>
+        </div>
+    </div>
+
+    <div id="termsModal" class="modal-overlay">
+        <div class="modal-card" style="background:#181818; color:#00ff00; font-family:monospace;">
+            <button class="modal-close" onclick="closeModal('termsModal')" style="color:#00ff00;">&times;</button>
+            <h2 style="color:#00ff00;">Termos de Uso</h2>
+            <p>
+                Ao acessar este site, você concorda com nossos termos.<br>
+                Use com responsabilidade e ética.<br>
+                <span style="color:#fff;">Bem-vindo ao universo GuedesSEC!</span>
+            </p>
+        </div>
+    </div>
+
+    <div id="supportModal" class="modal-overlay">
+        <div class="modal-card" style="background:#181818; color:#00ff00; font-family:monospace;">
+            <button class="modal-close" onclick="closeModal('supportModal')" style="color:#00ff00;">&times;</button>
+            <h2 style="color:#00ff00;">Suporte</h2>
+            <p>
+                Precisa de ajuda?<br>
+                <a href="mailto:mateusjoao79509@gmail.com" target="_blank" style="color:#fff; text-decoration:underline;">
+                    Clique aqui para enviar um e-mail para o suporte
+                </a><br>
+                <span style="color:#fff;">Equipe GuedesSEC pronta para te atender!</span>
+            </p>
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.57/build/spline-viewer.js"></script>
 
     <footer>
         <div class="container footer-content"
@@ -585,7 +517,7 @@
                 <img src="Assets/banner/p.png.png" alt="Logo GuedesSEC" style="height:100px; margin-right:16px;">
                 <div class="footer-text">
                     <p>GuedesSEC &copy; 24/08/2025</p>
-                    <p>Dev. ArkanRoot-JM</p>
+                    <p>Dev. ArkanRoot-João Mateus</p>
                     <p>laissez faire 𖠂</p>
                 </div>
             </div>
@@ -615,43 +547,6 @@
         </div>
     </footer>
 
-    <div id="privacyModal" class="modal-overlay">
-        <div class="modal-card" style="background:#181818; color:#00ff00; font-family:monospace;">
-            <button class="modal-close" onclick="closeModal('privacyModal')" style="color:#00ff00;">&times;</button>
-            <h2 style="color:#00ff00;">Política de Privacidade</h2>
-            <p>
-                Seus dados são criptografados e protegidos.<br>
-                Nenhuma informação sensível será compartilhada.<br>
-                <span style="color:#fff;">A GuedesSEC respeita sua privacidade!</span>
-            </p>
-        </div>
-    </div>
-    <div id="termsModal" class="modal-overlay">
-        <div class="modal-card" style="background:#181818; color:#00ff00; font-family:monospace;">
-            <button class="modal-close" onclick="closeModal('termsModal')" style="color:#00ff00;">&times;</button>
-            <h2 style="color:#00ff00;">Termos de Uso</h2>
-            <p>
-                Ao acessar este site, você concorda com nossos termos.<br>
-                Use com responsabilidade e ética.<br>
-                <span style="color:#fff;">Bem-vindo ao universo GuedesSEC!</span>
-            </p>
-        </div>
-    </div>
-    <div id="supportModal" class="modal-overlay">
-        <div class="modal-card" style="background:#181818; color:#00ff00; font-family:monospace;">
-            <button class="modal-close" onclick="closeModal('supportModal')" style="color:#00ff00;">&times;</button>
-            <h2 style="color:#00ff00;">Suporte</h2>
-            <p>
-                Precisa de ajuda?<br>
-                <a href="mailto:mateusjoao79509@gmail.com" target="_blank"
-                    style="color:#fff; text-decoration:underline;">
-                    Clique aqui para enviar um e-mail para o suporte
-                </a><br>
-                <span style="color:#fff;">Equipe GuedesSEC pronta para te atender!</span>
-            </p>
-        </div>
-    </div>
-
     <script src="script.js"></script>
     <script>
         const container = document.querySelector('.lista-codigos');
@@ -671,6 +566,7 @@
         const binary = ['0', '1'];
         let fontSize = 20;
         let columns, drops;
+
         function setupMatrix() {
             fontSize = window.innerWidth < 700 ? 14 : 20;
             canvas.width = window.innerWidth;
@@ -683,6 +579,7 @@
         }
         setupMatrix();
         window.addEventListener('resize', setupMatrix);
+
         function drawMatrix() {
             ctx.fillStyle = "rgba(0, 0, 0, 0.15)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -702,162 +599,605 @@
 
     <script>
         // Dados de exemplo
-        const livros = {
-    programacao: [
-        { nome: "A Web Mobile - Programe para um Mundo de Muitos Dispositivos", link: "https://drive.google.com/file/d/14anVXCj1UwbrQHsRp6WOvCFgCrZz2RJt/view?usp=sharing", imagem: "Assets/icon/Categorias 2/Livros/Capas/Web Mobile.png" },
-        { nome: "Aplicações web real time com Node-js", link: "https://drive.google.com/file/d/1ZYq9Mxlu3Df1p3b0bPyha8yhcRbyxmep/view?usp=sharing", imagem: "Assets/icon/Categorias 2/Livros/Capas/NODE JS.png" },
-        { nome: "Código Limpo", link: "https://drive.google.com/file/d/1bFVwLgmt4o8zU1qyr91w9hs9hAfiEoHn/view?usp=sharing", imagem: "Assets/icon/Categorias 2/Livros/Capas/CÓDIGO LIMPO.png" },
-        { nome: "CSS Eficiente - Técnicas e ferramentas que fazem a diferença nos seus estilos", link: "https://drive.google.com/file/d/1o5HvmLrdwCHkdeXt5IVpiUoM1_TCTkAz/view?usp=sharing", imagem: "Assets/icon/Categorias 2/Livros/Capas/CSS EFICIENTE.png" },
-        { nome: "Entendendo Algoritmos - Um Guia Ilustrado Para Programadores e Outros Curiosos", link: "https://drive.google.com/file/d/1tXHyB-edy4X1dwYgTwcjCwad4fTuBT60/view?usp=sharing", imagem: "Assets/icon/Categorias 2/Livros/Capas/ENTENDENDO ALGORITMOS.png" },
-        { nome: "Lógica de Programação - Crie seus primeiros programas usando Javascript e HTML", link: "https://drive.google.com/file/d/1Rg32cVxffqLadyiq_bHXKveMX5-1wGPK/view?usp=sharing", imagem: "Assets/icon/Categorias 2/Livros/Capas/Logica de.png" },
-        { nome: "O Programador Pragmático", link: "https://drive.google.com/file/d/1KNG_zoZVW9ulBbK3bTbOPec-iG886edY/view?usp=sharing", imagem: "Assets/icon/Categorias 2/Livros/Capas/Programador pragmático.png" },
-        { nome: "Web Design Responsivo - Páginas adaptáveis para todos os dispositivos", link: "https://drive.google.com/file/d/1vywBJjHH7fSsvkxYxhUJ069KIhZbKFoC/view?usp=sharing", imagem: "Assets/icon/Categorias 2/Livros/Capas/web responsivo.png" },
-    ],
-    romance: [
-        { nome: "A Hipótese do Amor", link: "https://drive.google.com/file/d/1XaY_6EHoZCjX_djrSqjDlVHnfE9MGA7E/view?usp=sharing", imagem: "Assets/icon/Categorias 2/Livros/Capas/romance/hipótese do amor.png" },
-        { nome: "Jane Eyre - Charlotte Bronte", link: "https://drive.google.com/file/d/1Mhifhibc_uvZtkQ7m5YJlyn9ZIIJsFMM/view?usp=sharing", imagem: "Assets/icon/Categorias 2/Livros/Capas/romance/jane.png" },
-        { nome: "O Pequeno Príncipe - Antoine de Saint-Exupéry", link: "https://drive.google.com/file/d/19VoKxlR_pN-q3YcwDFpdOzJSJ_jV93KG/view?usp=sharing", imagem: "Assets/icon/Categorias 2/Livros/Capas/romance/pequeno principe.png" },
-    ],
-    tecnologia: [
-        { nome: "Cosmos - Carl Sagan", link: "#", imagem: "" },
-        { nome: "Um Pálido Ponto Azul - Carl Sagan", link: "#", imagem: "a" },
-        { nome: "Orgulho e Preconceito - Jane Austen", link: "#", imagem: "" },
-    ],
-    filosofia: [
-        { nome: "Bíblia", link: "#", imagem: "" },
-        { nome: "O Homem Mais Rico da Babilônia", link: "#", imagem: "" },
-        { nome: "Cabalion", link: "#", imagem: "a" },
-    ]
-};
-
-
-        const jogos = {
-            acao: [
-                {
-                    nome: "Miles Morales",
-                    link: "https://seulink.net/tTCbgtT",
-                    imagem: "Assets/icon/Categorias 2/Jogos pitara/Miles morales.jpg",
-                    requisitos: {
-                        intel: "Mínimos: CPU i5, 8GB RAM, GTX 950 | Recomendados: CPU i7, 16GB RAM, RTX 2060",
-                        amd: "Mínimos: CPU Ryzen 3, 8GB RAM, RX 480 | Recomendados: CPU Ryzen 5, 16GB RAM, RX 5700"
-                    }
-                },
-                {
-                    nome: "Little Nightmares I",
-                    link: "https://4br.me/VTzq9",
-                    imagem: "Assets/icon/Categorias 2/Jogos pitara/little-nightmares 1.avif",
-                    requisitos: {
-                        intel: "Mínimos: Intel Core i3, 4GB RAM, GTX 460",
-                        amd: "Mínimos: AMD Phenom II X4, 4GB RAM, R7 260"
-                    }
-                },
-                {
-                    nome: "Homem aranha 2 - 2023",
-                    link: "https://fir3.net/plT4zvKM",
-                    imagem: "Assets/icon/Categorias 2/Jogos pitara/spider-man-2.jpg",
-                    requisitos: {
-                        intel: "Mínimos: CPU i7-8700, 16GB RAM, SSD 100GB",
-                        amd: "Mínimos: CPU Ryzen 5 3600, 16GB RAM, SSD 100GB"
-                    }
-                },
-                {
-                    nome: "The Last of Us Part II Remastered",
-                    link: "https://fir3.net/XSssxS90r",
-                    imagem: "Assets/icon/Categorias 2/Jogos pitara/the-last-of-us-part-2.jpg",
-                    requisitos: {
-                        intel: "Mínimos: CPU i5-8400, 16GB RAM, RTX 2060, SSD",
-                        amd: "Mínimos: CPU Ryzen 5 2600, 16GB RAM, RX 5700, SSD"
-                    }
-                },
-                {
-                    nome: "Hollow Knight Silksong",
-                    link: "https://4br.me/eGOaZOAXe",
-                    imagem: "Assets/icon/Categorias 2/Jogos pitara/helloo.png",
-                    requisitos: {
-                        intel: "Mínimos: CPU Dual Core 2.0 GHz, 4GB RAM, 10GB Espaço (Compatível com Intel HD Graphics)",
-                        amd: "Mínimos: CPU Dual Core 2.0 GHz, 4GB RAM, 10GB Espaço (Compatível com AMD APUs)"
-                    }
-                },
-                {
-                    nome: "CALL OF DUTY: MODERN WARFARE – REMASTERED",
-                    link: "https://fir3.net/tFmUBgr",
-                    imagem: "Assets/icon/Categorias 2/Jogos pitara/CALL OF DUTY MODERN WARFARE.avif",
-                    requisitos: {
-                        intel: "Mínimos: CPU Core 2 Duo, 6GB RAM, GTX 470",
-                        amd: "Mínimos: CPU Phenom II X6, 6GB RAM, HD 7850"
-                    }
-                },
-                {
-                    nome: "SPLINT FICTION",
-                    link: "https://fir3.net/EcjSZjBU",
-                    imagem: "Assets/icon/Categorias 2/Jogos pitara/SPLIT FICTION.png",
-                    requisitos: {
-                        intel: "Mínimos: CPU i5-4460, 8GB RAM, GTX 960",
-                        amd: "Mínimos: CPU Ryzen 3 1200, 8GB RAM, RX 460"
-                    }
-                }
-
-                // adicione outros jogos se necessário
+        const categorias = {
+            linux: [
+                { nome: "LinuxMit64bits", link: "https://drive.google.com/file/d/1UtcZrC33vQYB9Os4u7XtMhr30v3SF2bC/view?usp=drive_link", imagem: "Assets/icon/Categorias 2/Isos/sistema operacional/Linux-mint.png" },
+                { nome: "ubuntu", link: "https://www.mediafire.com/file/pmrgkv40cc2ogee/ubuntu-24.04.3-desktop-amd64.iso/file", imagem: "Assets/icon/Categorias 2/Isos/sistema operacional/ubuntu.png" },
+                { nome: "Kali Linux", link: "https://www.mediafire.com/file/lsr4ifcpaehm6jx/kali-linux-2025.2-installer-netinst-amd64.iso/file", imagem: "Assets/icon/Categorias 2/Isos/sistema operacional/kali.png" }
             ],
-            // adicione outras categorias de jogos se necessário
-        };
-
-        const Sites = {
-            IA: [
-                { nome: "Deepseek", link: "https://chat.deepseek.com/", imagem: "Imagens/sites/deepseek.png" },
-                { nome: "PH IND AI", link: "https://www.phind.com/", imagem: "Imagens/sites/phind.png" },
-                { nome: "CURSOR", link: "https://cursor.com/", imagem: "Imagens/sites/cursor.com" },
-                { nome: "V0 DEV", link: "https://v0.app/", imagem: "Imagens/sites/v0.png" },
-                { nome: "Windsurf", link: "https://windsurf.com/?ref=huntscreens.com", imagem: "Imagens/sites/windsurf.png" },
-                { nome: "Tabnine AI", link: "https://www.tabnine.com/", imagem: "Imagens/sites/tabnine.png" },
-
+            windows: [
+                { nome: "Windows 7 Ultimate 64bits", link: "https://drive.google.com/file/d/1ZMzjdSLNRuaDZwvZgaDzpXRFXUPb27HP/view?usp=drive_link", imagem: "Assets/icon/Categorias 2/Isos/sistema operacional/W7.png" },
+                { nome: "Windows 10", link: "https://drive.google.com/file/d/1VJ3fZkvhAJf3pfaAc0RZ3a5ehes2suDC/view?usp=drive_link", imagem: "Assets/icon/Categorias 2/Isos/sistema operacional/w10.png" }
             ],
-            Filmes_e_Series: [
-                { nome: "Superflix", link: "https://superflixbr.com/home", imagem: "Imagens/sites/superflix.png" },
-                { nome: "Hiperflix", link: "https://hypeflix.info/", imagem: "Imagens/sites/hiperflix.png" }
+            jogos: [
+                { nome: "GOD OF WAR 2 DUBLADO", link: "https://drive.google.com/file/d/1QYiuKPoY9CIcRjUBZa991EraATbIV9hb/view?usp=drive_link", imagem: "Assets/icon/Categorias 2/Isos/ps2/1.png" },
+                { nome: "BURNOUT 3", link: "https://www.mediafire.com/file/zh6cp5bfgo1bfga/BURNOUT_3.iso/file", imagem: "Assets/icon/Categorias 2/Isos/ps2/2.png" },
+                { nome: "GOD OF WAR 3 - PS3", link: "", imagem: "Assets/icon/Categorias 2/Isos/ps2/3.png" },
             ]
         };
 
-        // LIVROS
+       const livros = {
+    programacao: [
+        {
+            nome: "A Web Mobile - Programe para um Mundo de Muitos Dispositivos",
+            link: "https://drive.google.com/file/d/14anVXCj1UwbrQHsRp6WOvCFgCrZz2RJt/view?usp=sharing",
+            imagem: "Assets/icon/Categorias 2/Livros/programação/Web Mobile.png"
+        },
+        {
+            nome: "Aplicações web real time com Node-js",
+            link: "https://drive.google.com/file/d/1ZYq9Mxlu3Df1p3b0bPyha8yhcRbyxmep/view?usp=sharing",
+            imagem: "Assets/icon/Categorias 2/Livros/programação/NODE JS.png"
+        },
+        {
+            nome: "Código Limpo",
+            link: "https://drive.google.com/file/d/1bFVwLgmt4o8zU1qyr91w9hs9hAfiEoHn/view?usp=sharing",
+            imagem: "Assets/icon/Categorias 2/Livros/programação/CÓDIGO LIMPO.png"
+        },
+        {
+            nome: "CSS Eficiente - Técnicas e ferramentas que fazem a diferença nos seus estilos",
+            link: "https://drive.google.com/file/d/1o5HvmLrdwCHkdeXt5IVpiUoM1_TCTkAz/view?usp=sharing",
+            imagem: "Assets/icon/Categorias 2/Livros/programação/CSS EFICIENTE.png"
+        },
+        {
+            nome: "Entendendo Algoritmos - Um Guia Ilustrado Para Programadores e Outros Curiosos",
+            link: "https://drive.google.com/file/d/1tXHyB-edy4X1dwYgTwcjCwad4fTuBT60/view?usp=sharing",
+            imagem: "Assets/icon/Categorias 2/Livros/programação/ENTENDENDO ALGORITMOS.png"
+        },
+        {
+            nome: "Lógica de Programação - Crie seus primeiros programas usando Javascript e HTML",
+            link: "https://drive.google.com/file/d/1Rg32cVxffqLadyiq_bHXKveMX5-1wGPK/view?usp=sharing",
+            imagem: "Assets/icon/Categorias 2/Livros/programação/Logica de.png"
+        },
+        {
+            nome: "O Programador Pragmático",
+            link: "https://drive.google.com/file/d/1KNG_zoZVW9ulBbK3bTbOPec-iG886edY/view?usp=sharing",
+            imagem: "Assets/icon/Categorias 2/Livros/programação/Programador pragmático.png"
+        },
+        {
+            nome: "Web Design Responsivo - Páginas adaptáveis para todos os dispositivos",
+            link: "https://drive.google.com/file/d/1vywBJjHH7fSsvkxYxhUJ069KIhZbKFoC/view?usp=sharing",
+            imagem: "Assets/icon/Categorias 2/Livros/programação/web responsivo.png"
+        },
+    ],
+    romance: [
+        {
+            nome: "A Hipótese do Amor",
+            link: "https://drive.google.com/file/d/1XaY_6EHoZCjX_djrSqjDlVHnfE9MGA7E/view?usp=sharing",
+            imagem: "Assets/icon/Categorias 2/Livros/romance/hipótese do amor.png"
+        },
+        {
+            nome: "Jane Eyre - Charlotte Bronte",
+            link: "https://drive.google.com/file/d/1Mhifhibc_uvZtkQ7m5YJlyn9ZIIJsFMM/view?usp=sharing",
+            imagem: "Assets/icon/Categorias 2/Livros/romance/hipótese do amor.png"
+        },
+        {
+            nome: "O Pequeno Príncipe - Antoine de Saint-Exupéry",
+            link: "https://drive.google.com/file/d/19VoKxlR_pN-q3YcwDFpdOzJSJ_jV93KG/view?usp=sharing",
+            imagem: "Assets/icon/Categorias 2/Livros/romance/pequeno principe.png"
+        },
+    ],
+    ciencia: [
+        {
+            nome: "Cosmos - Carl Sagan",
+            link: "https://drive.google.com/file/d/1xOo3ZAnE1_Ooyxvudfg2KXbwlGinVU1G/view?usp=sharing",
+            imagem: "Assets/icon/Categorias 2/Livros/ciencia/cosmos.png"
+        },
+        {
+            nome: "Um Pálido Ponto Azul - Carl Sagan",
+            link: "https://drive.google.com/file/d/1j1wkh4X4Rjtb7S7Bv79CitrknUmkL7w4/view?usp=sharing",
+            imagem: "Assets/icon/Categorias 2/Livros/ciencia/palido ponto azul.png"
+        },
+    ],
+    filosofia: [
+        {
+            nome: "Bíblia",
+            link: "https://drive.google.com/file/d/129xvAMbGIW-nbhhjdScK1gJl35aVnYQI/view?usp=sharing",
+            imagem: "Assets/icon/Categorias 2/Livros/filosofia/Biblia.png"
+        },
+        {
+            nome: "O Homem Mais Rico da Babilônia",
+            link: "https://drive.google.com/file/d/1J30L7CCyZZgcSbEqwwfNAri3BDg79aHK/view?usp=sharing",
+            imagem: "Assets/icon/Categorias 2/Livros/filosofia/O Homem mais rico .png"
+        },
+        {
+            nome: "Cabalion",
+            link: "https://drive.google.com/file/d/1hqp6BnONITe7OMLWaHC_B9NX5l5CKaK9/view?usp=sharing",
+            imagem: "Assets/icon/Categorias 2/Livros/filosofia/cabalion.png"
+        },
+    ]
+};
+
+const jogos = {
+
+    "acao": [
+        {
+            "nome": "Miles Morales",
+            "link": "https://seulink.net/tTCbgtT",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/1.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU i5, 8GB RAM, GTX 950 | Recomendados: CPU i7, 16GB RAM, RTX 2060",
+                "amd": "Mínimos: CPU Ryzen 3, 8GB RAM, RX 480 | Recomendados: CPU Ryzen 5, 16GB RAM, RX 5700"
+            }
+        },
+        {
+            "nome": "Little Nightmares I",
+            "link": "https://4br.me/VTzq9",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/2.png",
+            "requisitos": {
+                "intel": "Mínimos: Intel Core i3, 4GB RAM, GTX 460",
+                "amd": "Mínimos: AMD Phenom II X4, 4GB RAM, R7 260"
+            }
+        },
+        {
+            "nome": "Homem aranha 2 - 2023",
+            "link": "https://fir3.net/plT4zvKM",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/3.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU i7-8700, 16GB RAM, SSD 100GB",
+                "amd": "Mínimos: CPU Ryzen 5 3600, 16GB RAM, SSD 100GB"
+            }
+        },
+        {
+            "nome": "The Last of Us Part II Remastered",
+            "link": "",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/4.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU i5-8400, 16GB RAM, RTX 2060, SSD",
+                "amd": "Mínimos: CPU Ryzen 5 2600, 16GB RAM, RX 5700, SSD"
+            }
+        },
+        {
+            "nome": "Hollow Knight Silksong",
+            "link": "https://4br.me/eGOaZOAXe",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/5.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU Dual Core 2.0 GHz, 4GB RAM, 10GB Espaço (Compatível com Intel HD Graphics)",
+                "amd": "Mínimos: CPU Dual Core 2.0 GHz, 4GB RAM, 10GB Espaço (Compatível com AMD APUs)"
+            }
+        },
+        {
+            "nome": "CALL OF DUTY: MODERN WARFARE – REMASTERED",
+            "link": "https://fir3.net/tFmUBgr",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/6.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU Core 2 Duo, 6GB RAM, GTX 470",
+                "amd": "Mínimos: CPU Phenom II X6, 6GB RAM, HD 7850"
+            }
+        },
+        {
+            "nome": "SPLINT FICTION",
+            "link": "https://fir3.net/EcjSZjBU",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/7.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU i5-4460, 8GB RAM, GTX 960",
+                "amd": "Mínimos: CPU Ryzen 3 1200, 8GB RAM, RX 460"
+            }
+        },
+        {
+            "nome": "Resident Evil 4 Remake",
+            "link": "https://fir3.net/mR6GWmR9",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/8.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU i5-4460, 8GB RAM, GTX 960 | Recomendados: CPU i7-8700, 16GB RAM, GTX 1070",
+                "amd": "Mínimos: CPU Ryzen 3 1200, 8GB RAM, RX 460 | Recomendados: CPU Ryzen 5 3600, 16GB RAM, RX 5700"
+            }
+        },
+        {
+            "nome": "GTA V",
+            "link": "https://fir3.net/nFqV0fyyCK",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/9.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU i5-3470, 8GB RAM, GTX 660 | Recomendados: CPU i5-9600K, 16GB RAM, RTX 3060",
+                "amd": "Mínimos: CPU FX-8350, 8GB RAM, HD 7870 | Recomendados: CPU Ryzen 5 3600, 16GB RAM, RX 6600 XT"
+            }
+        },
+        {
+            "nome": "WACTH DOGS I",
+            "link": "https://fir3.net/CITDby",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/10.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU i5-2400, 6GB RAM, GTX 460 | Recomendados: CPU i7-3770, 8GB RAM, GTX 560 Ti",
+                "amd": "Mínimos: CPU Phenom II X4 940, 6GB RAM, HD 6850 | Recomendados: CPU FX-8350, 8GB RAM, HD 7850"
+            }
+        },
+        {
+            "nome": "FIFA 23",
+            "link": "https://fir3.net/MIcL490",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/11.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU i5-6600K, 8GB RAM, GTX 1050 Ti | Recomendados: CPU i7-9700K, 16GB RAM, RTX 2060",
+                "amd": "Mínimos: CPU Ryzen 5 1600, 8GB RAM, RX 570 | Recomendados: CPU Ryzen 5 3600, 16GB RAM, RX 6600 XT"
+            }
+        },
+        {
+            "nome": "FINAL FANTASY VII",
+            "link": "https://clica.so/2SsFt",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/12.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU Core 2 Duo 2.4GHz, 2GB RAM, GeForce 8800 GT | Recomendados: CPU Core 2 Quad Q6600, 2GB RAM, Radeon HD 4650",
+                "amd": "Mínimos: CPU Athlon II X4 600e, 2GB RAM, GeForce 8800 GT | Recomendados: CPU Athlon II X4 600e, 2GB RAM, Radeon HD 4650"
+            }
+        },
+        {
+            "nome": "FIFA 2013",
+            "link": "https://fir3.net/DIU0D49ONZ",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/13.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU Core 2 Duo 2.4GHz, 2GB RAM, GeForce 8800 GT | Recomendados: CPU Core 2 Quad Q6600, 2GB RAM, GTX 960",
+                "amd": "Mínimos: CPU Athlon II X4 600e, 2GB RAM, HD 2900 XT | Recomendados: CPU Athlon II X4 600e, 2GB RAM, RX 570"
+            }
+        },
+        {
+            "nome": "CALL OF DUTY BLACK OPS 6",
+            "link": "https://4br.me/xgXsZM",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/14.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU i5-6600, 8GB RAM, GTX 960 | Recomendados: CPU i7-6700K, 16GB RAM, GTX 1080 Ti",
+                "amd": "Mínimos: CPU Ryzen 5 1400, 8GB RAM, RX 470 | Recomendados: CPU Ryzen 5 1600X, 16GB RAM, RX 6600 XT"
+            }
+        },
+        {
+            "nome": "DRAGON BALL Sparking ZERO",
+            "link": "https://4br.me/dOqXskcv",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/15.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU i7-9700K, 16GB RAM, RTX 2060 | Recomendados: CPU i7-9700K, 16GB RAM, RTX 2060",
+                "amd": "Mínimos: CPU Ryzen 5 3600, 16GB RAM, RX Vega 64 | Recomendados: CPU Ryzen 5 3600, 16GB RAM, RX Vega 64"
+            }
+        },
+        {
+            "nome": "DRAGON BALL Z: KAKAROT – ULTIMATE EDITION",
+            "link": "https://encurtalink.online/Nz6EL",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/16.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU i5-2400, 4GB RAM, GTX 750 Ti | Recomendados: CPU i5-3470, 8GB RAM, GTX 960",
+                "amd": "Mínimos: CPU Phenom II X6 1100T, 4GB RAM, HD 7950 | Recomendados: CPU Ryzen 3 1200, 8GB RAM, RX 570"
+            }
+        },
+        {
+            "nome": "NARUTO SHIPPUDEN Ultimate Ninja Storm 4",
+            "link": "https://fir3.net/UE94EgbX",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/17.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU i5-2400, 4GB RAM, GTX 750 Ti | Recomendados: CPU i5-3470, 8GB RAM, GTX 960",
+                "amd": "Mínimos: CPU Phenom II X6 1100T, 4GB RAM, HD 7950 | Recomendados: CPU Ryzen 3 1200, 8GB RAM, RX 570"
+            }
+        },
+        {
+            "nome": "The Last of Us Ps3 Dublado e legendado",
+            "link": "https://fir3.net/NS7ZWE5ONj",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/18.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU Core 2 Duo 2.4GHz, 2GB RAM, GeForce 8800 GT | Recomendados: CPU Core 2 Quad Q6600, 2GB RAM, GTX 960",
+                "amd": "Mínimos: CPU Athlon II X4 600e, 2GB RAM, HD 2900 XT | Recomendados: CPU Athlon II X4 600e, 2GB RAM, RX 570"
+            }
+        },
+        {
+            "nome": "MORTAL KOMBAT 11",
+            "link": "https://encurtalink.online/SOqV",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/19.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU i5-2300, 8GB RAM, GTX 660 | Recomendados: CPU i7-6700K, 16GB RAM, GTX 1080 / RTX 2060",
+                "amd": "Mínimos: CPU FX-6300, 8GB RAM, HD 7850 | Recomendados: CPU Ryzen 5 1600X, 16GB RAM, RX 5700"
+            }
+        },
+        {
+            "nome": "Euro Truck Simulator 2 v1.54.1.0s-P2P",
+            "link": "https://fir3.net/LSn1yG",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/20.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU Core i5-760, 4GB RAM, GTX 260 | Recomendados: CPU i5-2500, 8GB RAM, GTX 660",
+                "amd": "Mínimos: CPU Phenom II X4 965, 4GB RAM, HD 5770 | Recomendados: CPU Ryzen 3 1200, 8GB RAM, RX 460"
+            }
+        },
+        {
+            "nome": "Forza Horizon 5: Premium Edition",
+            "link": "https://4br.me/EHqBo3",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/21.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU i5-4460, 8GB RAM, GTX 970 | Recomendados: CPU i7-10700K, 16GB RAM, RTX 2080",
+                "amd": "Mínimos: CPU Ryzen 3 1200, 8GB RAM, RX 470 | Recomendados: CPU Ryzen 5 3600, 16GB RAM, RX 5700 XT"
+            }
+        },
+        {
+            "nome": "Nymphomaniac: Sex Addict – v11750 + Windows 7 Fix",
+            "link": "https://fir3.net/aFWbaIyc",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/22.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU i5-2400, 4GB RAM, GTX 750 | Recomendados: CPU i5-3470, 8GB RAM, GTX 960",
+                "amd": "Mínimos: CPU Phenom II X4 940, 4GB RAM, HD 6850 | Recomendados: CPU Ryzen 3 1200, 8GB RAM, RX 460"
+            }
+        },
+        {
+            "nome": "SILENT HILL 2 REMATERED GOG",
+            "link": "https://fir3.net/uWOv",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/23.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU i5-2500, 4GB RAM, GTX 460 | Recomendados: CPU i7-3770, 8GB RAM, GTX 660",
+                "amd": "Mínimos: CPU FX-6300, 4GB RAM, HD 7850 | Recomendados: CPU Ryzen 3 1200, 8GB RAM, RX 570"
+            }
+        },
+        {
+            "nome": "RESIDENT EVIL: VILLAGE – GOLD EDITION",
+            "link": "https://fir3.net/6c1iQ0u",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/24.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU i5-4460, 8GB RAM, GTX 960 | Recomendados: CPU i7-8700, 16GB RAM, GTX 1070",
+                "amd": "Mínimos: CPU Ryzen 3 1200, 8GB RAM, RX 460 | Recomendados: CPU Ryzen 5 3600, 16GB RAM, RX 5700"
+            }
+        },
+        {
+            "nome": "FIFA 18 + UPDATE 2",
+            "link": "https://encurtalink.online/ZvpMIJd",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/25.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU i5-6600, 8GB RAM, GTX 1050 Ti | Recomendados: CPU i7-9700, 16GB RAM, GTX 1660 Ti",
+                "amd": "Mínimos: CPU Ryzen 5 1600, 8GB RAM, RX 570 | Recomendados: CPU Ryzen 5 3600, 16GB RAM, RX 5600 XT"
+            }
+        },
+        {
+            "nome": "Detroit: Become Human",
+            "link": "https://4br.me/PvgSGhC",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/26.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU i5-3470, 8GB RAM, GTX 660 | Recomendados: CPU i7-6700K, 16GB RAM, GTX 1060",
+                "amd": "Mínimos: CPU FX-8350, 8GB RAM, HD 7870 | Recomendados: CPU Ryzen 5 1600, 16GB RAM, RX 580"
+            }
+        },
+        {
+            "nome": "God of War Ragnarok",
+            "link": "https://fir3.net/zhpL",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/27.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU i5-6600K, 8GB RAM, GTX 1060 | Recomendados: CPU i7-9700K, 16GB RAM, RTX 2070",
+                "amd": "Mínimos: CPU Ryzen 5 1600, 8GB RAM, RX 580 | Recomendados: CPU Ryzen 5 3600, 16GB RAM, RX 5700 XT"
+            }
+        },
+        {
+            "nome": "Batman Arkham Knight Complete Edition",
+            "link": "https://encurtalink.online/q4NpASda0",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/28.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU i5-750, 6GB RAM, GTX 460 | Recomendados: CPU i7-3770, 8GB RAM, GTX 1060",
+                "amd": "Mínimos: CPU Phenom II X4 940, 6GB RAM, HD 6850 | Recomendados: CPU Ryzen 3 1200, 8GB RAM, RX 580"
+            }
+        }
+    ]
+}
+
+
+
+const Sites = {
+    IA: [
+        {
+            nome: "Deepseek",
+            link: "https://chat.deepseek.com/",
+            imagem: "Assets/icon/Categorias 2/Sites/Ia/deepseek.png"
+        },
+        {
+            nome: "PH IND AI",
+            link: "https://www.phind.com/",
+            imagem: "Assets/icon/Categorias 2/Sites/Ia/Phind.png"
+        },
+        {
+            nome: "CURSOR",
+            link: "https://cursor.com/",
+            imagem: "Assets/icon/Categorias 2/Sites/Ia/cursor.png"
+        },
+        {
+            nome: "V0 DEV",
+            link: "https://v0.app/",
+            imagem: "Assets/icon/Categorias 2/Sites/Ia/v0.png"
+        },
+        {
+            nome: "Windsurf",
+            link: "https://windsurf.com/?ref=huntscreens.com",
+            imagem: "Assets/icon/Categorias 2/Sites/Ia/w.png"
+        },
+        {
+            nome: "Tabnine AI",
+            link: "https://www.tabnine.com/",
+            imagem: "Assets/icon/Categorias 2/Sites/Ia/tabnine-logo.png"
+        },
+        {
+            nome: "Blackbox AI",
+            link: "https://www.blackbox.ai/",
+            imagem: "Assets/icon/Categorias 2/Sites/Ia/BLACKBOX.png"
+        },
+    ],
+    Filmes_e_Series: [
+        {
+            nome: "Superflix",
+            link: "https://superflixbr.com/home",
+            imagem: "Assets/icon/Categorias 2/Sites/Filmes/Superflix.png"
+        },
+        {
+            nome: "Hiperflix",
+            link: "https://hypeflix.info/",
+            imagem: "Assets/icon/Categorias 2/Sites/Filmes/hiperflix.png"
+        },
+        {
+            nome: "Movie",
+            link: "https://moviestv.onl/home",
+            imagem: "Assets/icon/Categorias 2/Sites/Filmes/Movie.png"
+        },
+    ],
+    // NOVA CATEGORIA ADICIONADA AQUI
+    conversores: [
+        {
+            nome: "Exemplo Conversor MP3",
+            link: "https://exemplo.com/mp3-converter",
+            imagem: "Assets/icon/Categorias 2/Sites/Conversores/mp3.png" // Exemplo de caminho de imagem
+        },
+        {
+            nome: "Exemplo Conversor de Vídeo",
+            link: "https://exemplo.com/video-converter",
+            imagem: "Assets/icon/Categorias 2/Sites/Conversores/video.png" // Exemplo de caminho de imagem
+        }
+        // Adicione mais itens de conversores aqui
+    ]
+};
+        // ======================================================================
+        // FUNÇÕES PRINCIPAIS DE NAVEGAÇÃO E RESET
+        // ======================================================================
+
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+            if (id === 'modalIsos') mostrarCategoriasIsos();
+            if (id === 'modalLivros') voltarLivros();
+            if (id === 'modalJogos') voltarJogos();
+            if (id === 'modalSites') voltarSites();
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+            if (id === 'modalIsos') mostrarCategoriasIsos();
+            if (id === 'modalLivros') voltarLivros();
+            if (id === 'modalJogos') voltarJogos();
+            if (id === 'modalSites') voltarSites();
+        }
+
+        // ======================================================================
+        // FUNÇÕES DO MODAL DE ISOs
+        // ======================================================================
+        function mostrarCategoriasIsos() {
+            document.getElementById("voltarIsos").style.display = "none";
+            document.getElementById("search-container-isos").style.display = "none";
+            document.getElementById("searchInputIsos").value = "";
+            const lista = document.getElementById("listaIsos");
+            lista.dataset.categoria = "";
+            document.querySelector("#modalIsos .modal-card h2").textContent = "Escolha uma categoria de ISOs";
+            lista.innerHTML = `
+                <li onclick="abrirCategoria('linux')"><img src="Assets/icon/Categorias 2/Isos/perfil/Linux.png"alt="Windows" class="list-icon"> Linux</li>
+                <li onclick="abrirCategoria('windows')"><img src="Assets/icon/Categorias 2/Isos/perfil/Windows.png" alt="Windows" class="list-icon"> Windows</li>
+                <li onclick="abrirCategoria('jogos')"><img src="Assets/icon/Categorias 2/Isos/perfil/sony.png" alt="Jogos" class="list-icon"> Jogos</li></li>
+            `;
+        }
+
+        function abrirCategoria(cat, termoPesquisa = '') {
+            document.getElementById("voltarIsos").style.display = "inline-block";
+            document.getElementById("search-container-isos").style.display = "flex";
+            const lista = document.getElementById("listaIsos");
+            lista.dataset.categoria = cat;
+            const termo = (termoPesquisa || document.getElementById("searchInputIsos").value || '').toLowerCase();
+
+            // Filtra a lista de ISOs
+            const isosFiltrados = categorias[cat].filter(item => item.nome.toLowerCase().includes(termo));
+
+            // Altera o título do modal
+            const tituloModal = document.querySelector("#modalIsos .modal-card h2");
+            if (cat === 'linux') {
+                tituloModal.textContent = "ISOs de Linux";
+            } else if (cat === 'windows') {
+                tituloModal.textContent = "ISOs de Windows";
+            } else if (cat === 'jogos') {
+                tituloModal.textContent = "ISOs de Jogos";
+            }
+
+            // Limpa a lista antes de exibir novos resultados
+            lista.innerHTML = "";
+
+            if (isosFiltrados.length === 0) {
+                lista.innerHTML = `<li style="justify-content:center;">Nenhuma ISO encontrada para "${termo}"</li>`;
+                return;
+            }
+
+            isosFiltrados.forEach(item => {
+                const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-download"></i>';
+                lista.innerHTML += `
+                    <li>
+                        ${imageHtml}
+                        <a href="${item.link}" target="_blank">${item.nome}</a>
+                    </li>`;
+            });
+        }
+
+        document.getElementById("searchInputIsos").addEventListener("keyup", function() {
+            const lista = document.getElementById("listaIsos");
+            const cat = lista.dataset.categoria;
+            if (cat) abrirCategoria(cat, this.value);
+        });
+
+        // ======================================================================
+        // FUNÇÕES DO MODAL DE LIVROS
+        // ======================================================================
+
+        function voltarLivros() {
+            document.getElementById("livros-categorias").style.display = "block";
+            document.getElementById("livros-arquivos").style.display = "none";
+            document.getElementById("voltarLivros").style.display = "none";
+            document.getElementById("search-container-livros").style.display = "none";
+            document.getElementById("searchInputLivros").value = "";
+            document.querySelector("#modalLivros .modal-card h2").textContent = "Escolha uma categoria de livros";
+        }
+
         function showLivros(cat, termoPesquisa = '') {
             document.getElementById("livros-categorias").style.display = "none";
+            document.getElementById("livros-arquivos").style.display = "block";
+            document.getElementById("voltarLivros").style.display = "inline-block";
             document.getElementById("search-container-livros").style.display = "flex";
-            const ul = document.getElementById("livros-arquivos");
-            ul.style.display = "block";
-            ul.dataset.categoria = cat; // Salva a categoria para a busca
 
+            const ul = document.getElementById("livros-arquivos");
+            ul.dataset.categoria = cat;
             const termo = termoPesquisa.toLowerCase() || document.getElementById("searchInputLivros").value.toLowerCase();
+
+            const livrosFiltrados = livros[cat].filter(item => item.nome.toLowerCase().includes(termo));
+
+            // Altera o título do modal
+            const tituloModal = document.querySelector("#modalLivros .modal-card h2");
+            switch (cat) {
+                case 'programacao':
+                    tituloModal.textContent = "Livros de Programação";
+                    break;
+                case 'romance':
+                    tituloModal.textContent = "Livros de Romance";
+                    break;
+                case 'ciencia':
+                    tituloModal.textContent = "Livros de Ciência e Tecnologia";
+                    break;
+                case 'filosofia':
+                    tituloModal.textContent = "Livros de Filosofia";
+                    break;
+            }
+
             ul.innerHTML = "";
-            livros[cat].filter(item => item.nome.toLowerCase().includes(termo)).forEach(item => {
+
+            if (livrosFiltrados.length === 0) {
+                ul.innerHTML = `<li style="justify-content:center;">Nenhum livro encontrado para "${termo}"</li>`;
+                return;
+            }
+
+            livrosFiltrados.forEach(item => {
                 const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-book"></i>';
                 ul.innerHTML += `
-        <li>
-            ${imageHtml}
-            <a href="${item.link}" target="_blank">${item.nome}</a>
-        `; // <--- **AQUI ESTAVA O SEU BUG ORIGINAL (tag <li> não fechada)**
+                    <li>
+                        ${imageHtml}
+                        <a href="${item.link}" target="_blank">${item.nome}</a>
+                    </li>
+                `;
             });
-            // Corrigido: Fechamento da tag <li> ausente no seu código (apenas fechei o que faltava)
-            const listItems = ul.querySelectorAll('li');
-            listItems.forEach(li => {
-                if (!li.innerHTML.endsWith('</li>')) {
-                    li.innerHTML += '</li>';
-                }
-            });
-
         }
-        document.getElementById("searchInputLivros").addEventListener("keyup", function () {
+
+        document.getElementById("searchInputLivros").addEventListener("keyup", function() {
             const ul = document.getElementById("livros-arquivos");
             const cat = ul.dataset.categoria;
             if (cat) showLivros(cat, this.value);
         });
 
-        // JOGOS (Falta de implementação da busca)
-        // =====================================================================
-        // Funções de Exibição e Pesquisa para JOGOS (TORRENT) - com Intel/AMD
-        // =====================================================================
-        // Local: Substituir onde você define showJogos e showLivros
+        // ======================================================================
+        // FUNÇÕES DO MODAL DE JOGOS (TORRENT)
+        // ======================================================================
+
+        function voltarJogos() {
+            document.getElementById("jogos-categorias").style.display = "block";
+            document.getElementById("jogos-arquivos").style.display = "none";
+            document.getElementById("voltarJogos").style.display = "none";
+            document.getElementById("search-container-jogos").style.display = "none";
+            document.getElementById("searchInputJogos").value = "";
+            document.querySelector("#modalJogos .modal-card h2").textContent = "Escolha uma categoria";
+        }
+
         function showJogos(cat, termoPesquisa = '') {
-            // Mostra/oculta seções
             document.getElementById("jogos-categorias").style.display = "none";
             document.getElementById("jogos-arquivos").style.display = "block";
             document.getElementById("voltarJogos").style.display = "inline-block";
@@ -866,84 +1206,100 @@
             const lista = document.getElementById("jogos-arquivos");
             lista.innerHTML = "";
 
-            // Salva a categoria no dataset
             lista.dataset.categoria = cat;
 
-            // Garante que o termo seja string e minúsculo
             const termo = (termoPesquisa || document.getElementById("searchInputJogos").value || '').toLowerCase();
 
-            // Garante que a categoria exista e filtra
-            const jogosFiltrados = (jogos[cat] || []).filter(item =>
-                item.nome.toLowerCase().includes(termo)
-            );
+            const jogosFiltrados = (jogos[cat] || []).filter(item => item.nome.toLowerCase().includes(termo));
 
-            // Caso não encontre jogos
+            const tituloModal = document.querySelector("#modalJogos .modal-card h2");
+            if (cat === 'acao') {
+                tituloModal.textContent = "Jogos Piratas";
+            }
+
             if (jogosFiltrados.length === 0) {
                 lista.innerHTML = `<li style="justify-content:center;">Nenhum jogo encontrado para "${termo}"</li>`;
                 return;
             }
 
-            // Cria lista de jogos filtrados
             jogosFiltrados.forEach(item => {
-                const imageHtml = item.imagem && item.imagem !== '?'
-                    ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">`
-                    : '<i class="fas fa-gamepad"></i>';
-
+                const imageHtml = item.imagem && item.imagem !== '?' ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-gamepad"></i>';
                 const reqs = `
-            <div style="font-size:0.8em; margin-top:5px;">
-                <p>Intel: ${item.requisitos.intel}</p>
-                <p>AMD: ${item.requisitos.amd}</p>
-            </div>
-        `;
-
+                    <div style="font-size:0.8em; margin-top:5px;">
+                        <p>Intel: ${item.requisitos.intel}</p>
+                        <p>AMD: ${item.requisitos.amd}</p>
+                    </div>
+                `;
                 lista.innerHTML += `
-            <li style="flex-direction:column; align-items:flex-start; margin-bottom:10px;">
-                <div style="display:flex; align-items:center; gap:10px;">
-                    ${imageHtml}
-                    <a href="${item.link}" target="_blank" style="flex-grow:1;">${item.nome}</a>
-                </div>
-                ${reqs}
-            </li>
-        `;
+                    <li style="flex-direction:column; align-items:flex-start; margin-bottom:10px;">
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            ${imageHtml}
+                            <a href="${item.link}" target="_blank" style="flex-grow:1;">${item.nome}</a>
+                        </div>
+                        ${reqs}
+                    </li>
+                `;
             });
         }
-
-        // Listener para pesquisa em tempo real
-        document.getElementById("searchInputJogos").addEventListener("keyup", function () {
+        document.getElementById("searchInputJogos").addEventListener("keyup", function() {
             const lista = document.getElementById("jogos-arquivos");
             const cat = lista.dataset.categoria;
             if (cat) showJogos(cat, this.value);
         });
 
-        // Mantenha as funções voltarJogos e o event listener de pesquisa como estão.
+        // ======================================================================
+        // FUNÇÕES DO MODAL DE SITES
+        // ======================================================================
+        function voltarSites() {
+            document.getElementById("Sites-categorias").style.display = "block";
+            document.getElementById("Sites-arquivos").style.display = "none";
+            document.getElementById("voltarSites").style.display = "none";
+            document.getElementById("search-container-sites").style.display = "none";
+            document.getElementById("searchInputSites").value = "";
+            document.querySelector("#modalSites .modal-card h2").textContent = "Escolha uma categoria de Sites";
+        }
 
-
-        // SITES (Falta de implementação da busca)
         function showSites(cat, termoPesquisa = '') {
             document.getElementById("Sites-categorias").style.display = "none";
+            document.getElementById("Sites-arquivos").style.display = "block";
+            document.getElementById("voltarSites").style.display = "inline-block";
             document.getElementById("search-container-sites").style.display = "flex";
+            const tituloModal = document.querySelector("#modalSites .modal-card h2");
+            switch (cat) {
+                case 'IA':
+                    tituloModal.textContent = "Sites de Inteligência Artificial";
+                    break;
+                case 'Filmes_e_Series':
+                    tituloModal.textContent = "Sites de Filmes e Séries";
+                    break;
+                default:
+                    tituloModal.textContent = "Escolha uma categoria de Sites";
+            }
             const ul = document.getElementById("Sites-arquivos");
-            ul.style.display = "block";
-            ul.dataset.categoria = cat; // Salva a categoria para a busca
-
-            const termo = termoPesquisa.toLowerCase() || document.getElementById("searchInputSites").value.toLowerCase();
+            ul.dataset.categoria = cat;
+            const termo = (termoPesquisa || document.getElementById("searchInputSites").value || '').toLowerCase();
+            const sitesFiltrados = (Sites[cat] || []).filter(item => item.nome.toLowerCase().includes(termo));
+            if (sitesFiltrados.length === 0) {
+                ul.innerHTML = `<li style="justify-content:center;">Nenhum site encontrado para "${termo}"</li>`;
+                return;
+            }
             ul.innerHTML = "";
-            Sites[cat].filter(item => item.nome.toLowerCase().includes(termo)).forEach(item => {
+            sitesFiltrados.forEach(item => {
                 const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-globe"></i>';
                 ul.innerHTML += `
-        <li>
-            ${imageHtml}
-            <a href="${item.link}" target="_blank">${item.nome}</a>
-        </li>`;
+                    <li>
+                        ${imageHtml}
+                        <a href="${item.link}" target="_blank">${item.nome}</a>
+                    </li>
+                `;
             });
         }
-        document.getElementById("searchInputSites").addEventListener("keyup", function () {
+        document.getElementById("searchInputSites").addEventListener("keyup", function() {
             const ul = document.getElementById("Sites-arquivos");
             const cat = ul.dataset.categoria;
             if (cat) showSites(cat, this.value);
         });
-
-
+        document.addEventListener("DOMContentLoaded", mostrarCategoriasIsos);
     </script>
 </body>
 
