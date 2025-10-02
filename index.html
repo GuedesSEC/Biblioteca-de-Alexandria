@@ -279,21 +279,21 @@
             padding: 18px 24px 24px 24px;
             margin-bottom: 12px;
             transition: box-shadow 0.3s, transform 0.2s;
-        }
+       /* }
 
         .test-card:hover {
             box-shadow: 0 8px 32px #00ff00, 0 0 32px #00ff0044;
             /* sombra verde intensa */
             transform: translateY(-4px) scale(1.04);
             /* leve elevação e zoom */
-        }
+        }/*
 
         /* ===================== BOTÃO TESTE DE TI E FICAL ===================== */
         .test-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #00ff00;
+            background: #0baa0b;
             color: #181818;
             font-weight: bold;
             font-size: 1.1em;
@@ -482,7 +482,7 @@
             </div>
             <div class="test-card">
                 <a href="pages/web/Fiscal Treinamento/Fiscal.html" target="_blank" class="test-btn">
-                    <i class="fas fa-brain"></i>TributoMaster.
+                    <i class="fas fa-brain"></i>Ponto Fiscal.
                 </a>
                 <div class="test-img-wrap">
                     <img src="Assets/icon/Categorias/Testes/3.png" alt="Soldado 3" class="test-img">
@@ -574,7 +574,6 @@
             <button class="modal-close" onclick="closeModal('privacyModal')" style="color:#00ff00;">&times;</button>
             <h2 style="color:#00ff00;">Política de Privacidade</h2>
             <p>
-                Seus dados são criptografados e protegidos.<br>
                 Nenhuma informação sensível será compartilhada.<br>
                 <span style="color:#fff;">A GuedesSEC respeita sua privacidade!</span>
             </p>
@@ -808,7 +807,7 @@
     "acao": [
         {
             "nome": "Miles Morales",
-            "link": "https://seulink.net/tTCbgtT",
+            "link": "pages/web/Pages jogos/Jogos.html",
             "imagem": "Assets/icon/Categorias 2/Torrent/Jp/1.png",
             "requisitos": {
                 "intel": "Mínimos: CPU i5, 8GB RAM, GTX 950 | Recomendados: CPU i7, 16GB RAM, RTX 2060",
@@ -1174,6 +1173,15 @@
                 "intel": "Mínimos: CPU i5 6600K, 8 GB RAM, GTX 1050 / GTX 660 | Recomendados: CPU i7 4790, 12 GB RAM, GTX 1060 6GB",
                 "amd": "Mínimos: CPU FX-8350, 8 GB RAM, RX 560 / HD 7850 | Recomendados: CPU Ryzen 3 1300X, 12 GB RAM, RX 580 8GB"
             }
+        },
+        {
+            "nome": "Battlefield 3",
+            "link": "https://mineurl.com/0e4492",
+            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/42.png",
+            "requisitos": {
+                "intel": "Mínimos: CPU Core 2 Duo 2.4GHz, 2 GB RAM, GTX 8800 GT | Recomendados: CPU Quad-core, 4 GB RAM, GTX 560",
+                "amd": "Mínimos: CPU Athlon X2 64 2.4GHz, 2 GB RAM, HD 3870 | Recomendados: CPU Phenom II X4, 4 GB RAM, HD 6950"
+            }
         }
     ]
 };
@@ -1220,7 +1228,7 @@
                 Filmes_e_Series: [
                     {
                         nome: "Superflix",
-                        link: "https://superflixbr.com/home",
+                        link: "https://superflix.network/",
                         imagem: "Assets/icon/Categorias 2/Sites/Filmes/Superflix.png"
                     },
                     {
@@ -1275,266 +1283,277 @@
             // FUNÇÕES PRINCIPAIS DE NAVEGAÇÃO E RESET
             // ======================================================================
 
-            function openModal(id) {
-                document.getElementById(id).classList.add('active');
-        if (id === 'modalIsos') mostrarCategoriasIsos();
-        if (id === 'modalLivros') voltarLivros();
-        if (id === 'modalJogos') voltarJogos();
-        if (id === 'modalSites') voltarSites();
-        }
+// ======================================================================
+// FUNÇÕES PARA ABRIR E FECHAR MODAIS
+// ======================================================================
+function openModal(id) {
+    document.getElementById(id).classList.add('active');
+    if (id === 'modalIsos') mostrarCategoriasIsos();
+    if (id === 'modalLivros') voltarLivros();
+    if (id === 'modalJogos') voltarJogos();
+    if (id === 'modalSites') voltarSites();
+}
 
-        function closeModal(id) {
-            document.getElementById(id).classList.remove('active');
-            if (id === 'modalIsos') mostrarCategoriasIsos();
-            if (id === 'modalLivros') voltarLivros();
-            if (id === 'modalJogos') voltarJogos();
-            if (id === 'modalSites') voltarSites();
-        }
+function closeModal(id) {
+    document.getElementById(id).classList.remove('active');
+    if (id === 'modalIsos') mostrarCategoriasIsos();
+    if (id === 'modalLivros') voltarLivros();
+    if (id === 'modalJogos') voltarJogos();
+    if (id === 'modalSites') voltarSites();
+}
 
-        // ======================================================================
-        // FUNÇÕES DO MODAL DE ISOs
-        // ======================================================================
-        function mostrarCategoriasIsos() {
-            document.getElementById("voltarIsos").style.display = "none";
-            document.getElementById("search-container-isos").style.display = "none";
-            document.getElementById("searchInputIsos").value = "";
-            const lista = document.getElementById("listaIsos");
-            lista.dataset.categoria = "";
-            document.querySelector("#modalIsos .modal-card h2").textContent = "Escolha uma categoria de ISOs";
-            lista.innerHTML = `
-                <li onclick="abrirCategoria('linux')"><img src="Assets/icon/Categorias 2/Isos/perfil/Linux.png"alt="Windows" class="list-icon"> Linux</li>
-                <li onclick="abrirCategoria('windows')"><img src="Assets/icon/Categorias 2/Isos/perfil/Windows.png" alt="Windows" class="list-icon"> Windows</li>
-                <li onclick="abrirCategoria('jogos')"><img src="Assets/icon/Categorias 2/Isos/perfil/sony.png" alt="Jogos" class="list-icon"> Jogos</li></li>
-            `;
-        }
+// ======================================================================
+// MODAL DE ISOs
+// ======================================================================
+function mostrarCategoriasIsos() {
+    document.getElementById("voltarIsos").style.display = "none";
+    document.getElementById("search-container-isos").style.display = "none";
+    document.getElementById("searchInputIsos").value = "";
+    const lista = document.getElementById("listaIsos");
+    lista.dataset.categoria = "";
+    document.querySelector("#modalIsos .modal-card h2").textContent = "Escolha uma categoria de ISOs";
+    lista.innerHTML = `
+        <li onclick="abrirCategoria('linux')"><img src="Assets/icon/Categorias 2/Isos/perfil/Linux.png" alt="Linux" class="list-icon"> Linux</li>
+        <li onclick="abrirCategoria('windows')"><img src="Assets/icon/Categorias 2/Isos/perfil/Windows.png" alt="Windows" class="list-icon"> Windows</li>
+        <li onclick="abrirCategoria('jogos')"><img src="Assets/icon/Categorias 2/Isos/perfil/sony.png" alt="Jogos" class="list-icon"> Jogos</li>
+    `;
+}
 
-        function abrirCategoria(cat, termoPesquisa = '') {
-            document.getElementById("voltarIsos").style.display = "inline-block";
-            document.getElementById("search-container-isos").style.display = "flex";
-            const lista = document.getElementById("listaIsos");
-            lista.dataset.categoria = cat;
-            const termo = (termoPesquisa || document.getElementById("searchInputIsos").value || '').toLowerCase();
+function abrirCategoria(cat, termoPesquisa = '') {
+    document.getElementById("voltarIsos").style.display = "inline-block";
+    document.getElementById("search-container-isos").style.display = "flex";
+    const lista = document.getElementById("listaIsos");
+    lista.dataset.categoria = cat;
+    const termo = (termoPesquisa || document.getElementById("searchInputIsos").value || '').toLowerCase();
 
-            // Filtra a lista de ISOs
-            const isosFiltrados = categorias[cat].filter(item => item.nome.toLowerCase().includes(termo));
+    const isosFiltrados = categorias[cat].filter(item => item.nome.toLowerCase().includes(termo));
 
-            // Altera o título do modal
-            const tituloModal = document.querySelector("#modalIsos .modal-card h2");
-            if (cat === 'linux') {
-                tituloModal.textContent = "ISOs de Linux";
-            } else if (cat === 'windows') {
-                tituloModal.textContent = "ISOs de Windows";
-            } else if (cat === 'jogos') {
-                tituloModal.textContent = "ISOs de Jogos";
+    const tituloModal = document.querySelector("#modalIsos .modal-card h2");
+    tituloModal.textContent = {
+        linux: "ISOs de Linux",
+        windows: "ISOs de Windows",
+        jogos: "ISOs de Jogos"
+    }[cat] || "ISOs";
+
+    lista.innerHTML = "";
+
+    if (isosFiltrados.length === 0) {
+        lista.innerHTML = `<li style="justify-content:center;">Nenhuma ISO encontrada para "${termo}"</li>`;
+        return;
+    }
+
+    isosFiltrados.forEach(item => {
+        const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-download"></i>';
+        lista.innerHTML += `
+            <li>
+                ${imageHtml}
+                <a href="${item.link}" target="_blank">${item.nome}</a>
+            </li>`;
+    });
+}
+
+document.getElementById("searchInputIsos").addEventListener("keyup", function () {
+    const lista = document.getElementById("listaIsos");
+    const cat = lista.dataset.categoria;
+    if (cat) abrirCategoria(cat, this.value);
+});
+
+// ======================================================================
+// MODAL DE LIVROS
+// ======================================================================
+function voltarLivros() {
+    document.getElementById("livros-categorias").style.display = "block";
+    document.getElementById("livros-arquivos").style.display = "none";
+    document.getElementById("voltarLivros").style.display = "none";
+    document.getElementById("search-container-livros").style.display = "none";
+    document.getElementById("searchInputLivros").value = "";
+    document.querySelector("#modalLivros .modal-card h2").textContent = "Escolha uma categoria de livros";
+}
+
+function showLivros(cat, termoPesquisa = '') {
+    document.getElementById("livros-categorias").style.display = "none";
+    document.getElementById("livros-arquivos").style.display = "block";
+    document.getElementById("voltarLivros").style.display = "inline-block";
+    document.getElementById("search-container-livros").style.display = "flex";
+
+    const ul = document.getElementById("livros-arquivos");
+    ul.dataset.categoria = cat;
+    const termo = termoPesquisa.toLowerCase() || document.getElementById("searchInputLivros").value.toLowerCase();
+
+    const livrosFiltrados = livros[cat].filter(item => item.nome.toLowerCase().includes(termo));
+
+    const titulos = {
+        programacao: "Livros de Programação",
+        romance: "Livros de Romance",
+        ciencia: "Livros de Ciência e Tecnologia",
+        filosofia: "Livros de Filosofia"
+    };
+    document.querySelector("#modalLivros .modal-card h2").textContent = titulos[cat] || "Livros";
+
+    ul.innerHTML = "";
+
+    if (livrosFiltrados.length === 0) {
+        ul.innerHTML = `<li style="justify-content:center;">Nenhum livro encontrado para "${termo}"</li>`;
+        return;
+    }
+
+    livrosFiltrados.forEach(item => {
+        const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-book"></i>';
+        ul.innerHTML += `
+            <li>
+                ${imageHtml}
+                <a href="${item.link}" target="_blank">${item.nome}</a>
+            </li>
+        `;
+    });
+}
+
+document.getElementById("searchInputLivros").addEventListener("keyup", function () {
+    const ul = document.getElementById("livros-arquivos");
+    const cat = ul.dataset.categoria;
+    if (cat) showLivros(cat, this.value);
+});
+
+// ======================================================================
+// MODAL DE JOGOS
+// ======================================================================
+function voltarJogos() {
+    document.getElementById("jogos-categorias").style.display = "block";
+    document.getElementById("jogos-arquivos").style.display = "none";
+    document.getElementById("voltarJogos").style.display = "none";
+    document.getElementById("search-container-jogos").style.display = "none";
+    document.getElementById("searchInputJogos").value = "";
+    document.querySelector("#modalJogos .modal-card h2").textContent = "Escolha uma categoria";
+}
+
+function showJogos(cat, termoPesquisa = '') {
+    document.getElementById("jogos-categorias").style.display = "none";
+    document.getElementById("jogos-arquivos").style.display = "block";
+    document.getElementById("voltarJogos").style.display = "inline-block";
+    document.getElementById("search-container-jogos").style.display = "flex";
+
+    const lista = document.getElementById("jogos-arquivos");
+    lista.dataset.categoria = cat;
+    const termo = (termoPesquisa || document.getElementById("searchInputJogos").value || '').toLowerCase();
+
+    const jogosFiltrados = (jogos[cat] || []).filter(item => item.nome.toLowerCase().includes(termo));
+
+    const tituloModal = document.querySelector("#modalJogos .modal-card h2");
+    if (cat === 'acao') tituloModal.textContent = "Explore 41 Jogos Piratas e mergulhe na diversão!";
+
+    lista.innerHTML = "";
+
+    if (jogosFiltrados.length === 0) {
+        lista.innerHTML = `<li style="justify-content:center;">Nenhum jogo encontrado para "${termo}"</li>`;
+        return;
+    }
+
+    jogosFiltrados.forEach(item => {
+        const imageHtml = item.imagem && item.imagem !== '?' ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-gamepad"></i>';
+        const reqs = `
+            <div style="font-size:0.8em; margin-top:5px;">
+                <p>Intel: ${item.requisitos.intel}</p>
+                <p>AMD: ${item.requisitos.amd}</p>
+            </div>
+        `;
+        lista.innerHTML += `
+            <li style="flex-direction:column; align-items:flex-start; margin-bottom:10px;">
+                <div style="display:flex; align-items:center; gap:10px;">
+                    ${imageHtml}
+                    <a href="${item.link}" target="_blank" style="flex-grow:1;">${item.nome}</a>
+                </div>
+                ${reqs}
+            </li>
+        `;
+    });
+}
+
+document.getElementById("searchInputJogos").addEventListener("keyup", function () {
+    const lista = document.getElementById("jogos-arquivos");
+    const cat = lista.dataset.categoria;
+    if (cat) showJogos(cat, this.value);
+});
+
+// ======================================================================
+// MODAL DE SITES
+// ======================================================================
+function voltarSites() {
+    document.getElementById("Sites-categorias").style.display = "block";
+    document.getElementById("Sites-arquivos").style.display = "none";
+    document.getElementById("voltarSites").style.display = "none";
+    document.getElementById("search-container-sites").style.display = "none";
+    document.getElementById("searchInputSites").value = "";
+    document.querySelector("#modalSites .modal-card h2").textContent = "Escolha uma categoria de Sites";
+}
+
+function showSites(cat, termoPesquisa = '') {
+    document.getElementById("Sites-categorias").style.display = "none";
+    document.getElementById("Sites-arquivos").style.display = "block";
+    document.getElementById("voltarSites").style.display = "inline-block";
+    document.getElementById("search-container-sites").style.display = "flex";
+
+    const titulos = {
+        IA: "Sites de Inteligência Artificial",
+        Filmes_e_Series: "Sites de Filmes e Séries"
+    };
+    document.querySelector("#modalSites .modal-card h2").textContent = titulos[cat] || "Escolha uma categoria de Sites";
+
+    const ul = document.getElementById("Sites-arquivos");
+    ul.dataset.categoria = cat;
+    const termo = (termoPesquisa || document.getElementById("searchInputSites").value || '').toLowerCase();
+
+    const sitesFiltrados = (Sites[cat] || []).filter(item => item.nome.toLowerCase().includes(termo));
+
+    ul.innerHTML = sitesFiltrados.length === 0
+        ? `<li style="justify-content:center;">Nenhum site encontrado para "${termo}"</li>`
+        : '';
+
+    sitesFiltrados.forEach(item => {
+        const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-globe"></i>';
+        ul.innerHTML += `
+            <li>
+                ${imageHtml}
+                <a href="${item.link}" target="_blank">${item.nome}</a>
+            </li>
+        `;
+    });
+}
+
+document.getElementById("searchInputSites").addEventListener("keyup", function () {
+    const ul = document.getElementById("Sites-arquivos");
+    const cat = ul.dataset.categoria;
+    if (cat) showSites(cat, this.value);
+});
+
+// ======================================================================
+// INICIALIZAÇÃO
+// ======================================================================
+document.addEventListener("DOMContentLoaded", mostrarCategoriasIsos);
+
+// ======================================================================
+// FECHAR MODAL AO CLICAR FORA
+// ======================================================================
+// ======================================================================
+// FECHAR MODAL AO CLICAR FORA (CORRIGIDO)
+// ======================================================================
+const modals = ["modalIsos", "modalLivros", "modalJogos", "modalSites"];
+
+modals.forEach(id => {
+    const modal = document.getElementById(id);
+    if (modal) {
+        // Cria um overlay clicável por trás do card
+        modal.addEventListener('click', (event) => {
+            // Se o clique NÃO foi no card
+            if (!event.target.closest('.modal-card')) {
+                closeModal(id);
             }
-
-            // Limpa a lista antes de exibir novos resultados
-            lista.innerHTML = "";
-
-            if (isosFiltrados.length === 0) {
-                lista.innerHTML = `<li style="justify-content:center;">Nenhuma ISO encontrada para "${termo}"</li>`;
-                return;
-            }
-
-            isosFiltrados.forEach(item => {
-                const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-download"></i>';
-                lista.innerHTML += `
-                    <li>
-                        ${imageHtml}
-                        <a href="${item.link}" target="_blank">${item.nome}</a>
-                    </li>`;
-            });
-        }
-
-        document.getElementById("searchInputIsos").addEventListener("keyup", function () {
-            const lista = document.getElementById("listaIsos");
-            const cat = lista.dataset.categoria;
-            if (cat) abrirCategoria(cat, this.value);
         });
+    }
+});
 
-        // ======================================================================
-        // FUNÇÕES DO MODAL DE LIVROS
-        // ======================================================================
 
-        function voltarLivros() {
-            document.getElementById("livros-categorias").style.display = "block";
-            document.getElementById("livros-arquivos").style.display = "none";
-            document.getElementById("voltarLivros").style.display = "none";
-            document.getElementById("search-container-livros").style.display = "none";
-            document.getElementById("searchInputLivros").value = "";
-            document.querySelector("#modalLivros .modal-card h2").textContent = "Escolha uma categoria de livros";
-        }
 
-        function showLivros(cat, termoPesquisa = '') {
-            document.getElementById("livros-categorias").style.display = "none";
-            document.getElementById("livros-arquivos").style.display = "block";
-            document.getElementById("voltarLivros").style.display = "inline-block";
-            document.getElementById("search-container-livros").style.display = "flex";
-
-            const ul = document.getElementById("livros-arquivos");
-            ul.dataset.categoria = cat;
-            const termo = termoPesquisa.toLowerCase() || document.getElementById("searchInputLivros").value.toLowerCase();
-
-            const livrosFiltrados = livros[cat].filter(item => item.nome.toLowerCase().includes(termo));
-
-            // Altera o título do modal
-            const tituloModal = document.querySelector("#modalLivros .modal-card h2");
-            switch (cat) {
-                case 'programacao':
-                    tituloModal.textContent = "Livros de Programação";
-                    break;
-                case 'romance':
-                    tituloModal.textContent = "Livros de Romance";
-                    break;
-                case 'ciencia':
-                    tituloModal.textContent = "Livros de Ciência e Tecnologia";
-                    break;
-                case 'filosofia':
-                    tituloModal.textContent = "Livros de Filosofia";
-                    break;
-            }
-
-            ul.innerHTML = "";
-
-            if (livrosFiltrados.length === 0) {
-                ul.innerHTML = `<li style="justify-content:center;">Nenhum livro encontrado para "${termo}"</li>`;
-                return;
-            }
-
-            livrosFiltrados.forEach(item => {
-                const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-book"></i>';
-                ul.innerHTML += `
-                    <li>
-                        ${imageHtml}
-                        <a href="${item.link}" target="_blank">${item.nome}</a>
-                    </li>
-                `;
-            });
-        }
-
-        document.getElementById("searchInputLivros").addEventListener("keyup", function () {
-            const ul = document.getElementById("livros-arquivos");
-            const cat = ul.dataset.categoria;
-            if (cat) showLivros(cat, this.value);
-        });
-
-        // ======================================================================
-        // FUNÇÕES DO MODAL DE JOGOS (TORRENT)
-        // ======================================================================
-
-        function voltarJogos() {
-            document.getElementById("jogos-categorias").style.display = "block";
-            document.getElementById("jogos-arquivos").style.display = "none";
-            document.getElementById("voltarJogos").style.display = "none";
-            document.getElementById("search-container-jogos").style.display = "none";
-            document.getElementById("searchInputJogos").value = "";
-            document.querySelector("#modalJogos .modal-card h2").textContent = "Escolha uma categoria";
-        }
-
-        function showJogos(cat, termoPesquisa = '') {
-            document.getElementById("jogos-categorias").style.display = "none";
-            document.getElementById("jogos-arquivos").style.display = "block";
-            document.getElementById("voltarJogos").style.display = "inline-block";
-            document.getElementById("search-container-jogos").style.display = "flex";
-
-            const lista = document.getElementById("jogos-arquivos");
-            lista.innerHTML = "";
-
-            lista.dataset.categoria = cat;
-
-            const termo = (termoPesquisa || document.getElementById("searchInputJogos").value || '').toLowerCase();
-
-            const jogosFiltrados = (jogos[cat] || []).filter(item => item.nome.toLowerCase().includes(termo));
-
-            const tituloModal = document.querySelector("#modalJogos .modal-card h2");
-            if (cat === 'acao') {
-                tituloModal.textContent = "Explore Jogos Piratas e mergulhe na diversão!";
-            }
-
-            if (jogosFiltrados.length === 0) {
-                lista.innerHTML = `<li style="justify-content:center;">Nenhum jogo encontrado para "${termo}"</li>`;
-                return;
-            }
-
-            jogosFiltrados.forEach(item => {
-                const imageHtml = item.imagem && item.imagem !== '?' ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-gamepad"></i>';
-                const reqs = `
-                    <div style="font-size:0.8em; margin-top:5px;">
-                        <p>Intel: ${item.requisitos.intel}</p>
-                        <p>AMD: ${item.requisitos.amd}</p>
-                    </div>
-                `;
-                lista.innerHTML += `
-                    <li style="flex-direction:column; align-items:flex-start; margin-bottom:10px;">
-                        <div style="display:flex; align-items:center; gap:10px;">
-                            ${imageHtml}
-                            <a href="${item.link}" target="_blank" style="flex-grow:1;">${item.nome}</a>
-                        </div>
-                        ${reqs}
-                    </li>
-                `;
-            });
-        }
-        document.getElementById("searchInputJogos").addEventListener("keyup", function () {
-            const lista = document.getElementById("jogos-arquivos");
-            const cat = lista.dataset.categoria;
-            if (cat) showJogos(cat, this.value);
-        });
-
-        // ======================================================================
-        // FUNÇÕES DO MODAL DE SITES
-        // ======================================================================
-        function voltarSites() {
-            document.getElementById("Sites-categorias").style.display = "block";
-            document.getElementById("Sites-arquivos").style.display = "none";
-            document.getElementById("voltarSites").style.display = "none";
-            document.getElementById("search-container-sites").style.display = "none";
-            document.getElementById("searchInputSites").value = "";
-            document.querySelector("#modalSites .modal-card h2").textContent = "Escolha uma categoria de Sites";
-        }
-
-        function showSites(cat, termoPesquisa = '') {
-            document.getElementById("Sites-categorias").style.display = "none";
-            document.getElementById("Sites-arquivos").style.display = "block";
-            document.getElementById("voltarSites").style.display = "inline-block";
-            document.getElementById("search-container-sites").style.display = "flex";
-            const tituloModal = document.querySelector("#modalSites .modal-card h2");
-            switch (cat) {
-                case 'IA':
-                    tituloModal.textContent = "Sites de Inteligência Artificial";
-                    break;
-                case 'Filmes_e_Series':
-                    tituloModal.textContent = "Sites de Filmes e Séries";
-                    break;
-                default:
-                    tituloModal.textContent = "Escolha uma categoria de Sites";
-            }
-            const ul = document.getElementById("Sites-arquivos");
-            ul.dataset.categoria = cat;
-            const termo = (termoPesquisa || document.getElementById("searchInputSites").value || '').toLowerCase();
-            const sitesFiltrados = (Sites[cat] || []).filter(item => item.nome.toLowerCase().includes(termo));
-            if (sitesFiltrados.length === 0) {
-                ul.innerHTML = `<li style="justify-content:center;">Nenhum site encontrado para "${termo}"</li>`;
-                return;
-            }
-            ul.innerHTML = "";
-            sitesFiltrados.forEach(item => {
-                const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-globe"></i>';
-                ul.innerHTML += `
-                    <li>
-                        ${imageHtml}
-                        <a href="${item.link}" target="_blank">${item.nome}</a>
-                    </li>
-                `;
-            });
-        }
-        document.getElementById("searchInputSites").addEventListener("keyup", function () {
-            const ul = document.getElementById("Sites-arquivos");
-            const cat = ul.dataset.categoria;
-            if (cat) showSites(cat, this.value);
-        });
-        document.addEventListener("DOMContentLoaded", mostrarCategoriasIsos);
-    </script>
+</script>
 </body>
 
 </html>
