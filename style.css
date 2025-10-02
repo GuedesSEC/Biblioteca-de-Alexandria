@@ -1,511 +1,733 @@
+/* Este é o seletor universal. Ele aplica estilos a TODOS os elementos na página. */
 * {
+    /* Define margem zero em todos os lados. */
     margin: 0;
+    /* Define preenchimento (padding) zero em todos os lados. */
     padding: 0;
+    /* Garante que o padding e a borda sejam incluídos na largura e altura total do elemento, facilitando o layout. */
     box-sizing: border-box;
+    /* Define uma família de fontes padrão para todo o projeto. */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
+/* O seletor :root define variáveis CSS (propriedades personalizadas) acessíveis em todo o documento. 
+Isso facilita a gestão de cores e a torna mais consistente.
+*/
 :root {
+    /* Cor primária: um azul escuro. */
     --primary: #1a4b8c;
+    /* Cor secundária: um azul ligeiramente mais claro. */
     --secondary: #2a5ca9;
+    /* Cor de destaque/realce: um verde ciano vibrante. */
     --accent: #00c896;
+    /* Cor escura principal. */
     --dark: #121212;
+    /* Cor ainda mais escura (para fundos ou sombras mais profundas). */
     --darker: #0a0a0a;
+    /* Cor clara (para texto ou fundos claros). */
     --light: #f5f5f5;
+    /* Um tom de cinza escuro. */
     --gray: #2a2a2a;
 }
 
+/* Estilos aplicados ao corpo da página. */
 body {
+    /* Define o fundo da página com a cor escura (variável --dark). */
     background-color: var(--dark);
+    /* Define a cor padrão do texto com a cor clara (variável --light). */
     color: var(--light);
+    /* Define o espaçamento entre linhas (altura da linha). */
     line-height: 1.6;
 }
 
+/* Estilos para um contêiner centralizado e com largura limitada. */
 .container {
+    /* Largura padrão de 90% da área visível. */
     width: 90%;
+    /* Largura máxima, para não esticar demais em telas grandes. */
     max-width: 1200px;
+    /* Centraliza o contêiner horizontalmente (0 para margens superior/inferior, auto para laterais). */
     margin: 0 auto;
+    /* Adiciona preenchimento interno. */
     padding: 20px;
 }
 
 /* Header Styles */
+/* Garante que o cabeçalho, conteúdo principal e rodapé tenham fundo transparente. */
 header, main, footer {
     background: transparent !important;
 }
 
+/* Layout do conteúdo do cabeçalho. */
 .header-content {
+    /* Usa Flexbox para organizar os itens (logo, navegação, ícones sociais). */
     display: flex;
+    /* Distribui o espaço entre os itens. */
     justify-content: space-between;
+    /* Alinha os itens verticalmente ao centro. */
     align-items: center;
 }
 
+/* Estilo do agrupamento do logo (ícone + texto). */
 .logo {
+    /* Usa Flexbox para alinhar o ícone e o texto. */
     display: flex;
+    /* Alinha os itens verticalmente ao centro. */
     align-items: center;
 }
+/* Estilo para links de ícones sociais. */
 .social-icons a {
+    /* Garante que os ícones fiquem na mesma linha e permite definir margens. */
     display: inline-block;
+    /* Espaçamento à direita. */
     margin-right: 30px;
+    /* Aplica a animação 'slideFade' por 7 segundos, linear e repetidamente. */
     animation: slideFade 7s linear infinite;
 }
 
+/* Definição da animação 'slideFade'. */
 @keyframes slideFade {
+    /* Início da animação (0%). */
     0% {
+        /* Move o elemento para fora da tela à direita. */
         transform: translateX(100%);
+        /* Totalmente invisível. */
         opacity: 0;
     }
+    /* Ponto médio da animação (50%). (Nota: 'translateX(100)' é um valor inválido e será ignorado/resetado) */
     50% {
+        /* Valor destinado a manter o elemento na posição (deveria ser 'translateX(0)' para o centro). */
         transform: translateX(100);
+        /* Totalmente visível. */
         opacity: 1;
     }
+    /* Fim da animação (100%). */
     100% {
+        /* Move o elemento para fora da tela à esquerda. */
         transform: translateX(-100%);
+        /* Totalmente invisível. */
         opacity: 0;
     }
 }
 
+/* Estilo para o ícone/escudo que faz parte do logo. */
 .shield {
+    /* Dimensões do escudo. */
     width: 40px;
     height: 50px;
+    /* Fundo com gradiente de cor usando as variáveis --primary e --secondary. */
     background: linear-gradient(145deg, var(--primary), var(--secondary));
+    /* Cantos arredondados. */
     border-radius: 8px;
+    /* Necessário para posicionar elementos internos/pseudoelementos em relação a ele. */
     position: relative;
+    /* Espaçamento à direita do texto do logo. */
     margin-right: 15px;
+    /* Sombra para dar profundidade. */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Usa Flexbox para centralizar o conteúdo interno (.shield-inner). */
     display: flex;
     justify-content: center;
     align-items: center;
+    /* Esconde qualquer conteúdo que ultrapasse os limites. */
     overflow: hidden;
 }
 
+/* Pseudoelemento para o efeito de brilho ou reflexo no topo do escudo. */
 .shield:before {
+    /* Conteúdo vazio (necessário para pseudoelementos). */
     content: '';
+    /* Posicionamento absoluto em relação ao .shield. */
     position: absolute;
     top: 0;
     left: 0;
+    /* Ocupa a largura total e 40% da altura. */
     width: 100%;
     height: 40%;
+    /* Fundo translúcido (branco com 15% de opacidade). */
     background: rgba(255, 255, 255, 0.15);
 }
 
+/* Estilo para o círculo interno do escudo. */
 .shield-inner {
+    /* Dimensões. */
     width: 15px;
     height: 15px;
+    /* Borda branca. */
     border: 2px solid white;
+    /* Transforma em círculo. */
     border-radius: 50%;
+    /* Necessário para posicionar o pseudoelemento interno :after. */
     position: relative;
 }
 
+/* Pseudoelemento para o ponto central dentro do círculo. */
 .shield-inner:after {
     content: '';
     position: absolute;
+    /* Centraliza o elemento. */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    /* Dimensões. */
     width: 6px;
     height: 6px;
+    /* Fundo branco. */
     background: white;
+    /* Transforma em círculo. */
     border-radius: 50%;
 }
 
+/* Agrupamento para o texto do logo (nome e tagline). */
 .logo-text {
+    /* Organiza os elementos verticalmente. */
     display: flex;
     flex-direction: column;
 }
 
+/* Estilo para o nome principal do logo. */
 .logo-name {
     font-size: 24px;
     font-weight: bold;
+    /* Cor clara. */
     color: var(--light);
+    /* Espaçamento entre letras. */
     letter-spacing: 1px;
 }
 
+/* Estilo para o slogan ou subtítulo do logo. */
 .logo-tagline {
     font-size: 10px;
+    /* Cor de destaque. */
     color: var(--accent);
     letter-spacing: 1.5px;
+    /* Converte todo o texto para letras maiúsculas. */
     text-transform: uppercase;
 }
 
+/* Estilo da lista de navegação. */
 nav ul {
+    /* Usa Flexbox para organizar os links horizontalmente. */
     display: flex;
+    /* Remove os marcadores de lista (bolinhas/pontos). */
     list-style: none;
 }
 
+/* Estilo para cada item da lista (link de navegação). */
 nav ul li {
+    /* Espaçamento à esquerda de cada item. */
     margin-left: 25px;
 }
 
+/* Estilo para os links de navegação. */
 nav ul li a {
+    /* Cor do texto. */
     color: var(--light);
+    /* Remove o sublinhado padrão dos links. */
     text-decoration: none;
     font-weight: 500;
+    /* Define uma transição suave para a mudança de cor. */
     transition: color 0.3s;
     font-size: 16px;
 }
 
+/* Efeito ao passar o mouse sobre o link de navegação. */
 nav ul li a:hover {
+    /* Muda a cor do texto para a cor de destaque. */
     color: var(--accent);
 }
 
 /* Main Content Styles */
+/* Estilos para a seção de conteúdo principal. */
 .main-content {
+    /* Adiciona preenchimento vertical. */
     padding: 40px 0;
 }
 
+/* Estilos para a seção de boas-vindas. */
 .welcome-section {
+    /* Fundo com gradiente sutil. */
     background: linear-gradient(to right, var(--darker), var(--gray));
+    /* Preenchimento interno. */
     padding: 30px;
+    /* Cantos arredondados. */
     border-radius: 10px;
+    /* Margem inferior. */
     margin-bottom: 30px;
+    /* Sombra para dar destaque. */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
+/* Estilos para o título H1 da seção de boas-vindas. */
 .welcome-section h1 {
     font-size: 28px;
     margin-bottom: 15px;
+    /* Cor de destaque. */
     color: var(--accent);
+    /* Prepara para o efeito de 'digitação'. */
     overflow: hidden;
+    /* Cria a barra vertical (cursor) que pisca. */
     border-right: .15em solid #00ff00;
+    /* Garante que o texto fique em uma única linha. */
     white-space: nowrap;
     margin: 0 auto;
     letter-spacing: .08em;
+    /* Aplica duas animações: 'typing' (digitação) e 'blink-caret' (cursor piscando). */
     animation:
         typing 2.2s steps(30, end),
         blink-caret .7s step-end infinite;
 }
 
+/* Definição da animação 'typing' (efeito de digitação). */
 @keyframes typing {
+    /* Começa com largura zero (texto escondido). */
     from { width: 0 }
+    /* Termina com largura total (texto visível). */
     to { width: 100% }
 }
 
+/* Definição da animação 'blink-caret' (efeito de cursor piscando). */
 @keyframes blink-caret {
+    /* 0%, 100% (to) - Borda transparente. */
     from, to { border-color: transparent }
+    /* 50% - Borda verde visível. */
     50% { border-color: #00ff00; }
 }
 
+/* Estilos para os parágrafos na seção de boas-vindas. */
 .welcome-section p {
     margin-bottom: 10px;
+    /* Um cinza claro para o texto. */
     color: #ccc;
 }
 
+/* Layout para a grade de categorias. */
 .categories {
+    /* Usa CSS Grid para criar um layout responsivo de cards. */
     display: grid;
+    /* Define colunas que se ajustam automaticamente, garantindo que cada uma tenha no mínimo 250px. */
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    /* Espaçamento (gap) entre os cards. */
     gap: 20px;
     margin-top: 40px;
 }
 
+/* Estilos para cada card de categoria. */
 .category-card {
+    /* Fundo com a cor cinza escuro. */
     background-color: var(--gray);
+    /* Cantos arredondados. */
     border-radius: 8px;
+    /* Preenchimento interno. */
     padding: 20px;
+    /* Transições suaves para transform e box-shadow. */
     transition: transform 0.3s, box-shadow 0.3s;
+    /* Sombra padrão. */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
-    /* Adicionado */
+    /* **Adicionado:** Usa Flexbox para controlar o posicionamento do botão. */
     display: flex;
+    /* Organiza os itens verticalmente. */
     flex-direction: column;
 }
 
+/* Estilos para o parágrafo dentro do card. */
 .category-card p {
     color: #ccc;
     font-size: 14px;
     margin-bottom: 15px;
 
-    /* Faz o texto ocupar o espaço e empurrar o botão pra baixo */
+    /* **Faz o texto ocupar o espaço e empurrar o botão pra baixo:** */
+    /* Garante que o parágrafo ocupe o máximo de espaço vertical disponível, forçando o botão para o rodapé. */
     flex-grow: 1;
 }
 
+/* Alinhamento do botão para o rodapé do card. */
 .category-card .btn {
-    margin-top: auto; /* Mantém o botão sempre no rodapé do card */
+    /* Força a margem superior a ser automática, empurrando o botão para o final do contêiner flexível. */
+    margin-top: auto; 
 }
 
 
+/* Efeito ao passar o mouse sobre o card de categoria. */
 .category-card:hover {
+    /* Eleva o card sutilmente. */
     transform: translateY(-5px);
+    /* Efeitos de sombra mais complexos e luminosos (efeito neon/brilho). */
     box-shadow: 0 0 32px #00ff00, 0 0 64px #00ff0044;
+    /* Eleva e aumenta ligeiramente o tamanho. */
     transform: translateY(-6px) scale(1.03);
+    /* (Nota: Esta linha sobrescreve o transform anterior) Define uma cor de borda (embora o card não tenha borda explícita). */
     border-color: #00ff00;
 }
 
+/* Estilos para o ícone da categoria. */
 .category-icon {
     font-size: 24px;
+    /* Cor de destaque. */
     color: var(--accent);
     margin-bottom: 15px;
 }
 
+/* Estilos para o título H3 da categoria. */
 .category-card h3 {
     font-size: 20px;
     margin-bottom: 10px;
+    /* Cor clara. */
     color: var(--light);
 }
 
-.category-card p {
-    color: #ccc;
-    font-size: 14px;
-    margin-bottom: 15px;
-}
-
+/* Estilos para o botão genérico. */
 .btn {
+    /* Exibe como bloco em linha para aceitar padding e ser afetado pelo flexbox do card. */
     display: inline-block;
+    /* Cor de fundo principal. */
     background-color: var(--primary);
+    /* Cor do texto branca. */
     color: rgb(255, 255, 255);
+    /* Preenchimento interno. */
     padding: 8px 15px;
+    /* Cantos arredondados. */
     border-radius: 5px;
+    /* Remove o sublinhado. */
     text-decoration: none;
     font-weight: 500;
+    /* Transição suave para a mudança de cor de fundo. */
     transition: background-color 0.3s;
 }
 
+/* Efeito ao passar o mouse sobre o botão. */
 .btn:hover {
+    /* Muda a cor de fundo para a cor secundária. */
     background-color: var(--secondary);
 }
 
 /* Footer Styles */
+/* Estilos para o rodapé da página. */
 footer {
+    /* Fundo com a cor mais escura. */
     background-color: var(--darker);
+    /* Preenchimento vertical. */
     padding: 30px 0;
+    /* Margem no topo. */
     margin-top: 50px;
 }
 
+/* Layout do conteúdo do rodapé. */
 .footer-content {
+    /* Usa Flexbox para alinhar e distribuir os elementos (logo e links). */
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+/* Estilo do agrupamento do logo no rodapé. */
 .footer-logo {
     display: flex;
     align-items: center;
 }
 
+/* Estilo para o texto informativo ao lado do logo do rodapé. */
 .footer-text {
     margin-left: 15px;
 }
 
+/* Estilo para o parágrafo de texto no rodapé. */
 .footer-text p {
     font-size: 14px;
+    /* Um cinza claro para o texto. */
     color: #ccc;
 }
 
+/* Estilo para a seção de links rápidos. */
 .quick-links ul {
+    /* Organiza os links horizontalmente. */
     display: flex;
+    /* Remove os marcadores de lista. */
     list-style: none;
 }
 
+/* Espaçamento entre os links rápidos. */
 .quick-links ul li {
     margin-left: 20px;
 }
 
+/* Estilo para os links rápidos. */
 .quick-links ul li a {
     color: #ccc;
     text-decoration: none;
     font-size: 14px;
+    /* Transição suave de cor. */
     transition: color 0.3s;
 }
 
+/* Efeito ao passar o mouse sobre os links rápidos. */
 .quick-links ul li a:hover {
+    /* Muda a cor do texto para a cor de destaque. */
     color: var(--accent);
 }
 
 /* Modal listas com scroll para não quebrar a página */
+/* Estilos para listas dentro de modais que precisam de rolagem. */
 .modal-list {
+    /* Altura máxima da lista. */
     max-height: 320px;
+    /* Habilita a rolagem vertical se o conteúdo exceder a altura máxima. */
     overflow-y: auto;
+    /* Adiciona um pequeno padding para a barra de rolagem não tocar o conteúdo. */
     padding-right: 6px;
-    /* Opcional: barra de rolagem estilizada */
+    
+    /* Opcional: Estiliza a barra de rolagem (compatível com Firefox) */
     scrollbar-width: thin;
+    /* Cor do 'polegar' (barra) e do 'trilho' (fundo da barra). */
     scrollbar-color: #00ff00 #222;
 }
+/* Estiliza a barra de rolagem (compatível com Webkit - Chrome, Edge, Safari). */
 .modal-list::-webkit-scrollbar {
+    /* Largura da barra de rolagem. */
     width: 6px;
+    /* Fundo do trilho da barra de rolagem. */
     background: #222;
 }
+/* Estiliza a alça (thumb) da barra de rolagem. */
 .modal-list::-webkit-scrollbar-thumb {
+    /* Cor da alça (o verde de destaque). */
     background: #00ff00;
+    /* Cantos arredondados na alça. */
     border-radius: 4px;
 }
 
 /* Imagens dos testes em formato circular */
-img[alt="Soldado 1"], img[alt="Soldado 2"] {
+/* Estilos aplicados especificamente a imagens com os atributos alt "Soldado 1" ou "Soldado 2". */
+img[alt="Soldado 1"], img[alt="Soldado 2"], img[alt="Soldado 3"] {
+    /* Transforma a imagem em um círculo, ignorando a forma original (usa !important para garantir a aplicação). */
     border-radius: 50% !important;
+    /* Garante que a imagem preencha a área sem distorção, cortando as bordas. */
     object-fit: cover;
+    /* Define largura e altura fixas. */
     width: 120px !important;
     height: 120px !important;
+    /* Adiciona uma sombra suave. */
     box-shadow: 0 4px 16px rgba(0,0,0,0.15);
 }
 
 /* Responsive Styles */
+/* Estilos aplicados quando a largura da tela é no máximo 768px (telas de tablet e celular). */
 @media (max-width: 768px) {
+    /* Altera o layout do cabeçalho em telas menores. */
     .header-content {
+        /* Os itens ficam empilhados verticalmente. */
         flex-direction: column;
+        /* Centraliza o texto. */
         text-align: center;
     }
     
+    /* Adiciona margem abaixo do logo. */
     .logo {
         margin-bottom: 15px;
     }
     
+    /* Centraliza a lista de navegação. */
     nav ul {
         justify-content: center;
     }
     
+    /* Reduz o espaçamento entre os links de navegação. */
     nav ul li {
         margin: 0 10px;
     }
     
+    /* Altera o layout do rodapé em telas menores. */
     .footer-content {
+        /* Os itens ficam empilhados verticalmente. */
         flex-direction: column;
         text-align: center;
     }
     
+    /* Adiciona margem abaixo do logo do rodapé. */
     .footer-logo {
         margin-bottom: 20px;
     }
     
+    /* Centraliza os links rápidos. */
     .quick-links ul {
         justify-content: center;
     }
     
 }
 
+/* ---------------------------------------------------- */
+/* As regras abaixo parecem ser para elementos de animação/design específicos (e não padrões do layout). */
+/* ---------------------------------------------------- */
+
+/* Animação para criar um efeito de 'piscar' com a cor vermelha. */
 @keyframes flicker0 {
-  0%,
-  49% {
-    background-color: red;
-  }
-  50%,
-  100% {
-    background-color: transparent;
-  }
+    /* Do início até 49%: Fundo vermelho. */
+    0%,
+    49% {
+        background-color: red;
+    }
+    /* De 50% até 100%: Fundo transparente. */
+    50%,
+    100% {
+        background-color: transparent;
+    }
 }
 
+/* Animação complementar de 'piscar' (oposta à flicker0). */
 @keyframes flicker1 {
-  0%,
-  49% {
-    background-color: transparent;
-  }
-  50%,
-  100% {
-    background-color: red;
-  }
+    /* Do início até 49%: Fundo transparente. */
+    0%,
+    49% {
+        background-color: transparent;
+    }
+    /* De 50% até 100%: Fundo vermelho. */
+    50%,
+    100% {
+        background-color: red;
+    }
 }
 
+/* Contêiner de um olho (ou parte de uma animação de figura). */
 #eye {
-  width: 40px;
-  height: 50px;
-  position: absolute;
-  top: 30px;
-  left: 10px;
+    width: 40px;
+    height: 50px;
+    /* Posicionamento absoluto (provavelmente em relação a um contêiner pai). */
+    position: absolute;
+    /* Posição no topo e à esquerda. */
+    top: 30px;
+    left: 10px;
 }
 
+/* Pseudoelemento para uma parte do olho (uma barra vertical branca). */
 #eye::before {
-  content: "";
-  background-color: white;
-  width: 20px;
-  height: 50px;
-  transform: translateX(10px);
-  display: block;
-  position: absolute;
+    content: "";
+    background-color: white;
+    width: 20px;
+    height: 50px;
+    /* Move o elemento 10px para a direita. */
+    transform: translateX(10px);
+    display: block;
+    position: absolute;
 }
 
+/* Pseudoelemento para outra parte do olho (uma barra horizontal branca). */
 #eye::after {
-  content: "";
-  background-color: white;
-  width: 40px;
-  height: 30px;
-  transform: translateY(10px);
-  display: block;
-  position: absolute;
+    content: "";
+    background-color: white;
+    width: 40px;
+    height: 30px;
+    /* Move o elemento 10px para baixo. */
+    transform: translateY(10px);
+    display: block;
+    position: absolute;
 }
 
+/* O segundo contêiner de olho. */
 #eye1 {
-  width: 40px;
-  height: 50px;
-  position: absolute;
-  top: 30px;
-  right: 30px;
+    width: 40px;
+    height: 50px;
+    position: absolute;
+    /* Posição no topo e à direita. */
+    top: 30px;
+    right: 30px;
 }
 
+/* Partes do segundo olho (estrutura idêntica ao #eye). */
 #eye1::before {
-  content: "";
-  background-color: white;
-  width: 20px;
-  height: 50px;
-  transform: translateX(10px);
-  display: block;
-  position: absolute;
+    content: "";
+    background-color: white;
+    width: 20px;
+    height: 50px;
+    transform: translateX(10px);
+    display: block;
+    position: absolute;
 }
 
 #eye1::after {
-  content: "";
-  background-color: white;
-  width: 40px;
-  height: 30px;
-  transform: translateY(10px);
-  display: block;
-  position: absolute;
+    content: "";
+    background-color: white;
+    width: 40px;
+    height: 30px;
+    transform: translateY(10px);
+    display: block;
+    position: absolute;
 }
 
+/* A pupila do primeiro olho. */
 #pupil {
-  width: 20px;
-  height: 20px;
-  background-color: blue;
-  position: absolute;
-  top: 50px;
-  left: 10px;
-  z-index: 1;
-  animation: eyesMovement infinite 3s;
+    width: 20px;
+    height: 20px;
+    background-color: blue;
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    /* Garante que fique sobre as outras partes do olho. */
+    z-index: 1;
+    /* Aplica a animação de movimento dos olhos. */
+    animation: eyesMovement infinite 3s;
 }
 
+/* A pupila do segundo olho. */
 #pupil1 {
-  width: 20px;
-  height: 20px;
-  background-color: blue;
-  position: absolute;
-  top: 50px;
-  right: 50px;
-  z-index: 1;
-  animation: eyesMovement infinite 3s;
+    width: 20px;
+    height: 20px;
+    background-color: blue;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    z-index: 1;
+    /* Aplica a animação de movimento dos olhos. */
+    animation: eyesMovement infinite 3s;
 }
 
+/* Animação de movimento para as pupilas. */
 @keyframes eyesMovement {
-  0%,
-  49% {
-    transform: translateX(0px);
-  }
-  50%,
-  99% {
-    transform: translateX(10px);
-  }
-  100% {
-    transform: translateX(0px);
-  }
+    /* 0% até 49%: Posição inicial (sem movimento horizontal). */
+    0%,
+    49% {
+        transform: translateX(0px);
+    }
+    /* 50% até 99%: Move a pupila 10px para a direita. */
+    50%,
+    99% {
+        transform: translateX(10px);
+    }
+    /* 100%: Retorna à posição inicial. */
+    100% {
+        transform: translateX(0px);
+    }
 }
 
+/* Elemento para criar uma sombra (provavelmente de um objeto principal). */
 #shadow {
-  background-color: black;
-  width: 140px;
-  height: 140px;
-  position: absolute;
-  border-radius: 50%;
-  transform: rotateX(80deg);
-  filter: blur(20px);
-  top: 80%;
-  animation: shadowMovement infinite 0.5s;
+    background-color: black;
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    /* Transforma em círculo. */
+    border-radius: 50%;
+    /* Distorce a sombra, achatando-a para simular perspectiva no chão. */
+    transform: rotateX(80deg);
+    /* Desfoca a sombra. */
+    filter: blur(20px);
+    /* Posiciona perto da parte inferior (80%). */
+    top: 80%;
+    /* Aplica a animação de movimento da sombra. */
+    animation: shadowMovement infinite 0.5s;
 }
 
+/* Animação para a sombra. */
 @keyframes shadowMovement {
-  0%,
-  49% {
-    opacity: 0.5;
-  }
-  50%,
-  100% {
-    opacity: 0.2;
-  }
-  
+    /* 0% até 49%: Opacidade normal (0.5). */
+    0%,
+    49% {
+        opacity: 0.5;
+    }
+    /* 50% até 100%: Opacidade reduzida (0.2), criando um efeito de pulsação/oscilação. */
+    50%,
+    100% {
+        opacity: 0.2;
+    }
+    
 }
