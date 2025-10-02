@@ -1450,30 +1450,14 @@ function showJogos(cat, termoPesquisa = '') {
 
     jogosFiltrados.forEach(item => {
         const imageHtml = item.imagem && item.imagem !== '?' ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-gamepad"></i>';
-        const reqs = `
-            <div style="font-size:0.8em; margin-top:5px;">
-                <p>Intel: ${item.requisitos.intel}</p>
-                <p>AMD: ${item.requisitos.amd}</p>
-            </div>
-        `;
         lista.innerHTML += `
-            <li style="flex-direction:column; align-items:flex-start; margin-bottom:10px;">
-                <div style="display:flex; align-items:center; gap:10px;">
-                    ${imageHtml}
-                    <a href="${item.link}" target="_blank" style="flex-grow:1;">${item.nome}</a>
-                </div>
-                ${reqs}
+            <li onclick="abrirPaginaJogo('${cat}', '${item.nome}')">
+                ${imageHtml}
+                <span>${item.nome}</span>
             </li>
         `;
     });
 }
-
-document.getElementById("searchInputJogos").addEventListener("keyup", function () {
-    const lista = document.getElementById("jogos-arquivos");
-    const cat = lista.dataset.categoria;
-    if (cat) showJogos(cat, this.value);
-});
-
 // ======================================================================
 // MODAL DE SITES
 // ======================================================================
@@ -1552,7 +1536,243 @@ modals.forEach(id => {
 });
 
 
+// ======================================================================
+// FUNÇÃO PARA ABRIR PÁGINA DO JOGO (MODIFICADA)
+// ======================================================================
+function abrirPaginaJogo(categoria, nomeJogo) {
+    // Fechar modal
+    closeModal('modalJogos');
+    
+    // Encontrar o jogo nos dados
+    const jogo = jogos[categoria].find(j => j.nome === nomeJogo);
+    
+    if (!jogo) {
+        alert('Jogo não encontrado!');
+        return;
+    }
+    
+    // Criar página do jogo dinamicamente
+    criarPaginaJogo(jogo);
+}
 
+// ======================================================================
+// FUNÇÃO PARA CRIAR PÁGINA DO JOGO
+// ======================================================================
+function criarPaginaJogo(jogo) {
+    // Criar estrutura HTML da página do jogo
+    const gamePageHTML = `
+        <div class="game-page" style="
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            z-index: 1000;
+            overflow-y: auto;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        ">
+            <a href="javascript:void(0)" onclick="fecharPaginaJogo()" style="
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                padding: 10px 20px;
+                background: #e60023;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+                font-weight: bold;
+                z-index: 1001;
+            ">← Voltar</a>
+            
+            <header class="hero-section" style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 80px 20px 60px;
+                background: rgba(0, 0, 0, 0.4);
+                position: relative;
+            ">
+                <div class="hero-content" style="max-width: 800px; margin-bottom: 30px;">
+                    <h1 style="font-size: 3.5em; color: #e60023; margin-bottom: 10px;">${jogo.nome}</h1>
+                    <h2 style="font-size: 1.8em; color: #fff; margin-bottom: 20px;">Uma aventura épica te aguarda</h2>
+                </div>
+                
+                <div class="hero-image-container" style="
+                    width: 100%;
+                    max-width: 600px;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    box-shadow: 0 0 40px rgba(230, 0, 35, 0.4);
+                ">
+                    <img src="${jogo.imagem}" alt="${jogo.nome}" style="width: 100%; height: auto; display: block;">
+                </div>
+            </header>
+
+            <section class="requirements-section" style="
+                padding: 60px 20px;
+                text-align: center;
+                background: rgba(0, 0, 0, 0.7);
+            ">
+                <h3 style="font-size: 2em; margin-bottom: 10px;">Requisitos de Sistema (PC)</h3>
+                <p>Garanta a melhor experiência de jogo verificando se sua máquina atende aos requisitos.</p>
+                
+                <div class="requirements-grid" style="
+                    display: flex;
+                    justify-content: center;
+                    gap: 40px;
+                    flex-wrap: wrap;
+                    margin: 40px auto 30px;
+                    max-width: 900px;
+                ">
+                    <div class="req-box intel" style="
+                        background: #000;
+                        padding: 30px;
+                        border-radius: 8px;
+                        width: 100%;
+                        max-width: 400px;
+                        text-align: left;
+                        box-shadow: 0 0 20px rgba(0,0,0,0.8);
+                    ">
+                        <h4 style="text-align: center; font-size: 1.5em; margin-bottom: 20px; color: #0071c5;">
+                            Configuração INTEL/NVIDIA
+                        </h4>
+                        ${processarRequisitosHTML(jogo.requisitos.intel)}
+                    </div>
+
+                    <div class="req-box amd" style="
+                        background: #000;
+                        padding: 30px;
+                        border-radius: 8px;
+                        width: 100%;
+                        max-width: 400px;
+                        text-align: left;
+                        box-shadow: 0 0 20px rgba(0,0,0,0.8);
+                    ">
+                        <h4 style="text-align: center; font-size: 1.5em; margin-bottom: 20px; color: #ed1c24;">
+                            Configuração AMD/RADEON
+                        </h4>
+                        ${processarRequisitosHTML(jogo.requisitos.amd)}
+                    </div>
+                </div>
+                
+                <div class="requirements-cta-group" style="
+                    margin-top: 30px;
+                    display: flex;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                ">
+                    ${jogo.link && jogo.link !== '' ? `
+                        <a href="${jogo.link}" target="_blank" style="
+                            display: inline-block;
+                            padding: 15px 30px;
+                            margin: 10px;
+                            background: #e60023;
+                            color: white;
+                            border-radius: 5px;
+                            font-size: 1.1em;
+                            font-weight: bold;
+                            text-decoration: none;
+                            box-shadow: 0 4px 20px rgba(230, 0, 35, 0.6);
+                        ">BAIXE AGORA</a>
+                        <a href="${jogo.link}" target="_blank" style="
+                            display: inline-block;
+                            padding: 15px 30px;
+                            margin: 10px;
+                            background: #e60023;
+                            color: white;
+                            border-radius: 5px;
+                            font-size: 1.1em;
+                            font-weight: bold;
+                            text-decoration: none;
+                            box-shadow: 0 4px 20px rgba(230, 0, 35, 0.6);
+                        ">LINK ALTERNATIVO</a>
+                    ` : `
+                        <button style="
+                            padding: 15px 30px;
+                            margin: 10px;
+                            background: #666;
+                            color: white;
+                            border: none;
+                            border-radius: 5px;
+                            font-size: 1.1em;
+                            font-weight: bold;
+                            cursor: not-allowed;
+                        ">LINK INDISPONÍVEL</button>
+                        <button style="
+                            padding: 15px 30px;
+                            margin: 10px;
+                            background: #666;
+                            color: white;
+                            border: none;
+                            border-radius: 5px;
+                            font-size: 1.1em;
+                            font-weight: bold;
+                            cursor: not-allowed;
+                        ">EM BREVE</button>
+                    `}
+                </div>
+            </section>
+
+            <footer style="text-align: center; padding: 20px; background: #000; color: #444;">
+                <p>&copy; 2024 GuedesSEC. Todos os direitos reservados.</p>
+            </footer>
+        </div>
+    `;
+    
+    // Adicionar a página ao body
+    document.body.insertAdjacentHTML('beforeend', gamePageHTML);
+}
+
+// ======================================================================
+// FUNÇÃO PARA PROCESSAR REQUISITOS EM HTML
+// ======================================================================
+function processarRequisitosHTML(requisitos) {
+    if (!requisitos) {
+        return `
+            <div style="margin-bottom: 20px; padding: 15px; border-radius: 5px; background: #121212; border-left: 3px solid #e60023;">
+                <p style="font-weight: bold; color: #00e6e6; margin-bottom: 5px;">REQUISITOS:</p>
+                <p>Requisitos não especificados</p>
+            </div>
+        `;
+    }
+    
+    let html = '';
+    
+    if (requisitos.includes('|')) {
+        const partes = requisitos.split('|').map(p => p.trim());
+        
+        partes.forEach((parte, index) => {
+            const tipo = index === 0 ? 'MÍNIMOS:' : 'RECOMENDADOS:';
+            html += `
+                <div style="margin-bottom: 20px; padding: 15px; border-radius: 5px; background: #121212; border-left: 3px solid #e60023;">
+                    <p style="font-weight: bold; color: #00e6e6; margin-bottom: 5px;">${tipo}</p>
+                    <p>${parte}</p>
+                </div>
+            `;
+        });
+    } else {
+        html = `
+            <div style="margin-bottom: 20px; padding: 15px; border-radius: 5px; background: #121212; border-left: 3px solid #e60023;">
+                <p style="font-weight: bold; color: #00e6e6; margin-bottom: 5px;">REQUISITOS:</p>
+                <p>${requisitos}</p>
+            </div>
+        `;
+    }
+    
+    return html;
+}
+
+// ======================================================================
+// FUNÇÃO PARA FECHAR PÁGINA DO JOGO
+// ======================================================================
+function fecharPaginaJogo() {
+    const gamePage = document.querySelector('.game-page');
+    if (gamePage) {
+        gamePage.remove();
+    }
+}
 </script>
 </body>
 
