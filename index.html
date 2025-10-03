@@ -279,14 +279,16 @@
             padding: 18px 24px 24px 24px;
             margin-bottom: 12px;
             transition: box-shadow 0.3s, transform 0.2s;
-       /* }
+            /* }
 
         .test-card:hover {
             box-shadow: 0 8px 32px #00ff00, 0 0 32px #00ff0044;
             /* sombra verde intensa */
             transform: translateY(-4px) scale(1.04);
             /* leve elevação e zoom */
-        }/*
+        }
+
+        /*
 
         /* ===================== BOTÃO TESTE DE TI E FICAL ===================== */
         .test-btn {
@@ -426,8 +428,7 @@
                     <img src="Assets/icon/Categorias/isos.png" alt="ISOs" style="height:50px;">
                 </div>
                 <h3>Isos</h3>
-                <p>Uma coleção completa: sistemas operacionais, jogos e utilitários prontos para rodar. Escolha sua ISO
-                    e tenha tudo em um só lugar.</p>
+                <p>Uma coleção completa: sistemas operacionais.</p>
                 <button onclick="openModal('modalIsos')" class="btn"
                     style="background:#ffffff;color:#000000;font-weight:bold;">Acessar Isos</button>
             </div>
@@ -436,10 +437,10 @@
                 <div class="category-icon">
                     <img src="Assets/icon/Categorias/livros.png" alt="Livros" style="height:50px;">
                 </div>
-                <h3>Books</h3>
-                <p>Conhecimento nunca ocupa espaço — aqui cada página é um upgrade na sua mente.</p>
+                <h3>Livros</h3>
+                <p>Venha ler meu nobre.</p>
                 <button onclick="openModal('modalLivros')" class="btn"
-                    style="background:#ffffff;color:#000000;font-weight:bold;">Acessar Books</button>
+                    style="background:#ffffff;color:#000000;font-weight:bold;">Acessar Livros</button>
             </div>
 
             <div class="category-card electric-border">
@@ -447,7 +448,7 @@
                     <img src="Assets/icon/Categorias/jogos.png" alt="Jogos" style="height:50px;">
                 </div>
                 <h3>Torrent</h3>
-                <p>Jogos, filmes e tudo de computaria !!!.</p>
+                <p>Jogos em geral.</p>
                 <button onclick="openModal('modalJogos')" class="btn"
                     style="background:#ffffff;color:#000000;font-weight:bold;">Acessar links Torrents</button>
             </div>
@@ -710,7 +711,7 @@
             jogos: [
                 { nome: "GOD OF WAR 2 DUBLADO", link: "https://drive.google.com/file/d/1QYiuKPoY9CIcRjUBZa991EraATbIV9hb/view?usp=drive_link", imagem: "Assets/icon/Categorias 2/Isos/ps2/1.png" },
                 { nome: "BURNOUT 3", link: "https://www.mediafire.com/file/zh6cp5bfgo1bfga/BURNOUT_3.iso/file", imagem: "Assets/icon/Categorias 2/Isos/ps2/2.png" },
-                { nome: "GOD OF WAR 3 - PS3", link: "", imagem: "Assets/icon/Categorias 2/Isos/ps2/3.png" },
+                { nome: "?", link: "", imagem: "?" },
             ]
         };
 
@@ -803,868 +804,946 @@
                     imagem: "Assets/icon/Categorias 2/Livros/filosofia/cabalion.png"
                 },
             ]
-        };const jogos = {
-    "acao": [
-        {
-            "nome": "Miles Morales",
-            "link": "pages/web/Pages jogos/Jogos.html",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/1.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i5, 8GB RAM, GTX 950 | Recomendados: CPU i7, 16GB RAM, RTX 2060",
-                "amd": "Mínimos: CPU Ryzen 3, 8GB RAM, RX 480 | Recomendados: CPU Ryzen 5, 16GB RAM, RX 5700"
-            }
-        },
-        {
-            "nome": "Little Nightmares I",
-            "link": "https://4br.me/VTzq9",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/2.png",
-            "requisitos": {
-                "intel": "Mínimos: Intel Core i3, 4GB RAM, GTX 460",
-                "amd": "Mínimos: AMD Phenom II X4, 4GB RAM, R7 260"
-            }
-        },
-        {
-            "nome": "Homem aranha 2 - 2023",
-            "link": "https://fir3.net/plT4zvKM",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/3.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i7-8700, 16GB RAM, SSD 100GB",
-                "amd": "Mínimos: CPU Ryzen 5 3600, 16GB RAM, SSD 100GB"
-            }
-        },
-        {
-            "nome": "The Last of Us Part II Remastered",
-            "link": "", // Link vazio
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/4.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i5-8400, 16GB RAM, RTX 2060, SSD",
-                "amd": "Mínimos: CPU Ryzen 5 2600, 16GB RAM, RX 5700, SSD"
-            }
-        },
-        {
-            "nome": "Hollow Knight Silksong",
-            "link": "https://4br.me/eGOaZOAXe",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/5.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU Dual Core 2.0 GHz, 4GB RAM, 10GB Espaço (Compatível com Intel HD Graphics)",
-                "amd": "Mínimos: CPU Dual Core 2.0 GHz, 4GB RAM, 10GB Espaço (Compatível com AMD APUs)"
-            }
-        },
-        {
-            "nome": "CALL OF DUTY: MODERN WARFARE – REMASTERED",
-            "link": "https://fir3.net/tFmUBgr",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/6.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU Core 2 Duo, 6GB RAM, GTX 470",
-                "amd": "Mínimos: CPU Phenom II X6, 6GB RAM, HD 7850"
-            }
-        },
-        {
-            "nome": "SPLINT FICTION",
-            "link": "https://fir3.net/EcjSZjBU",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/7.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i5-4460, 8GB RAM, GTX 960",
-                "amd": "Mínimos: CPU Ryzen 3 1200, 8GB RAM, RX 460"
-            }
-        },
-        {
-            "nome": "Resident Evil 4 Remake",
-            "link": "https://fir3.net/mR6GWmR9",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/8.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i5-4460, 8GB RAM, GTX 960 | Recomendados: CPU i7-8700, 16GB RAM, GTX 1070",
-                "amd": "Mínimos: CPU Ryzen 3 1200, 8GB RAM, RX 460 | Recomendados: CPU Ryzen 5 3600, 16GB RAM, RX 5700"
-            }
-        },
-        {
-            "nome": "GTA V",
-            "link": "https://fir3.net/nFqV0fyyCK",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/9.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i5-3470, 8GB RAM, GTX 660 | Recomendados: CPU i5-9600K, 16GB RAM, RTX 3060",
-                "amd": "Mínimos: CPU FX-8350, 8GB RAM, HD 7870 | Recomendados: CPU Ryzen 5 3600, 16GB RAM, RX 6600 XT"
-            }
-        },
-        {
-            "nome": "WACTH DOGS I",
-            "link": "https://fir3.net/CITDby",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/10.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i5-2400, 6GB RAM, GTX 460 | Recomendados: CPU i7-3770, 8GB RAM, GTX 560 Ti",
-                "amd": "Mínimos: CPU Phenom II X4 940, 6GB RAM, HD 6850 | Recomendados: CPU FX-8350, 8GB RAM, HD 7850"
-            }
-        },
-        {
-            "nome": "FIFA 23",
-            "link": "https://fir3.net/MIcL490",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/11.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i5-6600K, 8GB RAM, GTX 1050 Ti | Recomendados: CPU i7-9700K, 16GB RAM, RTX 2060",
-                "amd": "Mínimos: CPU Ryzen 5 1600, 8GB RAM, RX 570 | Recomendados: CPU Ryzen 5 3600, 16GB RAM, RX 6600 XT"
-            }
-        },
-        {
-            "nome": "FINAL FANTASY VII",
-            "link": "https://clica.so/2SsFt",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/12.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU Core 2 Duo 2.4GHz, 2GB RAM, GeForce 8800 GT | Recomendados: CPU Core 2 Quad Q6600, 2GB RAM, Radeon HD 4650",
-                "amd": "Mínimos: CPU Athlon II X4 600e, 2GB RAM, GeForce 8800 GT | Recomendados: CPU Athlon II X4 600e, 2GB RAM, Radeon HD 4650"
-            }
-        },
-        {
-            "nome": "FIFA 2013",
-            "link": "https://fir3.net/DIU0D49ONZ",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/13.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU Core 2 Duo 2.4GHz, 2GB RAM, GeForce 8800 GT | Recomendados: CPU Core 2 Quad Q6600, 2GB RAM, GTX 960",
-                "amd": "Mínimos: CPU Athlon II X4 600e, 2GB RAM, HD 2900 XT | Recomendados: CPU Athlon II X4 600e, 2GB RAM, RX 570"
-            }
-        },
-        {
-            "nome": "CALL OF DUTY BLACK OPS 6",
-            "link": "https://4br.me/xgXsZM",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/14.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i5-6600, 8GB RAM, GTX 960 | Recomendados: CPU i7-6700K, 16GB RAM, GTX 1080 Ti",
-                "amd": "Mínimos: CPU Ryzen 5 1400, 8GB RAM, RX 470 | Recomendados: CPU Ryzen 5 1600X, 16GB RAM, RX 6600 XT"
-            }
-        },
-        {
-            "nome": "DRAGON BALL Sparking ZERO",
-            "link": "https://4br.me/dOqXskcv",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/15.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i7-9700K, 16GB RAM, RTX 2060 | Recomendados: CPU i7-9700K, 16GB RAM, RTX 2060",
-                "amd": "Mínimos: CPU Ryzen 5 3600, 16GB RAM, RX Vega 64 | Recomendados: CPU Ryzen 5 3600, 16GB RAM, RX Vega 64"
-            }
-        },
-        {
-            "nome": "DRAGON BALL Z: KAKAROT – ULTIMATE EDITION",
-            "link": "https://encurtalink.online/Nz6EL",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/16.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i5-2400, 4GB RAM, GTX 750 Ti | Recomendados: CPU i5-3470, 8GB RAM, GTX 960",
-                "amd": "Mínimos: CPU Phenom II X6 1100T, 4GB RAM, HD 7950 | Recomendados: CPU Ryzen 3 1200, 8GB RAM, RX 570"
-            }
-        },
-        {
-            "nome": "NARUTO SHIPPUDEN Ultimate Ninja Storm 4",
-            "link": "https://fir3.net/UE94EgbX",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/17.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i5-2400, 4GB RAM, GTX 750 Ti | Recomendados: CPU i5-3470, 8GB RAM, GTX 960",
-                "amd": "Mínimos: CPU Phenom II X6 1100T, 4GB RAM, HD 7950 | Recomendados: CPU Ryzen 3 1200, 8GB RAM, RX 570"
-            }
-        },
-        {
-            "nome": "The Last of Us Ps3 Dublado e legendado",
-            "link": "https://fir3.net/NS7ZWE5ONj",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/18.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU Core 2 Duo 2.4GHz, 2GB RAM, GeForce 8800 GT | Recomendados: CPU Core 2 Quad Q6600, 2GB RAM, GTX 960",
-                "amd": "Mínimos: CPU Athlon II X4 600e, 2GB RAM, HD 2900 XT | Recomendados: CPU Athlon II X4 600e, 2GB RAM, RX 570"
-            }
-        },
-        {
-            "nome": "MORTAL KOMBAT 11",
-            "link": "https://encurtalink.online/SOqV",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/19.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i5-2300, 8GB RAM, GTX 660 | Recomendados: CPU i7-6700K, 16GB RAM, GTX 1080 / RTX 2060",
-                "amd": "Mínimos: CPU FX-6300, 8GB RAM, HD 7850 | Recomendados: CPU Ryzen 5 1600X, 16GB RAM, RX 5700"
-            }
-        },
-        {
-            "nome": "Euro Truck Simulator 2 v1.54.1.0s-P2P",
-            "link": "https://fir3.net/LSn1yG",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/20.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU Core i5-760, 4GB RAM, GTX 260 | Recomendados: CPU i5-2500, 8GB RAM, GTX 660",
-                "amd": "Mínimos: CPU Phenom II X4 965, 4GB RAM, HD 5770 | Recomendados: CPU Ryzen 3 1200, 8GB RAM, RX 460"
-            }
-        },
-        {
-            "nome": "Forza Horizon 5: Premium Edition",
-            "link": "https://4br.me/EHqBo3",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/21.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i5-4460, 8GB RAM, GTX 970 | Recomendados: CPU i7-10700K, 16GB RAM, RTX 2080",
-                "amd": "Mínimos: CPU Ryzen 3 1200, 8GB RAM, RX 470 | Recomendados: CPU Ryzen 5 3600, 16GB RAM, RX 5700 XT"
-            }
-        },
-        {
-            "nome": "Nymphomaniac: Sex Addict – v11750 + Windows 7 Fix",
-            "link": "https://fir3.net/aFWbaIyc",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/22.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i5-2400, 4GB RAM, GTX 750 | Recomendados: CPU i5-3470, 8GB RAM, GTX 960",
-                "amd": "Mínimos: CPU Phenom II X4 940, 4GB RAM, HD 6850 | Recomendados: CPU Ryzen 3 1200, 8GB RAM, RX 460"
-            }
-        },
-        {
-            "nome": "SILENT HILL 2 REMATERED GOG",
-            "link": "https://fir3.net/uWOv",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/23.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i5-2500, 4GB RAM, GTX 460 | Recomendados: CPU i7-3770, 8GB RAM, GTX 660",
-                "amd": "Mínimos: CPU FX-6300, 4GB RAM, HD 7850 | Recomendados: CPU Ryzen 3 1200, 8GB RAM, RX 570"
-            }
-        },
-        {
-            "nome": "RESIDENT EVIL: VILLAGE – GOLD EDITION",
-            "link": "https://fir3.net/6c1iQ0u",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/24.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i5-4460, 8GB RAM, GTX 960 | Recomendados: CPU i7-8700, 16GB RAM, GTX 1070",
-                "amd": "Mínimos: CPU Ryzen 3 1200, 8GB RAM, RX 460 | Recomendados: CPU Ryzen 5 3600, 16GB RAM, RX 5700"
-            }
-        },
-        {
-            "nome": "FIFA 18 + UPDATE 2",
-            "link": "https://encurtalink.online/ZvpMIJd",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/25.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i5-6600, 8GB RAM, GTX 1050 Ti | Recomendados: CPU i7-9700, 16GB RAM, GTX 1660 Ti",
-                "amd": "Mínimos: CPU Ryzen 5 1600, 8GB RAM, RX 570 | Recomendados: CPU Ryzen 5 3600, 16GB RAM, RX 5600 XT"
-            }
-        },
-        {
-            "nome": "Detroit: Become Human",
-            "link": "https://4br.me/PvgSGhC",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/26.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i5-3470, 8GB RAM, GTX 660 | Recomendados: CPU i7-6700K, 16GB RAM, GTX 1060",
-                "amd": "Mínimos: CPU FX-8350, 8GB RAM, HD 7870 | Recomendados: CPU Ryzen 5 1600, 16GB RAM, RX 580"
-            }
-        },
-        {
-            "nome": "God of War Ragnarok",
-            "link": "https://fir3.net/zhpL",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/27.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i5-6600K, 8GB RAM, GTX 1060 | Recomendados: CPU i7-9700K, 16GB RAM, RTX 2070",
-                "amd": "Mínimos: CPU Ryzen 5 1600, 8GB RAM, RX 580 | Recomendados: CPU Ryzen 5 3600, 16GB RAM, RX 5700 XT"
-            }
-        },
-        {
-            "nome": "Batman Arkham Knight Complete Edition",
-            "link": "https://encurtalink.online/q4NpASda0",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/28.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i5-750, 6GB RAM, GTX 460 | Recomendados: CPU i7-3770, 8GB RAM, GTX 1060",
-                "amd": "Mínimos: CPU Phenom II X4 940, 6GB RAM, HD 6850 | Recomendados: CPU Ryzen 3 1200, 8GB RAM, RX 580"
-            }
-        },
-        {
-            "nome": "Pes 2021",
-            "link": "https://encurtalink.online/U9B5t1i6",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/29.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i5-750, 6GB RAM, GTX 460 | Recomendados: CPU i7-3770, 8GB RAM, GTX 1060",
-                "amd": "Mínimos: CPU Phenom II X4 940, 6GB RAM, HD 6850 | Recomendados: CPU Ryzen 3 1200, 8GB RAM, RX 580"
-            }
-        },
-        {
-            "nome": "GTA: San Andreas – The Definitive Edition",
-            "link": "https://fir3.net/TsUweUftMx",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/30.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU Core i5-6600K, 8GB RAM, GTX 760 2GB | Recomendados: CPU Core i7-2700K, 16GB RAM, GTX 970 4GB",
-                "amd": "Mínimos: CPU FX-6300, 8GB RAM, Radeon R9 280 3GB | Recomendados: CPU Ryzen 5 2600, 16GB RAM, Radeon RX 570 4GB"
-            }
-        },
-        {
-            "nome": "GTA: Vice City – The Definitive Edition",
-            "link": "https://fir3.net/TQQOQbe",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/31.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU Core i5-6600K, 8GB RAM, GTX 760 2GB | Recomendados: CPU Core i7-2700K, 16GB RAM, GTX 970 4GB",
-                "amd": "Mínimos: CPU FX-6300, 8GB RAM, Radeon R9 280 3GB | Recomendados: CPU Ryzen 5 2600, 16GB RAM, Radeon RX 570 4GB"
-            }
-        },
-        {
-            "nome": "Red Dead Redemption",
-            "link": "https://4br.me/1CnIH1",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/32.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i5-4670, 8 GB RAM, GTX 960 | Recomendados: CPU i5-8500, 8 GB RAM, RTX 2070",
-                "amd": "Mínimos: CPU FX-9590, 8 GB RAM, R7 360 | Recomendados: CPU Ryzen 5 3500X, 8 GB RAM, RX 5700 XT"
-            }
-        },
-        {
-            "nome": "Red Dead Redemption 2",
-            "link": "https://fir3.net/VWGN",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/33.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i5-2500K, 8 GB RAM, GTX 770 2GB | Recomendados: CPU i7-4770K, 12 GB RAM, GTX 1060 6GB",
-                "amd": "Mínimos: CPU FX-6300, 8 GB RAM, Radeon R9 280 3GB | Recomendados: CPU Ryzen 5 1500X, 12 GB RAM, Radeon RX 480 4GB"
-            }
-        },
-        {
-            "nome": "Ghost of Tsushima Director’s Cut",
-            "link": "https://fir3.net/gAfGpBLn",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/34.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i3 7100, 8 GB RAM, GTX 960 4GB | Recomendados: CPU i5 8600, 16 GB RAM, RTX 2060",
-                "amd": "Mínimos: CPU Ryzen 3 1200, 8 GB RAM, Radeon RX 5500 XT | Recomendados: CPU Ryzen 5 3600, 16 GB RAM, Radeon RX 5600 XT"
-            }
-        },
-        {
-            "nome": "Assassin’s Creed Mirage",
-            "link": "https://fir3.net/JUnnLmey",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/35.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i7-4790K, 8 GB RAM, GTX 1060 6GB | Recomendados: CPU i7-8700K, 16 GB RAM, GTX 1660 Ti 6GB",
-                "amd": "Mínimos: CPU Ryzen 5 1600, 8 GB RAM, RX 570 4GB | Recomendados: CPU Ryzen 5 3600, 16 GB RAM, RX 5600 XT 6GB"
-            }
-        },
-        {
-            "nome": "Sons Of The Forest",
-            "link": "https://fir3.net/lsngy8TaOa",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/36.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i5-8400, 12 GB RAM, GTX 1060 3GB | Recomendados: CPU i5-8700K, 16 GB RAM, GTX 1080 Ti",
-                "amd": "Mínimos: CPU Ryzen 3300X, 12 GB RAM, RX 570 4GB | Recomendados: CPU Ryzen 3600X, 16 GB RAM, RX 5700 XT"
-            }
-        },
-        {
-            "nome": "It Takes Two",
-            "link": "https://fir3.net/nDsUX",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/37.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i3-2100T, 8 GB RAM, GTX 660 | Recomendados: CPU i5 3570K, 16 GB RAM, GTX 960",
-                "amd": "Mínimos: CPU FX 6100, 8 GB RAM, R7 260X | Recomendados: CPU Ryzen 3 1300X, 16 GB RAM, R9 290"
-            }
-        },
-        {
-            "nome": "Grounded",
-            "link": "https://4br.me/hRZjlJlO",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/38.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i3-3225, 4 GB RAM, GTX 650 Ti | Recomendados: CPU i7-4790K, 8 GB RAM, GTX 970",
-                "amd": "Mínimos: CPU equivalente, 4 GB RAM, equivalente | Recomendados: CPU Ryzen 5 1500X, 8 GB RAM, Radeon R9 290"
-            }
-        },
-        {
-            "nome": "GTA 4",
-            "link": "https://fir3.net/X4gLL",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/39.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU Core 2 Duo 1.8GHz, 1.5 GB RAM, GTX 7900+ | Recomendados: CPU Core 2 Quad 2.4GHz, 2.5 GB RAM, 8600+",
-                "amd": "Mínimos: CPU Athlon X2 64 2.4GHz, 1.5 GB RAM, ATI X1900+ | Recomendados: CPU Phenom X3 2.1GHz, 2.5 GB RAM, ATI 3870+"
-            }
-        },
-        {
-            "nome": "Bully",
-            "link": "https://fir3.net/TbXwn",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/40.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU Pentium 4, 1 GB RAM, NVIDIA 6800 or 7300 | Recomendados: Não especificados",
-                "amd": "Mínimos: CPU Athlon 3000+, 1 GB RAM, Radeon X1300 | Recomendados: Não especificados"
-            }
-        },
-        {
-            "nome": "Battlefield V Deluxe Edition",
-            "link": "https://fir3.net/BMoZI2FOAC",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/41.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU i5 6600K, 8 GB RAM, GTX 1050 / GTX 660 | Recomendados: CPU i7 4790, 12 GB RAM, GTX 1060 6GB",
-                "amd": "Mínimos: CPU FX-8350, 8 GB RAM, RX 560 / HD 7850 | Recomendados: CPU Ryzen 3 1300X, 12 GB RAM, RX 580 8GB"
-            }
-        },
-        {
-            "nome": "Battlefield 3",
-            "link": "https://mineurl.com/0e4492",
-            "imagem": "Assets/icon/Categorias 2/Torrent/Jp/42.png",
-            "requisitos": {
-                "intel": "Mínimos: CPU Core 2 Duo 2.4GHz, 2 GB RAM, GTX 8800 GT | Recomendados: CPU Quad-core, 4 GB RAM, GTX 560",
-                "amd": "Mínimos: CPU Athlon X2 64 2.4GHz, 2 GB RAM, HD 3870 | Recomendados: CPU Phenom II X4, 4 GB RAM, HD 6950"
-            }
-        }
-    ]
-};
+        };
+
+        const jogos = {
+            "acao": [
+                {
+                    "nome": "Miles Morales",
+                    "linkJogo": "https://seulink.net/tTCbgtT",
+                    "linkJogo2": "https://seulink.net/tTCbgtT",
+                    "linkDublagem": "https://fir3.net/xRl9USZhi",
+                    // "linkcrack": "https://exemplo.com/dublagem-miles-morales",
+                    //"linksExtras": [],
+                    //"linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/1.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i5, 8GB RAM, GTX 950 | Recomendados: CPU i7, 16GB RAM, RTX 2060",
+                        "amd": "Mínimos: CPU Ryzen 3, 8GB RAM, RX 480 | Recomendados: CPU Ryzen 5, 16GB RAM, RX 5700"
+                    }
+                },
+                {
+                    "nome": "Little Nightmares I",
+                    "linkJogo": "https://4br.me/VTzq9",
+                    "linkJogo2": "https://4br.me/QYNKC",
+                    //"linkDublagem": "",
+                    //"linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/2.png",
+                    "requisitos": {
+                        "intel": "Mínimos: Intel Core i3, 4GB RAM, GTX 460",
+                        "amd": "Mínimos: AMD Phenom II X4, 4GB RAM, R7 260"
+                    }
+                },
+                {
+                    "nome": "Homem aranha 2 - 2023",
+                    "linkJogo": "https://fir3.net/bTVinv8A",
+                    "linkJogo2": "https://fir3.net/bTVinv8A",
+                    //"linkDublagem": "",
+                    //"linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/3.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i7-8700, 16GB RAM, SSD 100GB",
+                        "amd": "Mínimos: CPU Ryzen 5 3600, 16GB RAM, SSD 100GB"
+                    }
+                },
+                {
+                    "nome": "The Last of Us Part II Remastered",
+                    "linkJogo": "https://fir3.net/KW683vfQ",
+                    "linkJogo2": "https://fir3.net/KW683vfQ",
+                    //"linkDublagem": "https://exemplo.com/dublagem-last-of-us-2",
+                    //"linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/4.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i5-8400, 16GB RAM, RTX 2060, SSD",
+                        "amd": "Mínimos: CPU Ryzen 5 2600, 16GB RAM, RX 5700, SSD"
+                    }
+                },
+                {
+                    "nome": "Hollow Knight Silksong",
+                    "linkJogo": "https://4br.me/UGIXv2",
+                    "linkJogo2": "https://4br.me/UGIXv2",
+                    //"linkDublagem": "",
+                    //"linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/5.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU Dual Core 2.0 GHz, 4GB RAM, 10GB Espaço (Compatível com Intel HD Graphics)",
+                        "amd": "Mínimos: CPU Dual Core 2.0 GHz, 4GB RAM, 10GB Espaço (Compatível com AMD APUs)"
+                    }
+                },
+                {
+                    "nome": "CALL OF DUTY: MODERN WARFARE – REMASTERED",
+                    "linkJogo": "https://fir3.net/QeotOH9",
+                    "linkJogo2": "https://fir3.net/QeotOH9",
+                    "linkcrack": "https://www.mediafire.com/file/pzk89leps27bl21/MWII+Campaign+Patch+V2.7z/file",
+                    // "linkDublagem": "",
+                    // "link": "",
+                    //"linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/6.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU Core 2 Duo, 6GB RAM, GTX 470",
+                        "amd": "Mínimos: CPU Phenom II X6, 6GB RAM, HD 7850"
+                    }
+                },
+                {
+                    "nome": "SPLINT FICTION",
+                    "linkJogo": "https://fir3.net/EcjSZjBU",
+                    //"linkDublagem": "",
+                    //  "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/7.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i5-4460, 8GB RAM, GTX 960",
+                        "amd": "Mínimos: CPU Ryzen 3 1200, 8GB RAM, RX 460"
+                    }
+                },
+                {
+                    "nome": "Resident Evil 4 Remake",
+                    "linkJogo": "https://fir3.net/mR6GWmR9",
+                    "linkJogo2": "https://fir3.net/EcjSZjBU",
+                    //"linkDublagem": "",
+                    //"linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/8.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i5-4460, 8GB RAM, GTX 960 | Recomendados: CPU i7-8700, 16GB RAM, GTX 1070",
+                        "amd": "Mínimos: CPU Ryzen 3 1200, 8GB RAM, RX 460 | Recomendados: CPU Ryzen 5 3600, 16GB RAM, RX 5700"
+                    }
+                },
+                {
+                    "nome": "GTA V",
+                    "linkJogo": "https://fir3.net/nFqV0fyyCK",
+                    "linkJogo": "https://fir3.net/nFqV0fyyCK",
+                    //"linkDublagem": "https://exemplo.com/dublagem-gta-v",
+                    //"linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/9.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i5-3470, 8GB RAM, GTX 660 | Recomendados: CPU i5-9600K, 16GB RAM, RTX 3060",
+                        "amd": "Mínimos: CPU FX-8350, 8GB RAM, HD 7870 | Recomendados: CPU Ryzen 5 3600, 16GB RAM, RX 6600 XT"
+                    }
+                },
+                {
+                    "nome": "WACTH DOGS I",
+                    "linkJogo": "https://fir3.net/CITDby",
+                    "linkJogo2": "https://fir3.net/TMSs0VYz",
+                    "linkcrack": "https://4br.me/69H2z5Q",
+                    // "linkDublagem": "",
+                    // "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/10.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i5-2400, 6GB RAM, GTX 460 | Recomendados: CPU i7-3770, 8GB RAM, GTX 560 Ti",
+                        "amd": "Mínimos: CPU Phenom II X4 940, 6GB RAM, HD 6850 | Recomendados: CPU FX-8350, 8GB RAM, HD 7850"
+                    }
+                },
+                {
+                    "nome": "WACTH DOGS 2",
+                    "linkJogo": "https://fir3.net/uaZrfyD2e",
+                    "linkJogo2": "https://fir3.net/QISl8i2V",
+                    //"linkcrack": "",
+                    // "linkDublagem": "",
+                    // "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/44.png",
+                    "requisitos": {
+                        "intel": "CPU Intel Core i5-3470 @ 3,2 GHz, 8 GB RAM, GPU GeForce GTX 780 ou melhor",
+                        "amd": "CPU AMD FX 6120 @ 3,5 GHz, 6 GB RAM, GPU Radeon HD 7870 (2 GB)"
+                    }
+                },
+                {
+                    "nome": "FIFA 23",
+                    "linkJogo": "https://fir3.net/MIcL490",
+                    "linkJogo2": "https://fir3.net/QBh5E",
+                    "linkJogo3": "https://fir3.net/HUpb70qQJn",
+                    "linkJogo4": "https://fir3.net/Fopm0s6a",
+                    //"linkDublagem": "",
+                    //"linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/11.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i5-6600K, 8GB RAM, GTX 1050 Ti | Recomendados: CPU i7-9700K, 16GB RAM, RTX 2060",
+                        "amd": "Mínimos: CPU Ryzen 5 1600, 8GB RAM, RX 570 | Recomendados: CPU Ryzen 5 3600, 16GB RAM, RX 6600 XT"
+                    }
+                },
+                {
+                    "nome": "FINAL FANTASY VII",
+                    "linkJogo": "https://clica.so/2SsFt",
+                    "linkJogo2": "https://clica.so/2SsFt",
+                    "linkJogo3": "https://clica.so/p3GB",
+                    // "linkDublagem": "https://exemplo.com/dublagem-ffvii",
+                    // "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/12.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU Core 2 Duo 2.4GHz, 2GB RAM, GeForce 8800 GT | Recomendados: CPU Core 2 Quad Q6600, 2GB RAM, Radeon HD 4650",
+                        "amd": "Mínimos: CPU Athlon II X4 600e, 2GB RAM, GeForce 8800 GT | Recomendados: CPU Athlon II X4 600e, 2GB RAM, Radeon HD 4650"
+                    }
+                },
+                {
+                    "nome": "FIFA 2013",
+                    "linkJogo": "https://fir3.net/DIU0D49ONZ",
+                    "linkJogo2": "https://mineurl.com/79a179",
+                    "linkJogo3": "https://fir3.net/DIU0D49ONZ",
+                    "linkcrack": "https://encurtalink.online/YB9J0yF",
+                    //"linkDublagem": "",
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/13.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU Core 2 Duo 2.4GHz, 2GB RAM, GeForce 8800 GT | Recomendados: CPU Core 2 Quad Q6600, 2GB RAM, GTX 960",
+                        "amd": "Mínimos: CPU Athlon II X4 600e, 2GB RAM, HD 2900 XT | Recomendados: CPU Athlon II X4 600e, 2GB RAM, RX 570"
+                    }
+                },
+                {
+                    "nome": "CALL OF DUTY BLACK OPS 6",
+                    "linkJogo": "https://4br.me/xgXsZM",
+                    //"linkDublagem": "",
+                    //"linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/14.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i5-6600, 8GB RAM, GTX 960 | Recomendados: CPU i7-6700K, 16GB RAM, GTX 1080 Ti",
+                        "amd": "Mínimos: CPU Ryzen 5 1400, 8GB RAM, RX 470 | Recomendados: CPU Ryzen 5 1600X, 16GB RAM, RX 6600 XT"
+                    }
+                },
+                {
+                    "nome": "DRAGON BALL Sparking ZERO",
+                    "linkJogo": "https://4br.me/dOqXskcv",
+                    //"linkDublagem": "https://exemplo.com/dublagem-dbz-sparking",
+                    //"linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/15.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i7-9700K, 16GB RAM, RTX 2060 | Recomendados: CPU i7-9700K, 16GB RAM, RTX 2060",
+                        "amd": "Mínimos: CPU Ryzen 5 3600, 16GB RAM, RX Vega 64 | Recomendados: CPU Ryzen 5 3600, 16GB RAM, RX Vega 64"
+                    }
+                },
+                {
+                    "nome": "DRAGON BALL Z: KAKAROT – ULTIMATE EDITION",
+                    //"linkJogo": "https://encurtalink.online/Nz6EL",
+                    //"linkDublagem": "",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/16.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i5-2400, 4GB RAM, GTX 750 Ti | Recomendados: CPU i5-3470, 8GB RAM, GTX 960",
+                        "amd": "Mínimos: CPU Phenom II X6 1100T, 4GB RAM, HD 7950 | Recomendados: CPU Ryzen 3 1200, 8GB RAM, RX 570"
+                    }
+                },
+                {
+                    "nome": "NARUTO SHIPPUDEN Ultimate Ninja Storm 4",
+                    "linkJogo": "https://fir3.net/UE94EgbX",
+                    "linkDublagem": "https://exemplo.com/dublagem-naruto-storm4",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/17.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i5-2400, 4GB RAM, GTX 750 Ti | Recomendados: CPU i5-3470, 8GB RAM, GTX 960",
+                        "amd": "Mínimos: CPU Phenom II X6 1100T, 4GB RAM, HD 7950 | Recomendados: CPU Ryzen 3 1200, 8GB RAM, RX 570"
+                    }
+                },
+                {
+                    "nome": "The Last of Us Ps3 Dublado e legendado",
+                    "linkJogo": "https://fir3.net/NS7ZWE5ONj",
+                    "linkDublagem": "",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/18.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU Core 2 Duo 2.4GHz, 2GB RAM, GeForce 8800 GT | Recomendados: CPU Core 2 Quad Q6600, 2GB RAM, GTX 960",
+                        "amd": "Mínimos: CPU Athlon II X4 600e, 2GB RAM, HD 2900 XT | Recomendados: CPU Athlon II X4 600e, 2GB RAM, RX 570"
+                    }
+                },
+                {
+                    "nome": "MORTAL KOMBAT 11",
+                    "linkJogo": "https://encurtalink.online/SOqV",
+                    "linkDublagem": "",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/19.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i5-2300, 8GB RAM, GTX 660 | Recomendados: CPU i7-6700K, 16GB RAM, GTX 1080 / RTX 2060",
+                        "amd": "Mínimos: CPU FX-6300, 8GB RAM, HD 7850 | Recomendados: CPU Ryzen 5 1600X, 16GB RAM, RX 5700"
+                    }
+                },
+                {
+                    "nome": "Euro Truck Simulator 2 v1.54.1.0s-P2P",
+                    "linkJogo": "https://fir3.net/LSn1yG",
+                    "linkDublagem": "",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/20.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU Core i5-760, 4GB RAM, GTX 260 | Recomendados: CPU i5-2500, 8GB RAM, GTX 660",
+                        "amd": "Mínimos: CPU Phenom II X4 965, 4GB RAM, HD 5770 | Recomendados: CPU Ryzen 3 1200, 8GB RAM, RX 460"
+                    }
+                },
+                {
+                    "nome": "Forza Horizon 5: Premium Edition",
+                    "linkJogo": "https://4br.me/EHqBo3",
+                    "linkDublagem": "",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/21.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i5-4460, 8GB RAM, GTX 970 | Recomendados: CPU i7-10700K, 16GB RAM, RTX 2080",
+                        "amd": "Mínimos: CPU Ryzen 3 1200, 8GB RAM, RX 470 | Recomendados: CPU Ryzen 5 3600, 16GB RAM, RX 5700 XT"
+                    }
+                },
+                {
+                    "nome": "Nymphomaniac: Sex Addict – v11750 + Windows 7 Fix",
+                    "linkJogo": "https://fir3.net/aFWbaIyc",
+                    "linkDublagem": "",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/22.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i5-2400, 4GB RAM, GTX 750 | Recomendados: CPU i5-3470, 8GB RAM, GTX 960",
+                        "amd": "Mínimos: CPU Phenom II X4 940, 4GB RAM, HD 6850 | Recomendados: CPU Ryzen 3 1200, 8GB RAM, RX 460"
+                    }
+                },
+                {
+                    "nome": "SILENT HILL 2 REMATERED GOG",
+                    "linkJogo": "https://fir3.net/uWOv",
+                    "linkDublagem": "https://exemplo.com/dublagem-silent-hill-2",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/23.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i5-2500, 4GB RAM, GTX 460 | Recomendados: CPU i7-3770, 8GB RAM, GTX 660",
+                        "amd": "Mínimos: CPU FX-6300, 4GB RAM, HD 7850 | Recomendados: CPU Ryzen 3 1200, 8GB RAM, RX 570"
+                    }
+                },
+                {
+                    "nome": "RESIDENT EVIL: VILLAGE – GOLD EDITION",
+                    "linkJogo": "https://fir3.net/6c1iQ0u",
+                    "linkDublagem": "",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/24.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i5-4460, 8GB RAM, GTX 960 | Recomendados: CPU i7-8700, 16GB RAM, GTX 1070",
+                        "amd": "Mínimos: CPU Ryzen 3 1200, 8GB RAM, RX 460 | Recomendados: CPU Ryzen 5 3600, 16GB RAM, RX 5700"
+                    }
+                },
+                {
+                    "nome": "FIFA 18 + UPDATE 2",
+                    "linkJogo": "https://encurtalink.online/ZvpMIJd",
+                    "linkDublagem": "",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/25.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i5-6600, 8GB RAM, GTX 1050 Ti | Recomendados: CPU i7-9700, 16GB RAM, GTX 1660 Ti",
+                        "amd": "Mínimos: CPU Ryzen 5 1600, 8GB RAM, RX 570 | Recomendados: CPU Ryzen 5 3600, 16GB RAM, RX 5600 XT"
+                    }
+                },
+                {
+                    "nome": "Detroit: Become Human",
+                    "linkJogo": "https://4br.me/PvgSGhC",
+                    "linkDublagem": "https://exemplo.com/dublagem-detroit",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/26.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i5-3470, 8GB RAM, GTX 660 | Recomendados: CPU i7-6700K, 16GB RAM, GTX 1060",
+                        "amd": "Mínimos: CPU FX-8350, 8GB RAM, HD 7870 | Recomendados: CPU Ryzen 5 1600, 16GB RAM, RX 580"
+                    }
+                },
+                {
+                    "nome": "God of War Ragnarok",
+                    "linkJogo": "https://fir3.net/zhpL",
+                    "linkDublagem": "",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/27.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i5-6600K, 8GB RAM, GTX 1060 | Recomendados: CPU i7-9700K, 16GB RAM, RTX 2070",
+                        "amd": "Mínimos: CPU Ryzen 5 1600, 8GB RAM, RX 580 | Recomendados: CPU Ryzen 5 3600, 16GB RAM, RX 5700 XT"
+                    }
+                },
+                {
+                    "nome": "Batman Arkham Knight Complete Edition",
+                    "linkJogo": "https://encurtalink.online/q4NpASda0",
+                    "linkDublagem": "",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/28.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i5-750, 6GB RAM, GTX 460 | Recomendados: CPU i7-3770, 8GB RAM, GTX 1060",
+                        "amd": "Mínimos: CPU Phenom II X4 940, 6GB RAM, HD 6850 | Recomendados: CPU Ryzen 3 1200, 8GB RAM, RX 580"
+                    }
+                },
+                {
+                    "nome": "Pes 2021",
+                    "linkJogo": "https://encurtalink.online/U9B5t1i6",
+                    "linkDublagem": "",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/29.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i5-750, 6GB RAM, GTX 460 | Recomendados: CPU i7-3770, 8GB RAM, GTX 1060",
+                        "amd": "Mínimos: CPU Phenom II X4 940, 6GB RAM, HD 6850 | Recomendados: CPU Ryzen 3 1200, 8GB RAM, RX 580"
+                    }
+                },
+                {
+                    "nome": "GTA: San Andreas – The Definitive Edition",
+                    "linkJogo": "https://fir3.net/TsUweUftMx",
+                    "linkDublagem": "https://exemplo.com/dublagem-gta-sa",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/30.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU Core i5-6600K, 8GB RAM, GTX 760 2GB | Recomendados: CPU Core i7-2700K, 16GB RAM, GTX 970 4GB",
+                        "amd": "Mínimos: CPU FX-6300, 8GB RAM, Radeon R9 280 3GB | Recomendados: CPU Ryzen 5 2600, 16GB RAM, Radeon RX 570 4GB"
+                    }
+                },
+                {
+                    "nome": "GTA: Vice City – The Definitive Edition",
+                    "linkJogo": "https://fir3.net/TQQOQbe",
+                    "linkDublagem": "https://exemplo.com/dublagem-gta-vc",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/31.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU Core i5-6600K, 8GB RAM, GTX 760 2GB | Recomendados: CPU Core i7-2700K, 16GB RAM, GTX 970 4GB",
+                        "amd": "Mínimos: CPU FX-6300, 8GB RAM, Radeon R9 280 3GB | Recomendados: CPU Ryzen 5 2600, 16GB RAM, Radeon RX 570 4GB"
+                    }
+                },
+                {
+                    "nome": "Red Dead Redemption",
+                    "linkJogo": "https://4br.me/1CnIH1",
+                    "linkDublagem": "",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/32.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i5-4670, 8 GB RAM, GTX 960 | Recomendados: CPU i5-8500, 8 GB RAM, RTX 2070",
+                        "amd": "Mínimos: CPU FX-9590, 8 GB RAM, R7 360 | Recomendados: CPU Ryzen 5 3500X, 8 GB RAM, RX 5700 XT"
+                    }
+                },
+                {
+                    "nome": "Red Dead Redemption 2",
+                    "linkJogo": "https://fir3.net/VWGN",
+                    "linkDublagem": "https://exemplo.com/dublagem-rdr2",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/33.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i5-2500K, 8 GB RAM, GTX 770 2GB | Recomendados: CPU i7-4770K, 12 GB RAM, GTX 1060 6GB",
+                        "amd": "Mínimos: CPU FX-6300, 8 GB RAM, Radeon R9 280 3GB | Recomendados: CPU Ryzen 5 1500X, 12 GB RAM, Radeon RX 480 4GB"
+                    }
+                },
+                {
+                    "nome": "Ghost of Tsushima Director's Cut",
+                    "linkJogo": "https://fir3.net/gAfGpBLn",
+                    "linkDublagem": "",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/34.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i3 7100, 8 GB RAM, GTX 960 4GB | Recomendados: CPU i5 8600, 16 GB RAM, RTX 2060",
+                        "amd": "Mínimos: CPU Ryzen 3 1200, 8 GB RAM, Radeon RX 5500 XT | Recomendados: CPU Ryzen 5 3600, 16 GB RAM, Radeon RX 5600 XT"
+                    }
+                },
+                {
+                    "nome": "Assassin's Creed Mirage",
+                    "linkJogo": "https://fir3.net/JUnnLmey",
+                    "linkDublagem": "",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/35.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i7-4790K, 8 GB RAM, GTX 1060 6GB | Recomendados: CPU i7-8700K, 16 GB RAM, GTX 1660 Ti 6GB",
+                        "amd": "Mínimos: CPU Ryzen 5 1600, 8 GB RAM, RX 570 4GB | Recomendados: CPU Ryzen 5 3600, 16 GB RAM, RX 5600 XT 6GB"
+                    }
+                },
+                {
+                    "nome": "Sons Of The Forest",
+                    "linkJogo": "https://fir3.net/lsngy8TaOa",
+                    "linkDublagem": "",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/36.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i5-8400, 12 GB RAM, GTX 1060 3GB | Recomendados: CPU i5-8700K, 16 GB RAM, GTX 1080 Ti",
+                        "amd": "Mínimos: CPU Ryzen 3300X, 12 GB RAM, RX 570 4GB | Recomendados: CPU Ryzen 3600X, 16 GB RAM, RX 5700 XT"
+                    }
+                },
+                {
+                    "nome": "It Takes Two",
+                    "linkJogo": "https://fir3.net/nDsUX",
+                    "linkDublagem": "https://exemplo.com/dublagem-it-takes-two",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/37.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i3-2100T, 8 GB RAM, GTX 660 | Recomendados: CPU i5 3570K, 16 GB RAM, GTX 960",
+                        "amd": "Mínimos: CPU FX 6100, 8 GB RAM, R7 260X | Recomendados: CPU Ryzen 3 1300X, 16 GB RAM, R9 290"
+                    }
+                },
+                {
+                    "nome": "Grounded",
+                    "linkJogo": "https://4br.me/hRZjlJlO",
+                    "linkDublagem": "",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/38.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i3-3225, 4 GB RAM, GTX 650 Ti | Recomendados: CPU i7-4790K, 8 GB RAM, GTX 970",
+                        "amd": "Mínimos: CPU equivalente, 4 GB RAM, equivalente | Recomendados: CPU Ryzen 5 1500X, 8 GB RAM, Radeon R9 290"
+                    }
+                },
+                {
+                    "nome": "GTA 4",
+                    "linkJogo": "https://fir3.net/X4gLL",
+                    "linkDublagem": "https://exemplo.com/dublagem-gta-4",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/39.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU Core 2 Duo 1.8GHz, 1.5 GB RAM, GTX 7900+ | Recomendados: CPU Core 2 Quad 2.4GHz, 2.5 GB RAM, 8600+",
+                        "amd": "Mínimos: CPU Athlon X2 64 2.4GHz, 1.5 GB RAM, ATI X1900+ | Recomendados: CPU Phenom X3 2.1GHz, 2.5 GB RAM, ATI 3870+"
+                    }
+                },
+                {
+                    "nome": "Bully",
+                    "linkJogo": "https://fir3.net/TbXwn",
+                    "linkDublagem": "",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/40.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU Pentium 4, 1 GB RAM, NVIDIA 6800 or 7300 | Recomendados: Não especificados",
+                        "amd": "Mínimos: CPU Athlon 3000+, 1 GB RAM, Radeon X1300 | Recomendados: Não especificados"
+                    }
+                },
+                {
+                    "nome": "Battlefield V Deluxe Edition",
+                    "linkJogo": "https://fir3.net/BMoZI2FOAC",
+                    "linkDublagem": "",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/41.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU i5 6600K, 8 GB RAM, GTX 1050 / GTX 660 | Recomendados: CPU i7 4790, 12 GB RAM, GTX 1060 6GB",
+                        "amd": "Mínimos: CPU FX-8350, 8 GB RAM, RX 560 / HD 7850 | Recomendados: CPU Ryzen 3 1300X, 12 GB RAM, RX 580 8GB"
+                    }
+                },
+                {
+                    "nome": "Battlefield 3",
+                    "linkJogo": "https://mineurl.com/0e4492",
+                    "linkDublagem": "",
+                    "linksExtras": [],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/42.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU Core 2 Duo 2.4GHz, 2 GB RAM, GTX 8800 GT | Recomendados: CPU Quad-core, 4 GB RAM, GTX 560",
+                        "amd": "Mínimos: CPU Athlon X2 64 2.4GHz, 2 GB RAM, HD 3870 | Recomendados: CPU Phenom II X4, 4 GB RAM, HD 6950"
+                    }
+                },
+                {
+                    "nome": "GOD OF WAR 3 + EMULADOR",
+                    "linkJogo": "https://1fichier.com/?2uzuw6e34swjuzjuupgc",
+                    "linkbios": "https://devuploads.com/4d2s2uis1ftw",
+                    //"linkDublagem": "https://exemplo.com/dublagem-gow3",
+                    "linksExtras": [
+                        { "nome": "EMULADOR PS3", "url": "https://rpcs3.net/" }
+                    ],
+                    "imagem": "Assets/icon/Categorias 2/Torrent/Jp/43.png",
+                    "requisitos": {
+                        "intel": "Mínimos: CPU Intel Core i5-2500K (4 núcleos), 8 GB RAM, GPU GTX 660 (2 GB VRAM) | Recomendados: CPU Intel Core i7-8700K ou superior, 16 GB RAM, GPU GTX 1060 (6 GB VRAM) ou superior, SSD recomendado",
+                        "amd": "Mínimos: CPU AMD Ryzen 5 1600 ou FX-8350, 8 GB RAM, GPU Radeon R9 280X (3 GB VRAM) | Recomendados: CPU AMD Ryzen 7 3700X ou superior, 16 GB RAM, GPU RX 580 (8 GB VRAM) ou superior, SSD recomendado"
+                    }
+                }
+            ]
+        };
 
         const Sites = {
-                IA: [
-                    {
-                        nome: "Deepseek",
-                        link: "https://chat.deepseek.com/",
-                        imagem: "Assets/icon/Categorias 2/Sites/Ia/deepseek.png"
-                    },
-                    {
-                        nome: "PH IND AI",
-                        link: "https://www.phind.com/",
-                        imagem: "Assets/icon/Categorias 2/Sites/Ia/Phind.png"
-                    },
-                    {
-                        nome: "CURSOR",
-                        link: "https://cursor.com/",
-                        imagem: "Assets/icon/Categorias 2/Sites/Ia/cursor.png"
-                    },
-                    {
-                        nome: "V0 DEV",
-                        link: "https://v0.app/",
-                        imagem: "Assets/icon/Categorias 2/Sites/Ia/v0.png"
-                    },
-                    {
-                        nome: "Windsurf",
-                        link: "https://windsurf.com/?ref=huntscreens.com",
-                        imagem: "Assets/icon/Categorias 2/Sites/Ia/w.png"
-                    },
-                    {
-                        nome: "Tabnine AI",
-                        link: "https://www.tabnine.com/",
-                        imagem: "Assets/icon/Categorias 2/Sites/Ia/tabnine-logo.png"
-                    },
-                    {
-                        nome: "Blackbox AI",
-                        link: "https://www.blackbox.ai/",
-                        imagem: "Assets/icon/Categorias 2/Sites/Ia/BLACKBOX.png"
+            IA: [
+                {
+                    nome: "Deepseek",
+                    link: "https://chat.deepseek.com/",
+                    imagem: "Assets/icon/Categorias 2/Sites/Ia/deepseek.png"
+                },
+                {
+                    nome: "PH IND AI",
+                    link: "https://www.phind.com/",
+                    imagem: "Assets/icon/Categorias 2/Sites/Ia/Phind.png"
+                },
+                {
+                    nome: "CURSOR",
+                    link: "https://cursor.com/",
+                    imagem: "Assets/icon/Categorias 2/Sites/Ia/cursor.png"
+                },
+                {
+                    nome: "V0 DEV",
+                    link: "https://v0.app/",
+                    imagem: "Assets/icon/Categorias 2/Sites/Ia/v0.png"
+                },
+                {
+                    nome: "Windsurf",
+                    link: "https://windsurf.com/?ref=huntscreens.com",
+                    imagem: "Assets/icon/Categorias 2/Sites/Ia/w.png"
+                },
+                {
+                    nome: "Tabnine AI",
+                    link: "https://www.tabnine.com/",
+                    imagem: "Assets/icon/Categorias 2/Sites/Ia/tabnine-logo.png"
+                },
+                {
+                    nome: "Blackbox AI",
+                    link: "https://www.blackbox.ai/",
+                    imagem: "Assets/icon/Categorias 2/Sites/Ia/BLACKBOX.png"
+                }
+            ],
+
+            Filmes_e_Series: [
+                {
+                    nome: "Superflix",
+                    link: "https://superflix.network/",
+                    imagem: "Assets/icon/Categorias 2/Sites/Filmes/Superflix.png"
+                },
+                {
+                    nome: "Hiperflix",
+                    link: "https://hypeflix.info/",
+                    imagem: "Assets/icon/Categorias 2/Sites/Filmes/hiperflix.png"
+                },
+                {
+                    nome: "Movie",
+                    link: "https://moviestv.onl/home",
+                    imagem: "Assets/icon/Categorias 2/Sites/Filmes/Movie.png"
+                }
+            ],
+
+            conversores: [
+                {
+                    nome: "Conversor de imagem",
+                    link: "https://convertio.co/pt/",
+                    imagem: "Assets/icon/Categorias 2/Sites/Conversor/1.png"
+                },
+                {
+                    nome: "PNG Wing",
+                    link: "https://www.pngwing.com/pt",
+                    imagem: "Assets/icon/Categorias 2/Sites/Conversor/2.png"
+                }
+            ],
+
+            Wallpapers: [
+                {
+                    nome: "Wallpapers Wide",
+                    link: "https://wallpaperswide.com/",
+                    imagem: "Assets/icon/Categorias 2/Sites/Wallpapers/1.png"
+                },
+                {
+                    nome: "Wallpaper Cave",
+                    link: "https://wallpapercave.com/",
+                    imagem: "Assets/icon/Categorias 2/Sites/Wallpapers/2.png"
+                },
+                {
+                    nome: "Alpha Coders",
+                    link: "https://alphacoders.com/",
+                    imagem: "Assets/icon/Categorias 2/Sites/Wallpapers/3.png"
+                }
+            ]
+        };
+
+        // ======================================================================
+        // FUNÇÕES PRINCIPAIS DE NAVEGAÇÃO E RESET
+        // ======================================================================
+
+        // ======================================================================
+        // FUNÇÕES PARA ABRIR E FECHAR MODAIS
+        // ======================================================================
+        function openModal(id) {
+            console.log('Abrindo modal:', id);
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.classList.add('active');
+                console.log('Modal aberto com sucesso');
+
+                if (id === 'modalIsos') {
+                    console.log('Iniciando categorias ISOs');
+                    mostrarCategoriasIsos();
+                }
+                if (id === 'modalLivros') voltarLivros();
+                if (id === 'modalJogos') voltarJogos();
+                if (id === 'modalSites') voltarSites();
+            } else {
+                console.error('Modal não encontrado:', id);
+            }
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.classList.remove('active');
+                console.log('Modal fechado:', id);
+            }
+        }
+
+        // ======================================================================
+        // FECHAR MODAL AO CLICAR FORA E COM ESC
+        // ======================================================================
+        const modals = ["modalIsos", "modalLivros", "modalJogos", "modalSites"];
+
+        // Fechar ao clicar fora
+        modals.forEach(id => {
+            const modalElement = document.getElementById(id);
+            if (modalElement) {
+                modalElement.addEventListener('click', (event) => {
+                    if (event.target === modalElement) {
+                        closeModal(id);
                     }
-                ],
+                });
+            }
+        });
 
-                Filmes_e_Series: [
-                    {
-                        nome: "Superflix",
-                        link: "https://superflix.network/",
-                        imagem: "Assets/icon/Categorias 2/Sites/Filmes/Superflix.png"
-                    },
-                    {
-                        nome: "Hiperflix",
-                        link: "https://hypeflix.info/",
-                        imagem: "Assets/icon/Categorias 2/Sites/Filmes/hiperflix.png"
-                    },
-                    {
-                        nome: "Movie",
-                        link: "https://moviestv.onl/home",
-                        imagem: "Assets/icon/Categorias 2/Sites/Filmes/Movie.png"
+        // Fechar com ESC
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                modals.forEach(id => {
+                    const modalElement = document.getElementById(id);
+                    if (modalElement && modalElement.classList.contains('active')) {
+                        closeModal(id);
                     }
-                ],
+                });
+            }
+        });
 
-                conversores: [
-                    {
-                        nome: "Conversor de imagem",
-                        link: "https://convertio.co/pt/",
-                        imagem: "Assets/icon/Categorias 2/Sites/Conversor/1.png"
-                    },
-                    {
-                        nome: "PNG Wing",
-                        link: "https://www.pngwing.com/pt",
-                        imagem: "Assets/icon/Categorias 2/Sites/Conversor/2.png"
-                    }
-                    // Adicione mais itens de conversores aqui
-                ],
-
-                Wallpapers: [
-                    {
-                        nome: "Wallpapers Wide",
-                        link: "https://wallpaperswide.com/",
-                        imagem: "Assets/icon/Categorias 2/Sites/Wallpapers/1.png"
-                    },
-                    {
-                        nome: "Wallpaper Cave",
-                        link: "https://wallpapercave.com/",
-                        imagem: "Assets/icon/Categorias 2/Sites/Wallpapers/2.png"
-                    },
-                    {
-                        nome: "Alpha Coders",
-                        link: "https://alphacoders.com/",
-                        imagem: "Assets/icon/Categorias 2/Sites/Wallpapers/3.png"
-                    },
-                    // Adicione mais itens de wallpapers aqui
-                ]
-            };
-
-
-
-            // ======================================================================
-            // FUNÇÕES PRINCIPAIS DE NAVEGAÇÃO E RESET
-            // ======================================================================
-
-// ======================================================================
-// FUNÇÕES PARA ABRIR E FECHAR MODAIS
-// ======================================================================
-function openModal(id) {
-    document.getElementById(id).classList.add('active');
-    if (id === 'modalIsos') mostrarCategoriasIsos();
-    if (id === 'modalLivros') voltarLivros();
-    if (id === 'modalJogos') voltarJogos();
-    if (id === 'modalSites') voltarSites();
-}
-
-function closeModal(id) {
-    document.getElementById(id).classList.remove('active');
-    if (id === 'modalIsos') mostrarCategoriasIsos();
-    if (id === 'modalLivros') voltarLivros();
-    if (id === 'modalJogos') voltarJogos();
-    if (id === 'modalSites') voltarSites();
-}
-
-// ======================================================================
-// MODAL DE ISOs
-// ======================================================================
-function mostrarCategoriasIsos() {
-    document.getElementById("voltarIsos").style.display = "none";
-    document.getElementById("search-container-isos").style.display = "none";
-    document.getElementById("searchInputIsos").value = "";
-    const lista = document.getElementById("listaIsos");
-    lista.dataset.categoria = "";
-    document.querySelector("#modalIsos .modal-card h2").textContent = "Escolha uma categoria de ISOs";
-    lista.innerHTML = `
+        // ======================================================================
+        // MODAL DE ISOs
+        // ======================================================================
+        function mostrarCategoriasIsos() {
+            document.getElementById("voltarIsos").style.display = "none";
+            document.getElementById("search-container-isos").style.display = "none";
+            document.getElementById("searchInputIsos").value = "";
+            const lista = document.getElementById("listaIsos");
+            lista.dataset.categoria = "";
+            document.querySelector("#modalIsos .modal-card h2").textContent = "Escolha uma categoria de ISOs";
+            lista.innerHTML = `
         <li onclick="abrirCategoria('linux')"><img src="Assets/icon/Categorias 2/Isos/perfil/Linux.png" alt="Linux" class="list-icon"> Linux</li>
         <li onclick="abrirCategoria('windows')"><img src="Assets/icon/Categorias 2/Isos/perfil/Windows.png" alt="Windows" class="list-icon"> Windows</li>
         <li onclick="abrirCategoria('jogos')"><img src="Assets/icon/Categorias 2/Isos/perfil/sony.png" alt="Jogos" class="list-icon"> Jogos</li>
     `;
-}
+        }
 
-function abrirCategoria(cat, termoPesquisa = '') {
-    document.getElementById("voltarIsos").style.display = "inline-block";
-    document.getElementById("search-container-isos").style.display = "flex";
-    const lista = document.getElementById("listaIsos");
-    lista.dataset.categoria = cat;
-    const termo = (termoPesquisa || document.getElementById("searchInputIsos").value || '').toLowerCase();
+        function abrirCategoria(cat, termoPesquisa = '') {
+            document.getElementById("voltarIsos").style.display = "inline-block";
+            document.getElementById("search-container-isos").style.display = "flex";
+            const lista = document.getElementById("listaIsos");
+            lista.dataset.categoria = cat;
+            const termo = (termoPesquisa || document.getElementById("searchInputIsos").value || '').toLowerCase();
 
-    const isosFiltrados = categorias[cat].filter(item => item.nome.toLowerCase().includes(termo));
+            const isosFiltrados = categorias[cat] ? categorias[cat].filter(item =>
+                item.nome.toLowerCase().includes(termo)
+            ) : [];
 
-    const tituloModal = document.querySelector("#modalIsos .modal-card h2");
-    tituloModal.textContent = {
-        linux: "ISOs de Linux",
-        windows: "ISOs de Windows",
-        jogos: "ISOs de Jogos"
-    }[cat] || "ISOs";
+            const tituloModal = document.querySelector("#modalIsos .modal-card h2");
+            tituloModal.textContent = {
+                linux: "ISOs de Linux",
+                windows: "ISOs de Windows",
+                jogos: "ISOs de Jogos"
+            }[cat] || "ISOs";
 
-    lista.innerHTML = "";
+            lista.innerHTML = "";
 
-    if (isosFiltrados.length === 0) {
-        lista.innerHTML = `<li style="justify-content:center;">Nenhuma ISO encontrada para "${termo}"</li>`;
-        return;
-    }
+            if (isosFiltrados.length === 0) {
+                lista.innerHTML = `<li style="justify-content:center;">Nenhuma ISO encontrada para "${termo}"</li>`;
+                return;
+            }
 
-    isosFiltrados.forEach(item => {
-        const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-download"></i>';
-        lista.innerHTML += `
+            isosFiltrados.forEach(item => {
+                const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-download"></i>';
+                lista.innerHTML += `
             <li>
                 ${imageHtml}
-                <a href="${item.link}" target="_blank">${item.nome}</a>
+                <a href="${item.link}" target="_blank" style="color: #00ff00; text-decoration: none;">${item.nome}</a>
             </li>`;
-    });
-}
+            });
+        }
 
-document.getElementById("searchInputIsos").addEventListener("keyup", function () {
-    const lista = document.getElementById("listaIsos");
-    const cat = lista.dataset.categoria;
-    if (cat) abrirCategoria(cat, this.value);
-});
+        // ======================================================================
+        // MODAL DE LIVROS
+        // ======================================================================
+        function voltarLivros() {
+            document.getElementById("livros-categorias").style.display = "block";
+            document.getElementById("livros-arquivos").style.display = "none";
+            document.getElementById("voltarLivros").style.display = "none";
+            document.getElementById("search-container-livros").style.display = "none";
+            document.getElementById("searchInputLivros").value = "";
+            document.querySelector("#modalLivros .modal-card h2").textContent = "Escolha uma categoria de livros";
+        }
 
-// ======================================================================
-// MODAL DE LIVROS
-// ======================================================================
-function voltarLivros() {
-    document.getElementById("livros-categorias").style.display = "block";
-    document.getElementById("livros-arquivos").style.display = "none";
-    document.getElementById("voltarLivros").style.display = "none";
-    document.getElementById("search-container-livros").style.display = "none";
-    document.getElementById("searchInputLivros").value = "";
-    document.querySelector("#modalLivros .modal-card h2").textContent = "Escolha uma categoria de livros";
-}
+        function showLivros(cat, termoPesquisa = '') {
+            document.getElementById("livros-categorias").style.display = "none";
+            document.getElementById("livros-arquivos").style.display = "block";
+            document.getElementById("voltarLivros").style.display = "inline-block";
+            document.getElementById("search-container-livros").style.display = "flex";
 
-function showLivros(cat, termoPesquisa = '') {
-    document.getElementById("livros-categorias").style.display = "none";
-    document.getElementById("livros-arquivos").style.display = "block";
-    document.getElementById("voltarLivros").style.display = "inline-block";
-    document.getElementById("search-container-livros").style.display = "flex";
+            const ul = document.getElementById("livros-arquivos");
+            ul.dataset.categoria = cat;
+            const termo = termoPesquisa.toLowerCase() || document.getElementById("searchInputLivros").value.toLowerCase();
 
-    const ul = document.getElementById("livros-arquivos");
-    ul.dataset.categoria = cat;
-    const termo = termoPesquisa.toLowerCase() || document.getElementById("searchInputLivros").value.toLowerCase();
+            const livrosFiltrados = livros[cat].filter(item => item.nome.toLowerCase().includes(termo));
 
-    const livrosFiltrados = livros[cat].filter(item => item.nome.toLowerCase().includes(termo));
+            const titulos = {
+                programacao: "Livros de Programação",
+                romance: "Livros de Romance",
+                ciencia: "Livros de Ciência e Tecnologia",
+                filosofia: "Livros de Filosofia"
+            };
+            document.querySelector("#modalLivros .modal-card h2").textContent = titulos[cat] || "Livros";
 
-    const titulos = {
-        programacao: "Livros de Programação",
-        romance: "Livros de Romance",
-        ciencia: "Livros de Ciência e Tecnologia",
-        filosofia: "Livros de Filosofia"
-    };
-    document.querySelector("#modalLivros .modal-card h2").textContent = titulos[cat] || "Livros";
+            ul.innerHTML = "";
 
-    ul.innerHTML = "";
+            if (livrosFiltrados.length === 0) {
+                ul.innerHTML = `<li style="justify-content:center;">Nenhum livro encontrado para "${termo}"</li>`;
+                return;
+            }
 
-    if (livrosFiltrados.length === 0) {
-        ul.innerHTML = `<li style="justify-content:center;">Nenhum livro encontrado para "${termo}"</li>`;
-        return;
-    }
-
-    livrosFiltrados.forEach(item => {
-        const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-book"></i>';
-        ul.innerHTML += `
+            livrosFiltrados.forEach(item => {
+                const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-book"></i>';
+                ul.innerHTML += `
             <li>
                 ${imageHtml}
                 <a href="${item.link}" target="_blank">${item.nome}</a>
             </li>
         `;
-    });
-}
+            });
+        }
 
-document.getElementById("searchInputLivros").addEventListener("keyup", function () {
-    const ul = document.getElementById("livros-arquivos");
-    const cat = ul.dataset.categoria;
-    if (cat) showLivros(cat, this.value);
-});
+        // ======================================================================
+        // MODAL DE JOGOS
+        // ======================================================================
+        function voltarJogos() {
+            document.getElementById("jogos-categorias").style.display = "block";
+            document.getElementById("jogos-arquivos").style.display = "none";
+            document.getElementById("voltarJogos").style.display = "none";
+            document.getElementById("search-container-jogos").style.display = "none";
+            document.getElementById("searchInputJogos").value = "";
+            document.querySelector("#modalJogos .modal-card h2").textContent = "Escolha uma categoria";
+        }
 
-// ======================================================================
-// MODAL DE JOGOS
-// ======================================================================
-function voltarJogos() {
-    document.getElementById("jogos-categorias").style.display = "block";
-    document.getElementById("jogos-arquivos").style.display = "none";
-    document.getElementById("voltarJogos").style.display = "none";
-    document.getElementById("search-container-jogos").style.display = "none";
-    document.getElementById("searchInputJogos").value = "";
-    document.querySelector("#modalJogos .modal-card h2").textContent = "Escolha uma categoria";
-}
+        function showJogos(cat, termoPesquisa = '') {
+            document.getElementById("jogos-categorias").style.display = "none";
+            document.getElementById("jogos-arquivos").style.display = "block";
+            document.getElementById("voltarJogos").style.display = "inline-block";
+            document.getElementById("search-container-jogos").style.display = "flex";
 
-function showJogos(cat, termoPesquisa = '') {
-    document.getElementById("jogos-categorias").style.display = "none";
-    document.getElementById("jogos-arquivos").style.display = "block";
-    document.getElementById("voltarJogos").style.display = "inline-block";
-    document.getElementById("search-container-jogos").style.display = "flex";
+            const lista = document.getElementById("jogos-arquivos");
+            lista.dataset.categoria = cat;
 
-    const lista = document.getElementById("jogos-arquivos");
-    lista.dataset.categoria = cat;
-    const termo = (termoPesquisa || document.getElementById("searchInputJogos").value || '').toLowerCase();
+            const termo = (termoPesquisa || document.getElementById("searchInputJogos").value || '').toLowerCase().trim();
 
-    const jogosFiltrados = (jogos[cat] || []).filter(item => item.nome.toLowerCase().includes(termo));
+            const jogosFiltrados = (jogos[cat] || []).filter(item =>
+                item.nome.toLowerCase().includes(termo)
+            );
 
-    const tituloModal = document.querySelector("#modalJogos .modal-card h2");
-    if (cat === 'acao') tituloModal.textContent = "Explore 41 Jogos Piratas e mergulhe na diversão!";
+            const tituloModal = document.querySelector("#modalJogos .modal-card h2");
+            if (cat === 'acao') tituloModal.textContent = "Explore 41 Jogos Piratas e mergulhe na diversão!";
 
-    lista.innerHTML = "";
+            lista.innerHTML = "";
 
-    if (jogosFiltrados.length === 0) {
-        lista.innerHTML = `<li style="justify-content:center;">Nenhum jogo encontrado para "${termo}"</li>`;
-        return;
-    }
+            if (jogosFiltrados.length === 0) {
+                lista.innerHTML = `<li style="justify-content:center; color:#ff4444;">Nenhum jogo encontrado para "${termo}"</li>`;
+                return;
+            }
 
-    jogosFiltrados.forEach(item => {
-        const imageHtml = item.imagem && item.imagem !== '?' ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-gamepad"></i>';
-        lista.innerHTML += `
-            <li onclick="abrirPaginaJogo('${cat}', '${item.nome}')">
+            jogosFiltrados.forEach(item => {
+                const imageHtml = item.imagem && item.imagem !== '' ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-gamepad"></i>';
+                lista.innerHTML += `
+            <li onclick="abrirPaginaJogo('${cat}', '${item.nome.replace(/'/g, "\\'")}')">
                 ${imageHtml}
                 <span>${item.nome}</span>
             </li>
         `;
-    });
-}
-// ======================================================================
-// MODAL DE SITES
-// ======================================================================
-function voltarSites() {
-    document.getElementById("Sites-categorias").style.display = "block";
-    document.getElementById("Sites-arquivos").style.display = "none";
-    document.getElementById("voltarSites").style.display = "none";
-    document.getElementById("search-container-sites").style.display = "none";
-    document.getElementById("searchInputSites").value = "";
-    document.querySelector("#modalSites .modal-card h2").textContent = "Escolha uma categoria de Sites";
-}
+            });
+        }
 
-function showSites(cat, termoPesquisa = '') {
-    document.getElementById("Sites-categorias").style.display = "none";
-    document.getElementById("Sites-arquivos").style.display = "block";
-    document.getElementById("voltarSites").style.display = "inline-block";
-    document.getElementById("search-container-sites").style.display = "flex";
+        // ======================================================================
+        // MODAL DE SITES
+        // ======================================================================
+        function voltarSites() {
+            document.getElementById("Sites-categorias").style.display = "block";
+            document.getElementById("Sites-arquivos").style.display = "none";
+            document.getElementById("voltarSites").style.display = "none";
+            document.getElementById("search-container-sites").style.display = "none";
+            document.getElementById("searchInputSites").value = "";
+            document.querySelector("#modalSites .modal-card h2").textContent = "Escolha uma categoria de Sites";
+        }
 
-    const titulos = {
-        IA: "Sites de Inteligência Artificial",
-        Filmes_e_Series: "Sites de Filmes e Séries"
-    };
-    document.querySelector("#modalSites .modal-card h2").textContent = titulos[cat] || "Escolha uma categoria de Sites";
+        function showSites(cat, termoPesquisa = '') {
+            document.getElementById("Sites-categorias").style.display = "none";
+            document.getElementById("Sites-arquivos").style.display = "block";
+            document.getElementById("voltarSites").style.display = "inline-block";
+            document.getElementById("search-container-sites").style.display = "flex";
 
-    const ul = document.getElementById("Sites-arquivos");
-    ul.dataset.categoria = cat;
-    const termo = (termoPesquisa || document.getElementById("searchInputSites").value || '').toLowerCase();
+            const titulos = {
+                IA: "Sites de Inteligência Artificial",
+                Filmes_e_Series: "Sites de Filmes e Séries"
+            };
+            document.querySelector("#modalSites .modal-card h2").textContent = titulos[cat] || "Escolha uma categoria de Sites";
 
-    const sitesFiltrados = (Sites[cat] || []).filter(item => item.nome.toLowerCase().includes(termo));
+            const ul = document.getElementById("Sites-arquivos");
+            ul.dataset.categoria = cat;
+            const termo = (termoPesquisa || document.getElementById("searchInputSites").value || '').toLowerCase();
 
-    ul.innerHTML = sitesFiltrados.length === 0
-        ? `<li style="justify-content:center;">Nenhum site encontrado para "${termo}"</li>`
-        : '';
+            const sitesFiltrados = (Sites[cat] || []).filter(item => item.nome.toLowerCase().includes(termo));
 
-    sitesFiltrados.forEach(item => {
-        const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-globe"></i>';
-        ul.innerHTML += `
+            ul.innerHTML = sitesFiltrados.length === 0
+                ? `<li style="justify-content:center;">Nenhum site encontrado para "${termo}"</li>`
+                : '';
+
+            sitesFiltrados.forEach(item => {
+                const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-globe"></i>';
+                ul.innerHTML += `
             <li>
                 ${imageHtml}
                 <a href="${item.link}" target="_blank">${item.nome}</a>
             </li>
         `;
-    });
-}
+            });
+        }
 
-document.getElementById("searchInputSites").addEventListener("keyup", function () {
-    const ul = document.getElementById("Sites-arquivos");
-    const cat = ul.dataset.categoria;
-    if (cat) showSites(cat, this.value);
-});
+        // ======================================================================
+        // EVENT LISTENERS PARA PESQUISA
+        // ======================================================================
+        document.addEventListener('DOMContentLoaded', function () {
+            // Pesquisa de ISOs
+            const searchInputIsos = document.getElementById("searchInputIsos");
+            if (searchInputIsos) {
+                searchInputIsos.addEventListener("keyup", function () {
+                    const lista = document.getElementById("listaIsos");
+                    const cat = lista.dataset.categoria;
+                    if (cat) abrirCategoria(cat, this.value);
+                });
+            }
 
-// ======================================================================
-// INICIALIZAÇÃO
-// ======================================================================
-document.addEventListener("DOMContentLoaded", mostrarCategoriasIsos);
+            // Pesquisa de Jogos
+            const searchInputJogos = document.getElementById("searchInputJogos");
+            if (searchInputJogos) {
+                searchInputJogos.addEventListener("keyup", function () {
+                    showJogos('acao', this.value);
+                });
+            }
 
-// ======================================================================
-// FECHAR MODAL AO CLICAR FORA
-// ======================================================================
-// ======================================================================
-// FECHAR MODAL AO CLICAR FORA (CORRIGIDO)
-// ======================================================================
-const modals = ["modalIsos", "modalLivros", "modalJogos", "modalSites"];
+            // Pesquisa de Livros
+            const searchInputLivros = document.getElementById("searchInputLivros");
+            if (searchInputLivros) {
+                searchInputLivros.addEventListener("keyup", function () {
+                    const ul = document.getElementById("livros-arquivos");
+                    const cat = ul.dataset.categoria;
+                    if (cat) showLivros(cat, this.value);
+                });
+            }
 
-modals.forEach(id => {
-    const modal = document.getElementById(id);
-    if (modal) {
-        // Cria um overlay clicável por trás do card
-        modal.addEventListener('click', (event) => {
-            // Se o clique NÃO foi no card
-            if (!event.target.closest('.modal-card')) {
-                closeModal(id);
+            // Pesquisa de Sites
+            const searchInputSites = document.getElementById("searchInputSites");
+            if (searchInputSites) {
+                searchInputSites.addEventListener("keyup", function () {
+                    const ul = document.getElementById("Sites-arquivos");
+                    const cat = ul.dataset.categoria;
+                    if (cat) showSites(cat, this.value);
+                });
             }
         });
-    }
-});
 
+        // ======================================================================
+        // FUNÇÃO PARA ABRIR PÁGINA DO JOGO
+        // ======================================================================
+        function abrirPaginaJogo(categoria, nomeJogo) {
+            // Fechar modal
+            closeModal('modalJogos');
 
-// ======================================================================
-// FUNÇÃO PARA ABRIR PÁGINA DO JOGO (MODIFICADA)
-// ======================================================================
-function abrirPaginaJogo(categoria, nomeJogo) {
-    // Fechar modal
-    closeModal('modalJogos');
-    
-    // Encontrar o jogo nos dados
-    const jogo = jogos[categoria].find(j => j.nome === nomeJogo);
-    
-    if (!jogo) {
-        alert('Jogo não encontrado!');
-        return;
-    }
-    
-    // Criar página do jogo dinamicamente
-    criarPaginaJogo(jogo);
-}
+            // Encontrar o jogo nos dados
+            const jogo = jogos[categoria].find(j => j.nome === nomeJogo);
 
-// ======================================================================
-// FUNÇÃO PARA CRIAR PÁGINA DO JOGO
-// ======================================================================
-function criarPaginaJogo(jogo) {
-    // Criar estrutura HTML da página do jogo
-    const gamePageHTML = `
-        <div class="game-page" style="
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: #000;
-            z-index: 1000;
-            overflow-y: auto;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        ">
-            <a href="javascript:void(0)" onclick="fecharPaginaJogo()" style="
-                position: fixed;
-                top: 20px;
-                left: 20px;
-                padding: 10px 20px;
-                background: #e60023;
-                color: white;
-                text-decoration: none;
-                border-radius: 5px;
-                font-weight: bold;
-                z-index: 1001;
-            ">← Voltar</a>
-            
-            <header class="hero-section" style="
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                padding: 80px 20px 60px;
-                background: rgba(0, 0, 0, 0.4);
-                position: relative;
-            ">
-                <div class="hero-content" style="max-width: 800px; margin-bottom: 30px;">
-                    <h1 style="font-size: 3.5em; color: #e60023; margin-bottom: 10px;">${jogo.nome}</h1>
-                    <h2 style="font-size: 1.8em; color: #fff; margin-bottom: 20px;">Uma aventura épica te aguarda</h2>
-                </div>
-                
-                <div class="hero-image-container" style="
-                    width: 100%;
-                    max-width: 600px;
-                    border-radius: 10px;
-                    overflow: hidden;
-                    box-shadow: 0 0 40px rgba(230, 0, 35, 0.4);
-                ">
-                    <img src="${jogo.imagem}" alt="${jogo.nome}" style="width: 100%; height: auto; display: block;">
-                </div>
-            </header>
+            if (!jogo) {
+                alert('Jogo não encontrado!');
+                return;
+            }
 
-            <section class="requirements-section" style="
-                padding: 60px 20px;
-                text-align: center;
-                background: rgba(0, 0, 0, 0.7);
-            ">
-                <h3 style="font-size: 2em; margin-bottom: 10px;">Requisitos de Sistema (PC)</h3>
-                <p>Garanta a melhor experiência de jogo verificando se sua máquina atende aos requisitos.</p>
-                
-                <div class="requirements-grid" style="
-                    display: flex;
-                    justify-content: center;
-                    gap: 40px;
-                    flex-wrap: wrap;
-                    margin: 40px auto 30px;
-                    max-width: 900px;
-                ">
-                    <div class="req-box intel" style="
-                        background: #000;
-                        padding: 30px;
-                        border-radius: 8px;
-                        width: 100%;
-                        max-width: 400px;
-                        text-align: left;
-                        box-shadow: 0 0 20px rgba(0,0,0,0.8);
-                    ">
-                        <h4 style="text-align: center; font-size: 1.5em; margin-bottom: 20px; color: #0071c5;">
-                            Configuração INTEL/NVIDIA
-                        </h4>
-                        ${processarRequisitosHTML(jogo.requisitos.intel)}
-                    </div>
+            // Criar página do jogo dinamicamente
+            criarPaginaJogo(jogo);
+        }
 
-                    <div class="req-box amd" style="
-                        background: #000;
-                        padding: 30px;
-                        border-radius: 8px;
-                        width: 100%;
-                        max-width: 400px;
-                        text-align: left;
-                        box-shadow: 0 0 20px rgba(0,0,0,0.8);
-                    ">
-                        <h4 style="text-align: center; font-size: 1.5em; margin-bottom: 20px; color: #ed1c24;">
-                            Configuração AMD/RADEON
-                        </h4>
-                        ${processarRequisitosHTML(jogo.requisitos.amd)}
-                    </div>
-                </div>
-                
-                <div class="requirements-cta-group" style="
-                    margin-top: 30px;
-                    display: flex;
-                    justify-content: center;
-                    flex-wrap: wrap;
-                ">
-                    ${jogo.link && jogo.link !== '' ? `
-                        <a href="${jogo.link}" target="_blank" style="
+        // ======================================================================
+        // FUNÇÃO PARA CRIAR PÁGINA DO JOGO
+        // ======================================================================
+        function criarPaginaJogo(jogo) {
+            const backgroundImage = "";
+
+            // Função para gerar os botões de download dinamicamente
+            const gerarBotoesDownload = () => {
+                let botoesHTML = '';
+
+                // Verificar se tem link do jogo
+                if (jogo.linkJogo && jogo.linkJogo !== '') {
+                    botoesHTML += `
+                        <a href="${jogo.linkJogo}" target="_blank" style="
                             display: inline-block;
                             padding: 15px 30px;
                             margin: 10px;
@@ -1675,8 +1754,15 @@ function criarPaginaJogo(jogo) {
                             font-weight: bold;
                             text-decoration: none;
                             box-shadow: 0 4px 20px rgba(230, 0, 35, 0.6);
-                        ">BAIXE AGORA</a>
-                        <a href="${jogo.link}" target="_blank" style="
+                            transition: all 0.3s ease;
+                            border: 1px solid rgba(255, 255, 255, 0.2);
+                        " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#ff1a3d';" 
+                        onmouseout="this.style.transform='scale(1)'; this.style.background='#e60023';">DOWNLOAD DO JOGO </a>
+                    `;
+                }
+                if (jogo.linkJogo2 && jogo.linkJogo2 !== '') {
+                    botoesHTML += `
+                        <a href="${jogo.linkJogo2}" target="_blank" style="
                             display: inline-block;
                             padding: 15px 30px;
                             margin: 10px;
@@ -1687,93 +1773,367 @@ function criarPaginaJogo(jogo) {
                             font-weight: bold;
                             text-decoration: none;
                             box-shadow: 0 4px 20px rgba(230, 0, 35, 0.6);
-                        ">LINK ALTERNATIVO</a>
-                    ` : `
+                            transition: all 0.3s ease;
+                            border: 1px solid rgba(255, 255, 255, 0.2);
+                        " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#ff1a3d';" 
+                        onmouseout="this.style.transform='scale(1)'; this.style.background='#e60023';">DOWNLOAD DO JOGO OPÇÃO 2</a>
+                    `;
+                }
+                if (jogo.linkJogo3 && jogo.linkJogo3 !== '') {
+                    botoesHTML += `
+                        <a href="${jogo.linkJogo3}" target="_blank" style="
+                            display: inline-block;
+                            padding: 15px 30px;
+                            margin: 10px;
+                            background: #e60023;
+                            color: white;
+                            border-radius: 5px;
+                            font-size: 1.1em;
+                            font-weight: bold;
+                            text-decoration: none;
+                            box-shadow: 0 4px 20px rgba(230, 0, 35, 0.6);
+                            transition: all 0.3s ease;
+                            border: 1px solid rgba(255, 255, 255, 0.2);
+                        " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#ff1a3d';" 
+                        onmouseout="this.style.transform='scale(1)'; this.style.background='#e60023';">DOWNLOAD DO JOGO OPÇÃO 3</a>
+                    `;
+
+                }
+                if (jogo.linkJogo4 && jogo.linkJogo4 !== '') {
+                    botoesHTML += `
+                        <a href="${jogo.linkJogo4}" target="_blank" style="
+                            display: inline-block;
+                            padding: 15px 30px;
+                            margin: 10px;
+                            background: #e60023;
+                            color: white;
+                            border-radius: 5px;
+                            font-size: 1.1em;
+                            font-weight: bold;
+                            text-decoration: none;
+                            box-shadow: 0 4px 20px rgba(230, 0, 35, 0.6);
+                            transition: all 0.3s ease;
+                            border: 1px solid rgba(255, 255, 255, 0.2);
+                        " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#ff1a3d';" 
+                        onmouseout="this.style.transform='scale(1)'; this.style.background='#e60023';">DOWNLOAD DO JOGO OPÇÃO 4</a>
+                    `;
+                }
+                if (jogo.linkJogo5 && jogo.linkJogo5 !== '') {
+                    botoesHTML += `
+                        <a href="${jogo.linkJogo5}" target="_blank" style="
+                            display: inline-block;
+                            padding: 15px 30px;
+                            margin: 10px;
+                            background: #e60023;
+                            color: white;
+                            border-radius: 5px;
+                            font-size: 1.1em;
+                            font-weight: bold;
+                            text-decoration: none;
+                            box-shadow: 0 4px 20px rgba(230, 0, 35, 0.6);
+                            transition: all 0.3s ease;
+                            border: 1px solid rgba(255, 255, 255, 0.2);
+                        " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#ff1a3d';" 
+                        onmouseout="this.style.transform='scale(1)'; this.style.background='#e60023';">DOWNLOAD DO JOGO OPÇÃO 5</a>
+                    `;
+                }
+                
+                if (jogo.linkJogo5 && jogo.linkJogo5 !== '') {
+                    botoesHTML += `
+                        <a href="${jogo.linkJogo5}" target="_blank" style="
+                            display: inline-block;
+                            padding: 15px 30px;
+                            margin: 10px;
+                            background: #e60023;
+                            color: white;
+                            border-radius: 5px;
+                            font-size: 1.1em;
+                            font-weight: bold;
+                            text-decoration: none;
+                            box-shadow: 0 4px 20px rgba(230, 0, 35, 0.6);
+                            transition: all 0.3s ease;
+                            border: 1px solid rgba(255, 255, 255, 0.2);
+                        " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#ff1a3d';" 
+                        onmouseout="this.style.transform='scale(1)'; this.style.background='#e60023';">DOWNLOAD DO JOGO OPÇÃO 5</a>
+                    `;
+                }
+                // Verificar se tem link da dublagem
+                if (jogo.linkbios && jogo.linkbios !== '') {
+                    botoesHTML += `
+                        <a href="${jogo.linkbios}" target="_blank" style="
+                            display: inline-block;
+                            padding: 15px 30px;
+                            margin: 10px;
+                            background: #0066cc;
+                            color: white;
+                            border-radius: 5px;
+                            font-size: 1.1em;
+                            font-weight: bold;
+                            text-decoration: none;
+                            box-shadow: 0 4px 20px rgba(0, 102, 204, 0.6);
+                            transition: all 0.3s ease;
+                            border: 1px solid rgba(255, 255, 255, 0.2);
+                        " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#0080ff';" 
+                        onmouseout="this.style.transform='scale(1)'; this.style.background='#0066cc';">DOWNLOAD BIOS</a>
+                    `;
+                }
+                if (jogo.linkcrack && jogo.linkcrack !== '') {
+                    botoesHTML += `
+                        <a href="${jogo.linkcrack}" target="_blank" style="
+                            display: inline-block;
+                            padding: 15px 30px;
+                            margin: 10px;
+                            background: #0066cc;
+                            color: white;
+                            border-radius: 5px;
+                            font-size: 1.1em;
+                            font-weight: bold;
+                            text-decoration: none;
+                            box-shadow: 0 4px 20px rgba(0, 102, 204, 0.6);
+                            transition: all 0.3s ease;
+                            border: 1px solid rgba(255, 255, 255, 0.2);
+                        " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#0080ff';" 
+                        onmouseout="this.style.transform='scale(1)'; this.style.background='#0066cc';">DOWNLOAD CRACK</a>
+                    `;
+                }
+
+                // Verificar se tem links extras
+                if (jogo.linksExtras && jogo.linksExtras.length > 0) {
+                    jogo.linksExtras.forEach((linkExtra, index) => {
+                        botoesHTML += `
+                            <a href="${linkExtra.url}" target="_blank" style="
+                                display: inline-block;
+                                padding: 15px 30px;
+                                margin: 10px;
+                                background: #00a86b;
+                                color: white;
+                                border-radius: 5px;
+                                font-size: 1.1em;
+                                font-weight: bold;
+                                text-decoration: none;
+                                box-shadow: 0 4px 20px rgba(0, 168, 107, 0.6);
+                                transition: all 0.3s ease;
+                                border: 1px solid rgba(255, 255, 255, 0.2);
+                            " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#00cc88';" 
+                            onmouseout="this.style.transform='scale(1)'; this.style.background='#00a86b';">${linkExtra.nome}</a>
+                        `;
+                    });
+                }
+
+                // Se não tiver nenhum link
+                if (botoesHTML === '') {
+                    botoesHTML = `
                         <button style="
                             padding: 15px 30px;
                             margin: 10px;
-                            background: #666;
+                            background: rgba(102, 102, 102, 0.7);
                             color: white;
                             border: none;
                             border-radius: 5px;
                             font-size: 1.1em;
                             font-weight: bold;
                             cursor: not-allowed;
+                            backdrop-filter: blur(5px);
                         ">LINK INDISPONÍVEL</button>
-                        <button style="
-                            padding: 15px 30px;
-                            margin: 10px;
-                            background: #666;
-                            color: white;
-                            border: none;
-                            border-radius: 5px;
-                            font-size: 1.1em;
-                            font-weight: bold;
-                            cursor: not-allowed;
-                        ">EM BREVE</button>
-                    `}
-                </div>
-            </section>
+                    `;
+                }
 
-            <footer style="text-align: center; padding: 20px; background: #000; color: #444;">
-                <p>&copy; 2024 GuedesSEC. Todos os direitos reservados.</p>
-            </footer>
-        </div>
-    `;
-    
-    // Adicionar a página ao body
-    document.body.insertAdjacentHTML('beforeend', gamePageHTML);
-}
+                return botoesHTML;
+            };
 
-// ======================================================================
-// FUNÇÃO PARA PROCESSAR REQUISITOS EM HTML
-// ======================================================================
-function processarRequisitosHTML(requisitos) {
-    if (!requisitos) {
-        return `
-            <div style="margin-bottom: 20px; padding: 15px; border-radius: 5px; background: #121212; border-left: 3px solid #e60023;">
-                <p style="font-weight: bold; color: #00e6e6; margin-bottom: 5px;">REQUISITOS:</p>
-                <p>Requisitos não especificados</p>
-            </div>
-        `;
-    }
-    
-    let html = '';
-    
-    if (requisitos.includes('|')) {
-        const partes = requisitos.split('|').map(p => p.trim());
-        
-        partes.forEach((parte, index) => {
-            const tipo = index === 0 ? 'MÍNIMOS:' : 'RECOMENDADOS:';
-            html += `
-                <div style="margin-bottom: 20px; padding: 15px; border-radius: 5px; background: #121212; border-left: 3px solid #e60023;">
-                    <p style="font-weight: bold; color: #00e6e6; margin-bottom: 5px;">${tipo}</p>
-                    <p>${parte}</p>
+            // Criar estrutura HTML da página do jogo
+            const gamePageHTML = `
+                <div class="game-page" style="
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100vw;
+                    height: 100vh;
+                    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('${backgroundImage}');
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-attachment: fixed;
+                    z-index: 1000;
+                    overflow-y: auto;
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+                ">
+                    <a href="javascript:void(0)" onclick="fecharPaginaJogo()" style="
+                        position: fixed;
+                        top: 20px;
+                        left: 20px;
+                        padding: 10px 20px;
+                        background: #e60023;
+                        color: white;
+                        text-decoration: none;
+                        border-radius: 5px;
+                        font-weight: bold;
+                        z-index: 1001;
+                        backdrop-filter: blur(5px);
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                    ">← Voltar</a>
+                    
+                    <header class="hero-section" style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        text-align: center;
+                        padding: 80px 20px 60px;
+                        background: rgba(0, 0, 0, 0.4);
+                        position: relative;
+                        backdrop-filter: blur(3px);
+                    ">
+                        <div class="hero-content" style="max-width: 800px; margin-bottom: 30px;">
+                            <h1 style="font-size: 3.5em; color: #e60023; margin-bottom: 10px; text-shadow: 2px 2px 8px rgba(0,0,0,0.8);">${jogo.nome}</h1>
+                            <h2 style="font-size: 1.8em; color: #fff; margin-bottom: 20px; text-shadow: 2px 2px 6px rgba(0,0,0,0.8);">Seu próximo grande desafio está a um clique.</h2>
+                        </div>
+                        
+                        <div class="hero-image-container" style="
+                            width: 100%;
+                            max-width: 600px;
+                            border-radius: 10px;
+                            overflow: hidden;
+                            box-shadow: 0 0 40px rgba(230, 0, 35, 0.4);
+                            border: 2px solid rgba(230, 0, 35, 0.3);
+                        ">
+                            <img src="${jogo.imagem}" alt="${jogo.nome}" style="width: 100%; height: auto; display: block;">
+                        </div>
+                    </header>
+
+                    <section class="requirements-section" style="
+                        padding: 60px 20px;
+                        text-align: center;
+                        background: rgba(0, 0, 0, 0.7);
+                        backdrop-filter: blur(5px);
+                    ">
+                        <h3 style="font-size: 2em; margin-bottom: 10px; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Requisitos de Sistema (PC)</h3>
+                        <p style="color: #ccc; font-size: 1.1em;">Garanta a melhor experiência de jogo verificando se sua máquina atende aos requisitos.</p>
+                        
+                        <div class="requirements-grid" style="
+                            display: flex;
+                            justify-content: center;
+                            gap: 40px;
+                            flex-wrap: wrap;
+                            margin: 40px auto 30px;
+                            max-width: 900px;
+                        ">
+                            <div class="req-box intel" style="
+                                background: rgba(0, 0, 0, 0.8);
+                                padding: 30px;
+                                border-radius: 8px;
+                                width: 100%;
+                                max-width: 400px;
+                                text-align: left;
+                                box-shadow: 0 0 30px rgba(0, 100, 200, 0.3);
+                                border: 1px solid rgba(0, 100, 200, 0.2);
+                                backdrop-filter: blur(10px);
+                            ">
+                                <h4 style="text-align: center; font-size: 1.5em; margin-bottom: 20px; color: #0071c5;">
+                                    Configuração INTEL/NVIDIA
+                                </h4>
+                                ${processarRequisitosHTML(jogo.requisitos.intel)}
+                            </div>
+
+                            <div class="req-box amd" style="
+                                background: rgba(0, 0, 0, 0.8);
+                                padding: 30px;
+                                border-radius: 8px;
+                                width: 100%;
+                                max-width: 400px;
+                                text-align: left;
+                                box-shadow: 0 0 30px rgba(237, 28, 36, 0.3);
+                                border: 1px solid rgba(237, 28, 36, 0.2);
+                                backdrop-filter: blur(10px);
+                            ">
+                                <h4 style="text-align: center; font-size: 1.5em; margin-bottom: 20px; color: #ed1c24;">
+                                    Configuração AMD/RADEON
+                                </h4>
+                                ${processarRequisitosHTML(jogo.requisitos.amd)}
+                            </div>
+                        </div>
+                        
+                        <div class="requirements-cta-group" style="
+                            margin-top: 30px;
+                            display: flex;
+                            justify-content: center;
+                            flex-wrap: wrap;
+                        ">
+                            ${gerarBotoesDownload()}
+                        </div>
+                    </section>
+
+                    <footer style="text-align: center; padding: 20px; background: rgba(0, 0, 0, 0.8); color: #666; backdrop-filter: blur(5px);">
+                        <p>&copy; 2025 GuedesSEC. DEV. ARKANROOT</p>
+                    </footer>
                 </div>
             `;
-        });
-    } else {
-        html = `
-            <div style="margin-bottom: 20px; padding: 15px; border-radius: 5px; background: #121212; border-left: 3px solid #e60023;">
-                <p style="font-weight: bold; color: #00e6e6; margin-bottom: 5px;">REQUISITOS:</p>
-                <p>${requisitos}</p>
-            </div>
-        `;
-    }
-    
-    return html;
-}
 
-// ======================================================================
-// FUNÇÃO PARA FECHAR PÁGINA DO JOGO
-// ======================================================================
-function fecharPaginaJogo() {
-    const gamePage = document.querySelector('.game-page');
-    if (gamePage) {
-        gamePage.remove();
-    }
-}
-</script>
+            // Adicionar a página ao body
+            document.body.insertAdjacentHTML('beforeend', gamePageHTML);
+        }
+
+        // ======================================================================
+        // FUNÇÃO PARA PROCESSAR REQUISITOS EM HTML
+        // ======================================================================
+        function processarRequisitosHTML(requisitos) {
+            if (!requisitos) {
+                return `
+                    <div style="margin-bottom: 20px; padding: 15px; border-radius: 5px; background: #121212; border-left: 3px solid #e60023;">
+                        <p style="font-weight: bold; color: #00e6e6; margin-bottom: 5px;">REQUISITOS:</p>
+                        <p>Requisitos não especificados</p>
+                    </div>
+                `;
+            }
+
+            let html = '';
+
+            if (requisitos.includes('|')) {
+                const partes = requisitos.split('|').map(p => p.trim());
+
+                partes.forEach((parte, index) => {
+                    const tipo = index === 0 ? 'MÍNIMOS:' : 'RECOMENDADOS:';
+                    html += `
+                        <div style="margin-bottom: 20px; padding: 15px; border-radius: 5px; background: #121212; border-left: 3px solid #e60023;">
+                            <p style="font-weight: bold; color: #00e6e6; margin-bottom: 5px;">${tipo}</p>
+                            <p>${parte}</p>
+                        </div>
+                    `;
+                });
+            } else {
+                html = `
+                    <div style="margin-bottom: 20px; padding: 15px; border-radius: 5px; background: #121212; border-left: 3px solid #e60023;">
+                        <p style="font-weight: bold; color: #00e6e6; margin-bottom: 5px;">REQUISITOS:</p>
+                        <p>${requisitos}</p>
+                    </div>
+                `;
+            }
+
+            return html;
+        }
+
+        // ======================================================================
+        // FUNÇÃO PARA FECHAR PÁGINA DO JOGO
+        // ======================================================================
+        function fecharPaginaJogo() {
+            const gamePage = document.querySelector('.game-page');
+            if (gamePage) {
+                gamePage.remove();
+            }
+
+            // Reabrir o modal de jogos
+            const modalJogos = document.getElementById('modalJogos');
+            if (modalJogos) {
+                modalJogos.classList.add('active');
+
+                // Manter o estado atual (com pesquisa se houver)
+                const searchInput = document.getElementById('searchInputJogos');
+                const termoPesquisa = searchInput ? searchInput.value : '';
+
+                // Mostrar a lista de jogos com o termo de pesquisa atual
+                showJogos('acao', termoPesquisa);
+            }
+        }
+    </script>
 </body>
 
 </html>
