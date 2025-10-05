@@ -2205,76 +2205,179 @@
         }
     </script>
     <!-- Botão flutuante -->
-<div id="chat-button" onclick="toggleBot()"></div>
+<style>
+        /* ------------------------------------------------------------------ */
+        /* ESTILOS GERAIS */
+        /* ------------------------------------------------------------------ */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding-bottom: 100px; 
+            background-color: #f4f4f9;
+        }
 
-<!-- Container do bot -->
-<!-- Botão do chat com imagem -->
-<div id="chat-button" onclick="toggleBot()">
-  <img src="Assets/banner/ICONARKAN.png" alt="Chat" id="chat-icon" />
+        /* ------------------------------------------------------------------ */
+        /* CONTÊINER PAI (PONTO DE ANCORAGEM FIXO) */
+        /* ------------------------------------------------------------------ */
+        #feedback-widget-container {
+            position: fixed;
+            bottom: 30px; 
+            right: 30px; 
+            
+            /* Novo: Usa um flexbox para alinhar, mas o texto será absoluto */
+            display: flex;
+            align-items: center; 
+            
+            z-index: 100;
+            /* Garante que o texto possa se mover a partir daqui */
+            position: fixed; 
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* ESTILO DO ÍCONE (O CÍRCULO - FICA SEMPRE VISÍVEL) */
+        /* ------------------------------------------------------------------ */
+        #chat-button {
+            width: 60px; 
+            height: 60px; 
+            cursor: pointer;
+            
+            background-color: #007bff; /* NOVO: Cor de fundo azul */
+            border-radius: 50%; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35); 
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+            animation: none; /* Remove a animação de pulso */
+        }
+        
+        #chat-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05); 
+        }
+
+        /* ESTILO DO ÍCONE DENTRO DO BOTÃO */
+        #chat-button i#chat-icon {
+            font-size: 30px; 
+            color: white; /* NOVO: Ícone branco sobre fundo azul */
+            display: block; 
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* ESTILO DA MENSAGEM "Deixe sua Opinião" (APARECE NO HOVER) */
+        /* ------------------------------------------------------------------ */
+        #feedback-text {
+            /* Posição absoluta, alinhada à direita */
+            position: absolute;
+            right: 70px; /* Começa 70px à esquerda da borda, escondido atrás do ícone */
+            
+            background-color: #333; /* Fundo escuro */
+            color: white;
+            
+            font-size: 1.0em; 
+            padding: 8px 15px; 
+            
+            font-weight: bold;
+            border-radius: 6px 0 0 6px; /* Apenas o lado esquerdo é arredondado */
+            white-space: nowrap; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            
+            /* Estado inicial: Move para a direita (escondido) */
+            transform: translateX(100%); 
+            opacity: 0;
+            
+            /* Adiciona transição para o efeito suave */
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            
+            /* Garante que o texto fique por baixo do menu flutuante */
+            z-index: 99; 
+            
+            /* Centraliza verticalmente com o ícone */
+            height: 44px; /* Altura do ícone (60px) menos 16px de padding (8+8) */
+            display: flex;
+            align-items: center;
+        }
+
+        /* REVELA A MENSAGEM QUANDO PASSA O MOUSE SOBRE O CONTÊINER PAI */
+        #feedback-widget-container:hover #feedback-text {
+            /* Move para a esquerda (posição visível) */
+            transform: translateX(0); 
+            opacity: 1;
+        }
+
+
+        /* ------------------------------------------------------------------ */
+        /* CONTÊINER DO BOT (O IFRAME) */
+        /* ------------------------------------------------------------------ */
+        #bot-container {
+            display: none;
+            position: fixed;
+            bottom: 100px; 
+            right: 30px; 
+            
+            width: 350px;
+            height: 500px;
+            
+            border: 1px solid #ddd; 
+            border-radius: 12px; 
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); 
+            overflow: hidden;
+            z-index: 1000; 
+            
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        }
+
+        #bot-container.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Ajuste do iframe e textarea */
+        #bot-container iframe {
+            width: 100%;
+            height: calc(100% - 40px);
+            border: none;
+            display: block;
+        }
+
+        #bot-container textarea {
+            width: 100%;
+            height: 40px;
+            padding: 10px;
+            box-sizing: border-box;
+            border: none;
+            border-top: 1px solid #ddd;
+            resize: none;
+            font-size: 1em;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="feedback-widget-container">
+    
+    <span id="feedback-text">Deixe sua Opinião</span>
+
+    <div id="chat-button" onclick="toggleBot()">
+        <i class="fas fa-comment-alt" id="chat-icon"></i> 
+    </div>
 </div>
 
 <div id="bot-container">
-  <iframe src="" frameborder="0"></iframe>
-  <textarea id="user-input" placeholder="ARKAN"></textarea>
+    <iframe src="pages/web/ArkaNroot/arkanroot.html" frameborder="0"></iframe>
+    <textarea id="user-input" placeholder="ARKAN"></textarea>
 </div>
 
-<style>
-/* BOTÃO DE CHAT (CONTÊINER - APENAS A ÁREA CLICÁVEL)
-    - Define a área de 70x70px para a imagem.
-    - Sem fundo, borda ou sombra.
-*/
-#chat-button {
-  position: fixed;
-  bottom: 100px;
-  right: 50px;
-  width: 200px; /* Tamanho da área da imagem */
-  height: 200px; /* Tamanho da área da imagem */
-  cursor: pointer;
-  z-index: 100;
-  
-  background: none;
-  border: none;
-  box-shadow: none;
-  padding: 0;
-}
-
-/* IMAGEM DO ÍCONE (AGORA REDONDA)
-    - Preenche 100% da área 70x70px.
-    - O 'border-radius: 50%' corta a imagem em um círculo.
-*/
-#chat-button img#chat-icon {
-  width: 100%; 
-  height: 100%; /* Use 100% da altura para garantir o preenchimento */
-  display: block;
-  
-  /* ✨ NOVO: Torna a imagem circular */
-  border-radius: 50%; /* Opcional: Garante que a imagem preencha o círculo sem distorção */
-  object-fit: cover; 
-}
-
-/* CONTÊINER DO BOT */
-#bot-container {
-  display: none;
-  position: fixed;
-  bottom: 130px; 
-  right: 20px;
-  width: 350px;
-  height: 500px;
-  border: 1px solid #374151; 
-  border-radius: 10px;
-  overflow: hidden;
-  z-index: 100;
-}
-
-#bot-container.active {
-  display: block;
-}
-</style>
-
 <script>
-  function toggleBot() {
-    document.getElementById('bot-container').classList.toggle('active');
-  }
+    function toggleBot() {
+      document.getElementById('bot-container').classList.toggle('active');
+    }
 </script>
 
 </body>
