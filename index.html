@@ -596,8 +596,8 @@
                 <span class="search-icon">&#128269;</span>
             </div>
             <ul class="modal-list" id="jogos-categorias">
-                <li onclick="showJogos('acao')"><img src="Assets/icon/Categorias 2/Torrent/perfil/amelia.jpg"
-                        alt="Jogos Pirata" class="list-icon"> Seja Feliz</li>
+                <li onclick="showJogos('acao')"><img src="Assets/video/1.gif"
+                        alt="Jogos Pirata" class="list-icon">Laissez faire</li>
             </ul>
             <ul class="modal-list" id="jogos-arquivos" style="display:none;"></ul>
         </div>
@@ -622,6 +622,10 @@
                         alt="conversores" class="list-icon">Conversores</li>
                 <li onclick="showSites('Wallpapers')"><img src="Assets/icon/Categorias 2/Sites/Perfil/4.png"
                         alt="Wallpapers" class="list-icon">Wallpapers</li>
+                <li onclick="showSites('Editores')"><img src="Assets/icon/Categorias 2/Sites/Perfil/5.png"
+                        alt="Editores" class="list-icon">Editorees</li>
+                <li onclick="showSites('Dark_Web')"><img src="Assets/icon/Categorias 2/Sites/Perfil/6.png"
+                        alt="Editores" class="list-icon">Dark Web.onion</li>        
             </ul>
             <ul class="modal-list" id="Sites-arquivos" style="display:none;">Sites</ul>
         </div>
@@ -918,7 +922,7 @@
                 },
                 {
                     "nome": "Hollow Knight Silksong",
-                    "linkJogo": "https://4br.me/UGIXv2",
+                    "linkJogo": "https://drive.google.com/file/d/1fmVJhhywGwcYazmE_GdID7DhmejendOa/view?usp=sharing",
                     "linkJogo2": "https://4br.me/UGIXv2",
                     //"linkDublagem": "",
                     //"linksExtras": [],
@@ -1465,9 +1469,43 @@
                     link: "https://alphacoders.com/",
                     imagem: "Assets/icon/Categorias 2/Sites/Wallpapers/3.png"
                 }
-            ]
+            ],
+            Editores: [
+                {
+                    nome: "Text Behind Image",
+                    link: "https://text-behind-image.com/",
+                    imagem: "Assets/icon/categorias 2/Sites/Editores de Imagens/1.png"
+                },
+                {
+                    nome: "",
+                    link: "",
+                    imagem: "Assets/icon/categorias 2/Sites/Editores de Imagens/2.png"
+                },
+                {
+                    nome: "",
+                    link: "",
+                    imagem: "Assets/icon/categorias 2/Sites/Editores de Imagens/3.png"
+                }
+            ],
+            Dark_Web: [
+                {
+                    nome: "Tourch",
+                    link: "http://xmh57jrknzkhv6y3ls3ubitzfqnkrwxhopf5aygthi7d6rplyvk3noyd.onion/",
+                    imagem: "Assets/icon/categorias 2/Sites/Dark/1.png"
+                },
+                {
+                    nome: "",
+                    link: "",
+                    imagem: "Assets/icon/categorias 2/Sites/Dark/2.png"
+                },
+                {
+                    nome: "",
+                    link: "",
+                    imagem: "Assets/icon/categorias 2/Sites/Dark/3.png"
+                }
+            ],
         };
-
+        
         // ======================================================================
         // FUNÇÕES PRINCIPAIS DE NAVEGAÇÃO E RESET
         // ======================================================================
@@ -1475,6 +1513,7 @@
         // ======================================================================
         // FUNÇÕES PARA ABRIR E FECHAR MODAIS
         // ======================================================================
+        
         function openModal(id) {
             console.log('Abrindo modal:', id);
             const modal = document.getElementById(id);
@@ -1698,12 +1737,17 @@
             document.getElementById("Sites-arquivos").style.display = "block";
             document.getElementById("voltarSites").style.display = "inline-block";
             document.getElementById("search-container-sites").style.display = "flex";
-
+//titulos para cada categoria dentro de seus cards
             const titulos = {
                 IA: "Sites de Inteligência Artificial",
                 Filmes_e_Series: "Sites de Filmes e Séries"
+                , conversores: "Sites de Conversores",
+                Wallpapers: "Sites de Wallpapers",
+                Editores: "Sites de Editores de Imagens",
+                Dark_Web: "Sites da Dark Web"
             };
             document.querySelector("#modalSites .modal-card h2").textContent = titulos[cat] || "Escolha uma categoria de Sites";
+            
 
             const ul = document.getElementById("Sites-arquivos");
             ul.dataset.categoria = cat;
@@ -1773,6 +1817,7 @@
         // FUNÇÃO PARA ABRIR PÁGINA DO JOGO
         // ======================================================================
         function abrirPaginaJogo(categoria, nomeJogo) {
+            
             // Fechar modal
             closeModal('modalJogos');
 
@@ -1787,6 +1832,7 @@
             // Criar página do jogo dinamicamente
             criarPaginaJogo(jogo);
         }
+        
 
         // ======================================================================
         // FUNÇÃO PARA CRIAR PÁGINA DO JOGO
@@ -1802,18 +1848,23 @@
     const gifUrl = "URL_DIRETA_DO_SEU_GIF_HOSPEDADO"; 
 
     // 1. Definição do GIF (usaremos duas vezes)
-    const gifSeta = `
+   const gifSeta = `
+    <div style="text-align: center;">
         <img 
-            src="Assets/video/Amelia.gif" 
+            src="Assets/video/2.gif"
             alt="Seta apontando para o download" 
             style="
-                height: 60px; 
-                margin: 0 15px; /* Espaço nas laterais do GIF */
-                filter: drop-shadow(0 0 8px #ff1a3d); /* Brilho vermelho/neon */
-                vertical-align: middle; 
+                height: 150px; 
+                margin: 100px;
+                filter: drop-shadow(0 0 8px #ff1a3d);
+                vertical-align: middle;
             "
         />
-    `;
+        <audio id="musicaFundo" autoplay loop hidden>
+            <source src="Assets/Audio/1.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+`;
 
     // 2. Criação do Botão Principal com o DUPLO GIF (Esquerda e Direita)
     if (jogo.linkJogo && jogo.linkJogo !== '') {
