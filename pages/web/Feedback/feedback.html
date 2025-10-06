@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="icon" type="image/png" href="baner/p.png.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback System | Black Edition</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #000000;
+            --secondary: #0a0a0a;
+            --accent: #ffffff;
+            --accent-hover: #cccccc;
+            --text: #ffffff;
+            --text-secondary: #a0a0a0;
+            --danger: #ff4444;
+            --success: #00ff00;
+            --border: #333333;
+            --shadow: rgba(0, 0, 0, 0.8);
+        }
+
+        body {
+            background: linear-gradient(135deg, #000000, #0a0a0a);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: var(--text);
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: var(--primary);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px var(--shadow);
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        header {
+            background: linear-gradient(to right, #0a0a0a, #111111);
+            color: white;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .banner-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .banner {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .banner-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .banner-placeholder:hover {
+            background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+        }
+
+        .banner-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .logo-container {
+            margin-top: 15px;
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .logo-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header-text {
+            padding: 20px;
+        }
+
+        .header-text h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #ffffff, #cccccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .header-text p {
+            opacity: 0.8;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .feedback-form {
+            background: var(--secondary);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .feedback-form h2 {
+            color: var(--text);
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feedback-form h2 i {
+            color: var(--accent);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: #111111;
+            color: var(--text);
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        .rating-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .stars {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .star {
+            font-size: 2.8rem;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .star:hover,
+        .star.active {
+            color: #fdec00;
+            transform: scale(1.1);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .rating-text {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-top: 10px;
+            text-align: center;
+            min-height: 30px;
+        }
+
+        .btn {
+            background: linear-gradient(to right, #333333, #555555);
+            color: white;
+            border: none;
+            padding: 16px 28px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to right, #444444, #666666);
+        }
+
+        .btn-danger {
+            background: linear-gradient(to right, var(--danger), #cc0000);
+        }
+
+        .btn-danger:hover {
+            box-shadow: 0 7px 15px rgba(255, 68, 68, 0.3);
+        }
+
+        .btn-admin {
+            background: linear-gradient(to right, var(--success), #00cc00);
+            margin-top: 15px;
+        }
+
+        .btn-admin:hover {
+            box-shadow: 0 7px 15px rgba(0, 255, 0, 0.3);
+        }
+
+        .comments-section {
+            margin-top: 40px;
+        }
+
+        .comments-section h2 {
+            color: var(--text);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .comments-section h2 i {
+            color: var(--accent);
+        }
+
+        .comments-list {
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .comments-list::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .comments-list::-webkit-scrollbar-track {
+            background: var(--secondary);
+            border-radius: 10px;
+        }
+
+        .comments-list::-webkit-scrollbar-thumb {
+            background: #ffffff;
+            border-radius: 10px;
+        }
+
+        .comment {
+            background: var(--secondary);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px var(--shadow);
+            border-left: 4px solid #ffffff;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .comment:hover {
+            background: #111111;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px var(--shadow);
+        }
+
+        .comment.admin-mode .delete-btn {
+            display: flex;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .comment-author {
+            font-weight: 600;
+            color: var(--text);
+            font-size: 1.1rem;
+        }
+
+        .comment-rating {
+            color: #ffffff;
+            font-size: 1.2rem;
+        }
+
+        .comment-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        .comment-date {
+            font-size: 0.9rem;
+            color: #888888;
+            margin-top: 15px;
+            text-align: right;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 5px;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--danger);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            display: none;
+            transition: all 0.3s;
+        }
+
+        .delete-btn:hover {
+            background: #cc0000;
+            transform: scale(1.1);
+        }
+
+        .empty-comments {
+            text-align: center;
+            padding: 40px;
+            color: #888888;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #333333;
+            color: white;
+            padding: 18px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow);
+            transform: translateX(150%);
+            transition: transform 0.4s;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid #555555;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.error {
+            background: var(--danger);
+        }
+
+        .admin-panel {
+            background: var(--secondary);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px var(--shadow);
+            display: none;
+            border: 1px solid var(--border);
+        }
+
+        .admin-panel.show {
+            display: block;
+        }
+
+        .admin-panel h3 {
+            color: var(--text);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .admin-panel p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .admin-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        /* Área secreta para ativar admin - invisível mas clicável */
+        .secret-admin-area {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 50px;
+            height: 50px;
+            background: transparent;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            gap: 15px;
+        }
+
+        .stat-card {
+            background: var(--secondary);
+            padding: 20px;
+            border-radius: 10px;
+            flex: 1;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .stat-card i {
+            font-size: 2rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .stat-card .label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 12px;
+            }
+
+            .banner-container {
+                height: 150px;
+            }
+
+            .header-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .feedback-form {
+                padding: 20px;
+            }
+
+            .star {
+                font-size: 2.2rem;
+            }
+
+            .logo-img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .admin-controls {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .stats {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="banner-container">
+                <img src="" alt="Banner" class="banner" id="bannerImage" style="display:none;">
+                <div class="logo-container">
+                    <img src="baner/p.png.png" alt="Logo" id="logoImage" class="logo-img">
+                </div>
+                <div class="header-text">
+                    <h1>Avalie Nossos Serviços</h1>
+                    <p>Compartilhe sua experiência e nos ajude a melhorar continuamente</p>
+                </div>
+            </div>
+            <!-- Área secreta clicável para admin -->
+            <div class="secret-admin-area" id="secretAdminArea" title="Clique para acessar modo admin"></div>
+        </header>
+
+        <div class="content">
+            <div class="admin-panel" id="adminPanel">
+                <h3><i class="fas fa-user-shield"></i> Painel Administrativo</h3>
+                <p>Modo administrador ativo. Clique no botão "X" para excluir comentários.</p>
+                <div class="admin-controls">
+                    <button class="btn btn-admin" id="exitAdminBtn"><i class="fas fa-sign-out-alt"></i> Sair do Modo Admin</button>
+                    <button class="btn btn-danger" id="clearAllBtn"><i class="fas fa-trash"></i> Limpar Todos Comentários</button>
+                </div>
+            </div>
+
+            <div class="feedback-form">
+                <h2><i class="fas fa-star"></i> Deixe seu Feedback</h2>
+                <div class="form-group">
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" placeholder="Seu nome">
+                </div>
+                <div class="form-group">
+                    <label for="comment">Comentário:</label>
+                    <textarea id="comment" placeholder="Escreva seu comentário..."></textarea>
+                </div>
+                <div class="rating-container">
+                    <div class="stars" id="stars">
+                        <i class="fas fa-star star" data-value="1"></i>
+                        <i class="fas fa-star star" data-value="2"></i>
+                        <i class="fas fa-star star" data-value="3"></i>
+                        <i class="fas fa-star star" data-value="4"></i>
+                        <i class="fas fa-star star" data-value="5"></i>
+                    </div>
+                    <div class="rating-text" id="ratingText"></div>
+                </div>
+                <button class="btn" id="submitBtn"><i class="fas fa-paper-plane"></i> Enviar Feedback</button>
+            </div>
+
+            <div class="comments-section">
+                <h2><i class="fas fa-comments"></i> Comentários</h2>
+                <div class="comments-list" id="commentsList">
+                    <div class="empty-comments" id="emptyComments">Nenhum comentário ainda.</div>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <i class="fas fa-star"></i>
+                    <div class="value" id="averageRating">0</div>
+                    <div class="label">Média de Avaliações</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-comment"></i>
+                    <div class="value" id="totalComments">0</div>
+                    <div class="label">Total de Comentários</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+    <input type="file" id="bannerInput" accept="image/*" style="display:none;">
+
+    <script>
+        // Banner
+        const bannerImage = document.getElementById('bannerImage');
+        const bannerInput = document.getElementById('bannerInput');
+        if (localStorage.getItem('banner')) {
+            bannerImage.src = localStorage.getItem('banner');
+            bannerImage.style.display = 'block';
+        }
+        bannerImage.addEventListener('click', () => bannerInput.click());
+        bannerInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    bannerImage.src = reader.result;
+                    bannerImage.style.display = 'block';
+                    localStorage.setItem('banner', reader.result);
+                    showNotification('Banner atualizado!');
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Feedback Stars
+        const stars = document.querySelectorAll('.star');
+        const ratingText = document.getElementById('ratingText');
+        let ratingValue = 0;
+        const ratingTexts = ['Muito ruim', 'Ruim', 'OK', 'Bom', 'Excelente'];
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                ratingValue = parseInt(star.dataset.value);
+                updateStars();
+            });
+        });
+        function updateStars() {
+            stars.forEach(star => { star.classList.remove('active'); if (parseInt(star.dataset.value) <= ratingValue) star.classList.add('active'); });
+            ratingText.textContent = ratingTexts[ratingValue - 1] || '';
+        }
+
+        // Notification
+        const notification = document.getElementById('notification');
+        function showNotification(msg, type = 'success') {
+            notification.textContent = msg;
+            notification.className = `notification show ${type === 'error' ? 'error' : ''}`;
+            setTimeout(() => notification.classList.remove('show'), 3000);
+        }
+
+        // Comments
+        const nameInput = document.getElementById('name');
+        const commentInput = document.getElementById('comment');
+        const submitBtn = document.getElementById('submitBtn');
+        const commentsList = document.getElementById('commentsList');
+        const emptyComments = document.getElementById('emptyComments');
+        const averageRatingEl = document.getElementById('averageRating');
+        const totalCommentsEl = document.getElementById('totalComments');
+
+        let comments = JSON.parse(localStorage.getItem('comments') || '[]');
+        let adminMode = false;
+
+        function saveComments() {
+            localStorage.setItem('comments', JSON.stringify(comments));
+            renderComments();
+        }
+
+        function renderComments() {
+            commentsList.innerHTML = '';
+            if (comments.length === 0) {
+                commentsList.appendChild(emptyComments);
+                averageRatingEl.textContent = 0;
+                totalCommentsEl.textContent = 0;
+                return;
+            }
+
+            comments.forEach((c, index) => {
+                const div = document.createElement('div');
+                div.className = 'comment' + (adminMode ? ' admin-mode' : '');
+                div.innerHTML = `
+                    <div class="comment-header">
+                        <span class="comment-author">${c.name}</span>
+                        <span class="comment-rating">${'★'.repeat(c.rating)}</span>
+                    </div>
+                    <div class="comment-text">${c.comment}</div>
+                    <div class="comment-date">
+                        <i class="far fa-clock"></i>
+                        ${new Date(c.date).toLocaleString()}
+                    </div>
+                    ${adminMode ? `<button class="delete-btn" onclick="deleteComment(${index})"><i class="fas fa-times"></i></button>` : ''}
+                `;
+                commentsList.appendChild(div);
+            });
+
+            const avg = (comments.reduce((a, b) => a + b.rating, 0) / comments.length).toFixed(1);
+            averageRatingEl.textContent = avg;
+            totalCommentsEl.textContent = comments.length;
+        }
+
+        window.deleteComment = function (index) {
+            if (adminMode) {
+                comments.splice(index, 1);
+                saveComments();
+                showNotification('Comentário excluído!');
+            }
+        }
+
+        submitBtn.addEventListener('click', () => {
+            const name = nameInput.value.trim();
+            const comment = commentInput.value.trim();
+            if (!name || !comment || ratingValue === 0) {
+                showNotification('Preencha todos os campos!', 'error');
+                return;
+            }
+            comments.push({ name, comment, rating: ratingValue, date: Date.now() });
+            saveComments();
+            nameInput.value = '';
+            commentInput.value = '';
+            ratingValue = 0;
+            updateStars();
+            showNotification('Comentário enviado!');
+        });
+
+        renderComments();
+
+        // Admin panel - CORRIGIDO
+        const secretAdminArea = document.getElementById('secretAdminArea');
+        const adminPanel = document.getElementById('adminPanel');
+        const exitAdminBtn = document.getElementById('exitAdminBtn');
+        const clearAllBtn = document.getElementById('clearAllBtn');
+
+        // Método 1: Clique na área secreta (canto superior direito)
+        secretAdminArea.addEventListener('click', () => {
+            const password = prompt('Digite a senha de administrador:');
+            if (password === "240819") {
+                adminMode = true;
+                adminPanel.classList.add('show');
+                renderComments();
+                showNotification('Modo administrador ativado!');
+            } else if (password !== null) {
+                showNotification('Senha incorreta!', 'error');
+            }
+        });
+
+        // Método 2: Código Konami (↑↑↓↓←→←→BA)
+        let keySequence = [];
+        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+
+        document.addEventListener('keydown', (e) => {
+            keySequence.push(e.code);
+            if (keySequence.length > konamiCode.length) {
+                keySequence.shift();
+            }
+            if (keySequence.join(',') === konamiCode.join(',')) {
+                adminMode = true;
+                adminPanel.classList.add('show');
+                renderComments();
+                showNotification('Modo administrador ativado via código secreto!');
+                keySequence = [];
+            }
+        });
+
+        exitAdminBtn.addEventListener('click', () => {
+            adminMode = false;
+            adminPanel.classList.remove('show');
+            renderComments();
+            showNotification('Modo administrador desativado!');
+        });
+
+        clearAllBtn.addEventListener('click', () => {
+            if (confirm('Deseja realmente excluir todos os comentários?')) {
+                comments = [];
+                saveComments();
+                showNotification('Todos os comentários foram excluídos!');
+            }
+        });
+
+        // Método 3: Clique triplo no título
+        let clickCount = 0;
+        document.querySelector('.header-text h1').addEventListener('click', () => {
+            clickCount++;
+            if (clickCount === 3) {
+                const password = prompt('Digite a senha de administrador:');
+                if (password === "admin123") {
+                    adminMode = true;
+                    adminPanel.classList.add('show');
+                    renderComments();
+                    showNotification('Modo administrador ativado!');
+                }
+                clickCount = 0;
+            }
+            setTimeout(() => { clickCount = 0; }, 1000);
+        });
+    </script>
+</body>
+
+</html>
