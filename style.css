@@ -556,6 +556,102 @@ img[alt="Soldado 1"], img[alt="Soldado 2"], img[alt="Soldado 3"] {
     
 }
 
+/* Responsivo para celular, sem alterar o estilo do PC */
+@media (max-width: 700px) {
+    .container, .main-content {
+        padding: 0 4px !important;
+    }
+    .header-content, .footer-content {
+        flex-direction: column !important;
+        gap: 18px !important;
+        align-items: center !important;
+    }
+    .logo img {
+        max-width: 90vw !important;
+        height: auto !important;
+    }
+    .categories {
+        flex-direction: column !important;
+        gap: 12px !important;
+        align-items: center !important;
+    }
+    .category-card, .test-card {
+        max-width: 98vw !important;
+        margin: 0 auto 18px auto !important;
+        padding: 12px 6px !important;
+    }
+    .category-icon img, .test-img-wrap {
+        height: 60px !important;
+        width: 60px !important;
+        min-width: 60px !important;
+        min-height: 60px !important;
+    }
+    .test-img-wrap {
+        width: 100px !important;
+        height: 100px !important;
+    }
+    .test-img {
+        width: 100% !important;
+        height: 100% !important;
+    }
+    .btn, .test-btn {
+        font-size: 1em !important;
+        padding: 10px 0 !important;
+        width: 100% !important;
+        margin-top: 8px !important;
+    }
+    #anuncio-rotativo {
+        flex-direction: column !important;
+        max-width: 98vw !important;
+        margin: 18px auto !important;
+    }
+    #anuncio-slide {
+        max-width: 98vw !important;
+        height: 140px !important;
+    }
+    .modal-card {
+        min-width: 98vw !important;
+        max-width: 99vw !important;
+        padding: 10px 2px !important;
+    }
+    .modal-list {
+        max-height: 220px !important;
+        font-size: 0.95em !important;
+    }
+    .footer-logo img {
+        height: 48px !important;
+        margin-right: 6px !important;
+    }
+    .footer-text p {
+        font-size: 0.95em !important;
+    }
+    #matrix-canvas {
+        width: 100vw !important;
+        height: 100vh !important;
+    }
+    #feedback-widget-container {
+        right: 10px !important;
+        bottom: 10px !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+    #feedback-text {
+        right: 0 !important;
+        top: -50px !important;
+        font-size: 0.95em !important;
+        padding: 6px 10px !important;
+    }
+    #chat-button {
+        width: 48px !important;
+        height: 48px !important;
+        font-size: 22px !important;
+    }
+    #bot-container iframe {
+        width: 98vw !important;
+        height: 90vh !important;
+    }
+}
+
 /* ---------------------------------------------------- */
 /* As regras abaixo parecem ser para elementos de animação/design específicos (e não padrões do layout). */
 /* ---------------------------------------------------- */
