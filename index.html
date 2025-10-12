@@ -472,12 +472,83 @@
 
     <main class="container main-content">
         <section class="welcome-section">
-            <h1 class="typing-effect">Bem vindo à Biblioteca de Alexandria</h1>
-            <p class="fade-in-msg" style="animation-delay:2.3s;">Este é o seu centro de armazenamento pessoal para ISOs,
+            <h1 class="typing-effect" style="text-align:center;">Bem vindo à Biblioteca de Alexandria</h1>
+            <p class="fade-in-msg" style="animation-delay:2.3s; text-align:center;">Este é o seu centro de armazenamento pessoal para ISOs,
                 livros, códigos e links para jogos.</p>
-            <p class="fade-in-msg" style="animation-delay:3.1s;">Organize e acesse esses recursos de forma segura e
+            <p class="fade-in-msg" style="animation-delay:3.1s; text-align:center;">Organize e acesse esses recursos de forma segura e
                 eficiente.</p>
         </section>
+
+        <!-- ANÚNCIO ROTATIVO -->
+<div id="anuncio-rotativo" style="width:100%; display:flex; justify-content:center; align-items:center; margin:24px 0;">
+    <button id="anuncio-prev" style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin-right:12px;">&#8592;</button>
+    <div id="anuncio-slide" style="width:320px; height:220px; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; border-radius:16px; box-shadow:0 0 24px #00ff00; background:#000;">
+        <!-- Imagem e nome do anúncio serão inseridos via JS -->
+    </div>
+    <button id="anuncio-next" style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin-left:12px;">&#8594;</button>
+</div>
+
+<script>
+// Lista de anúncios (use as imagens dos seus jogos torrent)
+const anuncios = [
+    {
+        nome: "Resident Evil 4 Remake",
+        imagem: "Assets/icon/Categorias 2/Torrent/Jp/8.png"
+    },
+    {
+        nome: "Hollow Knight Silksong",
+        imagem: "Assets/icon/Categorias 2/Torrent/Jp/5.png"
+    },
+    {
+        nome: "Homem aranha 2 - 2023",
+        imagem: "Assets/icon/Categorias 2/Torrent/Jp/3.png"
+    },
+    {
+        nome: "Red Dead Redemption 2",
+        imagem: "Assets/icon/Categorias 2/Torrent/Jp/33.png"
+    }
+    // Adicione mais jogos conforme desejar
+];
+
+let anuncioAtual = 0;
+
+// Função para mostrar o anúncio atual
+function mostrarAnuncio(idx) {
+    const slide = document.getElementById('anuncio-slide');
+    slide.innerHTML = `
+        <img src="${anuncios[idx].imagem}" alt="${anuncios[idx].nome}" 
+            style="width:100%; height:180px; object-fit:cover; border-radius:16px; box-shadow:0 0 16px #00ff00; background:#000;">
+        <div style="width:100%; text-align:center; margin-top:8px;">
+            <span style="color:#00ff00; font-size:1.1em; font-family:'JetBrains Mono',monospace; font-weight:bold; text-shadow:0 0 8px #00ff00;">${anuncios[idx].nome}</span>
+        </div>
+    `;
+}
+
+// Função para abrir a página do jogo ao clicar na imagem
+document.getElementById('anuncio-slide').onclick = function() {
+    const nomeJogo = anuncios[anuncioAtual].nome;
+    abrirPaginaJogo('acao', nomeJogo);
+};
+
+// Botões de navegação
+document.getElementById('anuncio-prev').onclick = function() {
+    anuncioAtual = (anuncioAtual - 1 + anuncios.length) % anuncios.length;
+    mostrarAnuncio(anuncioAtual);
+};
+document.getElementById('anuncio-next').onclick = function() {
+    anuncioAtual = (anuncioAtual + 1) % anuncios.length;
+    mostrarAnuncio(anuncioAtual);
+};
+
+// Rotação automática
+setInterval(function() {
+    anuncioAtual = (anuncioAtual + 1) % anuncios.length;
+    mostrarAnuncio(anuncioAtual);
+}, 5000);
+
+// Inicializa o anúncio
+mostrarAnuncio(anuncioAtual);
+</script>
 
         <section class="categories">
             <div class="category-card electric-border">
@@ -485,7 +556,7 @@
                     <img src="Assets/icon/Categorias/isos.png" alt="ISOs" style="height:50px;">
                 </div>
                 <h3>Isos</h3>
-                <p>Uma coleção completa: sistemas operacionais.</p>
+                <p>Explore uma coleção completa de sistemas operacionais prontos para uso. Ideal para testes, formatações ou instalações rápidas.</p>
                 <button onclick="openModal('modalIsos')" class="btn"
                     style="background:#ffffff;color:#000000;font-weight:bold;">Acessar Isos</button>
             </div>
@@ -495,7 +566,7 @@
                     <img src="Assets/icon/Categorias/livros.png" alt="Livros" style="height:50px;">
                 </div>
                 <h3>Livros</h3>
-                <p>Venha ler meu nobre.</p>
+                <p>Descubra obras incríveis: conhecimento, aprendizado e entretenimento em um só lugar.</p>
                 <button onclick="openModal('modalLivros')" class="btn"
                     style="background:#ffffff;color:#000000;font-weight:bold;">Acessar Livros</button>
             </div>
@@ -505,7 +576,7 @@
                     <img src="Assets/icon/Categorias/jogos.png" alt="Jogos" style="height:50px;">
                 </div>
                 <h3>Torrent</h3>
-                <p>Jogos em geral.</p>
+                <p>Jogos para PC prontos para download via torrent. Diversão garantida a um clique de distância.</p>
                 <button onclick="openModal('modalJogos')" class="btn"
                     style="background:#ffffff;color:#000000;font-weight:bold;">Acessar links Torrents</button>
             </div>
@@ -519,12 +590,13 @@
                 <button onclick="openModal('modalSites')" class="btn"
                     style="background:hsl(0, 0%, 100%);color:#000000;font-weight:bold;">Acessar websites</button>
             </div>
+            
         </section>
 
         <div style="width:100%; display:flex; justify-content:center; gap:40px; margin-top:40px;">
             <div class="test-card">
                 <a href="pages/web/Tecnologia/T.i.html" target="_blank" class="test-btn">
-                    <i class="fas fa-brain"></i>CodeQuest.
+                    <i class="fas fa-brain"></i>Tecnologia.
                 </a>
                 <div class="test-img-wrap">
                     <img src="Assets/icon/Categorias/Testes/1.png" alt="Soldado 1" class="test-img">
@@ -532,7 +604,7 @@
             </div>
             <div class="test-card">
                 <a href="pages/web/Matematica/matematica.html" target="_blank" class="test-btn">
-                    <i class="fas fa-brain"></i>CálculoX.
+                    <i class="fas fa-brain"></i>Matematica.
                 </a>
                 <div class="test-img-wrap">
                     <img src="Assets/icon/Categorias/Testes/2.png" alt="Soldado 2" class="test-img">
@@ -540,7 +612,7 @@
             </div>
             <div class="test-card">
                 <a href="pages/web/Fiscal Treinamento/Fiscal.html" target="_blank" class="test-btn">
-                    <i class="fas fa-brain"></i>Ponto Fiscal.
+                    <i class="fas fa-brain"></i>Fiscal.
                 </a>
                 <div class="test-img-wrap">
                     <img src="Assets/icon/Categorias/Testes/3.png" alt="Soldado 3" class="test-img">
@@ -882,7 +954,12 @@
                     "requisitos": {
                         "intel": "Mínimos: CPU i5, 8GB RAM, GTX 950 | Recomendados: CPU i7, 16GB RAM, RTX 2060",
                         "amd": "Mínimos: CPU Ryzen 3, 8GB RAM, RX 480 | Recomendados: CPU Ryzen 5, 16GB RAM, RX 5700"
-                    }
+                    },
+                    imagensDemo: [
+                        "Assets/icon/Categorias 2/Torrent/Jp/Demon/1/1.png",
+                        "Assets/icon/Categorias 2/Torrent/Jp/Demon/1/2.png",
+                        "Assets/icon/Categorias 2/Torrent/Jp/Demon/1/3.png"
+                    ]
                 },
                 {
                     "nome": "Little Nightmares I",
@@ -894,7 +971,12 @@
                     "requisitos": {
                         "intel": "Mínimos: Intel Core i3, 4GB RAM, GTX 460",
                         "amd": "Mínimos: AMD Phenom II X4, 4GB RAM, R7 260"
-                    }
+                    },
+                    imagensDemo: [
+                        "Assets/",
+                        "Assets/demo/miles2.jpg",
+                        "Assets/demo/miles3.jpg"
+                    ]
                 },
                 {
                     "nome": "Homem aranha 2 - 2023",
@@ -1285,7 +1367,7 @@
                     "linksExtras": [],
                     "imagem": "Assets/icon/Categorias 2/Torrent/Jp/35.png",
                     "requisitos": {
-                        "intel": "Mínimos: CPU i7-4790K, 8 GB RAM, GTX 1060 6GB | Recomendados: CPU i7-8700K, 16 GB RAM, GTX 1660 Ti 6GB",
+                        "intel": "Mínimos: CPU i7-4790K, 8 GB RAM, GTX 1060 6GB | Recomendados: CPU i7-8700K, 16 GB RAM, GTX 1660 Ti  6GB",
                         "amd": "Mínimos: CPU Ryzen 5 1600, 8 GB RAM, RX 570 4GB | Recomendados: CPU Ryzen 5 3600, 16 GB RAM, RX 5600 XT 6GB"
                     }
                 },
@@ -1296,6 +1378,7 @@
                     "linksExtras": [],
                     "imagem": "Assets/icon/Categorias 2/Torrent/Jp/36.png",
                     "requisitos": {
+
                         "intel": "Mínimos: CPU i5-8400, 12 GB RAM, GTX 1060 3GB | Recomendados: CPU i5-8700K, 16 GB RAM, GTX 1080 Ti",
                         "amd": "Mínimos: CPU Ryzen 3300X, 12 GB RAM, RX 570 4GB | Recomendados: CPU Ryzen 3600X, 16 GB RAM, RX 5700 XT"
                     }
@@ -2119,6 +2202,30 @@
                         ">
                             <img src="${jogo.imagem}" alt="${jogo.nome}" style="width: 100%; height: auto; display: block;">
                         </div>
+
+                        ${jogo.imagensDemo && jogo.imagensDemo.length > 0 ? `
+    <div class="demo-images" style="
+        width: 100%;
+        max-width: 900px;
+        margin: 32px auto 0 auto;
+        display: flex;
+        gap: 24px;
+        justify-content: center;
+        flex-wrap: wrap;
+    ">
+        ${jogo.imagensDemo.map(img => `
+            <img src="${img}" alt="Demo ${jogo.nome}" style="
+                width: 260px;
+                height: 160px;
+                object-fit: cover;
+                border-radius: 16px;
+                box-shadow: 0 0 18px #00ff00;
+                background: #111;
+                margin-bottom: 12px;
+            ">
+        `).join('')}
+    </div>
+` : ''}
                     </header>
 
                     <section class="requirements-section" style="
@@ -2476,5 +2583,4 @@ document.getElementById('bot-container').addEventListener('click', function(e) {
 </body>
 
 </html>
-
 
