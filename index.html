@@ -478,16 +478,49 @@
             <p class="fade-in-msg" style="animation-delay:3.1s; text-align:center;">Organize e acesse esses recursos de forma segura e
                 eficiente.</p>
         </section>
+        <!-- ...existing code... -->
+<!-- Substitua o bloco do anúncio rotativo por este novo bloco para exibir os cards ao lado do anúncio -->
 
+<div style="width:100%; display:flex; justify-content:center; align-items:center; gap:32px; margin:24px 0;">
+    <!-- Card esquerdo -->
+    <div class="category-card electric-border" style="max-width:550px;">
+        <div class="category-icon">
+            <img src="Assets/icon/Categorias/jogos mobile.png" alt="Jogos Mobile" style="height:50px;">
+        </div>
+        <h3>Jogos Mobile</h3>
+        <p>Baixe os melhores jogos para Android e iOS.</p>
+        <button onclick="openModal('modalJogosMobile')" class="btn" style="background:#00ff00;color:#000;font-weight:bold;">
+            Acessar Jogos Mobile
+        </button>
+    </div>
+
+    <!-- Anúncio rotativo -->
+    <div id="anuncio-rotativo" style="flex:1; max-width:400px; display:flex; flex-direction:column; align-items:center;">
+        <button id="anuncio-prev" style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin-right:12px;">&#8592;</button>
+        <div id="anuncio-slide" style="width:320px; height:220px; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; border-radius:16px; box-shadow:0 0 24px #00ff00; background:#000;">
+            <!-- Imagem e nome do anúncio serão inseridos via JS -->
+        </div>
+        <button id="anuncio-next" style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin-left:12px;">&#8594;</button>
+    </div>
+
+    <!-- Card direito -->
+    <div class="category-card electric-border" style="max-width:320px;">
+        <div class="category-icon">
+            <img src="Assets/icon/Categorias/novidade.png" alt="Novidades" style="height:50px;">
+        </div>
+        <h3>Novidades</h3>
+        <p>Confira os lançamentos e atualizações do site.</p>
+        <button onclick="openModal('modalNovidades')" class="btn" style="background:#00ff00;color:#000;font-weight:bold;">
+            Ver Novidades
+        </button>
+    </div>
+</div>
+<!-- ...existing code... -->
         <!-- ANÚNCIO ROTATIVO -->
 <div id="anuncio-rotativo" style="width:100%; display:flex; justify-content:center; align-items:center; margin:24px 0;">
-    <button id="anuncio-prev" style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin-right:12px;">&#8592;</button>
-    <div id="anuncio-slide" style="width:320px; height:220px; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; border-radius:16px; box-shadow:0 0 24px #00ff00; background:#000;">
+    <button id="anuncio-prev" style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin-right:12px;"</button>
         <!-- Imagem e nome do anúncio serão inseridos via JS -->
-    </div>
-    <button id="anuncio-next" style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin-left:12px;">&#8594;</button>
 </div>
-
 <script>
 // Lista de anúncios (use as imagens dos seus jogos torrent)
 const anuncios = [
@@ -551,6 +584,7 @@ mostrarAnuncio(anuncioAtual);
 </script>
 
         <section class="categories">
+            
             <div class="category-card electric-border">
                 <div class="category-icon">
                     <img src="Assets/icon/Categorias/isos.png" alt="ISOs" style="height:50px;">
@@ -669,7 +703,7 @@ mostrarAnuncio(anuncioAtual);
             </div>
             <ul class="modal-list" id="jogos-categorias">
                 <li onclick="showJogos('acao')"><img src="Assets/video/1.gif"
-                        alt="Jogos Pirata" class="list-icon">Laissez faire</li>
+                        alt="Jogos Pirata" class="list-icon">Jogos para Pc</li>
             </ul>
             <ul class="modal-list" id="jogos-arquivos" style="display:none;"></ul>
         </div>
@@ -702,6 +736,49 @@ mostrarAnuncio(anuncioAtual);
             <ul class="modal-list" id="Sites-arquivos" style="display:none;">Sites</ul>
         </div>
     </div>
+
+    <!-- Modal Jogos Mobile -->
+<div id="modalJogosMobile" class="modal-overlay">
+    <div class="modal-card">
+        <button class="modal-close" onclick="closeModal('modalJogosMobile')">&times;</button>
+        <h2>Jogos Mobile</h2>
+        <div class="search-container" id="search-container-mobile">
+            <input type="text" id="searchInputMobile" class="search-input" placeholder="Pesquisar jogos mobile...">
+            <span class="search-icon">&#128269;</span>
+        </div>
+        <ul class="modal-list" id="mobile-list">
+            <!-- Exemplo de links, adicione quantos quiser -->
+            <li>
+                <img src="Assets/icon/Categorias/celular.png" class="list-icon" alt="Jogo 1">
+                <a href="https://play.google.com/store/apps/details?id=com.supercell.clashofclans" target="_blank">Clash of Clans</a>
+            </li>
+            <li>
+                <img src="Assets/icon/Categorias/celular.png" class="list-icon" alt="Jogo 2">
+                <a href="https://play.google.com/store/apps/details?id=com.mojang.minecraftpe" target="_blank">Minecraft Mobile</a>
+            </li>
+            <!-- Adicione mais jogos aqui -->
+        </ul>
+    </div>
+</div>
+
+<!-- Modal Novidades -->
+<div id="modalNovidades" class="modal-overlay">
+    <div class="modal-card">
+        <button class="modal-close" onclick="closeModal('modalNovidades')">&times;</button>
+        <h2>Novidades</h2>
+        <ul class="modal-list" id="novidades-list">
+            <li>
+                <i class="fas fa-star list-icon"></i>
+                Novo jogo mobile adicionado!
+            </li>
+            <li>
+                <i class="fas fa-star list-icon"></i>
+                Atualização visual no site.
+            </li>
+            <!-- Adicione mais novidades aqui -->
+        </ul>
+    </div>
+</div>
 
     <div id="privacyModal" class="modal-overlay">
         <div class="modal-card" style="background:#181818; color:#00ff00; font-family:monospace;">
@@ -1627,7 +1704,7 @@ mostrarAnuncio(anuncioAtual);
         // ======================================================================
         // FECHAR MODAL AO CLICAR FORA E COM ESC
         // ======================================================================
-        const modals = ["modalIsos", "modalLivros", "modalJogos", "modalSites"];
+        const modals = ["modalIsos", "modalLivros", "modalJogos", "modalSites", "modalJogosMobile", "modalNovidades"];
 
         // Fechar ao clicar fora
         modals.forEach(id => {
@@ -1892,6 +1969,19 @@ mostrarAnuncio(anuncioAtual);
                     const ul = document.getElementById("Sites-arquivos");
                     const cat = ul.dataset.categoria;
                     if (cat) showSites(cat, this.value);
+                });
+            }
+
+            // Pesquisa Jogos Mobile
+            const searchInputMobile = document.getElementById("searchInputMobile");
+            if (searchInputMobile) {
+                searchInputMobile.addEventListener("keyup", function () {
+                    const termo = this.value.toLowerCase();
+                    const lista = document.getElementById("mobile-list");
+                    Array.from(lista.children).forEach(li => {
+                        const texto = li.textContent.toLowerCase();
+                        li.style.display = texto.includes(termo) ? "" : "none";
+                    });
                 });
             }
         });
