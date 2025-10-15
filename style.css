@@ -826,4 +826,19 @@ img[alt="Soldado 1"], img[alt="Soldado 2"], img[alt="Soldado 3"] {
         opacity: 0.2;
     }
     
+    
+    
 }
+/* Deixa apenas os ícones dos cards Jogos Mobile e Novidades maiores */
+.category-card .category-icon img[alt="Jogos Mobile"],
+.category-card .category-icon img[alt="Novidades"] {
+    height: 100px !important;
+    width: 100px !important;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+/* ...código existente... */
+
+/* ...código existente... */
