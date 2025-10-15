@@ -482,19 +482,23 @@
 <!-- Substitua o bloco do anúncio rotativo por este novo bloco para exibir os cards ao lado do anúncio -->
 
 <div style="width:100%; display:flex; justify-content:center; align-items:center; gap:32px; margin:24px 0;">
-    <!-- Card esquerdo -->
-    <div class="category-card electric-border" style="max-width:550px;">
-        <div class="category-icon">
-            <img src="Assets/icon/Categorias/jogos mobile.png" alt="Jogos Mobile" style="height:50px;">
+    <!-- Card Jogos Mobile no canto esquerdo -->
+    <div class="category-card electric-border" style="max-width:320px; margin-left:0;">
+        <div style="display:flex; align-items:center; gap:18px;">
+            <div class="category-icon">
+                <img src="Assets/icon/Categorias/Android.png" alt="Jogos Mobile" style="height:70px; width:70px; object-fit:contain;">
+            </div>
+            <div>
+                <h3>Android</h3>
+                <p>Tudo sobre Android.</p>
+                <button onclick="openModal('modalJogosMobile')" class="btn" style="background:#00ff00;color:#000;font-weight:bold;">
+                   Ver Android
+                </button>
+            </div>
         </div>
-        <h3>Jogos Mobile</h3>
-        <p>Baixe os melhores jogos para Android e iOS.</p>
-        <button onclick="openModal('modalJogosMobile')" class="btn" style="background:#00ff00;color:#000;font-weight:bold;">
-            Acessar Jogos Mobile
-        </button>
     </div>
 
-    <!-- Anúncio rotativo -->
+    <!-- Anúncio rotativo centralizado -->
     <div id="anuncio-rotativo" style="flex:1; max-width:400px; display:flex; flex-direction:column; align-items:center;">
         <button id="anuncio-prev" style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin-right:12px;">&#8592;</button>
         <div id="anuncio-slide" style="width:320px; height:220px; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; border-radius:16px; box-shadow:0 0 24px #00ff00; background:#000;">
@@ -503,17 +507,22 @@
         <button id="anuncio-next" style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin-left:12px;">&#8594;</button>
     </div>
 
-    <!-- Card direito -->
-    <div class="category-card electric-border" style="max-width:320px;">
+    <!-- Card Novidades no canto direito -->
+    <!-- Substitua o card Novidades por este bloco para alinhar o ícone à esquerda, igual ao Jogos Mobile: -->
+<div class="category-card electric-border" style="max-width:320px; margin-right:0;">
+    <div style="display:flex; align-items:center; gap:18px;">
         <div class="category-icon">
-            <img src="Assets/icon/Categorias/novidade.png" alt="Novidades" style="height:50px;">
+            <img src="Assets/icon/Categorias/Cursos.png" alt="Novidades" style="height:70px; width:70px; object-fit:contain;">
         </div>
-        <h3>Novidades</h3>
-        <p>Confira os lançamentos e atualizações do site.</p>
-        <button onclick="openModal('modalNovidades')" class="btn" style="background:#00ff00;color:#000;font-weight:bold;">
-            Ver Novidades
-        </button>
+        <div>
+            <h3>Cursos</h3>
+            <p>Confira os melhores cursos.</p>
+            <button onclick="openModal('modalNovidades')" class="btn" style="background:#00ff00;color:#000;font-weight:bold;">
+                Ver Cursos
+            </button>
+        </div>
     </div>
+</div>
 </div>
 <!-- ...existing code... -->
         <!-- ANÚNCIO ROTATIVO -->
@@ -741,23 +750,18 @@ mostrarAnuncio(anuncioAtual);
 <div id="modalJogosMobile" class="modal-overlay">
     <div class="modal-card">
         <button class="modal-close" onclick="closeModal('modalJogosMobile')">&times;</button>
-        <h2>Jogos Mobile</h2>
-        <div class="search-container" id="search-container-mobile">
-            <input type="text" id="searchInputMobile" class="search-input" placeholder="Pesquisar jogos mobile...">
+        <h2>Escolha uma categoria de Android</h2>
+        <button id="voltarAndroid" class="modal-back" onclick="voltarAndroid()">Voltar</button>
+        <div class="search-container" id="search-container-android">
+            <input type="text" id="searchInputAndroid" class="search-input" placeholder="Pesquisar programas/sites...">
             <span class="search-icon">&#128269;</span>
         </div>
-        <ul class="modal-list" id="mobile-list">
-            <!-- Exemplo de links, adicione quantos quiser -->
-            <li>
-                <img src="Assets/icon/Categorias/celular.png" class="list-icon" alt="Jogo 1">
-                <a href="https://play.google.com/store/apps/details?id=com.supercell.clashofclans" target="_blank">Clash of Clans</a>
-            </li>
-            <li>
-                <img src="Assets/icon/Categorias/celular.png" class="list-icon" alt="Jogo 2">
-                <a href="https://play.google.com/store/apps/details?id=com.mojang.minecraftpe" target="_blank">Minecraft Mobile</a>
-            </li>
-            <!-- Adicione mais jogos aqui -->
+        <ul class="modal-list" id="android-categorias">
+            <li onclick="showAndroid('apps')"><img src="Assets/banner/p.png.png" alt="Apps" class="list-icon"> Aplicativos</li>
+            <li onclick="showAndroid('jogos')"><img src="Assets/banner/p.png.png" alt="Jogos" class="list-icon"> Jogos</li>
+            <li onclick="showAndroid('sites')"><img src="Assets/banner/p.png.png" alt="Sites" class="list-icon"> Sites úteis</li>
         </ul>
+        <ul class="modal-list" id="android-arquivos" style="display:none;"></ul>
     </div>
 </div>
 
@@ -765,18 +769,18 @@ mostrarAnuncio(anuncioAtual);
 <div id="modalNovidades" class="modal-overlay">
     <div class="modal-card">
         <button class="modal-close" onclick="closeModal('modalNovidades')">&times;</button>
-        <h2>Novidades</h2>
-        <ul class="modal-list" id="novidades-list">
-            <li>
-                <i class="fas fa-star list-icon"></i>
-                Novo jogo mobile adicionado!
-            </li>
-            <li>
-                <i class="fas fa-star list-icon"></i>
-                Atualização visual no site.
-            </li>
-            <!-- Adicione mais novidades aqui -->
+        <h2>Escolha uma categoria de Cursos</h2>
+        <button id="voltarCursos" class="modal-back" onclick="voltarCursos()">Voltar</button>
+        <div class="search-container" id="search-container-cursos">
+            <input type="text" id="searchInputCursos" class="search-input" placeholder="Pesquisar cursos...">
+            <span class="search-icon">&#128269;</span>
+        </div>
+        <ul class="modal-list" id="cursos-categorias">
+            <li onclick="showCursos('programacao')"><img src="Assets/banner/p.png.png" alt="Programação" class="list-icon"> Programação</li>
+            <li onclick="showCursos('seguranca')"><img src="Assets/banner/p.png.png" alt="Segurança" class="list-icon"> Segurança</li>
+            <li onclick="showCursos('design')"><img src="Assets/banner/p.png.png" alt="Design" class="list-icon"> Design</li>
         </ul>
+        <ul class="modal-list" id="cursos-arquivos" style="display:none;"></ul>
     </div>
 </div>
 
@@ -1666,6 +1670,7 @@ mostrarAnuncio(anuncioAtual);
             ],
         };
         
+        
         // ======================================================================
         // FUNÇÕES PRINCIPAIS DE NAVEGAÇÃO E RESET
         // ======================================================================
@@ -1985,6 +1990,7 @@ mostrarAnuncio(anuncioAtual);
                 });
             }
         });
+        
 
         // ======================================================================
         // FUNÇÃO PARA ABRIR PÁGINA DO JOGO
@@ -2521,19 +2527,12 @@ mostrarAnuncio(anuncioAtual);
         padding: 8px 15px; 
         
         font-weight: bold;
-        border-radius: 6px 0 0 6px; 
-        white-space: nowrap; 
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        
-        transform: translateX(100%); 
-        opacity: 0;
-        
-        transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-        z-index: 99; 
-        
-        height: 44px; 
-        display: flex;
-        align-items: center;
+        border-radius: 25px;
+        font-size: 14px;
+        font-weight: 500;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        white-space: nowrap;
+        animation: fadeIn 0.5s ease;
     }
 
     #feedback-widget-container:hover #feedback-text {
@@ -2666,6 +2665,129 @@ document.addEventListener('keydown', function(e) {
 document.getElementById('bot-container').addEventListener('click', function(e) {
     if (e.target.tagName === 'IFRAME') {
         e.stopPropagation();
+    }
+});
+
+// android e cursos cards//
+// Adicione este bloco ao final do seu arquivo, após as funções dos outros modais.
+
+// ===================== MODAL ANDROID =====================
+function voltarAndroid() {
+    document.getElementById("android-categorias").style.display = "block";
+    document.getElementById("android-arquivos").style.display = "none";
+    document.getElementById("voltarAndroid").style.display = "none";
+    document.getElementById("search-container-android").style.display = "none";
+    document.getElementById("searchInputAndroid").value = "";
+    document.querySelector("#modalJogosMobile .modal-card h2").textContent = "Escolha uma categoria de Android";
+}
+
+function showAndroid(cat, termoPesquisa = '') {
+    document.getElementById("android-categorias").style.display = "none";
+    document.getElementById("android-arquivos").style.display = "block";
+    document.getElementById("voltarAndroid").style.display = "inline-block";
+    document.getElementById("search-container-android").style.display = "flex";
+    const titulos = {
+        apps: "Aplicativos Android",
+        jogos: "Jogos Android",
+        sites: "Sites Úteis para Android"
+    };
+    document.querySelector("#modalJogosMobile .modal-card h2").textContent = titulos[cat] || "Android";
+    const ul = document.getElementById("android-arquivos");
+    ul.dataset.categoria = cat;
+    const termo = (termoPesquisa || document.getElementById("searchInputAndroid").value || '').toLowerCase();
+    const dadosAndroid = {
+        apps: [
+            { nome: "App Exemplo", link: "https://play.google.com/", imagem: "Assets/banner/p.png.png" }
+        ],
+        jogos: [
+            { nome: "Jogo Mobile Exemplo", link: "https://play.google.com/", imagem: "Assets/banner/p.png.pngAssets/icon/Categorias/jogos.png" }
+        ],
+        sites: [
+            { nome: "Site Útil Exemplo", link: "https://site.com/", imagem: "Assets/banner/p.png.png" }
+        ]
+    };
+    const filtrados = (dadosAndroid[cat] || []).filter(item => item.nome.toLowerCase().includes(termo));
+    ul.innerHTML = filtrados.length === 0
+        ? `<li style="justify-content:center;">Nenhum resultado para "${termo}"</li>`
+        : '';
+    filtrados.forEach(item => {
+        const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '';
+        ul.innerHTML += `
+            <li>
+                ${imageHtml}
+                <a href="${item.link}" target="_blank">${item.nome}</a>
+            </li>
+        `;
+    });
+}
+
+// ===================== MODAL CURSOS =====================
+function voltarCursos() {
+    document.getElementById("cursos-categorias").style.display = "block";
+    document.getElementById("cursos-arquivos").style.display = "none";
+    document.getElementById("voltarCursos").style.display = "none";
+    document.getElementById("search-container-cursos").style.display = "none";
+    document.getElementById("searchInputCursos").value = "";
+    document.querySelector("#modalNovidades .modal-card h2").textContent = "Escolha uma categoria de Cursos";
+}
+
+function showCursos(cat, termoPesquisa = '') {
+    document.getElementById("cursos-categorias").style.display = "none";
+    document.getElementById("cursos-arquivos").style.display = "block";
+    document.getElementById("voltarCursos").style.display = "inline-block";
+    document.getElementById("search-container-cursos").style.display = "flex";
+    const titulos = {
+        programacao: "Cursos de Programação",
+        seguranca: "Cursos de Segurança",
+        design: "Cursos de Design"
+    };
+    document.querySelector("#modalNovidades .modal-card h2").textContent = titulos[cat] || "Cursos";
+    const ul = document.getElementById("cursos-arquivos");
+    ul.dataset.categoria = cat;
+    const termo = (termoPesquisa || document.getElementById("searchInputCursos").value || '').toLowerCase();
+    const dadosCursos = {
+        programacao: [
+            { nome: "Curso JavaScript", link: "https://curso.com/", imagem: "Assets/banner/p.png.png" }
+        ],
+        seguranca: [
+            { nome: "Curso Segurança", link: "https://curso.com/", imagem: "Assets/banner/p.png.png" }
+        ],
+        design: [
+            { nome: "Curso Design", link: "https://curso.com/", imagem: "Assets/banner/p.png.png" }
+        ]
+    };
+    const filtrados = (dadosCursos[cat] || []).filter(item => item.nome.toLowerCase().includes(termo));
+    ul.innerHTML = filtrados.length === 0
+        ? `<li style="justify-content:center;">Nenhum resultado para "${termo}"</li>`
+        : '';
+    filtrados.forEach(item => {
+        const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '';
+        ul.innerHTML += `
+            <li>
+                ${imageHtml}
+                <a href="${item.link}" target="_blank">${item.nome}</a>
+            </li>
+        `;
+    });
+}
+
+// ===================== EVENTOS DE PESQUISA =====================
+document.addEventListener('DOMContentLoaded', function () {
+    const searchInputAndroid = document.getElementById("searchInputAndroid");
+    if (searchInputAndroid) {
+        searchInputAndroid.addEventListener("keyup", function () {
+            const ul = document.getElementById("android-arquivos");
+            const cat = ul.dataset.categoria;
+            if (cat) showAndroid(cat, this.value);
+        });
+    }
+    const searchInputCursos = document.getElementById("searchInputCursos");
+    if (searchInputCursos) {
+        searchInputCursos.addEventListener("keyup", function () {
+            const ul = document.getElementById("cursos-arquivos");
+            const cat = ul.dataset.categoria;
+            if (cat) showCursos(cat, this.value);
+        });
     }
 });
 </script>
