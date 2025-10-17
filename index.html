@@ -482,47 +482,42 @@
 <!-- Substitua o bloco do anúncio rotativo por este novo bloco para exibir os cards ao lado do anúncio -->
 
 <div style="width:100%; display:flex; justify-content:center; align-items:center; gap:32px; margin:24px 0;">
-    <!-- Card Jogos Mobile no canto esquerdo -->
-    <div class="category-card electric-border" style="max-width:320px; margin-left:0;">
-        <div style="display:flex; align-items:center; gap:18px;">
+    <div class="category-card" style="max-width:320px; margin-left:0; border: 1px solid #333; box-shadow: 0 0 10px #333; cursor: not-allowed;">
+        <div style="display:flex; align-items:center; gap:18px; opacity: 0.5;">
             <div class="category-icon">
                 <img src="Assets/icon/Categorias/Android.png" alt="Jogos Mobile" style="height:70px; width:70px; object-fit:contain;">
             </div>
             <div>
                 <h3>Android</h3>
                 <p>Tudo sobre Android.</p>
-                <button onclick="openModal('modalJogosMobile')" class="btn" style="background:#00ff00;color:#000;font-weight:bold;">
-                   Ver Android
+                <button class="btn" style="background:#555;color:#000;font-weight:bold; cursor: not-allowed;">
+                    Inativo
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Anúncio rotativo centralizado -->
     <div id="anuncio-rotativo" style="flex:1; max-width:400px; display:flex; flex-direction:column; align-items:center;">
         <button id="anuncio-prev" style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin-right:12px;">&#8592;</button>
         <div id="anuncio-slide" style="width:320px; height:220px; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; border-radius:16px; box-shadow:0 0 24px #00ff00; background:#000;">
-            <!-- Imagem e nome do anúncio serão inseridos via JS -->
-        </div>
+            </div>
         <button id="anuncio-next" style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin-left:12px;">&#8594;</button>
     </div>
 
-    <!-- Card Novidades no canto direito -->
-    <!-- Substitua o card Novidades por este bloco para alinhar o ícone à esquerda, igual ao Jogos Mobile: -->
-<div class="category-card electric-border" style="max-width:320px; margin-right:0;">
-    <div style="display:flex; align-items:center; gap:18px;">
-        <div class="category-icon">
-            <img src="Assets/icon/Categorias/Cursos.png" alt="Novidades" style="height:70px; width:70px; object-fit:contain;">
-        </div>
-        <div>
-            <h3>Cursos</h3>
-            <p>Confira os melhores cursos.</p>
-            <button onclick="openModal('modalNovidades')" class="btn" style="background:#00ff00;color:#000;font-weight:bold;">
-                Ver Cursos
-            </button>
+    <div class="category-card" style="max-width:320px; margin-right:0; border: 1px solid #333; box-shadow: 0 0 10px #333; cursor: not-allowed;">
+        <div style="display:flex; align-items:center; gap:18px; opacity: 0.5;">
+            <div class="category-icon">
+                <img src="Assets/icon/Categorias/Cursos.png" alt="Novidades" style="height:70px; width:70px; object-fit:contain;">
+            </div>
+            <div>
+                <h3>Cursos</h3>
+                <p>Confira os melhores cursos.</p>
+                <button class="btn" style="background:#555;color:#000;font-weight:bold; cursor: not-allowed;">
+                    Inativo
+                </button>
+            </div>
         </div>
     </div>
-</div>
 </div>
 <!-- ...existing code... -->
         <!-- ANÚNCIO ROTATIVO -->
@@ -740,7 +735,9 @@ mostrarAnuncio(anuncioAtual);
                 <li onclick="showSites('Editores')"><img src="Assets/icon/Categorias 2/Sites/Perfil/5.png"
                         alt="Editores" class="list-icon">Editorees</li>
                 <li onclick="showSites('Dark_Web')"><img src="Assets/icon/Categorias 2/Sites/Perfil/6.png"
-                        alt="Editores" class="list-icon">Dark Web.onion</li>        
+                        alt="Editores" class="list-icon">Dark Web.onion</li>
+                <li onclick="showSites('Esporte_e_Tv_aberta')"><img src="Assets/icon/Categorias 2/Sites/tv aberta/1.png"
+                        alt="Editores" class="list-icon">Esporte e Tv aberta</li>        
             </ul>
             <ul class="modal-list" id="Sites-arquivos" style="display:none;">Sites</ul>
         </div>
@@ -1640,16 +1637,7 @@ mostrarAnuncio(anuncioAtual);
                     link: "https://text-behind-image.com/",
                     imagem: "Assets/icon/categorias 2/Sites/Editores de Imagens/1.png"
                 },
-                {
-                    nome: "",
-                    link: "",
-                    imagem: "Assets/icon/categorias 2/Sites/Editores de Imagens/2.png"
-                },
-                {
-                    nome: "",
-                    link: "",
-                    imagem: "Assets/icon/categorias 2/Sites/Editores de Imagens/3.png"
-                }
+
             ],
             Dark_Web: [
                 {
@@ -1657,17 +1645,23 @@ mostrarAnuncio(anuncioAtual);
                     link: "http://xmh57jrknzkhv6y3ls3ubitzfqnkrwxhopf5aygthi7d6rplyvk3noyd.onion/",
                     imagem: "Assets/icon/categorias 2/Sites/Dark/1.png"
                 },
+
+            ],
+        
+            Esporte_e_Tv_aberta: [
                 {
-                    nome: "",
-                    link: "",
-                    imagem: "Assets/icon/categorias 2/Sites/Dark/2.png"
+                    nome: "Esporte (PLAY HD)",
+                    link: "https://www.futplayhd.com.br/",
+                    imagem: "Assets/icon/Categorias 2/Sites/tv aberta/PLAY HD).png"
                 },
                 {
-                    nome: "",
-                    link: "",
-                    imagem: "Assets/icon/categorias 2/Sites/Dark/3.png"
-                }
-            ],
+                    nome: "tv aberta ",
+                    link: "https://televisao.tv/sbt",
+                    imagem: "Assets/icon/Categorias 2/Sites/tv aberta/tv aberta.png"
+                },
+              
+            ]
+
         };
         
         
