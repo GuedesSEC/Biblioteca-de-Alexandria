@@ -1025,6 +1025,10 @@ mostrarAnuncio(anuncioAtual);
                     "linkJogo": "https://seulink.net/tTCbgtT",
                     "linkJogo2": "https://seulink.net/tTCbgtT",
                     "linkDublagem": "https://fir3.net/xRl9USZhi",
+                    videosDemo: [
+                        "https://www.youtube.com/embed/0Kx4YtZkq1g",
+                        "https://www.youtube.com/embed/0Kx4YtZkq1g"
+                    ],
                     // "linkcrack": "https://exemplo.com/dublagem-miles-morales",
                     //"linksExtras": [],
                     //"linksExtras": [],
@@ -2293,7 +2297,7 @@ mostrarAnuncio(anuncioAtual);
                             <img src="${jogo.imagem}" alt="${jogo.nome}" style="width: 100%; height: auto; display: block;">
                         </div>
 
-                        ${jogo.imagensDemo && jogo.imagensDemo.length > 0 ? `
+    ${jogo.imagensDemo && jogo.imagensDemo.length > 0 ? `
     <div class="demo-images" style="
         width: 100%;
         max-width: 900px;
@@ -2309,10 +2313,39 @@ mostrarAnuncio(anuncioAtual);
                 height: 160px;
                 object-fit: cover;
                 border-radius: 16px;
-                box-shadow: 0 0 18px #00ff00;
+                box-shadow: 0 0 18px #ff0000; /* ALTERADO PARA VERMELHO */
                 background: #111;
                 margin-bottom: 12px;
             ">
+        `).join('')}
+    </div>
+` : ''}
+${jogo.videosDemo && jogo.videosDemo.length > 0 ? `
+    <div class="demo-videos" style="
+        width: 100%;
+        max-width: 900px;
+        margin: 32px auto 0 auto;
+        display: flex;
+        gap: 24px;
+        justify-content: center;
+        flex-wrap: wrap;
+    ">
+        ${jogo.videosDemo.map(videoUrl => `
+            <iframe
+                src="${videoUrl}"
+                title="Vídeo Demo ${jogo.nome}"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                style="
+                    width: 260px;
+                    height: 160px;
+                    border-radius: 16px;
+                    box-shadow: 0 0 18px #ff0000; /* ALTERADO PARA VERMELHO */
+                    background: #111;
+                    margin-bottom: 12px;
+                "
+            ></iframe>
         `).join('')}
     </div>
 ` : ''}
@@ -2389,6 +2422,7 @@ mostrarAnuncio(anuncioAtual);
             // Adicionar a página ao body
             document.body.insertAdjacentHTML('beforeend', gamePageHTML);
         }
+        
 
         // ======================================================================
         // FUNÇÃO PARA PROCESSAR REQUISITOS EM HTML
