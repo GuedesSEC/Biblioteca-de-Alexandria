@@ -516,13 +516,12 @@ img[alt="Soldado 1"], img[alt="Soldado 2"], img[alt="Soldado 3"] {
 
 
 /* Responsivo para celular, sem alterar o estilo do PC */
-/* Responsivo para celular, sem alterar o estilo do PC */
 @media (max-width: 700px) {
     /* ---------------------------------------------------- */
     /* ORGANIZAÇÃO GERAL E CONTEÚDO MENOR */
     /* ---------------------------------------------------- */
     .container, .main-content {
-        /* Aumenta o padding lateral para 8px para um pequeno respiro */
+        /* Adiciona um pequeno respiro nas laterais */
         padding: 0 8px !important; 
     }
 
@@ -532,82 +531,131 @@ img[alt="Soldado 1"], img[alt="Soldado 2"], img[alt="Soldado 3"] {
     }
     
     /* ---------------------------------------------------- */
-    /* LAYOUT DOS CARDS (MENOR E LADO A LADO) */
+    /* CORREÇÃO DA ÁREA DE DESTAQUE SUPERIOR (Android, Spider-Man 2, Cursos) */
+    /* ---------------------------------------------------- */
+    /* Assume que .main-cards é o contêiner dos 3 cards de destaque */
+    .main-cards { 
+        display: flex !important;
+        flex-direction: column !important; /* Empilha os 3 itens na vertical */
+        align-items: center !important;
+        width: 100%;
+        gap: 20px !important; /* Espaçamento entre os cards empilhados */
+        margin-bottom: 20px;
+    }
+    
+    /* Ajusta o tamanho dos cards de destaque para ocupar a largura da tela */
+    .card-destaque, .card-android, .card-cursos {
+        width: 90% !important; /* Ocupa 90% da largura do celular */
+        max-width: 350px !important;
+        margin: 0 auto 10px auto !important;
+        /* Adicione padding interno se precisar ajustar o conteúdo */
+        padding: 15px !important;
+    }
+
+    /* ---------------------------------------------------- */
+    /* LAYOUT DOS CARDS INFERIORES (Isos, Livros, Torrent) */
     /* ---------------------------------------------------- */
     .categories {
-        gap: 8px !important; /* Reduz o espaço entre os cards */
-        
-        /* Reduz o minmax para 130px. Garante que mais cards caibam na tela (visual de PC/pequeno) */
+        gap: 8px !important;
+        /* Garante que os cards fiquem lado a lado (2-3 por linha) */
         grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)) !important;
-        align-items: stretch !important; 
-        margin-top: 20px !important; /* Reduz o espaço acima dos cards */
+        align-items: stretch !important;
+        margin-top: 20px !important;
     }
     
     .category-card, .test-card {
-        /* Reduz o padding interno para torná-lo menor */
+        /* Reduz o padding para compactar o card */
         padding: 10px !important;
         margin: 0 !important;
         max-width: 100% !important; 
         width: 100% !important;
-        align-items: flex-start; 
+        align-items: flex-start; /* Alinha conteúdo à esquerda */
         text-align: left;
     }
 
     /* Ajustes menores para elementos internos */
     .category-card h3 {
-        font-size: 14px; /* Título menor */
+        font-size: 14px;
         margin-bottom: 4px;
     }
 
     .category-card p {
-        font-size: 11px; /* Texto ainda menor para caber */
+        font-size: 11px;
         margin-bottom: 8px;
     }
     
     /* ---------------------------------------------------- */
-    /* CORREÇÃO: ÍCONES E IMAGENS (PARA NÃO FICAR 'ZOADO') */
+    /* CORREÇÃO: ÍCONES E IMAGENS (Para manter a proporção) */
     /* ---------------------------------------------------- */
     
-    /* Contêiner de Imagem/Ícone: Define um quadrado pequeno e centralizado */
     .category-icon, .test-img-wrap {
-        width: 48px !important; /* Reduz o tamanho do contêiner do ícone */
+        width: 48px !important;
         height: 48px !important;
         min-width: 48px !important;
         min-height: 48px !important;
         margin-bottom: 6px !important;
-        display: flex !important; /* Garante que a imagem dentro seja centralizada */
+        display: flex !important; 
         justify-content: center !important;
         align-items: center !important;
     }
     
-    /* A IMAGEM DENTRO DO CONTÊINER: ESSA É A PARTE CRÍTICA */
+    /* A regra mais importante para não distorcer o ícone */
     .category-icon img, .test-img-wrap img { 
-        /* Permite que a imagem escale proporcionalmente */
         height: auto !important; 
         max-width: 100% !important; 
-        
-        /* Impede qualquer distorção */
         object-fit: contain !important; 
-        
-        /* Anula regras fixas que estavam causando o problema */
         width: auto !important;
     }
     
-    /* Se os ícones forem SVGs ou Fontes (<i>, span) */
     .category-icon i {
-        font-size: 28px !important; /* Tamanho de fonte menor para ícones */
+        font-size: 28px !important;
     }
 
     /* ---------------------------------------------------- */
     /* BOTÕES */
     /* ---------------------------------------------------- */
     .btn, .test-btn {
-        font-size: 0.75em !important; /* Fonte do botão menor */
-        padding: 5px 0 !important; /* Padding ainda mais reduzido */
+        font-size: 0.75em !important; 
+        padding: 5px 0 !important; 
         margin-top: 6px !important; 
         width: 100% !important; 
     }
-    /* O restante do seu CSS responsivo pode ser mantido. */
+
+    /* ---------------------------------------------------- */
+    /* CORREÇÃO DO RODAPÉ (FOOTER) */
+    /* ---------------------------------------------------- */
+    
+    footer {
+        width: 100vw;
+    }
+    
+    .footer-content {
+        flex-direction: column !important; 
+        gap: 10px !important; 
+        align-items: flex-start !important; 
+        padding: 15px 8px !important; 
+    }
+
+    .quick-links ul {
+        display: flex;
+        flex-direction: row !important; 
+        flex-wrap: wrap; /* Permite quebra para telas muito pequenas */
+        justify-content: flex-start; 
+        padding-left: 0;
+    }
+    
+    .quick-links ul li {
+        margin-left: 0 !important;
+        margin-right: 15px !important;
+        margin-bottom: 5px !important;
+    }
+    
+    .footer-text {
+        font-size: 11px !important;
+        white-space: pre-line !important; 
+        align-self: flex-start; 
+        margin-left: 0 !important;
+    }
 }
 
 /* ---------------------------------------------------- */
