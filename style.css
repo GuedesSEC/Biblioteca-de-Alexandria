@@ -513,143 +513,101 @@ img[alt="Soldado 1"], img[alt="Soldado 2"], img[alt="Soldado 3"] {
 
 /* Responsive Styles */
 /* Estilos aplicados quando a largura da tela é no máximo 768px (telas de tablet e celular). */
-@media (max-width: 768px) {
-    /* Altera o layout do cabeçalho em telas menores. */
-    .header-content {
-        /* Os itens ficam empilhados verticalmente. */
-        flex-direction: column;
-        /* Centraliza o texto. */
-        text-align: center;
-    }
-    
-    /* Adiciona margem abaixo do logo. */
-    .logo {
-        margin-bottom: 15px;
-    }
-    
-    /* Centraliza a lista de navegação. */
-    nav ul {
-        justify-content: center;
-    }
-    
-    /* Reduz o espaçamento entre os links de navegação. */
-    nav ul li {
-        margin: 0 10px;
-    }
-    
-    /* Altera o layout do rodapé em telas menores. */
-    .footer-content {
-        /* Os itens ficam empilhados verticalmente. */
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    /* Adiciona margem abaixo do logo do rodapé. */
-    .footer-logo {
-        margin-bottom: 20px;
-    }
-    
-    /* Centraliza os links rápidos. */
-    .quick-links ul {
-        justify-content: center;
-    }
-    
-}
+
 
 /* Responsivo para celular, sem alterar o estilo do PC */
+/* Responsivo para celular, sem alterar o estilo do PC */
 @media (max-width: 700px) {
+    /* ---------------------------------------------------- */
+    /* ORGANIZAÇÃO GERAL E CONTEÚDO MENOR */
+    /* ---------------------------------------------------- */
     .container, .main-content {
-        padding: 0 4px !important;
+        /* Aumenta o padding lateral para 8px para um pequeno respiro */
+        padding: 0 8px !important; 
     }
+
+    /* Reduz o espaçamento do cabeçalho e rodapé */
     .header-content, .footer-content {
-        flex-direction: column !important;
-        gap: 18px !important;
-        align-items: center !important;
+        gap: 12px !important; 
     }
-    .logo img {
-        max-width: 90vw !important;
-        height: auto !important;
-    }
+    
+    /* ---------------------------------------------------- */
+    /* LAYOUT DOS CARDS (MENOR E LADO A LADO) */
+    /* ---------------------------------------------------- */
     .categories {
-        flex-direction: column !important;
-        gap: 12px !important;
+        gap: 8px !important; /* Reduz o espaço entre os cards */
+        
+        /* Reduz o minmax para 130px. Garante que mais cards caibam na tela (visual de PC/pequeno) */
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)) !important;
+        align-items: stretch !important; 
+        margin-top: 20px !important; /* Reduz o espaço acima dos cards */
+    }
+    
+    .category-card, .test-card {
+        /* Reduz o padding interno para torná-lo menor */
+        padding: 10px !important;
+        margin: 0 !important;
+        max-width: 100% !important; 
+        width: 100% !important;
+        align-items: flex-start; 
+        text-align: left;
+    }
+
+    /* Ajustes menores para elementos internos */
+    .category-card h3 {
+        font-size: 14px; /* Título menor */
+        margin-bottom: 4px;
+    }
+
+    .category-card p {
+        font-size: 11px; /* Texto ainda menor para caber */
+        margin-bottom: 8px;
+    }
+    
+    /* ---------------------------------------------------- */
+    /* CORREÇÃO: ÍCONES E IMAGENS (PARA NÃO FICAR 'ZOADO') */
+    /* ---------------------------------------------------- */
+    
+    /* Contêiner de Imagem/Ícone: Define um quadrado pequeno e centralizado */
+    .category-icon, .test-img-wrap {
+        width: 48px !important; /* Reduz o tamanho do contêiner do ícone */
+        height: 48px !important;
+        min-width: 48px !important;
+        min-height: 48px !important;
+        margin-bottom: 6px !important;
+        display: flex !important; /* Garante que a imagem dentro seja centralizada */
+        justify-content: center !important;
         align-items: center !important;
     }
-    .category-card, .test-card {
-        max-width: 98vw !important;
-        margin: 0 auto 18px auto !important;
-        padding: 12px 6px !important;
+    
+    /* A IMAGEM DENTRO DO CONTÊINER: ESSA É A PARTE CRÍTICA */
+    .category-icon img, .test-img-wrap img { 
+        /* Permite que a imagem escale proporcionalmente */
+        height: auto !important; 
+        max-width: 100% !important; 
+        
+        /* Impede qualquer distorção */
+        object-fit: contain !important; 
+        
+        /* Anula regras fixas que estavam causando o problema */
+        width: auto !important;
     }
-    .category-icon img, .test-img-wrap {
-        height: 60px !important;
-        width: 60px !important;
-        min-width: 60px !important;
-        min-height: 60px !important;
+    
+    /* Se os ícones forem SVGs ou Fontes (<i>, span) */
+    .category-icon i {
+        font-size: 28px !important; /* Tamanho de fonte menor para ícones */
     }
-    .test-img-wrap {
-        width: 100px !important;
-        height: 100px !important;
-    }
-    .test-img {
-        width: 100% !important;
-        height: 100% !important;
-    }
+
+    /* ---------------------------------------------------- */
+    /* BOTÕES */
+    /* ---------------------------------------------------- */
     .btn, .test-btn {
-        font-size: 1em !important;
-        padding: 10px 0 !important;
-        width: 100% !important;
-        margin-top: 8px !important;
+        font-size: 0.75em !important; /* Fonte do botão menor */
+        padding: 5px 0 !important; /* Padding ainda mais reduzido */
+        margin-top: 6px !important; 
+        width: 100% !important; 
     }
-    #anuncio-rotativo {
-        flex-direction: column !important;
-        max-width: 98vw !important;
-        margin: 18px auto !important;
-    }
-    #anuncio-slide {
-        max-width: 98vw !important;
-        height: 140px !important;
-    }
-    .modal-card {
-        min-width: 98vw !important;
-        max-width: 99vw !important;
-        padding: 10px 2px !important;
-    }
-    .modal-list {
-        max-height: 220px !important;
-        font-size: 0.95em !important;
-    }
-    .footer-logo img {
-        height: 48px !important;
-        margin-right: 6px !important;
-    }
-    .footer-text p {
-        font-size: 0.95em !important;
-    }
-    #matrix-canvas {
-        width: 100vw !important;
-        height: 100vh !important;
-    }
-    #feedback-widget-container {
-        right: 10px !important;
-        bottom: 10px !important;
-        flex-direction: column !important;
-        gap: 8px !important;
-    }
-    #feedback-text {
-        right: 0 !important;
-        top: -50px !important;
-        font-size: 0.95em !important;
-        padding: 6px 10px !important;
-    }
-    #chat-button {
-        width: 48px !important;
-        height: 48px !important;
-        font-size: 22px !important;
-    }
-    #bot-container iframe {
-        width: 98vw !important;
-        height: 90vh !important;
-    }
+    /* O restante do seu CSS responsivo pode ser mantido. */
 }
 
 /* ---------------------------------------------------- */
