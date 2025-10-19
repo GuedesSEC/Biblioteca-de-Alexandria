@@ -29,422 +29,11 @@
         gtag('config', 'GA_MEASUREMENT_ID');
     </script>
 
-    <style>
-        /* Botão flutuante */
-#chat-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: linear-gradient(135deg, #00bcd4, #0066ff);
-  color: #fff;
-  border-radius: 50%;
-  width: 65px;
-  height: 65px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  z-index: 10000;
-}
-
-#chat-button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-}
-
-/* Container do bot */
-#bot-container {
-  position: fixed;
-  bottom: 100px;
-  right: 20px;
-  width: 350px;
-  height: 500px;
-  display: none;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-  border-radius: 15px;
-  overflow: hidden;
-  background: #fff;
-  z-index: 9999;
-  animation: fadeIn 0.3s ease;
-}
-
-#bot-container.active {
-  display: block;
-}
-
-/* Animação de abertura */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-#bot-container iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-        /* ===================== MODAL OVERLAY ===================== */
-        /* Fundo escuro transparente que cobre a tela inteira */
-        .modal-overlay {
-            display: none;
-            /* invisível por padrão */
-            position: fixed;
-            /* fixa na tela */
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.7);
-            /* fundo preto semi-transparente */
-            z-index: 999;
-            /* acima de outros elementos */
-            justify-content: center;
-            /* centraliza horizontalmente */
-            align-items: center;
-            /* centraliza verticalmente */
-        }
-
-        /* Quando ativo, mostra o modal */
-        .modal-overlay.active {
-            display: flex;
-        }
-
-        /* ===================== MODAL CARD ===================== */
-        /* Cartão branco que aparece dentro do modal */
-        .modal-card {
-            background: #000000;
-            border-radius: 18px;
-            /* cantos arredondados */
-            box-shadow: 0 8px 32px rgba(255, 255, 255, 0.932);
-            /* sombra suave */
-            padding: 32px 24px;
-            /* espaço interno */
-            min-width: 320px;
-            /* largura mínima */
-            max-width: 90vw;
-            /* largura máxima responsiva */
-            animation: modalFadeIn 0.3s;
-            /* animação de entrada */
-            position: relative;
-            /* permite posicionar botões internos */
-        }
-
-        /* Animação de entrada do modal */
-        @keyframes modalFadeIn {
-            from {
-                transform: translateY(40px);
-                /* começa mais baixo */
-                opacity: 0;
-                /* invisível */
-            }
-
-            to {
-                transform: translateY(0);
-                /* sobe para posição final */
-                opacity: 1;
-                /* fica visível */
-            }
-        }
-
-        /* ===================== TÍTULO DO MODAL ===================== */
-        .modal-card h2 {
-            margin-bottom: 18px;
-            /* espaço abaixo do título */
-            color: #ffffff;
-            /* cor do texto */
-            font-size: 1.5em;
-            /* tamanho da fonte */
-        }
-
-        /* ===================== LISTA NO MODAL ===================== */
-        .modal-list .list-icon {
-            width: 70px;
-            /* tamanho do ícone */
-            height: 70px;
-            margin-right: 12px;
-            /* espaço entre ícone e texto */
-            object-fit: cover;
-            /* ajusta a imagem sem distorcer */
-            border-radius: 100%;
-            /* deixa circular */
-        }
-
-        .modal-list li {
-            background: #181818;
-            /* fundo escuro */
-            color: #ffffff;
-            /* texto verde */
-            font-weight: bold;
-            /* negrito */
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            /* fonte monoespaçada */
-            margin-bottom: 10px;
-            /* espaço entre itens */
-            padding: 10px 16px;
-            /* espaçamento interno */
-            border-radius: 10px;
-            /* cantos arredondados */
-            box-shadow: 0 2px 8px #ffffffea;
-            /* sombra leve */
-            display: flex;
-            /* alinha ícone e texto */
-            align-items: center;
-            /* centraliza verticalmente */
-            transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
-            /* animações suaves */
-            cursor: pointer;
-            /* cursor de clique */
-            border: 1px solid #00ff00;
-            /* borda verde */
-        }
-
-        /* Efeito ao passar o mouse sobre o item */
-        .modal-list li:hover {
-            background: #190eaf;
-            /* fundo mais escuro */
-            box-shadow: 0 4px 16px #ffffff;
-            /* sombra maior */
-            transform: scale(1.03);
-            /* leve zoom */
-        }
-
-        /* ===================== ÍCONES E LINKS ===================== */
-        .modal-list i {
-            margin-right: 12px;
-            color: #00ff00;
-            font-size: 1.3em;
-            transition: color 0.2s;
-            /* muda suavemente a cor */
-        }
-
-        .modal-list a {
-            color: #00ff00;
-            /* cor do link */
-            text-decoration: none;
-            /* remove sublinhado */
-            font-weight: 500;
-            font-size: 1em;
-            transition: text-shadow 0.2s;
-        }
-
-        .modal-list a:hover {
-            text-shadow: 0 0 8px #00ff00;
-            /* efeito de brilho */
-        }
-
-        /* ===================== BOTÃO FECHAR MODAL ===================== */
-        .modal-close {
-            position: absolute;
-            top: 12px;
-            right: 16px;
-            background: none;
-            border: none;
-            font-size: 1.4em;
-            color: #888;
-            /* cinza claro */
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .modal-close:hover {
-            color: #007bff;
-            /* azul quando passa o mouse */
-        }
-
-        /* ===================== BOTÕES E ÍCONES DE CATEGORIA ===================== */
-        .category-icon i {
-            font-size: 50px;
-        }
-
-        .modal-back {
-            background: #007bff;
-            color: #fff;
-            border: none;
-            padding: 8px 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-bottom: 10px;
-            display: none;
-            /* só aparece quando ativado via JS */
-        }
-
-        /* ===================== BORDAS ELÉTRICAS ===================== */
-        .electric-border {
-            border: 2px solid #00ff00 !important;
-            /* força a borda verde */
-            border-radius: 16px;
-            box-shadow: none !important;
-            /* remove sombras existentes */
-        }
-
-        /* ===================== LIST ICON PEQUENO ===================== */
-        .list-icon {
-            width: 24px;
-            height: 24px;
-            margin-right: 12px;
-            object-fit: contain;
-            /* ajusta a imagem sem cortar */
-        }
-
-        /* ===================== ANIMAÇÃO DE DIGITAÇÃO ===================== */
-        @keyframes typing {
-            from {
-                width: 0;
-            }
-
-            to {
-                width: 100%;
-            }
-        }
-
-        @keyframes blink-caret {
-
-            from,
-            to {
-                border-color: transparent;
-            }
-        }
-
-        /* ===================== MENSAGEM COM FADE ===================== */
-        .fade-in-msg {
-            opacity: 0;
-            /* invisível inicialmente */
-            animation: fadeInMsg 1.2s forwards;
-            /* animação para aparecer */
-        }
-
-        @keyframes fadeInMsg {
-            to {
-                opacity: 1;
-            }
-
-            /* termina visível */
-        }
-
-        /* ===================== FUNDO DO TEST CARD DE T.I E FISCAL ===================== */
-        .test-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.85);
-            border-radius: 18px;
-            box-shadow: 0 4px 24px #36068533;
-            padding: 18px 24px 24px 24px;
-            margin-bottom: 12px;
-            transition: box-shadow 0.3s, transform 0.2s;
-            /* }
-
-        .test-card:hover {
-            box-shadow: 0 8px 32px #00ff00, 0 0 32px #00ff0044;
-            /* sombra verde intensa */
-            transform: translateY(-4px) scale(1.04);
-            /* leve elevação e zoom */
-        }
-
-        /*
-
-        /* ===================== BOTÃO TESTE DE TI E FICAL ===================== */
-        .test-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #0baa0b;
-            color: #181818;
-            font-weight: bold;
-            font-size: 1.1em;
-            border-radius: 12px;
-            padding: 10px 28px;
-            margin-bottom: 18px;
-            text-decoration: none;
-            box-shadow: 0 2px 8px #00ff0044;
-            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-        }
-
-        .test-btn:hover {
-            background: #00cc00;
-            /* verde mais escuro */
-            color: #fff;
-            box-shadow: 0 4px 16px #00ff00;
-            /* sombra mais intensa */
-        }
-
-        .test-btn i {
-            margin-right: 8px;
-            font-size: 1.2em;
-        }
-
-        /* ===================== IMAGEM DO TEST CARD ===================== */
-        .test-img-wrap {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            /* círculo */
-            overflow: hidden;
-            box-shadow: 0 0 24px #00ff00;
-            background: #111;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 0;
-        }
-
-        .test-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 3px solid #00ff00;
-            transition: transform 0.3s;
-        }
-
-        .test-card:hover .test-img {
-            transform: scale(1.07) rotate(-2deg);
-            /* zoom + leve rotação */
-        }
-
-        /* ===================== BARRA DE PESQUISA ===================== */
-        .search-container {
-            display: none;
-            /* invisível inicialmente */
-            align-items: center;
-            border: 1px solid #00ff00;
-            border-radius: 20px;
-            padding: 5px 15px;
-            margin-bottom: 20px;
-            background: #222;
-            /* fundo escuro */
-        }
-
-        .search-input {
-            border: none;
-            background: transparent;
-            outline: none;
-            /* remove contorno */
-            flex-grow: 1;
-            /* ocupa espaço restante */
-            font-size: 1em;
-            color: #00ff00;
-        }
-
-        .search-input::placeholder {
-            color: #666;
-            /* cor do placeholder */
-        }
-
-        .search-icon {
-            margin-left: 10px;
-            color: #00ff00;
-        }
-    </style>
-
 </head>
 
 <body>
-    <canvas id="matrix-canvas" style="position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:-1;"></canvas>
+    <body style="background-color: #000000; color: #ffffff;">
+    </body>
 
     <header>
         <div class="container header-content">
@@ -473,128 +62,142 @@
     <main class="container main-content">
         <section class="welcome-section">
             <h1 class="typing-effect" style="text-align:center;">Bem vindo à Biblioteca de Alexandria</h1>
-            <p class="fade-in-msg" style="animation-delay:2.3s; text-align:center;">Este é o seu centro de armazenamento pessoal para ISOs,
+            <p class="fade-in-msg" style="animation-delay:2.3s; text-align:center;">Este é o seu centro de armazenamento
+                pessoal para ISOs,
                 livros, códigos e links para jogos.</p>
-            <p class="fade-in-msg" style="animation-delay:3.1s; text-align:center;">Organize e acesse esses recursos de forma segura e
+            <p class="fade-in-msg" style="animation-delay:3.1s; text-align:center;">Organize e acesse esses recursos de
+                forma segura e
                 eficiente.</p>
         </section>
         <!-- ...existing code... -->
-<!-- Substitua o bloco do anúncio rotativo por este novo bloco para exibir os cards ao lado do anúncio -->
-
+        <!-- Substitua o bloco do anúncio rotativo por este novo bloco para exibir os cards ao lado do anúncio -->
 <div style="width:100%; display:flex; justify-content:center; align-items:center; gap:32px; margin:24px 0;">
-    <div class="category-card" style="max-width:320px; margin-left:0; border: 1px solid #333; box-shadow: 0 0 10px #333; cursor: not-allowed;">
-        <div style="display:flex; align-items:center; gap:18px; opacity: 0.5;">
+    
+    <div
+        style="max-width:320px; margin-left:0; border: 1px solid #333; box-shadow: 0 0 10px #333; cursor: not-allowed; display: block;">
+        <div style="display:flex; align-items:center; gap:18px; opacity: 0.5; padding: 15px;">
             <div class="category-icon">
-                <img src="Assets/icon/Categorias/Android.png" alt="Jogos Mobile" style="height:70px; width:70px; object-fit:contain;">
+                <img src="Assets/icon/Categorias/Android.png" alt="Jogos Mobile"
+                    style="height:70px; width:70px; object-fit:contain;">
             </div>
             <div>
                 <h3>Android</h3>
                 <p>Tudo sobre Android.</p>
-                <button class="btn" style="background:#555;color:#000;font-weight:bold; cursor: not-allowed;">
+                <div style="background:#555; color:#000; font-weight:bold; padding: 5px 10px; margin-top: 10px; border-radius: 4px; text-align: center; width: 80px;">
                     Inativo
-                </button>
+                </div>
             </div>
         </div>
     </div>
 
-    <div id="anuncio-rotativo" style="flex:1; max-width:400px; display:flex; flex-direction:column; align-items:center;">
-        <button id="anuncio-prev" style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin-right:12px;">&#8592;</button>
-        <div id="anuncio-slide" style="width:320px; height:220px; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; border-radius:16px; box-shadow:0 0 24px #00ff00; background:#000;">
-            </div>
-        <button id="anuncio-next" style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin-left:12px;">&#8594;</button>
+    <div id="anuncio-rotativo"
+        style="flex:1; max-width:400px; display:flex; flex-direction:column; align-items:center;">
+        <button id="anuncio-prev"
+            style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin-right:12px;">&#8592;</button>
+        <div id="anuncio-slide"
+            style="width:320px; height:220px; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; border-radius:16px; box-shadow:0 0 24px #00ff00; background:#000;">
+        </div>
+        <button id="anuncio-next"
+            style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin-left:12px;">&#8594;</button>
     </div>
 
-    <div class="category-card" style="max-width:320px; margin-right:0; border: 1px solid #333; box-shadow: 0 0 10px #333; cursor: not-allowed;">
-        <div style="display:flex; align-items:center; gap:18px; opacity: 0.5;">
+    <a href="#" onclick="openModal('modalNovidades'); voltarCursos(); return false;"
+        style="max-width:320px; margin-right:0; border: 1px solid #333; box-shadow: 0 0 10px #333; cursor: pointer; text-decoration: none; color: inherit; display: block;">
+        <div style="display:flex; align-items:center; gap:18px; opacity: 1; padding: 15px;">
             <div class="category-icon">
-                <img src="Assets/icon/Categorias/Cursos.png" alt="Novidades" style="height:70px; width:70px; object-fit:contain;">
+                <img src="Assets/icon/Categorias/Cursos.png" alt="Novidades"
+                    style="height:70px; width:70px; object-fit:contain;">
             </div>
             <div>
                 <h3>Cursos</h3>
                 <p>Confira os melhores cursos.</p>
-                <button class="btn" style="background:#555;color:#000;font-weight:bold; cursor: not-allowed;">
-                    Inativo
-                </button>
+                <div style="background:green; color:#fff; font-weight:bold; padding: 5px 10px; margin-top: 10px; border-radius: 4px; text-align: center; width: 80px;">
+                    Acessar
+                </div>
             </div>
         </div>
-    </div>
+    </a>
 </div>
-<!-- ...existing code... -->
+        <!-- ...existing code... -->
         <!-- ANÚNCIO ROTATIVO -->
-<div id="anuncio-rotativo" style="width:100%; display:flex; justify-content:center; align-items:center; margin:24px 0;">
-    <button id="anuncio-prev" style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin-right:12px;"</button>
-        <!-- Imagem e nome do anúncio serão inseridos via JS -->
-</div>
-<script>
-// Lista de anúncios (use as imagens dos seus jogos torrent)
-const anuncios = [
-    {
-        nome: "Resident Evil 4 Remake",
-        imagem: "Assets/icon/Categorias 2/Torrent/Jp/8.png"
-    },
-    {
-        nome: "Hollow Knight Silksong",
-        imagem: "Assets/icon/Categorias 2/Torrent/Jp/5.png"
-    },
-    {
-        nome: "Homem aranha 2 - 2023",
-        imagem: "Assets/icon/Categorias 2/Torrent/Jp/3.png"
-    },
-    {
-        nome: "Red Dead Redemption 2",
-        imagem: "Assets/icon/Categorias 2/Torrent/Jp/33.png"
-    }
-    // Adicione mais jogos conforme desejar
-];
+        <div id="anuncio-rotativo"
+            style="width:100%; display:flex; justify-content:center; align-items:center; margin:24px 0;">
+            <button id="anuncio-prev"
+                style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin-right:12px;"
+                </button>
+                <!-- Imagem e nome do anúncio serão inseridos via JS -->
+        </div>
+        <script>
+            // Lista de anúncios (use as imagens dos seus jogos torrent)
+            const anuncios = [
+                {
+                    nome: "Resident Evil 4 Remake",
+                    imagem: "Assets/icon/Categorias 2/Torrent/Jp/8.png"
+                },
+                {
+                    nome: "Hollow Knight Silksong",
+                    imagem: "Assets/icon/Categorias 2/Torrent/Jp/5.png"
+                },
+                {
+                    nome: "Homem aranha 2 - 2023",
+                    imagem: "Assets/icon/Categorias 2/Torrent/Jp/3.png"
+                },
+                {
+                    nome: "Red Dead Redemption 2",
+                    imagem: "Assets/icon/Categorias 2/Torrent/Jp/33.png"
+                }
+                // Adicione mais jogos conforme desejar
+            ];
 
-let anuncioAtual = 0;
+            let anuncioAtual = 0;
 
-// Função para mostrar o anúncio atual
-function mostrarAnuncio(idx) {
-    const slide = document.getElementById('anuncio-slide');
-    slide.innerHTML = `
+            // Função para mostrar o anúncio atual
+            function mostrarAnuncio(idx) {
+                const slide = document.getElementById('anuncio-slide');
+                slide.innerHTML = `
         <img src="${anuncios[idx].imagem}" alt="${anuncios[idx].nome}" 
             style="width:100%; height:180px; object-fit:cover; border-radius:16px; box-shadow:0 0 16px #00ff00; background:#000;">
         <div style="width:100%; text-align:center; margin-top:8px;">
             <span style="color:#00ff00; font-size:1.1em; font-family:'JetBrains Mono',monospace; font-weight:bold; text-shadow:0 0 8px #00ff00;">${anuncios[idx].nome}</span>
         </div>
     `;
-}
+            }
 
-// Função para abrir a página do jogo ao clicar na imagem
-document.getElementById('anuncio-slide').onclick = function() {
-    const nomeJogo = anuncios[anuncioAtual].nome;
-    abrirPaginaJogo('acao', nomeJogo);
-};
+            // Função para abrir a página do jogo ao clicar na imagem
+            document.getElementById('anuncio-slide').onclick = function () {
+                const nomeJogo = anuncios[anuncioAtual].nome;
+                abrirPaginaJogo('acao', nomeJogo);
+            };
 
-// Botões de navegação
-document.getElementById('anuncio-prev').onclick = function() {
-    anuncioAtual = (anuncioAtual - 1 + anuncios.length) % anuncios.length;
-    mostrarAnuncio(anuncioAtual);
-};
-document.getElementById('anuncio-next').onclick = function() {
-    anuncioAtual = (anuncioAtual + 1) % anuncios.length;
-    mostrarAnuncio(anuncioAtual);
-};
+            // Botões de navegação
+            document.getElementById('anuncio-prev').onclick = function () {
+                anuncioAtual = (anuncioAtual - 1 + anuncios.length) % anuncios.length;
+                mostrarAnuncio(anuncioAtual);
+            };
+            document.getElementById('anuncio-next').onclick = function () {
+                anuncioAtual = (anuncioAtual + 1) % anuncios.length;
+                mostrarAnuncio(anuncioAtual);
+            };
 
-// Rotação automática
-setInterval(function() {
-    anuncioAtual = (anuncioAtual + 1) % anuncios.length;
-    mostrarAnuncio(anuncioAtual);
-}, 5000);
+            // Rotação automática
+            setInterval(function () {
+                anuncioAtual = (anuncioAtual + 1) % anuncios.length;
+                mostrarAnuncio(anuncioAtual);
+            }, 5000);
 
-// Inicializa o anúncio
-mostrarAnuncio(anuncioAtual);
-</script>
+            // Inicializa o anúncio
+            mostrarAnuncio(anuncioAtual);
+        </script>
 
         <section class="categories">
-            
+
             <div class="category-card electric-border">
                 <div class="category-icon">
                     <img src="Assets/icon/Categorias/isos.png" alt="ISOs" style="height:50px;">
                 </div>
                 <h3>Isos</h3>
-                <p>Explore uma coleção completa de sistemas operacionais prontos para uso. Ideal para testes, formatações ou instalações rápidas.</p>
+                <p>Explore uma coleção completa de sistemas operacionais prontos para uso. Ideal para testes,
+                    formatações ou instalações rápidas.</p>
                 <button onclick="openModal('modalIsos')" class="btn"
                     style="background:#ffffff;color:#000000;font-weight:bold;">Acessar Isos</button>
             </div>
@@ -628,7 +231,7 @@ mostrarAnuncio(anuncioAtual);
                 <button onclick="openModal('modalSites')" class="btn"
                     style="background:hsl(0, 0%, 100%);color:#000000;font-weight:bold;">Acessar websites</button>
             </div>
-            
+
         </section>
 
         <div style="width:100%; display:flex; justify-content:center; gap:40px; margin-top:40px;">
@@ -706,8 +309,8 @@ mostrarAnuncio(anuncioAtual);
                 <span class="search-icon">&#128269;</span>
             </div>
             <ul class="modal-list" id="jogos-categorias">
-                <li onclick="showJogos('acao')"><img src="Assets/video/1.gif"
-                        alt="Jogos Pirata" class="list-icon">Jogos para Pc</li>
+                <li onclick="showJogos('acao')"><img src="Assets/video/1.gif" alt="Jogos Pirata" class="list-icon">Jogos
+                    para Pc</li>
             </ul>
             <ul class="modal-list" id="jogos-arquivos" style="display:none;"></ul>
         </div>
@@ -737,49 +340,52 @@ mostrarAnuncio(anuncioAtual);
                 <li onclick="showSites('Dark_Web')"><img src="Assets/icon/Categorias 2/Sites/Perfil/6.png"
                         alt="Editores" class="list-icon">Dark Web.onion</li>
                 <li onclick="showSites('Esporte_e_Tv_aberta')"><img src="Assets/icon/Categorias 2/Sites/tv aberta/1.png"
-                        alt="Editores" class="list-icon">Esporte e Tv aberta</li>        
+                        alt="Editores" class="list-icon">Esporte e Tv aberta</li>
             </ul>
             <ul class="modal-list" id="Sites-arquivos" style="display:none;">Sites</ul>
         </div>
     </div>
 
     <!-- Modal Jogos Mobile -->
-<div id="modalJogosMobile" class="modal-overlay">
-    <div class="modal-card">
-        <button class="modal-close" onclick="closeModal('modalJogosMobile')">&times;</button>
-        <h2>Escolha uma categoria de Android</h2>
-        <button id="voltarAndroid" class="modal-back" onclick="voltarAndroid()">Voltar</button>
-        <div class="search-container" id="search-container-android">
-            <input type="text" id="searchInputAndroid" class="search-input" placeholder="Pesquisar programas/sites...">
-            <span class="search-icon">&#128269;</span>
+    <div id="modalJogosMobile" class="modal-overlay">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('modalJogosMobile')">&times;</button>
+            <h2>Escolha uma categoria de Android</h2>
+            <button id="voltarAndroid" class="modal-back" onclick="voltarAndroid()">Voltar</button>
+            <div class="search-container" id="search-container-android">
+                <input type="text" id="searchInputAndroid" class="search-input"
+                    placeholder="Pesquisar programas/sites...">
+                <span class="search-icon">&#128269;</span>
+            </div>
+            <ul class="modal-list" id="android-categorias">
+                <li onclick="showAndroid('apps')"><img src="Assets/banner/p.png.png" alt="Apps" class="list-icon">
+                    Aplicativos</li>
+                <li onclick="showAndroid('jogos')"><img src="Assets/banner/p.png.png" alt="Jogos" class="list-icon">
+                    Jogos</li>
+                <li onclick="showAndroid('sites')"><img src="Assets/banner/p.png.png" alt="Sites" class="list-icon">
+                    Sites úteis</li>
+            </ul>
+            <ul class="modal-list" id="android-arquivos" style="display:none;"></ul>
         </div>
-        <ul class="modal-list" id="android-categorias">
-            <li onclick="showAndroid('apps')"><img src="Assets/banner/p.png.png" alt="Apps" class="list-icon"> Aplicativos</li>
-            <li onclick="showAndroid('jogos')"><img src="Assets/banner/p.png.png" alt="Jogos" class="list-icon"> Jogos</li>
-            <li onclick="showAndroid('sites')"><img src="Assets/banner/p.png.png" alt="Sites" class="list-icon"> Sites úteis</li>
-        </ul>
-        <ul class="modal-list" id="android-arquivos" style="display:none;"></ul>
     </div>
-</div>
 
-<!-- Modal Novidades -->
-<div id="modalNovidades" class="modal-overlay">
-    <div class="modal-card">
-        <button class="modal-close" onclick="closeModal('modalNovidades')">&times;</button>
-        <h2>Escolha uma categoria de Cursos</h2>
-        <button id="voltarCursos" class="modal-back" onclick="voltarCursos()">Voltar</button>
-        <div class="search-container" id="search-container-cursos">
-            <input type="text" id="searchInputCursos" class="search-input" placeholder="Pesquisar cursos...">
-            <span class="search-icon">&#128269;</span>
+    <!-- Modal Novidades -->
+    <div id="modalNovidades" class="modal-overlay">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('modalNovidades')">&times;</button>
+            <h2>Escolha uma categoria de Cursos</h2>
+            <button id="voltarCursos" class="modal-back" onclick="voltarCursos()">Voltar</button>
+            <div class="search-container" id="search-container-cursos">
+                <input type="text" id="searchInputCursos" class="search-input" placeholder="Pesquisar cursos...">
+                <span class="search-icon">&#128269;</span>
+            </div>
+            <ul class="modal-list" id="cursos-categorias">
+                <li onclick="showCursos('programacao')"><img src="Assets/icon/Categorias 2/Cursos/Perfil/1.png" alt="Programação"
+                        class="list-icon"> Programação</li>
+            </ul>
+            <ul class="modal-list" id="cursos-arquivos" style="display:none;"></ul>
         </div>
-        <ul class="modal-list" id="cursos-categorias">
-            <li onclick="showCursos('programacao')"><img src="Assets/banner/p.png.png" alt="Programação" class="list-icon"> Programação</li>
-            <li onclick="showCursos('seguranca')"><img src="Assets/banner/p.png.png" alt="Segurança" class="list-icon"> Segurança</li>
-            <li onclick="showCursos('design')"><img src="Assets/banner/p.png.png" alt="Design" class="list-icon"> Design</li>
-        </ul>
-        <ul class="modal-list" id="cursos-arquivos" style="display:none;"></ul>
     </div>
-</div>
 
     <div id="privacyModal" class="modal-overlay">
         <div class="modal-card" style="background:#181818; color:#00ff00; font-family:monospace;">
@@ -825,7 +431,7 @@ mostrarAnuncio(anuncioAtual);
             style="display: flex; align-items: center; justify-content: center; gap: 48px;">
             <div class="footer-logo" style="display: flex; align-items: center;">
                 <img src="Assets/banner/p.png.png" alt="Logo GuedesSEC" style="height:100px; margin-right:16px;">
-            
+
                 <div class="footer-text">
                     <p>GuedesSEC &copy; 24/08/2025</p>
                     <p>Dev. ArkanRoot-João Mateus</p>
@@ -909,6 +515,34 @@ mostrarAnuncio(anuncioAtual);
     </script>
 
     <script>
+        const dadosAndroid = {
+                    apps: [
+                        { nome: "App Exemplo", link: "https://play.google.com/", imagem: "Assets/banner/p.png.png" }
+                    ],
+                    jogos: [
+                        { nome: "Jogo Mobile Exemplo", link: "https://play.google.com/", imagem: "Assets/banner/p.png.pngAssets/icon/Categorias/jogos.png" }
+                    ],
+                    sites: [
+                        { nome: "Site Útil Exemplo", link: "https://site.com/", imagem: "Assets/banner/p.png.png" }
+                    ]
+                };
+                const dadosCursos = {
+                    programacao: [
+                        { nome: "Coddy Tech (Grátis)", link: "https://coddy.tech/courses", imagem: "Assets/icon/Categorias 2/Cursos/1.png" },
+                        { nome: "Alura (Pago)", link: "https://www.alura.com.br/", imagem: "Assets/icon/Categorias 2/Cursos/2.png" },
+                        { nome: "Udemy Academy (Pago)", link: "https://www.udemy.com/pt/", imagem: "Assets/icon/Categorias 2/Cursos/3.png" },
+                        { nome: "Tryhackme (Grátis)", link: "https://tryhackme.com/", imagem: "Assets/icon/Categorias 2/Cursos/4.png" },
+                        { nome: "CodeCademy", link: "https://www.codecademy.com/pages/paid-plans", imagem: "Assets/icon/Categorias 2/Cursos/5.png" },
+                        { nome: "", link: "", imagem: "Assets/icon/Categorias 2/Cursos/6.png" },
+                        { nome: "", link: "", imagem: "Assets/icon/Categorias 2/Cursos/7.png" },
+                        
+                        
+                    ],
+                    
+                    
+                };
+                
+                
         // Dados de exemplo
         const categorias = {
             linux: [
@@ -918,7 +552,7 @@ mostrarAnuncio(anuncioAtual);
             ],
             windows: [
                 { nome: "Windows 7 Ultimate 64bits", link: "https://drive.google.com/file/d/1ZMzjdSLNRuaDZwvZgaDzpXRFXUPb27HP/view?usp=drive_link", imagem: "Assets/icon/Categorias 2/Isos/sistema operacional/W7.png" },
-                { nome: "Windows 10", link: "https://drive.google.com/drive/folders/1PyKXbIZkfE677OXwG3Rc_ReLk5Eavx33?usp=sharing", imagem: "Assets/icon/Categorias 2/Isos/sistema operacional/w10.png" }
+                { nome: "Windows 10", link: "https://drive.google.com/file/d/1VJ3fZkvhAJf3pfaAc0RZ3a5ehes2suDC/view?usp=drive_link", imagem: "Assets/icon/Categorias 2/Isos/sistema operacional/w10.png" }
             ],
             jogos: [
                 { nome: "GOD OF WAR 2 DUBLADO", link: "", imagem: "Assets/icon/Categorias 2/Isos/ps2/1.png" },
@@ -1651,7 +1285,7 @@ mostrarAnuncio(anuncioAtual);
                 },
 
             ],
-        
+
             Esporte_e_Tv_aberta: [
                 {
                     nome: "Esporte (PLAY HD)",
@@ -1663,12 +1297,12 @@ mostrarAnuncio(anuncioAtual);
                     link: "https://televisao.tv/sbt",
                     imagem: "Assets/icon/Categorias 2/Sites/tv aberta/tv aberta.png"
                 },
-              
+
             ]
 
         };
         
-        
+
         // ======================================================================
         // FUNÇÕES PRINCIPAIS DE NAVEGAÇÃO E RESET
         // ======================================================================
@@ -1676,7 +1310,7 @@ mostrarAnuncio(anuncioAtual);
         // ======================================================================
         // FUNÇÕES PARA ABRIR E FECHAR MODAIS
         // ======================================================================
-        
+
         function openModal(id) {
             console.log('Abrindo modal:', id);
             const modal = document.getElementById(id);
@@ -1900,7 +1534,7 @@ mostrarAnuncio(anuncioAtual);
             document.getElementById("Sites-arquivos").style.display = "block";
             document.getElementById("voltarSites").style.display = "inline-block";
             document.getElementById("search-container-sites").style.display = "flex";
-//titulos para cada categoria dentro de seus cards
+            //titulos para cada categoria dentro de seus cards
             const titulos = {
                 IA: "Sites de Inteligência Artificial",
                 Filmes_e_Series: "Sites de Filmes e Séries"
@@ -1910,7 +1544,7 @@ mostrarAnuncio(anuncioAtual);
                 Dark_Web: "Sites da Dark Web"
             };
             document.querySelector("#modalSites .modal-card h2").textContent = titulos[cat] || "Escolha uma categoria de Sites";
-            
+
 
             const ul = document.getElementById("Sites-arquivos");
             ul.dataset.categoria = cat;
@@ -1988,13 +1622,13 @@ mostrarAnuncio(anuncioAtual);
                 });
             }
         });
-        
+
 
         // ======================================================================
         // FUNÇÃO PARA ABRIR PÁGINA DO JOGO
         // ======================================================================
         function abrirPaginaJogo(categoria, nomeJogo) {
-            
+
             // Fechar modal
             closeModal('modalJogos');
 
@@ -2009,7 +1643,7 @@ mostrarAnuncio(anuncioAtual);
             // Criar página do jogo dinamicamente
             criarPaginaJogo(jogo);
         }
-        
+
 
         // ======================================================================
         // FUNÇÃO PARA CRIAR PÁGINA DO JOGO
@@ -2019,13 +1653,13 @@ mostrarAnuncio(anuncioAtual);
 
             // Função para gerar os botões de download dinamicamente
             const gerarBotoesDownload = () => {
-    let botoesHTML = '';
+                let botoesHTML = '';
 
-    // URL do seu GIF - SUBSTITUA ESTE VALOR PELO LINK REAL DO SEU GIF HOSPEDADO
-    const gifUrl = "URL_DIRETA_DO_SEU_GIF_HOSPEDADO"; 
+                // URL do seu GIF - SUBSTITUA ESTE VALOR PELO LINK REAL DO SEU GIF HOSPEDADO
+                const gifUrl = "URL_DIRETA_DO_SEU_GIF_HOSPEDADO";
 
-    // 1. Definição do GIF (usaremos duas vezes)
-   const gifSeta = `
+                // 1. Definição do GIF (usaremos duas vezes)
+                const gifSeta = `
     <div style="text-align: center;">
         <img 
             src="Assets/video/2.gif"
@@ -2043,10 +1677,10 @@ mostrarAnuncio(anuncioAtual);
     </div>
 `;
 
-    // 2. Criação do Botão Principal com o DUPLO GIF (Esquerda e Direita)
-    if (jogo.linkJogo && jogo.linkJogo !== '') {
-        // Envolve o GIF (esquerda), o Botão e o GIF (direita) em um container flex
-        botoesHTML += `
+                // 2. Criação do Botão Principal com o DUPLO GIF (Esquerda e Direita)
+                if (jogo.linkJogo && jogo.linkJogo !== '') {
+                    // Envolve o GIF (esquerda), o Botão e o GIF (direita) em um container flex
+                    botoesHTML += `
             <div style="
                 display: flex; 
                 align-items: center; 
@@ -2074,11 +1708,11 @@ mostrarAnuncio(anuncioAtual);
                 
                 ${gifSeta} </div>
         `;
-    }
-    
-    // 3. Outras opções de download do jogo (Sem os GIFs duplos, apenas o botão)
-    if (jogo.linkJogo2 && jogo.linkJogo2 !== '') {
-        botoesHTML += `
+                }
+
+                // 3. Outras opções de download do jogo (Sem os GIFs duplos, apenas o botão)
+                if (jogo.linkJogo2 && jogo.linkJogo2 !== '') {
+                    botoesHTML += `
             <a href="Assets/video/Amelia.gif" target="_blank" style="
                 display: inline-block;
                 padding: 15px 30px;
@@ -2095,9 +1729,9 @@ mostrarAnuncio(anuncioAtual);
             " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#ff1a3d';" 
             onmouseout="this.style.transform='scale(1)'; this.style.background='#e60023';">DOWNLOAD DO JOGO OPÇÃO 2</a>
         `;
-    }
-    if (jogo.linkJogo3 && jogo.linkJogo3 !== '') {
-        botoesHTML += `
+                }
+                if (jogo.linkJogo3 && jogo.linkJogo3 !== '') {
+                    botoesHTML += `
             <a href="${jogo.linkJogo3}" target="_blank" style="
                 display: inline-block;
                 padding: 15px 30px;
@@ -2115,9 +1749,9 @@ mostrarAnuncio(anuncioAtual);
             onmouseout="this.style.transform='scale(1)'; this.style.background='#e60023';">DOWNLOAD DO JOGO OPÇÃO 3</a>
         `;
 
-    }
-    if (jogo.linkJogo4 && jogo.linkJogo4 !== '') {
-        botoesHTML += `
+                }
+                if (jogo.linkJogo4 && jogo.linkJogo4 !== '') {
+                    botoesHTML += `
             <a href="${jogo.linkJogo4}" target="_blank" style="
                 display: inline-block;
                 padding: 15px 30px;
@@ -2134,9 +1768,9 @@ mostrarAnuncio(anuncioAtual);
             " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#ff1a3d';" 
             onmouseout="this.style.transform='scale(1)'; this.style.background='#e60023';">DOWNLOAD DO JOGO OPÇÃO 4</a>
         `;
-    }
-    if (jogo.linkJogo5 && jogo.linkJogo5 !== '') {
-        botoesHTML += `
+                }
+                if (jogo.linkJogo5 && jogo.linkJogo5 !== '') {
+                    botoesHTML += `
             <a href="${jogo.linkJogo5}" target="_blank" style="
                 display: inline-block;
                 padding: 15px 30px;
@@ -2153,11 +1787,11 @@ mostrarAnuncio(anuncioAtual);
             " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#ff1a3d';" 
             onmouseout="this.style.transform='scale(1)'; this.style.background='#e60023';">DOWNLOAD DO JOGO OPÇÃO 5</a>
         `;
-    }
+                }
 
-    // 4. Links de BIOS e CRACK (e outros extras)
-    if (jogo.linkbios && jogo.linkbios !== '') {
-        botoesHTML += `
+                // 4. Links de BIOS e CRACK (e outros extras)
+                if (jogo.linkbios && jogo.linkbios !== '') {
+                    botoesHTML += `
             <a href="${jogo.linkbios}" target="_blank" style="
                 display: inline-block;
                 padding: 15px 30px;
@@ -2174,9 +1808,9 @@ mostrarAnuncio(anuncioAtual);
             " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#0080ff';" 
             onmouseout="this.style.transform='scale(1)'; this.style.background='#0066cc';">DOWNLOAD BIOS</a>
         `;
-    }
-    if (jogo.linkcrack && jogo.linkcrack !== '') {
-        botoesHTML += `
+                }
+                if (jogo.linkcrack && jogo.linkcrack !== '') {
+                    botoesHTML += `
             <a href="${jogo.linkcrack}" target="_blank" style="
                 display: inline-block;
                 padding: 15px 30px;
@@ -2193,12 +1827,12 @@ mostrarAnuncio(anuncioAtual);
             " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#0080ff';" 
             onmouseout="this.style.transform='scale(1)'; this.style.background='#0066cc';">DOWNLOAD CRACK</a>
         `;
-    }
+                }
 
-    // 5. Links Extras
-    if (jogo.linksExtras && jogo.linksExtras.length > 0) {
-        jogo.linksExtras.forEach((linkExtra, index) => {
-            botoesHTML += `
+                // 5. Links Extras
+                if (jogo.linksExtras && jogo.linksExtras.length > 0) {
+                    jogo.linksExtras.forEach((linkExtra, index) => {
+                        botoesHTML += `
                 <a href="${linkExtra.url}" target="_blank" style="
                     display: inline-block;
                     padding: 15px 30px;
@@ -2215,12 +1849,12 @@ mostrarAnuncio(anuncioAtual);
                 " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#00cc88';" 
                 onmouseout="this.style.transform='scale(1)'; this.style.background='#00a86b';">${linkExtra.nome}</a>
             `;
-        });
-    }
+                    });
+                }
 
-    // 6. Tratamento de Erro
-    if (botoesHTML === '') {
-        botoesHTML = `
+                // 6. Tratamento de Erro
+                if (botoesHTML === '') {
+                    botoesHTML = `
             <button style="
                 padding: 15px 30px;
                 margin: 10px;
@@ -2234,10 +1868,10 @@ mostrarAnuncio(anuncioAtual);
                 backdrop-filter: blur(5px);
             ">LINK INDISPONÍVEL</button>
         `;
-    }
+                }
 
-    return botoesHTML;
-};
+                return botoesHTML;
+            };
 
             // Criar estrutura HTML da página do jogo
             const gamePageHTML = `
@@ -2297,7 +1931,7 @@ mostrarAnuncio(anuncioAtual);
                             <img src="${jogo.imagem}" alt="${jogo.nome}" style="width: 100%; height: auto; display: block;">
                         </div>
 
-    ${jogo.imagensDemo && jogo.imagensDemo.length > 0 ? `
+ ${jogo.imagensDemo && jogo.imagensDemo.length > 0 ? `
     <div class="demo-images" style="
         width: 100%;
         max-width: 900px;
@@ -2422,7 +2056,7 @@ ${jogo.videosDemo && jogo.videosDemo.length > 0 ? `
             // Adicionar a página ao body
             document.body.insertAdjacentHTML('beforeend', gamePageHTML);
         }
-        
+
 
         // ======================================================================
         // FUNÇÃO PARA PROCESSAR REQUISITOS EM HTML
@@ -2486,342 +2120,149 @@ ${jogo.videosDemo && jogo.videosDemo.length > 0 ? `
             }
         }
     </script>
-    <!-- Botão flutuante -->
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding-bottom: 100px; 
-        background-color: #f4f4f9;
-    }
+    </head>
 
-    /* ------------------------------------------------------------------ */
-    /* CONTÊINER PAI (PONTO DE ANCORAGEM FIXO) */
-    /* ------------------------------------------------------------------ */
-    #feedback-widget-container {
-        position: fixed;
-        bottom: 30px; 
-        right: 30px; 
-        
-        display: flex;
-        align-items: center; 
-        
-        z-index: 100;
-    }
+    <body>
 
-    /* ------------------------------------------------------------------ */
-    /* ESTILO DO ÍCONE (O CÍRCULO - FICA SEMPRE VISÍVEL) */
-    /* ------------------------------------------------------------------ */
-    #chat-button {
-        width: 60px; 
-        height: 60px; 
-        cursor: pointer;
-        
-        background-color: #007bff; 
-        border-radius: 50%; 
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35); 
-        
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        <div id="feedback-widget-container">
+            <span id="feedback-text">Deixe sua Opinião</span>
 
-        transition: transform 0.3s ease-in-out, background-color 0.3s ease;
-        animation: none; 
-    }
-    
-    #chat-button:hover {
-        background-color: #0056b3;
-        transform: scale(1.05); 
-    }
+            <div id="chat-button" onclick="toggleBot()">
+                <i class="fas fa-comment-alt" id="chat-icon"></i>
+            </div>
+        </div>
 
-    /* ESTILO DO ÍCONE DENTRO DO BOTÃO */
-    #chat-button i#chat-icon {
-        font-size: 30px; 
-        color: white; 
-        display: block; 
-    }
+        <div id="bot-container" onclick="closeBot(event)">
+            <iframe src="pages/web/Feedback/feedback.html" frameborder="0" onclick="event.stopPropagation()"
+                style="background: transparent;" allowtransparency="true"></iframe>
+        </div>
 
-    /* ------------------------------------------------------------------ */
-    /* ESTILO DA MENSAGEM "Deixe sua Opinião" (APARECE NO HOVER) */
-    /* ------------------------------------------------------------------ */
-    #feedback-text {
-        position: absolute;
-        right: 70px; 
-        
-        background-color: #333; 
-        color: white;
-        
-        font-size: 1.0em; 
-        padding: 8px 15px; 
-        
-        font-weight: bold;
-        border-radius: 25px;
-        font-size: 14px;
-        font-weight: 500;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        white-space: nowrap;
-        animation: fadeIn 0.5s ease;
-    }
+        <!-- Incluir Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    #feedback-widget-container:hover #feedback-text {
-        transform: translateX(0); 
-        opacity: 1;
-    }
+        <script>
+            function toggleBot() {
+                document.getElementById('bot-container').classList.toggle('active');
+            }
 
-    /* ------------------------------------------------------------------ */
-    /* CONTÊINER DO BOT (O IFRAME) */
-    /* ------------------------------------------------------------------ */
-    
-    #feedback-widget-container {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
+            function closeBot(event) {
+                if (event.target === document.getElementById('bot-container')) {
+                    toggleBot();
+                }
+            }
 
-    #feedback-text {
-        background: rgba(0, 0, 0, 0.8);
-        color: white;
-        padding: 10px 15px;
-        border-radius: 25px;
-        font-size: 14px;
-        font-weight: 500;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        white-space: nowrap;
-        animation: fadeIn 0.5s ease;
-    }
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    document.getElementById('bot-container').classList.remove('active');
+                }
+            });
 
-    #chat-button {
-        width: 60px;
-        height: 60px;
-        background: #007bff;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        transition: all 0.3s ease;
-        flex-shrink: 0;
-    }
+            document.getElementById('bot-container').addEventListener('click', function (e) {
+                if (e.target.tagName === 'IFRAME') {
+                    e.stopPropagation();
+                }
+            });
 
-    #chat-button:hover {
-        background: #0056b3;
-        transform: scale(1.1);
-    }
+            // android e cursos cards//
+            // Adicione este bloco ao final do seu arquivo, após as funções dos outros modais.
 
-    #chat-icon {
-        color: white;
-        font-size: 24px;
-    }
+            // ===================== MODAL ANDROID =====================
+            function voltarAndroid() {
+                document.getElementById("android-categorias").style.display = "block";
+                document.getElementById("android-arquivos").style.display = "none";
+                document.getElementById("voltarAndroid").style.display = "none";
+                document.getElementById("search-container-android").style.display = "none";
+                document.getElementById("searchInputAndroid").value = "";
+                document.querySelector("#modalJogosMobile .modal-card h2").textContent = "Escolha uma categoria de Android";
+            }
 
-    /* CONTAINER DO BOT - FUNDO TRANSPARENTE */
-    #bot-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: transparent;
-        z-index: 9998;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    #bot-container.active {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    #bot-container iframe {
-        width: 90%;
-        height: 90%;
-        border: none;
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        background: transparent; /* FUNDO TRANSPARENTE */
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateX(10px); }
-        to { opacity: 1; transform: translateX(0); }
-    }
-
-</style>
-</head>
-<body>
-
-<div id="feedback-widget-container">
-    <span id="feedback-text">Deixe sua Opinião</span>
-    
-    <div id="chat-button" onclick="toggleBot()">
-        <i class="fas fa-comment-alt" id="chat-icon"></i> 
-    </div>
-</div>
-
-<div id="bot-container" onclick="closeBot(event)">
-    <iframe src="pages/web/Feedback/feedback.html" frameborder="0" onclick="event.stopPropagation()" style="background: transparent;" allowtransparency="true"></iframe>
-</div>
-
-<!-- Incluir Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-<script>
-function toggleBot() {
-    document.getElementById('bot-container').classList.toggle('active');
-}
-
-function closeBot(event) {
-    if (event.target === document.getElementById('bot-container')) {
-        toggleBot();
-    }
-}
-
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        document.getElementById('bot-container').classList.remove('active');
-    }
-});
-
-document.getElementById('bot-container').addEventListener('click', function(e) {
-    if (e.target.tagName === 'IFRAME') {
-        e.stopPropagation();
-    }
-});
-
-// android e cursos cards//
-// Adicione este bloco ao final do seu arquivo, após as funções dos outros modais.
-
-// ===================== MODAL ANDROID =====================
-function voltarAndroid() {
-    document.getElementById("android-categorias").style.display = "block";
-    document.getElementById("android-arquivos").style.display = "none";
-    document.getElementById("voltarAndroid").style.display = "none";
-    document.getElementById("search-container-android").style.display = "none";
-    document.getElementById("searchInputAndroid").value = "";
-    document.querySelector("#modalJogosMobile .modal-card h2").textContent = "Escolha uma categoria de Android";
-}
-
-function showAndroid(cat, termoPesquisa = '') {
-    document.getElementById("android-categorias").style.display = "none";
-    document.getElementById("android-arquivos").style.display = "block";
-    document.getElementById("voltarAndroid").style.display = "inline-block";
-    document.getElementById("search-container-android").style.display = "flex";
-    const titulos = {
-        apps: "Aplicativos Android",
-        jogos: "Jogos Android",
-        sites: "Sites Úteis para Android"
-    };
-    document.querySelector("#modalJogosMobile .modal-card h2").textContent = titulos[cat] || "Android";
-    const ul = document.getElementById("android-arquivos");
-    ul.dataset.categoria = cat;
-    const termo = (termoPesquisa || document.getElementById("searchInputAndroid").value || '').toLowerCase();
-    const dadosAndroid = {
-        apps: [
-            { nome: "App Exemplo", link: "https://play.google.com/", imagem: "Assets/banner/p.png.png" }
-        ],
-        jogos: [
-            { nome: "Jogo Mobile Exemplo", link: "https://play.google.com/", imagem: "Assets/banner/p.png.pngAssets/icon/Categorias/jogos.png" }
-        ],
-        sites: [
-            { nome: "Site Útil Exemplo", link: "https://site.com/", imagem: "Assets/banner/p.png.png" }
-        ]
-    };
-    const filtrados = (dadosAndroid[cat] || []).filter(item => item.nome.toLowerCase().includes(termo));
-    ul.innerHTML = filtrados.length === 0
-        ? `<li style="justify-content:center;">Nenhum resultado para "${termo}"</li>`
-        : '';
-    filtrados.forEach(item => {
-        const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '';
-        ul.innerHTML += `
+            function showAndroid(cat, termoPesquisa = '') {
+                document.getElementById("android-categorias").style.display = "none";
+                document.getElementById("android-arquivos").style.display = "block";
+                document.getElementById("voltarAndroid").style.display = "inline-block";
+                document.getElementById("search-container-android").style.display = "flex";
+                const titulos = {
+                    apps: "Aplicativos Android",
+                    jogos: "Jogos Android",
+                    sites: "Sites Úteis para Android"
+                };
+                document.querySelector("#modalJogosMobile .modal-card h2").textContent = titulos[cat] || "Android";
+                const ul = document.getElementById("android-arquivos");
+                ul.dataset.categoria = cat;
+                const termo = (termoPesquisa || document.getElementById("searchInputAndroid").value || '').toLowerCase();
+                const filtrados = (dadosAndroid[cat] || []).filter(item => item.nome.toLowerCase().includes(termo));
+                ul.innerHTML = filtrados.length === 0
+                    ? `<li style="justify-content:center;">Nenhum resultado para "${termo}"</li>`
+                    : '';
+                filtrados.forEach(item => {
+                    const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '';
+                    ul.innerHTML += `
             <li>
                 ${imageHtml}
                 <a href="${item.link}" target="_blank">${item.nome}</a>
             </li>
         `;
-    });
-}
+                });
+            }
 
-// ===================== MODAL CURSOS =====================
-function voltarCursos() {
-    document.getElementById("cursos-categorias").style.display = "block";
-    document.getElementById("cursos-arquivos").style.display = "none";
-    document.getElementById("voltarCursos").style.display = "none";
-    document.getElementById("search-container-cursos").style.display = "none";
-    document.getElementById("searchInputCursos").value = "";
-    document.querySelector("#modalNovidades .modal-card h2").textContent = "Escolha uma categoria de Cursos";
-}
+            // ===================== MODAL CURSOS =====================
+            function voltarCursos() {
+                document.getElementById("cursos-categorias").style.display = "block";
+                document.getElementById("cursos-arquivos").style.display = "none";
+                document.getElementById("voltarCursos").style.display = "none";
+                document.getElementById("search-container-cursos").style.display = "none";
+                document.getElementById("searchInputCursos").value = "";
+                document.querySelector("#modalNovidades .modal-card h2").textContent = "Escolha uma categoria de Cursos";
+            }
 
-function showCursos(cat, termoPesquisa = '') {
-    document.getElementById("cursos-categorias").style.display = "none";
-    document.getElementById("cursos-arquivos").style.display = "block";
-    document.getElementById("voltarCursos").style.display = "inline-block";
-    document.getElementById("search-container-cursos").style.display = "flex";
-    const titulos = {
-        programacao: "Cursos de Programação",
-        seguranca: "Cursos de Segurança",
-        design: "Cursos de Design"
-    };
-    document.querySelector("#modalNovidades .modal-card h2").textContent = titulos[cat] || "Cursos";
-    const ul = document.getElementById("cursos-arquivos");
-    ul.dataset.categoria = cat;
-    const termo = (termoPesquisa || document.getElementById("searchInputCursos").value || '').toLowerCase();
-    const dadosCursos = {
-        programacao: [
-            { nome: "Curso JavaScript", link: "https://curso.com/", imagem: "Assets/banner/p.png.png" }
-        ],
-        seguranca: [
-            { nome: "Curso Segurança", link: "https://curso.com/", imagem: "Assets/banner/p.png.png" }
-        ],
-        design: [
-            { nome: "Curso Design", link: "https://curso.com/", imagem: "Assets/banner/p.png.png" }
-        ]
-    };
-    const filtrados = (dadosCursos[cat] || []).filter(item => item.nome.toLowerCase().includes(termo));
-    ul.innerHTML = filtrados.length === 0
-        ? `<li style="justify-content:center;">Nenhum resultado para "${termo}"</li>`
-        : '';
-    filtrados.forEach(item => {
-        const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '';
-        ul.innerHTML += `
+            function showCursos(cat, termoPesquisa = '') {
+                document.getElementById("cursos-categorias").style.display = "none";
+                document.getElementById("cursos-arquivos").style.display = "block";
+                document.getElementById("voltarCursos").style.display = "inline-block";
+                document.getElementById("search-container-cursos").style.display = "flex";
+                const titulos = {
+                    programacao: "Cursos de Programação",
+                };
+                document.querySelector("#modalNovidades .modal-card h2").textContent = titulos[cat] || "Cursos";
+                const ul = document.getElementById("cursos-arquivos");
+                ul.dataset.categoria = cat;
+                const termo = (termoPesquisa || document.getElementById("searchInputCursos").value || '').toLowerCase();
+                const filtrados = (dadosCursos[cat] || []).filter(item => item.nome.toLowerCase().includes(termo));
+                ul.innerHTML = filtrados.length === 0
+                    ? `<li style="justify-content:center;">Nenhum resultado para "${termo}"</li>`
+                    : '';
+                filtrados.forEach(item => {
+                    const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '';
+                    ul.innerHTML += `
             <li>
                 ${imageHtml}
                 <a href="${item.link}" target="_blank">${item.nome}</a>
             </li>
         `;
-    });
-}
+                });
+            }
 
-// ===================== EVENTOS DE PESQUISA =====================
-document.addEventListener('DOMContentLoaded', function () {
-    const searchInputAndroid = document.getElementById("searchInputAndroid");
-    if (searchInputAndroid) {
-        searchInputAndroid.addEventListener("keyup", function () {
-            const ul = document.getElementById("android-arquivos");
-            const cat = ul.dataset.categoria;
-            if (cat) showAndroid(cat, this.value);
-        });
-    }
-    const searchInputCursos = document.getElementById("searchInputCursos");
-    if (searchInputCursos) {
-        searchInputCursos.addEventListener("keyup", function () {
-            const ul = document.getElementById("cursos-arquivos");
-            const cat = ul.dataset.categoria;
-            if (cat) showCursos(cat, this.value);
-        });
-    }
-});
-</script>
+            // ===================== EVENTOS DE PESQUISA =====================
+            document.addEventListener('DOMContentLoaded', function () {
+                const searchInputAndroid = document.getElementById("searchInputAndroid");
+                if (searchInputAndroid) {
+                    searchInputAndroid.addEventListener("keyup", function () {
+                        const ul = document.getElementById("android-arquivos");
+                        const cat = ul.dataset.categoria;
+                        if (cat) showAndroid(cat, this.value);
+                    });
+                }
+                const searchInputCursos = document.getElementById("searchInputCursos");
+                if (searchInputCursos) {
+                    searchInputCursos.addEventListener("keyup", function () {
+                        const ul = document.getElementById("cursos-arquivos");
+                        const cat = ul.dataset.categoria;
+                        if (cat) showCursos(cat, this.value);
+                    });
+                }
+            });
+        </script>
 
-</body>
+    </body>
 
 </html>
-
-
