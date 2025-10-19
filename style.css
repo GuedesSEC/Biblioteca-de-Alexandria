@@ -516,7 +516,550 @@ img[alt="Soldado 1"], img[alt="Soldado 2"], img[alt="Soldado 3"] {
 
 
 /* Responsivo para celular, sem alterar o estilo do PC */
+/* ==================================================== */
+/* REGRAS GERAIS                       */
+/* ==================================================== */
+
+/* Adicionado para garantir que o chat-button fique por cima de tudo no mobile */
+#chat-button {
+    z-index: 10000;
+}
+
+/* ---------------------------------------------------- */
+/* MEDIA QUERY: TELAS ATÉ 700PX               */
+/* ---------------------------------------------------- */
+/* ==================================================== */
+/* MELHORIAS ESPECÍFICAS PARA CELULAR                  */
+/* ==================================================== */
+
+/* ==================================================== */
+/* MELHORIAS ESPECÍFICAS PARA CELULAR                  */
+/* ==================================================== */
+
 @media (max-width: 700px) {
+    /* Header mais compacto para mobile */
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 0;
+    }
+
+    /* Navegação otimizada para touch */
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    nav ul li {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+        padding: 8px 12px;
+        display: block;
+    }
+
+    /* Conteúdo principal mais legível */
+    .main-content {
+        padding: 20px 0;
+    }
+
+    .welcome-section {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .welcome-section h1 {
+        font-size: 1.4em;
+        white-space: normal;
+        border-right: none;
+        animation: none;
+    }
+
+    /* Android e Cursos abaixo do carrossel */
+    div[style*="width:100%; display:flex; justify-content:center"] {
+        flex-direction: column;
+        gap: 15px;
+        margin: 15px 0;
+    }
+    
+    #anuncio-rotativo {
+        order: 1;
+        max-width: 100% !important;
+        width: 100%;
+    }
+    
+    div[style*="max-width:320px; margin-left:0;"] {
+        order: 2;
+        max-width: 100% !important;
+        width: 100%;
+        margin-left: 0 !important;
+    }
+    
+    a[onclick*="openModal('modalNovidades')"] {
+        order: 3;
+        max-width: 100% !important;
+        width: 100%;
+        margin-right: 0 !important;
+    }
+    
+    div[style*="display:flex; align-items:center; gap:18px;"] {
+        justify-content: center;
+        gap: 15px;
+        padding: 12px !important;
+    }
+    
+    .category-icon img {
+        height: 50px !important;
+        width: 50px !important;
+    }
+
+    /* Grid de categorias mais responsivo */
+    .categories {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 12px;
+        margin-top: 25px;
+    }
+
+    .category-card {
+        padding: 15px;
+        min-height: 180px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .category-card h3 {
+        font-size: 16px;
+    }
+
+    .category-card p {
+        font-size: 12px;
+    }
+
+    /* Centralizar imagens em cima dos nomes */
+    .categories .category-icon {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto 10px auto;
+    }
+
+    /* Botões maiores para touch */
+    .btn {
+        padding: 10px 15px;
+        font-size: 14px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Footer otimizado para mobile */
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .quick-links ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .quick-links ul li {
+        margin-left: 0;
+    }
+
+    /* Social icons com melhor espaçamento */
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .social-icons a {
+        margin-right: 0;
+        animation: none; /* Remove animação em mobile para performance */
+    }
+
+    /* Modal mais adaptado ao mobile */
+    .modal-card {
+        min-width: 85vw;
+        max-width: 95vw;
+        padding: 20px 15px;
+        margin: 20px;
+    }
+
+    .modal-list li {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+
+    /* Chat button com posição segura */
+    #chat-button {
+        width: 55px;
+        height: 55px;
+        bottom: 80px; /* Evita conflito com barra de navegação do mobile */
+        right: 15px;
+    }
+
+    /* Bot container em tela cheia no mobile */
+    #bot-container {
+        width: 100vw;
+        height: 100vh;
+        bottom: 0;
+        right: 0;
+        border-radius: 0;
+    }
+
+    #bot-container iframe {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+
+    /* Texto do footer mais legível */
+    .footer-text p {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    /* Logo ajustada para mobile */
+    .logo {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .shield {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    /* Melhoria na legibilidade do texto */
+    body {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    /* Ajuste fino nas animações para performance */
+    .category-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .category-card:hover {
+        transform: translateY(-3px) scale(1.02);
+    }
+}
+
+/* Melhorias adicionais para telas muito pequenas */
+@media (max-width: 380px) {
+    .categories {
+        grid-template-columns: 1fr;
+    }
+    
+    .category-card {
+        min-height: 160px;
+    }
+    
+    nav ul li a {
+        font-size: 13px;
+        padding: 6px 10px;
+    }
+    
+    div[style*="display:flex; align-items:center; gap:18px;"] {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}
+/* ==================================================== */
+/* IMAGENS EM CIMA DOS NOMES NOS TESTES                */
+/* ==================================================== */
+
+@media (max-width: 700px) {
+    .test-card {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .test-img-wrap {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto 10px auto;
+    }
+}
+@media (max-width: 700px) {
+    /* ... outras regras ... */
+    
+    /* 1. O contêiner principal do rodapé deve ser column e centralizado */
+    .footer-content {
+        flex-direction: column !important; 
+        align-items: center !important; 
+        width: 100%;
+        /* Adicione padding se necessário */
+    }
+
+    /* 2. Ajusta o bloco do Logo/Texto (pai) */
+    .footer-logo {
+        flex-direction: column !important; /* Força o empilhamento vertical (Logo em cima do Texto) */
+        align-items: center !important; /* Centraliza o bloco de texto horizontalmente */
+        text-align: center;
+        width: 100%; /* Garante que ele ocupe 100% da largura para a centralização funcionar */
+    }
+
+    /* 3. A logo */
+    .footer-logo img {
+        margin-right: 0 !important; /* Remove margem inline da logo */
+        margin-bottom: 15px; /* Aumenta o espaço entre a logo e o texto */
+        height: 80px !important; 
+    }
+    
+    /* 4. O contêiner de textos (.footer-text) */
+    .footer-logo .footer-text {
+        /* Garante que o bloco de texto em si esteja alinhado (se necessário) */
+        text-align: center;
+        width: 100%; /* Garante que o bloco ocupe o espaço para centralizar o seu conteúdo */
+    }
+
+    /* 5. Os parágrafos (linhas de texto) */
+    .footer-logo .footer-text p {
+        text-align: center; /* <<< ESTA É A CHAVE para centralizar cada linha */
+        margin: 5px 0; 
+        width: 100%;
+    }
+
+    /* ... outras regras ... */
+
+
+    /* --- BLOCO DE LINKS E BOTÃO --- */
+    
+    /* 4. Ajusta o contêiner que envolve UL de Links e o Botão MONTE SEU PC */
+    /* Este é o div com style="display: flex; align-items: center; gap: 32px;" */
+    .footer-content > div:last-child { 
+        flex-direction: column !important; /* Empilha links e botão (links em cima do botão) */
+        gap: 15px !important;
+        align-items: center !important; /* CENTRALIZA O BLOCO DE LINKS E O BOTÃO */
+        width: 100%;
+    }
+
+    /* 5. A UL dos links: Garante o empilhamento e centralização do texto */
+    .footer-content ul {
+        flex-direction: column !important; /* Força o empilhamento vertical dos links */
+        align-items: center !important; /* CENTRALIZA O TEXTO DOS LINKS */
+        gap: 8px !important; 
+        width: 100%;
+        padding: 0;
+    }
+
+    /* 6. Ajusta o Botão "Monte Seu PC" */
+    .footer-content a.btn {
+        margin-left: 0 !important;
+        order: 1; /* Garante que o botão fique abaixo dos links */
+        width: 80%; /* Alarga o botão no mobile */
+        max-width: 300px;
+        text-align: center;
+        justify-content: center; /* Centraliza o ícone e o texto dentro do botão */
+    }
+}
+
+
+
+/* Prevenir zoom em inputs para iOS */
+@media (max-width: 700px) {
+    input, select, textarea {
+        font-size: 16px; /* Previne zoom no iOS */
+    }
+
+
+    /* ---------------------------------------------------- */
+    /* CORREÇÃO: CHAT/BOT (Para usar uma área otimizada) */
+    /* ---------------------------------------------------- */
+    /* Move o botão de chat para uma posição padrão, se necessário */
+    #feedback-widget-container {
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    /* Esconde o texto de feedback (opinião) no mobile para economizar espaço */
+    #feedback-text {
+        display: none !important; 
+    }
+    
+    /* Ajusta o tamanho do botão do chat */
+    #chat-button {
+        width: 55px;
+        height: 55px;
+    }
+    
+    /* Ajusta o container do BOT para o mobile */
+    #bot-container {
+        /* Ocupa a tela toda para melhor experiência */
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        /* Garante que o iframe ocupe uma área grande e centralizada */
+    }
+
+    #bot-container iframe {
+        /* Ocupa a maior parte da área visível */
+        width: 95%; 
+        height: 95%;
+        border-radius: 8px; /* Reduz o raio para telas menores */
+    }
+
+
+    /* ---------------------------------------------------- */
+    /* CORREÇÃO DA ÁREA DE DESTAQUE SUPERIOR (Android, Cursos) */
+    /* FOI MANTIDO O EMPILHAMENTO (flex-direction: column) */
+    /* ---------------------------------------------------- */
+    .main-cards { 
+        display: flex !important;
+        flex-direction: column !important; /* EMPILHA os cards: Android, Cursos, etc. */
+        align-items: center !important;
+        width: 100%;
+        gap: 15px !important; /* Espaçamento entre os cards empilhados */
+        margin-bottom: 20px;
+    }
+    
+    /* Ajusta o tamanho dos cards de destaque para ocupar a largura da tela */
+    .card-destaque, .card-android, .card-cursos {
+        width: 100% !important; /* Ocupa 100% da área do main-cards */
+        max-width: 90vw !important; /* Garante que não ultrapasse a tela */
+        margin: 0 auto !important;
+        padding: 15px !important;
+    }
+
+    /* ---------------------------------------------------- */
+    /* LAYOUT DOS CARDS INFERIORES (Isos, Livros, Torrent) */
+    /* ---------------------------------------------------- */
+    .categories {
+        gap: 8px !important;
+        /* Grid mais flexível: 2 ou 3 cards por linha, dependendo do tamanho */
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)) !important;
+        margin-top: 15px !important;
+    }
+    
+    .category-card, .test-card {
+        padding: 10px !important;
+        /* A correcão de flex-direction: column e text-align: left é MANTIDA */
+        flex-direction: column;
+        align-items: flex-start; 
+        text-align: left;
+    }
+
+    /* Ajustes para texto (para caber em 2-3 colunas) */
+    .category-card h3 {
+        font-size: 13px; /* Reduzido levemente */
+        margin-bottom: 4px;
+    }
+
+    .category-card p {
+        font-size: 10px; /* Reduzido levemente */
+        margin-bottom: 8px;
+    }
+
+    /* ---------------------------------------------------- */
+    /* CORREÇÃO: ÍCONES E IMAGENS (Para manter a proporção) */
+    /* ---------------------------------------------------- */
+    /* Tamanho do wrap ajustado para um visual melhor em tela pequena */
+    .category-icon, .test-img-wrap {
+        width: 40px !important;
+        height: 40px !important;
+        min-width: 40px !important;
+        min-height: 40px !important;
+        margin-bottom: 6px !important;
+        /* Alinhamento dos ícones para a esquerda (devido à mudança no .category-card) */
+        align-self: flex-start;
+    }
+    
+    /* A regra mais importante para não distorcer o ícone é MANTIDA */
+    .category-icon img, .test-img-wrap img { 
+        height: auto !important; 
+        max-width: 100% !important; 
+        object-fit: contain !important; 
+        width: auto !important;
+    }
+    
+    .category-icon i {
+        font-size: 24px !important; /* Reduz o ícone */
+    }
+
+    /* ---------------------------------------------------- */
+    /* BOTÕES */
+    /* ---------------------------------------------------- */
+    .btn, .test-btn {
+        font-size: 0.8em !important; 
+        padding: 7px 0 !important; /* Aumenta um pouco o padding vertical para toque */
+        margin-top: 6px !important; 
+        width: 100% !important; /* Ocupa a largura total dentro do card */
+    }
+
+    /* ---------------------------------------------------- */
+    /* CORREÇÃO DO RODAPÉ (FOOTER) */
+    /* ---------------------------------------------------- */
+    .footer-content {
+        /* MANTIDO o empilhamento vertical para melhor leitura */
+        flex-direction: column !important; 
+        gap: 15px !important; /* Aumenta o espaçamento entre as seções */
+        align-items: flex-start !important; 
+        padding: 20px 10px !important; /* Mais padding para respiro */
+    }
+
+    .quick-links ul {
+        /* MANTIDA a quebra de links na horizontal */
+        flex-direction: row !important; 
+        flex-wrap: wrap; 
+    }
+    
+    .quick-links ul li {
+        margin-right: 20px !important;
+        margin-bottom: 8px !important;
+    }
+    
+    .footer-text {
+        font-size: 12px !important;
+        white-space: pre-line !important; 
+    }
+@media (max-width: 700px) {
+    /* ... (outras regras que você já tem) ... */
+    
+    /* ---------------------------------------------------- */
+    /* CORREÇÃO DO TEXTO "BEM VINDO À BIBLIOTECA" */
+    /* ---------------------------------------------------- */
+    
+    /* Se a frase estiver em um H2 dentro do card de boas-vindas */
+    .card-welcome h2 {
+        /* Reduz o tamanho da fonte para caber na largura da tela */
+        font-size: 1.4em !important; 
+        /* O "1.4em" é um exemplo. Ajuste este valor até a frase caber. */
+        /* Garante que o texto não seja quebrado em uma palavra */
+        white-space: normal !important; 
+        /* Garante que o texto se adapte à largura */
+        max-width: 100%;
+        /* Adicione respiro superior/inferior se precisar */
+        margin-bottom: 10px;
+    }
+
+    /* Regra de fallback, caso seja um seletor diferente, ou para garantir que todo o texto se ajuste: */
+    /* Garante que qualquer texto dentro do card de destaque preto se ajuste */
+    .card-destaque h2, .card-destaque p {
+        white-space: normal !important;
+        overflow: hidden; /* Garante que não haja texto "vazando" */
+        text-overflow: ellipsis; /* Se o texto for grande demais, ele o cortará, mas não no meio da palavra. */
+        /* Para o seu caso, foque em reduzir o font-size do h2 para que ele caiba. */
+    }
+
+    /* ... (o restante das suas regras de media query) ... */
+}
     /* ---------------------------------------------------- */
     /* ORGANIZAÇÃO GERAL E CONTEÚDO MENOR */
     /* ---------------------------------------------------- */
