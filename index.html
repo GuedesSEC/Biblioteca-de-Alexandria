@@ -8,6 +8,7 @@
     <title>GuedesSEC</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=1200px">
     <!-- MONITORAR QUEM ACESSA MEU SITE -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-S2QJ2BQSRZ"></script>
     <script>
@@ -32,9 +33,10 @@
 </head>
 
 <body>
-    <canvas id="matrix-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: black;"></canvas>
+    <canvas id="matrix-canvas"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: black;"></canvas>
 
-    
+
 
     <header>
         <div class="container header-content">
@@ -72,53 +74,55 @@
         </section>
         <!-- ...existing code... -->
         <!-- Substitua o bloco do anúncio rotativo por este novo bloco para exibir os cards ao lado do anúncio -->
-<div style="width:100%; display:flex; justify-content:center; align-items:center; gap:32px; margin:24px 0;">
-    
-    <div
-        style="max-width:320px; margin-left:0; border: 1px solid #333; box-shadow: 0 0 10px #333; cursor: not-allowed; display: block;">
-        <div style="display:flex; align-items:center; gap:18px; opacity: 0.5; padding: 15px;">
-            <div class="category-icon">
-                <img src="Assets/icon/Categorias/Android.png" alt="Jogos Mobile"
-                    style="height:70px; width:70px; object-fit:contain;">
-            </div>
-            <div>
-                <h3>Android</h3>
-                <p>Tudo sobre Android.</p>
-                <div style="background:#555; color:#000; font-weight:bold; padding: 5px 10px; margin-top: 10px; border-radius: 4px; text-align: center; width: 80px;">
-                    Inativo
+        <div style="width:100%; display:flex; justify-content:center; align-items:center; gap:32px; margin:24px 0;">
+
+            <div
+                style="max-width:320px; margin-left:0; border: 1px solid #333; box-shadow: 0 0 10px #333; cursor: not-allowed; display: block;">
+                <div style="display:flex; align-items:center; gap:18px; opacity: 0.5; padding: 15px;">
+                    <div class="category-icon">
+                        <img src="Assets/icon/Categorias/Android.png" alt="Jogos Mobile"
+                            style="height:70px; width:70px; object-fit:contain;">
+                    </div>
+                    <div>
+                        <h3>Android</h3>
+                        <p>Tudo sobre Android.</p>
+                        <div
+                            style="background:#555; color:#000; font-weight:bold; padding: 5px 10px; margin-top: 10px; border-radius: 4px; text-align: center; width: 80px;">
+                            Inativo
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <div id="anuncio-rotativo"
-        style="flex:1; max-width:400px; display:flex; flex-direction:column; align-items:center;">
-        <button id="anuncio-prev"
-            style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin-right:12px;">&#8592;</button>
-        <div id="anuncio-slide"
-            style="width:320px; height:220px; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; border-radius:16px; box-shadow:0 0 24px #00ff00; background:#000;">
-        </div>
-        <button id="anuncio-next"
-            style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin-left:12px;">&#8594;</button>
-    </div>
-
-    <a href="#" onclick="openModal('modalNovidades'); voltarCursos(); return false;"
-        style="max-width:320px; margin-right:0; border: 1px solid #333; box-shadow: 0 0 10px #333; cursor: pointer; text-decoration: none; color: inherit; display: block;">
-        <div style="display:flex; align-items:center; gap:18px; opacity: 1; padding: 15px;">
-            <div class="category-icon">
-                <img src="Assets/icon/Categorias/Cursos.png" alt="Novidades"
-                    style="height:70px; width:70px; object-fit:contain;">
-            </div>
-            <div>
-                <h3>Cursos</h3>
-                <p>Confira os melhores cursos.</p>
-                <div style="background:green; color:#fff; font-weight:bold; padding: 5px 10px; margin-top: 10px; border-radius: 4px; text-align: center; width: 80px;">
-                    Acessar
+            <div id="anuncio-rotativo"
+                style="flex:1; max-width:400px; display:flex; flex-direction:column; align-items:center;">
+                <button id="anuncio-prev"
+                    style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin-right:12px;">&#8592;</button>
+                <div id="anuncio-slide"
+                    style="width:320px; height:220px; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; border-radius:16px; box-shadow:0 0 24px #00ff00; background:#000;">
                 </div>
+                <button id="anuncio-next"
+                    style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin-left:12px;">&#8594;</button>
             </div>
+
+            <a href="#" onclick="openModal('modalNovidades'); voltarCursos(); return false;"
+                style="max-width:320px; margin-right:0; border: 1px solid #333; box-shadow: 0 0 10px #333; cursor: pointer; text-decoration: none; color: inherit; display: block;">
+                <div style="display:flex; align-items:center; gap:18px; opacity: 1; padding: 15px;">
+                    <div class="category-icon">
+                        <img src="Assets/icon/Categorias/Cursos.png" alt="Novidades"
+                            style="height:70px; width:70px; object-fit:contain;">
+                    </div>
+                    <div>
+                        <h3>Cursos</h3>
+                        <p>Confira os melhores cursos.</p>
+                        <div
+                            style="background:green; color:#fff; font-weight:bold; padding: 5px 10px; margin-top: 10px; border-radius: 4px; text-align: center; width: 80px;">
+                            Acessar
+                        </div>
+                    </div>
+                </div>
+            </a>
         </div>
-    </a>
-</div>
         <!-- ...existing code... -->
         <!-- ANÚNCIO ROTATIVO -->
         <div id="anuncio-rotativo"
@@ -235,33 +239,92 @@
 
         </section>
 
-        <div style="width:100%; display:flex; justify-content:center; gap:40px; margin-top:40px;">
-            <div class="test-card">
-                <a href="pages/web/Tecnologia/T.i.html" target="_blank" class="test-btn">
-                    <i class="fas fa-brain"></i>Tecnologia.
-                </a>
+        <style>
+            /* Deixa todas as imagens quadradas e do mesmo tamanho */
+            .test-img-wrap {
+                width: 180px;
+                height: 180px;
+                overflow: hidden;
+                border-radius: 12px;
+                /* canto levemente arredondado */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .test-img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                /* garante proporção sem distorcer */
+                cursor: pointer;
+                /* mostra que pode clicar */
+                border-radius: 12px;
+            }
+
+            .test-img-wrap:hover {
+                transform: scale(1.05);
+                box-shadow: 0 0 15px #00ff00;
+                /* brilho verde estilo Matrix */
+            }
+
+            /* NOVO: Estilo para a imagem ser o único elemento na test-card */
+            .test-card {
+                display: flex;
+                /* Garante que a imagem fique centralizada se a card tiver mais espaço */
+                justify-content: center;
+                align-items: center;
+                /* Ajuste se precisar de mais estilos para a card em si */
+            }
+        </style>
+
+        <div style="width:100%; display:flex; justify-content:center; gap:40px; margin-top:40px; flex-wrap:wrap;">
+            <div class="test-card" data-href="pages/web/Tecnologia/T.i.html">
                 <div class="test-img-wrap">
                     <img src="Assets/icon/Categorias/Testes/1.png" alt="Soldado 1" class="test-img">
                 </div>
             </div>
-            <div class="test-card">
-                <a href="pages/web/Matematica/matematica.html" target="_blank" class="test-btn">
-                    <i class="fas fa-brain"></i>Matematica.
-                </a>
+            <div class="test-card" data-href="pages/web/Matematica/matematica.html">
                 <div class="test-img-wrap">
                     <img src="Assets/icon/Categorias/Testes/2.png" alt="Soldado 2" class="test-img">
                 </div>
             </div>
-            <div class="test-card">
-                <a href="pages/web/Fiscal Treinamento/Fiscal.html" target="_blank" class="test-btn">
-                    <i class="fas fa-brain"></i>Fiscal.
-                </a>
+            <div class="test-card" data-href="pages/web/Fiscal Treinamento/Fiscal.html">
                 <div class="test-img-wrap">
                     <img src="Assets/icon/Categorias/Testes/3.png" alt="Soldado 3" class="test-img">
                 </div>
             </div>
         </div>
+
+        <script>
+            // Faz a imagem abrir o link armazenado no atributo 'data-href' da .test-card
+            document.querySelectorAll('.test-card').forEach(card => {
+                // Pega o link do novo atributo 'data-href' na .test-card
+                const link = card.getAttribute('data-href');
+                const img = card.querySelector('.test-img');
+
+                img.addEventListener('click', () => {
+                    // Verifica se o link existe antes de abrir
+                    if (link) {
+                        window.open(link, '_blank');
+                    }
+                });
+            });
+        </script>
     </main>
+    <script>
+        document.querySelectorAll('.test-card').forEach(card => {
+            const link = card.querySelector('.test-btn');
+            const img = card.querySelector('.test-img');
+
+            // Quando clicar na imagem, abre o mesmo link do botão
+            img.addEventListener('click', () => {
+                window.open(link.href, '_blank');
+            });
+        });
+    </script>
+
 
     <div id="modalIsos" class="modal-overlay">
         <div class="modal-card">
@@ -289,6 +352,8 @@
                 <li onclick="showLivros('programacao')"><img
                         src="Assets/icon/Categorias 2/Livros/perfil/programação.png" alt="Programação"
                         class="list-icon"> Programação</li>
+                <li onclick="showLivros('aventura')"><img src="Assets/icon/Categorias 2/Livros/perfil/aventura.png"
+                        alt="Programação" class="list-icon"> Aventura</li>
                 <li onclick="showLivros('romance')"><img src="Assets/icon/Categorias 2/Livros/perfil/romance.png"
                         alt="Romance" class="list-icon"> Romance</li>
                 <li onclick="showLivros('ciencia')"><img src="Assets/icon/Categorias 2/Livros/perfil/ciência.png"
@@ -381,8 +446,8 @@
                 <span class="search-icon">&#128269;</span>
             </div>
             <ul class="modal-list" id="cursos-categorias">
-                <li onclick="showCursos('programacao')"><img src="Assets/icon/Categorias 2/Cursos/Perfil/1.png" alt="Programação"
-                        class="list-icon"> Programação</li>
+                <li onclick="showCursos('programacao')"><img src="Assets/icon/Categorias 2/Cursos/Perfil/1.png"
+                        alt="Programação" class="list-icon"> Programação</li>
             </ul>
             <ul class="modal-list" id="cursos-arquivos" style="display:none;"></ul>
         </div>
@@ -517,31 +582,31 @@
 
     <script>
         const dadosAndroid = {
-                    apps: [
-                        { nome: "App Exemplo", link: "https://play.google.com/", imagem: "Assets/banner/p.png.png" }
-                    ],
-                    jogos: [
-                        { nome: "Jogo Mobile Exemplo", link: "https://play.google.com/", imagem: "Assets/banner/p.png.pngAssets/icon/Categorias/jogos.png" }
-                    ],
-                    sites: [
-                        { nome: "Site Útil Exemplo", link: "https://site.com/", imagem: "Assets/banner/p.png.png" }
-                    ]
-                };
-                const dadosCursos = {
-                    programacao: [
-                        { nome: "Coddy Tech (Grátis)", link: "https://coddy.tech/courses", imagem: "Assets/icon/Categorias 2/Cursos/1.png" },
-                        { nome: "Alura (Pago)", link: "https://www.alura.com.br/", imagem: "Assets/icon/Categorias 2/Cursos/2.png" },
-                        { nome: "Udemy Academy (Pago)", link: "https://www.udemy.com/pt/", imagem: "Assets/icon/Categorias 2/Cursos/3.png" },
-                        { nome: "Tryhackme (Grátis)", link: "https://tryhackme.com/", imagem: "Assets/icon/Categorias 2/Cursos/4.png" },
-                        { nome: "CodeCademy", link: "https://www.codecademy.com/pages/paid-plans", imagem: "Assets/icon/Categorias 2/Cursos/5.png" },
-                        
-                        
-                    ],
-                    
-                    
-                };
-                
-                
+            apps: [
+                { nome: "App Exemplo", link: "https://play.google.com/", imagem: "Assets/banner/p.png.png" }
+            ],
+            jogos: [
+                { nome: "Jogo Mobile Exemplo", link: "https://play.google.com/", imagem: "Assets/banner/p.png.pngAssets/icon/Categorias/jogos.png" }
+            ],
+            sites: [
+                { nome: "Site Útil Exemplo", link: "https://site.com/", imagem: "Assets/banner/p.png.png" }
+            ]
+        };
+        const dadosCursos = {
+            programacao: [
+                { nome: "Coddy Tech (Grátis)", link: "https://coddy.tech/courses", imagem: "Assets/icon/Categorias 2/Cursos/1.png" },
+                { nome: "Alura (Pago)", link: "https://www.alura.com.br/", imagem: "Assets/icon/Categorias 2/Cursos/2.png" },
+                { nome: "Udemy Academy (Pago)", link: "https://www.udemy.com/pt/", imagem: "Assets/icon/Categorias 2/Cursos/3.png" },
+                { nome: "Tryhackme (Grátis)", link: "https://tryhackme.com/", imagem: "Assets/icon/Categorias 2/Cursos/4.png" },
+                { nome: "CodeCademy", link: "https://www.codecademy.com/pages/paid-plans", imagem: "Assets/icon/Categorias 2/Cursos/5.png" },
+
+
+            ],
+
+
+        };
+
+
         // Dados de exemplo
         const categorias = {
             linux: [
@@ -610,11 +675,6 @@
                     imagem: "Assets/icon/Categorias 2/Livros/romance/hipótese do amor.png"
                 },
                 {
-                    nome: "Jane Eyre - Charlotte Bronte",
-                    link: "https://drive.google.com/file/d/1Mhifhibc_uvZtkQ7m5YJlyn9ZIIJsFMM/view?usp=sharing",
-                    imagem: "Assets/icon/Categorias 2/Livros/romance/hipótese do amor.png"
-                },
-                {
                     nome: "O Pequeno Príncipe - Antoine de Saint-Exupéry",
                     link: "https://drive.google.com/file/d/19VoKxlR_pN-q3YcwDFpdOzJSJ_jV93KG/view?usp=sharing",
                     imagem: "Assets/icon/Categorias 2/Livros/romance/pequeno principe.png"
@@ -648,6 +708,49 @@
                     link: "https://drive.google.com/file/d/1hqp6BnONITe7OMLWaHC_B9NX5l5CKaK9/view?usp=sharing",
                     imagem: "Assets/icon/Categorias 2/Livros/filosofia/cabalion.png"
                 },
+
+            ],
+            aventura: [
+                {
+                    "nome": "01 - Harry Potter e a Pedra Filosofal",
+                    "link": "https://drive.google.com/file/d/1QrVLSxJlR2l75UJgn7GnM46WIwBP1cA2/view?usp=sharing",
+                    "imagem": "assets/icon/Categorias 2/Livros/aventura/1.png"
+                },
+                {
+                    "nome": "02 - Harry Potter e a Câmara Secreta",
+                    "link": "https://drive.google.com/file/d/15Rw9jR5zMu_EiY2fbd5pW2oWDPBazhPg/view?usp=sharing",
+                    "imagem": "assets/icon/Categorias 2/Livros/aventura/2.png"
+                },
+                {
+                    "nome": "03 - Harry Potter e o Prisioneiro de Azkaban",
+                    "link": "https://drive.google.com/file/d/1zPIs0povJ429Zzg8Ltb2WlTpGAloJGYh/view?usp=sharing",
+                    "imagem": "assets/icon/Categorias 2/Livros/aventura/3.png"
+                },
+                {
+                    "nome": "04 - Harry Potter e o Cálice de Fogo",
+                    "link": "https://drive.google.com/file/d/1-wWgN8X2PNSXAiYmbo5Y47-D6TCPWXlA/view?usp=sharing",
+                    "imagem": "assets/icon/Categorias 2/Livros/aventura/4.png"
+                },
+                {
+                    "nome": "05 - Harry Potter e a Ordem da Fênix",
+                    "link": "https://drive.google.com/file/d/1WfiKcMb-FoGW3-B_OBMuO_GSC4CVpmgf/view?usp=drive_link",
+                    "imagem": "assets/icon/Categorias 2/Livros/aventura/5.png"
+                },
+                {
+                    "nome": "06 - Harry Potter e o Enigma do Príncipe",
+                    "link": "https://drive.google.com/file/d/1Mwn8sP_ABfZPG5vxr-8LBNoJzfuCSVLC/view?usp=sharing",
+                    "imagem": "assets/icon/Categorias 2/Livros/aventura/6.png"
+                },
+                {
+                    "nome": "07 - Harry Potter e as Relíquias da Morte",
+                    "link": "https://drive.google.com/file/d/1HYL8tleTF4tkqj3d-rh7UfJx7Ta1IxPI/view?usp=sharing",
+                    "imagem": "assets/icon/Categorias 2/Livros/aventura/7.png"
+                },
+                {
+                    "nome": "08 - Harry Potter e a Criança Amaldiçoada",
+                    "link": "https://drive.google.com/file/d/1pvBxDhi7s4CiGMaauEqeGB1Pa4o6GxS3/view?usp=sharing",
+                    "imagem": "assets/icon/Categorias 2/Livros/aventura/8.png"
+                }
             ]
         };
 
@@ -1217,7 +1320,27 @@
                     nome: "Blackbox AI",
                     link: "https://www.blackbox.ai/",
                     imagem: "Assets/icon/Categorias 2/Sites/Ia/BLACKBOX.png"
-                }
+                },
+                {
+                    nome: "DeeVid AI",
+                    link: "https://deevid.ai/pt",
+                    imagem: "Assets/icon/Categorias 2/Sites/Ia/1.png"
+                },
+                {
+                    nome: "higgsfield ai",
+                    link: "https://higgsfield.ai/",
+                    imagem: "Assets/icon/Categorias 2/Sites/Ia/2.png"
+                },
+                {
+                    nome: "Kling AI",
+                    link: "https://app.klingai.com/global/",
+                    imagem: "Assets/icon/Categorias 2/Sites/Ia/3.png"
+                },
+                {
+                    nome: "Wan Video AI",
+                    link: "https://wan.video/",
+                    imagem: "Assets/icon/Categorias 2/Sites/Ia/4.png"
+                },
             ],
 
             Filmes_e_Series: [
@@ -1300,7 +1423,7 @@
             ]
 
         };
-        
+
 
         // ======================================================================
         // FUNÇÕES PRINCIPAIS DE NAVEGAÇÃO E RESET
@@ -1444,6 +1567,7 @@
 
             const titulos = {
                 programacao: "Livros de Programação",
+                aventura: "Livros de Aventura",
                 romance: "Livros de Romance",
                 ciencia: "Livros de Ciência e Tecnologia",
                 filosofia: "Livros de Filosofia"
@@ -2265,4 +2389,3 @@ ${jogo.videosDemo && jogo.videosDemo.length > 0 ? `
     </body>
 
 </html>
-
