@@ -40,24 +40,13 @@
 
     <header>
         <div class="container header-content">
-            <!-- Coloque isso no <head> -->
-            <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-
-            <!-- Container -->
-            <div class="logo" style="display:flex; align-items:center; gap:20px; position:relative;">
-
-                <!-- Modelo 3D girando -->
-                <model-viewer src="Assets/banner/2.glb" alt="Logo 3D" auto-rotate rotation-per-second="15deg"
-                    camera-controls style="width:300px; height:300px; background:transparent; z-index:1;">
-                </model-viewer>
-
-                <!-- Logo e texto -->
-                <div class="logo-text" style="color:#fff;">
+            <div class="logo">
+                <img src="Assets/banner/1.png" alt="Logo GuedesSEC" style="height:300px;">
+                <div class="logo-text">
                     <div class="logo-name"></div>
                     <div class="logo-tagline">Biblioteca de ALEXANDRIA</div>
                 </div>
             </div>
-
             <nav>
                 <ul>
                     <li>
@@ -2008,42 +1997,42 @@
                 // ... (Repetir o padrão para linkJogo4, linkJogo5, etc. se necessário) ...
                 if (jogo.linkJogo4 && jogo.linkJogo4 !== '') {
                     botoesDownloadJogo += `
-                 <a href="${jogo.linkJogo4}" target="_blank" style="
-                     display: block; /* Um debaixo do outro */
-                     width: fit-content;
-                     margin: 10px auto;
-                     padding: 15px 30px;
-                     background: #e60023;
-                     color: white;
-                     border-radius: 5px;
-                     font-size: 1.1em;
-                     font-weight: bold;
-                     text-decoration: none;
-                     box-shadow: 0 4px 20px rgba(230, 0, 35, 0.6);
-                     transition: all 0.3s ease;
-                     border: 1px solid rgba(255, 255, 255, 0.2);
-                 " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#ff1a3d';" 
-                 onmouseout="this.style.transform='scale(1)'; this.style.background='#e60023';">DOWNLOAD DO JOGO OPÇÃO 4</a>
+                <a href="${jogo.linkJogo4}" target="_blank" style="
+                    display: block; /* Um debaixo do outro */
+                    width: fit-content;
+                    margin: 10px auto;
+                    padding: 15px 30px;
+                    background: #e60023;
+                    color: white;
+                    border-radius: 5px;
+                    font-size: 1.1em;
+                    font-weight: bold;
+                    text-decoration: none;
+                    box-shadow: 0 4px 20px rgba(230, 0, 35, 0.6);
+                    transition: all 0.3s ease;
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#ff1a3d';" 
+                onmouseout="this.style.transform='scale(1)'; this.style.background='#e60023';">DOWNLOAD DO JOGO OPÇÃO 4</a>
              `;
                 }
                 if (jogo.linkJogo5 && jogo.linkJogo5 !== '') {
                     botoesDownloadJogo += `
-                 <a href="${jogo.linkJogo5}" target="_blank" style="
-                     display: block; /* Um debaixo do outro */
-                     width: fit-content;
-                     margin: 10px auto;
-                     padding: 15px 30px;
-                     background: #e60023;
-                     color: white;
-                     border-radius: 5px;
-                     font-size: 1.1em;
-                     font-weight: bold;
-                     text-decoration: none;
-                     box-shadow: 0 4px 20px rgba(230, 0, 35, 0.6);
-                     transition: all 0.3s ease;
-                     border: 1px solid rgba(255, 255, 255, 0.2);
-                 " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#ff1a3d';" 
-                 onmouseout="this.style.transform='scale(1)'; this.style.background='#e60023';">DOWNLOAD DO JOGO OPÇÃO 5</a>
+                <a href="${jogo.linkJogo5}" target="_blank" style="
+                    display: block; /* Um debaixo do outro */
+                    width: fit-content;
+                    margin: 10px auto;
+                    padding: 15px 30px;
+                    background: #e60023;
+                    color: white;
+                    border-radius: 5px;
+                    font-size: 1.1em;
+                    font-weight: bold;
+                    text-decoration: none;
+                    box-shadow: 0 4px 20px rgba(230, 0, 35, 0.6);
+                    transition: all 0.3s ease;
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#ff1a3d';" 
+                onmouseout="this.style.transform='scale(1)'; this.style.background='#e60023';">DOWNLOAD DO JOGO OPÇÃO 5</a>
              `;
                 }
 
@@ -2129,7 +2118,7 @@
                         display: flex;
                         flex-direction: column; /* Coloca os downloads um debaixo do outro */
                         align-items: center; /* Centraliza os botões dentro deste container */
-                        margin: 10px 0;
+                        margin: 20px 10;
                     ">
                         ${botoesDownloadJogo}
                     </div>
@@ -2159,66 +2148,67 @@
 
                 return botoesHTML;
             };
+
             // ... restante da sua função criarPaginaJogo
 
 
             // Criar estrutura HTML da página do jogo
             const gamePageHTML = `
-                <div class="game-page" style="
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100vw;
-                    height: 100vh;
-                    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('${backgroundImage}');
-                    background-size: cover;
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    background-attachment: fixed;
-                    z-index: 1000;
-                    overflow-y: auto;
-                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        <div class="game-page" style="
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('${backgroundImage}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            z-index: 1000;
+            overflow-y: auto;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        ">
+            <a href="javascript:void(0)" onclick="fecharPaginaJogo()" style="
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                padding: 10px 20px;
+                background: #e60023;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+                font-weight: bold;
+                z-index: 1001;
+                backdrop-filter: blur(5px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            ">← Voltar</a>
+            
+            <header class="hero-section" style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 80px 20px 60px;
+                background: rgba(0, 0, 0, 0.4);
+                position: relative;
+                backdrop-filter: blur(3px);
+            ">
+                <div class="hero-content" style="max-width: 800px; margin-bottom: 30px;">
+                    <h1 style="font-size: 3.5em; color: #e60023; margin-bottom: 10px; text-shadow: 2px 2px 8px rgba(0,0,0,0.8);">${jogo.nome}</h1>
+                    <h2 style="font-size: 1.8em; color: #fff; margin-bottom: 20px; text-shadow: 2px 2px 6px rgba(0,0,0,0.8);">Seu próximo grande desafio está a um clique.</h2>
+                </div>
+                
+                <div class="hero-image-container" style="
+                    width: 100%;
+                    max-width: 600px;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    box-shadow: 0 0 40px rgba(230, 0, 35, 0.4);
+                    border: 2px solid rgba(230, 0, 35, 0.3);
                 ">
-                    <a href="javascript:void(0)" onclick="fecharPaginaJogo()" style="
-                        position: fixed;
-                        top: 20px;
-                        left: 20px;
-                        padding: 10px 20px;
-                        background: #e60023;
-                        color: white;
-                        text-decoration: none;
-                        border-radius: 5px;
-                        font-weight: bold;
-                        z-index: 1001;
-                        backdrop-filter: blur(5px);
-                        border: 1px solid rgba(255, 255, 255, 0.1);
-                    ">← Voltar</a>
-                    
-                    <header class="hero-section" style="
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        text-align: center;
-                        padding: 80px 20px 60px;
-                        background: rgba(0, 0, 0, 0.4);
-                        position: relative;
-                        backdrop-filter: blur(3px);
-                    ">
-                        <div class="hero-content" style="max-width: 800px; margin-bottom: 30px;">
-                            <h1 style="font-size: 3.5em; color: #e60023; margin-bottom: 10px; text-shadow: 2px 2px 8px rgba(0,0,0,0.8);">${jogo.nome}</h1>
-                            <h2 style="font-size: 1.8em; color: #fff; margin-bottom: 20px; text-shadow: 2px 2px 6px rgba(0,0,0,0.8);">Seu próximo grande desafio está a um clique.</h2>
-                        </div>
-                        
-                        <div class="hero-image-container" style="
-                            width: 100%;
-                            max-width: 600px;
-                            border-radius: 10px;
-                            overflow: hidden;
-                            box-shadow: 0 0 40px rgba(230, 0, 35, 0.4);
-                            border: 2px solid rgba(230, 0, 35, 0.3);
-                        ">
-                            <img src="${jogo.imagem}" alt="${jogo.nome}" style="width: 100%; height: auto; display: block;">
-                        </div>
+                    <img src="${jogo.imagem}" alt="${jogo.nome}" style="width: 100%; height: auto; display: block;">
+                </div>
 
  ${jogo.imagensDemo && jogo.imagensDemo.length > 0 ? `
     <div class="demo-images" style="
@@ -2284,81 +2274,235 @@ ${jogo.videosDemo && jogo.videosDemo.length > 0 ? `
                     TRAILER
                 </p>
             </div>
-            `).join('')}
+        `).join('')}
     </div>
 ` : ''}
-                    </header>
+            </header>
 
-                    <section class="requirements-section" style="
-                        padding: 60px 20px;
-                        text-align: center;
-                        background: rgba(0, 0, 0, 0.7);
-                        backdrop-filter: blur(5px);
+            <section class="requirements-section" style="
+                padding: 60px 20px;
+                text-align: center;
+                background: rgba(0, 0, 0, 0.7);
+                backdrop-filter: blur(5px);
+            ">
+                <h3 style="font-size: 2em; margin-bottom: 10px; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Requisitos de Sistema (PC)</h3>
+                <p style="color: #ccc; font-size: 1.1em;">Garanta a melhor experiência de jogo verificando se sua máquina atende aos requisitos.</p>
+                
+                <div class="requirements-grid" style="
+                    display: flex;
+                    justify-content: center;
+                    gap: 40px;
+                    flex-wrap: wrap;
+                    margin: 40px auto 30px;
+                    max-width: 900px;
+                ">
+                    <div class="req-box intel" style="
+                        background: rgba(0, 0, 0, 0.8);
+                        padding: 30px;
+                        border-radius: 8px;
+                        width: 100%;
+                        max-width: 400px;
+                        text-align: left;
+                        box-shadow: 0 0 30px rgba(0, 100, 200, 0.3);
+                        border: 1px solid rgba(0, 100, 200, 0.2);
+                        backdrop-filter: blur(10px);
                     ">
-                        <h3 style="font-size: 2em; margin-bottom: 10px; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Requisitos de Sistema (PC)</h3>
-                        <p style="color: #ccc; font-size: 1.1em;">Garanta a melhor experiência de jogo verificando se sua máquina atende aos requisitos.</p>
-                        
-                        <div class="requirements-grid" style="
-                            display: flex;
-                            justify-content: center;
-                            gap: 40px;
-                            flex-wrap: wrap;
-                            margin: 40px auto 30px;
-                            max-width: 900px;
-                        ">
-                            <div class="req-box intel" style="
-                                background: rgba(0, 0, 0, 0.8);
-                                padding: 30px;
-                                border-radius: 8px;
-                                width: 100%;
-                                max-width: 400px;
-                                text-align: left;
-                                box-shadow: 0 0 30px rgba(0, 100, 200, 0.3);
-                                border: 1px solid rgba(0, 100, 200, 0.2);
-                                backdrop-filter: blur(10px);
-                            ">
-                                <h4 style="text-align: center; font-size: 1.5em; margin-bottom: 20px; color: #0071c5;">
-                                    Configuração INTEL/NVIDIA
-                                </h4>
-                                ${processarRequisitosHTML(jogo.requisitos.intel)}
-                            </div>
+                        <h4 style="text-align: center; font-size: 1.5em; margin-bottom: 20px; color: #0071c5;">
+                            Configuração INTEL/NVIDIA
+                        </h4>
+                        ${processarRequisitosHTML(jogo.requisitos.intel)}
+                    </div>
 
-                            <div class="req-box amd" style="
-                                background: rgba(0, 0, 0, 0.8);
-                                padding: 30px;
-                                border-radius: 8px;
-                                width: 100%;
-                                max-width: 400px;
-                                text-align: left;
-                                box-shadow: 0 0 30px rgba(237, 28, 36, 0.3);
-                                border: 1px solid rgba(237, 28, 36, 0.2);
-                                backdrop-filter: blur(10px);
-                            ">
-                                <h4 style="text-align: center; font-size: 1.5em; margin-bottom: 20px; color: #ed1c24;">
-                                    Configuração AMD/RADEON
-                                </h4>
-                                ${processarRequisitosHTML(jogo.requisitos.amd)}
-                            </div>
-                        </div>
-                        
-                        <div class="requirements-cta-group" style="
-                            margin-top: 30px;
-                            display: flex;
-                            justify-content: center;
-                            flex-wrap: wrap;
-                        ">
-                            ${gerarBotoesDownload()}
-                        </div>
-                    </section>
-
-                    <footer style="text-align: center; padding: 20px; background: rgba(0, 0, 0, 0.8); color: #666; backdrop-filter: blur(5px);">
-                        <p>&copy; 2025 GuedesSEC. DEV. ARKANROOT</p>
-                    </footer>
+                    <div class="req-box amd" style="
+                        background: rgba(0, 0, 0, 0.8);
+                        padding: 30px;
+                        border-radius: 8px;
+                        width: 100%;
+                        max-width: 400px;
+                        text-align: left;
+                        box-shadow: 0 0 30px rgba(237, 28, 36, 0.3);
+                        border: 1px solid rgba(237, 28, 36, 0.2);
+                        backdrop-filter: blur(10px);
+                    ">
+                        <h4 style="text-align: center; font-size: 1.5em; margin-bottom: 20px; color: #ed1c24;">
+                            Configuração AMD/RADEON
+                        </h4>
+                        ${processarRequisitosHTML(jogo.requisitos.amd)}
+                    </div>
                 </div>
-            `;
+                
+                <div class="requirements-cta-group" style="
+                    margin-top: 30px;
+                    display: flex;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                ">
+                    ${gerarBotoesDownload()}
+                </div>
+            </section>
+
+            <section class="feedback-section" style="
+                padding: 60px 20px;
+                text-align: center;
+                background: rgba(0, 0, 0, 0.9);
+                color: white;
+                backdrop-filter: blur(8px);
+                border-top: 2px solid rgba(255,255,255,0.1);
+                font-family: Arial, sans-serif;
+            ">
+                <img src="pages/web/Tecnologia/baner/p.png.png" alt="Logo" style="width:80px; margin-bottom:15px; opacity:0.9;">
+                <h2 style="font-size:2em; margin-bottom:8px;">Avalie Nosso Jogo</h2>
+                <p style="color:#ccc; margin-bottom:35px;">Compartilhe sua experiência e nos ajude a melhorar continuamente</p>
+
+                <div style="background:rgba(20,20,20,0.8); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:25px; max-width:600px; margin:auto;">
+                    <h3 style="text-align:left; color:#ff1a3d; margin-bottom:20px;">⭐ Deixe seu Feedback</h3>
+
+                    <label style="display:block; text-align:left; margin-bottom:5px;">Nome:</label>
+                    <input id="nomeFeedback" type="text" placeholder="Seu nome" style="
+                        width:100%; padding:10px; border-radius:6px; border:none; margin-bottom:15px;
+                        background:rgba(255,255,255,0.1); color:white; outline:none;
+                    ">
+
+                    <label style="display:block; text-align:left; margin-bottom:5px;">Comentário:</label>
+                    <textarea id="comentarioFeedback" placeholder="Escreva seu comentário..." style="
+                        width:100%; height:100px; border-radius:6px; border:none;
+                        padding:10px; resize:none; background:rgba(255,255,255,0.1); color:white; outline:none;
+                    "></textarea>
+
+                    <div id="estrelasFeedback" style="font-size:30px; margin:20px 0; cursor:pointer;">★★★★★</div>
+
+                    <button id="enviarFeedback" style="
+                        background:#e60023; color:white; border:none; padding:12px 25px;
+                        border-radius:8px; cursor:pointer; font-weight:bold;
+                        transition:0.3s; box-shadow:0 0 10px rgba(255,26,61,0.6);
+                    " onmouseover="this.style.background='#ff1a3d'" onmouseout="this.style.background='#e60023'">
+                        <i>✈</i> Enviar Feedback
+                    </button>
+                </div>
+
+                <div style="margin-top:40px; text-align:left; max-width:600px; margin-left:auto; margin-right:auto;">
+                    <h3 style="color:#fff; margin-bottom:15px;">💬 Comentários</h3>
+                    <div id="listaFeedback" style="
+                        background:rgba(20,20,20,0.8); border:1px solid rgba(255,255,255,0.1);
+                        border-radius:10px; padding:20px; min-height:50px;
+                    ">
+                        <p style="color:#999; text-align:center;">Nenhum comentário ainda.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <footer style="text-align: center; padding: 20px; background: rgba(0, 0, 0, 0.8); color: #666; backdrop-filter: blur(5px);">
+                <p>&copy; 2025 GuedesSEC. DEV. ARKANROOT</p>
+            </footer>
+        </div>
+    `;
 
             // Adicionar a página ao body
             document.body.insertAdjacentHTML('beforeend', gamePageHTML);
+
+            // ==========================================================
+            // FEEDBACK DO JOGO - Salva comentários no localStorage (CÓDIGO 2)
+            // ==========================================================
+            // Esta função foi colocada aqui DENTRO de criarPaginaJogo para garantir que ela
+            // seja definida e chamada APÓS a criação dos elementos HTML de feedback.
+            function inicializarFeedback() {
+                const estrelas = document.getElementById("estrelasFeedback");
+                const nome = document.getElementById("nomeFeedback");
+                const comentario = document.getElementById("comentarioFeedback");
+                const lista = document.getElementById("listaFeedback");
+                const botao = document.getElementById("enviarFeedback");
+
+                // É crucial verificar novamente, pois os elementos só existem DENTRO da gamePageHTML
+                if (!estrelas || !botao || !nome || !comentario || !lista) {
+                    console.error("Elementos de Feedback não encontrados após a criação da página do jogo.");
+                    return;
+                }
+
+                let avaliacao = 0;
+
+                // Esta linha foi adaptada. O seletor '.hero-section h1' aponta para o h1 DENTRO da gamePageHTML.
+                const jogoAtual = document.querySelector(".game-page .hero-section h1")?.textContent || "Jogo";
+                const chaveStorage = `feedback_${jogoAtual}`;
+
+                // Renderiza as estrelas
+                estrelas.innerHTML = "";
+                for (let i = 1; i <= 5; i++) {
+                    const star = document.createElement("span");
+                    star.textContent = "★";
+                    star.style.margin = "0 3px";
+                    star.style.transition = "0.2s";
+                    star.addEventListener("click", () => {
+                        avaliacao = i;
+                        atualizarEstrelas();
+                    });
+                    estrelas.appendChild(star);
+                }
+
+                function atualizarEstrelas() {
+                    estrelas.querySelectorAll("span").forEach((s, idx) => {
+                        s.style.color = (idx < avaliacao) ? "#ffcc00" : "#555";
+                        // AQUI ESTAVA O ERRO DE DIGITAÇÃO: 'avalacao' -> 'avaliacao'
+                        s.style.transform = (idx < avaliacao) ? "scale(1.2)" : "scale(1)";
+                    });
+                }
+
+                // Carregar comentários salvos
+                const comentariosSalvos = JSON.parse(localStorage.getItem(chaveStorage)) || [];
+                renderizarComentarios(comentariosSalvos);
+
+                // Envio do feedback
+                botao.addEventListener("click", () => {
+                    if (nome.value.trim() === "" || comentario.value.trim() === "" || avaliacao === 0) {
+                        alert("Preencha nome, comentário e selecione uma avaliação!");
+                        return;
+                    }
+
+                    const novo = {
+                        nome: nome.value.trim(),
+                        comentario: comentario.value.trim(),
+                        estrelas: avaliacao,
+                        data: new Date().toLocaleString()
+                    };
+
+                    comentariosSalvos.push(novo);
+                    localStorage.setItem(chaveStorage, JSON.stringify(comentariosSalvos));
+
+                    renderizarComentarios(comentariosSalvos);
+
+                    nome.value = "";
+                    comentario.value = "";
+                    avaliacao = 0;
+                    atualizarEstrelas();
+                });
+
+                function renderizarComentarios(listaComentarios) {
+                    lista.innerHTML = "";
+                    if (listaComentarios.length === 0) {
+                        lista.innerHTML = `<p style="color:#999; text-align:center;">Nenhum comentário ainda.</p>`;
+                        return;
+                    }
+
+                    // Invertendo a ordem para mostrar os mais recentes primeiro
+                    [...listaComentarios].reverse().forEach(c => {
+                        const div = document.createElement("div");
+                        div.style.borderBottom = "1px solid rgba(255,255,255,0.1)";
+                        div.style.padding = "10px 0";
+                        div.innerHTML = `
+                    <strong style="color:#ff1a3d;">${c.nome}</strong>
+                    <span style="color:#ffcc00;">${"★".repeat(c.estrelas)}</span><br>
+                    <p style="margin:5px 0; color:#ddd;">${c.comentario}</p>
+                    <small style="color:#777;">${c.data}</small>
+                `;
+                        lista.appendChild(div);
+                    });
+                }
+
+                // Chamamos atualizarEstrelas inicialmente para limpar o "★★★★★"
+                atualizarEstrelas();
+            }
+
+            // CHAMADA: Inicializa o feedback imediatamente após a inserção do HTML.
+            inicializarFeedback();
         }
 
 
@@ -2368,11 +2512,11 @@ ${jogo.videosDemo && jogo.videosDemo.length > 0 ? `
         function processarRequisitosHTML(requisitos) {
             if (!requisitos) {
                 return `
-                    <div style="margin-bottom: 20px; padding: 15px; border-radius: 5px; background: #121212; border-left: 3px solid #e60023;">
-                        <p style="font-weight: bold; color: #00e6e6; margin-bottom: 5px;">REQUISITOS:</p>
-                        <p>Requisitos não especificados</p>
-                    </div>
-                `;
+            <div style="margin-bottom: 20px; padding: 15px; border-radius: 5px; background: #121212; border-left: 3px solid #e60023;">
+                <p style="font-weight: bold; color: #00e6e6; margin-bottom: 5px;">REQUISITOS:</p>
+                <p>Requisitos não especificados</p>
+            </div>
+        `;
             }
 
             let html = '';
@@ -2383,24 +2527,23 @@ ${jogo.videosDemo && jogo.videosDemo.length > 0 ? `
                 partes.forEach((parte, index) => {
                     const tipo = index === 0 ? 'MÍNIMOS:' : 'RECOMENDADOS:';
                     html += `
-                        <div style="margin-bottom: 20px; padding: 15px; border-radius: 5px; background: #121212; border-left: 3px solid #e60023;">
-                            <p style="font-weight: bold; color: #00e6e6; margin-bottom: 5px;">${tipo}</p>
-                            <p>${parte}</p>
-                        </div>
-                    `;
+                <div style="margin-bottom: 20px; padding: 15px; border-radius: 5px; background: #121212; border-left: 3px solid #e60023;">
+                    <p style="font-weight: bold; color: #00e6e6; margin-bottom: 5px;">${tipo}</p>
+                    <p>${parte}</p>
+                </div>
+            `;
                 });
             } else {
                 html = `
-                    <div style="margin-bottom: 20px; padding: 15px; border-radius: 5px; background: #121212; border-left: 3px solid #e60023;">
-                        <p style="font-weight: bold; color: #00e6e6; margin-bottom: 5px;">REQUISITOS:</p>
-                        <p>${requisitos}</p>
-                    </div>
-                `;
+            <div style="margin-bottom: 20px; padding: 15px; border-radius: 5px; background: #121212; border-left: 3px solid #e60023;">
+                <p style="font-weight: bold; color: #00e6e6; margin-bottom: 5px;">REQUISITOS:</p>
+                <p>${requisitos}</p>
+            </div>
+        `;
             }
 
             return html;
         }
-
         // ======================================================================
         // FUNÇÃO PARA FECHAR PÁGINA DO JOGO
         // ======================================================================
