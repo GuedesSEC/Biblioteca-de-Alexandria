@@ -8,6 +8,7 @@
     <title>GuedesSEC</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <a href="Fedback.html" target="_blank"></a>
     <meta name="viewport" content="width=1200px">
     <!-- MONITORAR QUEM ACESSA MEU SITE -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-S2QJ2BQSRZ"></script>
@@ -41,7 +42,7 @@
     <header>
         <div class="container header-content">
             <div class="logo">
-                <img src="Assets/banner/p.png.png" alt="Logo GuedesSEC" style="height:300px;">
+                <img src="Assets/banner/1.png" alt="Logo GuedesSEC" style="height:300px;">
                 <div class="logo-text">
                     <div class="logo-name"></div>
                     <div class="logo-tagline">Biblioteca de ALEXANDRIA</div>
@@ -88,7 +89,7 @@
                         <p>Tudo sobre Android.</p>
                         <div
                             style="background:#555; color:#000; font-weight:bold; padding: 5px 10px; margin-top: 10px; border-radius: 4px; text-align: center; width: 80px;">
-                            Em Breve !
+                            Inativo
                         </div>
                     </div>
                 </div>
@@ -496,12 +497,12 @@
         <div class="container footer-content"
             style="display: flex; align-items: center; justify-content: center; gap: 48px;">
             <div class="footer-logo" style="display: flex; align-items: center;">
-                <img src="Assets/banner/p.png.png" alt="Logo GuedesSEC" style="height:100px; margin-right:16px;">
+                <img src="Assets/banner/1.png" alt="Logo GuedesSEC" style="height:100px; margin-right:16px;">
 
                 <div class="footer-text">
                     <p>GuedesSEC &copy; 24/08/2025</p>
                     <p>Dev. ArkanRoot</p>
-                    <p>Dev. LUN4T1C0XHUNT3R</p>
+
                     <p>Dev. Snot</p>
                 </div>
             </div>
@@ -620,9 +621,12 @@
                 { nome: "Windows 10", link: "https://drive.google.com/file/d/1VJ3fZkvhAJf3pfaAc0RZ3a5ehes2suDC/view?usp=drive_link", imagem: "Assets/icon/Categorias 2/Isos/sistema operacional/w10.png" }
             ],
             jogos: [
-                { nome: "GOD OF WAR 2 DUBLADO", link: "", imagem: "Assets/icon/Categorias 2/Isos/ps2/1.png" },
-                { nome: "BURNOUT 3", link: "https://www.mediafire.com/file/zh6cp5bfgo1bfga/BURNOUT_3.iso/file", imagem: "Assets/icon/Categorias 2/Isos/ps2/2.png" },
-                { nome: "GOD OF WAR 1 ", link: "https://drive.google.com/file/d/1S1zyogsGB1n-Uo9s-qyqSV2JX1jQ2oeO/view?usp=sharing", imagem: "?" },
+                { nome: "Emulador Ps2", link: "https://pcsx2.net/downloads/", imagem: "Assets/icon/Categorias 2/Isos/ps2/1.png" },
+                { nome: "Bios do emulador Emulador Ps2", link: "https://drive.google.com/file/d/160TJtC5_WYDPATipiEocN1J4eZfo887F/view?usp=sharing", imagem: "Assets/icon/Categorias 2/Isos/ps2/2.png" },
+                { nome: "BURNOUT 3", link: "https://www.mediafire.com/file/zh6cp5bfgo1bfga/BURNOUT_3.iso/file", imagem: "Assets/icon/Categorias 2/Isos/ps2/3.png" },
+                { nome: "GOD OF WAR 1 DUBLADO", link: "https://drive.google.com/file/d/1S1zyogsGB1n-Uo9s-qyqSV2JX1jQ2oeO/view?usp=sharing", imagem: "Assets/icon/Categorias 2/Isos/ps2/4.png" },
+                { nome: "GOD OF WAR 2 DUBLADO", link: "https://drive.google.com/file/d/1MX7NSrC8AoruocCD7PqQZYMiEBCPwqcR/view?usp=sharing", imagem: "Assets/icon/Categorias 2/Isos/ps2/5.png" },
+                
             ]
         };
 
@@ -1378,7 +1382,7 @@
                 },
                 {
                     "nome": "Battlefield 3",
-                    "linkJogo": "https://mineurl.com/0e4492",
+                    "linkJogo": "https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqazIxYWhKbUlqMTFOSXhFVFAwaEtJdU04ZWRWUXxBQ3Jtc0tuQUtfNzYySl9sVUs4NTdVNnRqUWg5SXlEU3Z1YzhaMVNsaWUxMmpORE50UElTN1F4TS0zcTlKY0wtMGZzWXZZTm1lYjNCa3V4WmhxalhNeGNhUlFUSHBhb1Z1NHRSODJ4blc3V2hGRHJ4WEFNYVc5Yw&q=https%3A%2F%2Fzloemu.net%2Ffiles%2FBattlefield3.torrent&v=bt2mNNayJ70",
                     "linkDublagem": "",
                     "linksExtras": [],
                     "imagem": "Assets/icon/Categorias 2/Torrent/Jp/42.png",
@@ -1898,262 +1902,148 @@
         // ======================================================================
         // FUNÇÃO PARA CRIAR PÁGINA DO JOGO
         // ======================================================================
-        function criarPaginaJogo(jogo) {
-            const backgroundImage = "";
+     function criarPaginaJogo(jogo) {
+    const backgroundImage = ""; // Defina a imagem de fundo aqui
 
-            // Função para gerar os botões de download dinamicamente
-            const gerarBotoesDownload = () => {
-                let botoesHTML = '';
-                let botoesDownloadJogo = ''; // Novo contêiner para os downloads
+    // ==========================================================
+    // 1. Função para gerar os botões de download dinamicamente
+    // ==========================================================
+    const gerarBotoesDownload = () => {
+        let botoesDownloadJogo = '';
+        const corPadraoBotao = '#e60023'; 
+        const corHoverPadrao = '#ff1a3d'; 
 
-                // URL do seu GIF - SUBSTITUA ESTE VALOR PELO LINK REAL DO SEU GIF HOSPEDADO
-                const gifUrl = "URL_DIRETA_DO_SEU_GIF_HOSPEDADO";
-
-                // 1. Definição do GIF (mantido para ser usado ao lado)
-                const gifSeta = `
-            <div style="text-align: center;">
-                <img 
-                    src="Assets/video/2.gif"
-                    alt="Seta apontando para o download" 
-                    style="
-                        height: 300px; 
-                        margin: 250px;
-                        filter: drop-shadow(0 0 8px #ff1a3d);
-                        vertical-align: middle;
-                    "
-                />
-                <audio id="musicaFundo" autoplay loop hidden>
-                    <source src="Assets/Audio/1.mp3" type="audio/mpeg">
-                </audio>
-            </div>
+        const baseStyle = `
+            display: block; 
+            width: 100%; 
+            margin: 10px 0; 
+            padding: 15px 30px;
+            color: white;
+            border-radius: 5px;
+            font-size: 1.1em; 
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-align: center; 
+            white-space: nowrap; 
+            background: ${corPadraoBotao}; 
+            border: 1px solid rgba(255, 255, 255, 0.2); 
+            box-shadow: 0 4px 15px rgba(230, 0, 35, 0.6); 
         `;
 
-                // --- SEÇÃO DE BOTÕES DE DOWNLOAD DO JOGO (Ficarão um debaixo do outro e centralizados) ---
+        const hoverEffects = `
+            onmouseover="this.style.transform='scale(1.05)'; this.style.background='${corHoverPadrao}'; this.style.boxShadow='0 4px 25px rgba(255, 26, 61, 0.8)';" 
+            onmouseout="this.style.transform='scale(1)'; this.style.background='${corPadraoBotao}'; this.style.boxShadow='0 4px 15px rgba(230, 0, 35, 0.6)';"
+        `;
 
-                // 2. Criação do Botão Principal (AGORA SEM OS GIFs ao redor)
-                if (jogo.linkJogo && jogo.linkJogo !== '') {
-                    botoesDownloadJogo += `
-                <a href="${jogo.linkJogo}" target="_blank" style="
-                    display: block; /* Ocupa a largura total para ficar um debaixo do outro */
-                    width: fit-content; /* Ajusta a largura ao conteúdo */
-                    margin: 10px auto; /* Centraliza horizontalmente e adiciona margem */
-                    padding: 15px 30px;
-                    background: #e60023;
-                    color: white;
-                    border-radius: 5px;
-                    font-size: 1.2em;
-                    font-weight: bold;
-                    text-decoration: none;
-                    box-shadow: 0 4px 20px rgba(230, 0, 35, 0.8);
-                    transition: all 0.3s ease;
-                    border: 2px solid white;
-                    white-space: nowrap; 
-                " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#ff1a3d'; this.style.boxShadow='0 4px 30px rgba(255, 26, 61, 1)'; " 
-                onmouseout="this.style.transform='scale(1)'; this.style.background='#e60023'; this.style.boxShadow='0 4px 20px rgba(230, 0, 35, 0.8)';">DOWNLOAD DO JOGO </a>
-            `;
-                }
+        if (jogo.linkJogo && jogo.linkJogo !== '') {
+            botoesDownloadJogo += `<a href="${jogo.linkJogo}" target="_blank" style="${baseStyle}" ${hoverEffects}>DOWNLOAD PRINCIPAL</a>`;
+        }
 
-                // 3. Outras opções de download do jogo
-                if (jogo.linkJogo2 && jogo.linkJogo2 !== '') {
-                    botoesDownloadJogo += `
-                <a href="${jogo.linkJogo2}" target="_blank" style="
-                    display: block; /* Ocupa a largura total para ficar um debaixo do outro */
-                    width: fit-content;
-                    margin: 10px auto;
-                    padding: 15px 30px;
-                    background: #e60023;
-                    color: white;
-                    border-radius: 5px;
-                    font-size: 1.1em;
-                    font-weight: bold;
-                    text-decoration: none;
-                    box-shadow: 0 4px 20px rgba(230, 0, 35, 0.6);
-                    transition: all 0.3s ease;
-                    border: 1px solid rgba(255, 255, 255, 0.2);
-                " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#ff1a3d';" 
-                onmouseout="this.style.transform='scale(1)'; this.style.background='#e60023';">DOWNLOAD DO JOGO OPÇÃO 2</a>
-            `;
-                }
-                if (jogo.linkJogo3 && jogo.linkJogo3 !== '') {
-                    botoesDownloadJogo += `
-                <a href="${jogo.linkJogo3}" target="_blank" style="
-                    display: block; /* Um debaixo do outro */
-                    width: fit-content;
-                    margin: 10px auto;
-                    padding: 15px 30px;
-                    background: #e60023;
-                    color: white;
-                    border-radius: 5px;
-                    font-size: 1.1em;
-                    font-weight: bold;
-                    text-decoration: none;
-                    box-shadow: 0 4px 20px rgba(230, 0, 35, 0.6);
-                    transition: all 0.3s ease;
-                    border: 1px solid rgba(255, 255, 255, 0.2);
-                " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#ff1a3d';" 
-                onmouseout="this.style.transform='scale(1)'; this.style.background='#e60023';">DOWNLOAD DO JOGO OPÇÃO 3</a>
-            `;
-                }
-                // ... (Repetir o padrão para linkJogo4, linkJogo5, etc. se necessário) ...
-                if (jogo.linkJogo4 && jogo.linkJogo4 !== '') {
-                    botoesDownloadJogo += `
-                <a href="${jogo.linkJogo4}" target="_blank" style="
-                    display: block; /* Um debaixo do outro */
-                    width: fit-content;
-                    margin: 10px auto;
-                    padding: 15px 30px;
-                    background: #e60023;
-                    color: white;
-                    border-radius: 5px;
-                    font-size: 1.1em;
-                    font-weight: bold;
-                    text-decoration: none;
-                    box-shadow: 0 4px 20px rgba(230, 0, 35, 0.6);
-                    transition: all 0.3s ease;
-                    border: 1px solid rgba(255, 255, 255, 0.2);
-                " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#ff1a3d';" 
-                onmouseout="this.style.transform='scale(1)'; this.style.background='#e60023';">DOWNLOAD DO JOGO OPÇÃO 4</a>
-             `;
-                }
-                if (jogo.linkJogo5 && jogo.linkJogo5 !== '') {
-                    botoesDownloadJogo += `
-                <a href="${jogo.linkJogo5}" target="_blank" style="
-                    display: block; /* Um debaixo do outro */
-                    width: fit-content;
-                    margin: 10px auto;
-                    padding: 15px 30px;
-                    background: #e60023;
-                    color: white;
-                    border-radius: 5px;
-                    font-size: 1.1em;
-                    font-weight: bold;
-                    text-decoration: none;
-                    box-shadow: 0 4px 20px rgba(230, 0, 35, 0.6);
-                    transition: all 0.3s ease;
-                    border: 1px solid rgba(255, 255, 255, 0.2);
-                " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#ff1a3d';" 
-                onmouseout="this.style.transform='scale(1)'; this.style.background='#e60023';">DOWNLOAD DO JOGO OPÇÃO 5</a>
-             `;
-                }
+        [jogo.linkJogo2, jogo.linkJogo3, jogo.linkJogo4, jogo.linkJogo5].forEach((link, index) => {
+            if (link && link !== '') {
+                botoesDownloadJogo += `<a href="${link}" target="_blank" style="${baseStyle}" ${hoverEffects}>DOWNLOAD OPÇÃO ${index + 2}</a>`;
+            }
+        });
+
+        if (jogo.linkbios && jogo.linkbios !== '') {
+            botoesDownloadJogo += `<a href="${jogo.linkbios}" target="_blank" style="${baseStyle}" ${hoverEffects}>DOWNLOAD BIOS</a>`;
+        }
+        if (jogo.linkcrack && jogo.linkcrack !== '') {
+            botoesDownloadJogo += `<a href="${jogo.linkcrack}" target="_blank" style="${baseStyle}" ${hoverEffects}>DOWNLOAD CRACK</a>`;
+        }
+
+        if (jogo.linksExtras && jogo.linksExtras.length > 0) {
+            jogo.linksExtras.forEach((linkExtra) => {
+                botoesDownloadJogo += `<a href="${linkExtra.url}" target="_blank" style="${baseStyle}" ${hoverEffects}>${linkExtra.nome}</a>`;
+            });
+        }
+
+        // ==========================================================
+        // 2. Layout com os vídeos e botões de download centralizados
+        // ==========================================================
+        return `
+    <div style="
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 60px;
+        flex-wrap: wrap;
+        margin-top: 50px;
+        text-align: center;
+    ">
+
+        <!-- VÍDEO ESQUERDO -->
+        <div style="
+            background-color: #0a0a0a;
+            border: 2px solid red;
+            border-radius: 12px;
+            padding: 15px;
+            width: 360px;
+            box-shadow: 0 0 20px rgba(255,0,0,0.6);
+        ">
+            <h3 style="color: #ff4040; text-align: center; margin-bottom: 10px;">Como Passar pelo Encurtador</h3>
+            <iframe 
+                width="100%" height="200" 
+                src="Assets/video/3.MP4" 
+                title="Como passar pelo encurtador" 
+                frameborder="0" allowfullscreen
+                style="border-radius: 8px;"
+            ></iframe>
+        </div>
+
+        <!-- DOWNLOADS CENTRALIZADOS -->
+        <div style="
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            background: rgba(20, 20, 20, 0.8);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(255, 26, 61, 0.4);
+            width: 340px;
+        ">
+            <p style="
+                color: #ffcc00;
+                font-weight: bold;
+                margin-bottom: 20px;
+                font-size: 1.5em;
+                text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+            ">🕹️ BOM JOGO! 🕹️</p>
+            ${botoesDownloadJogo}
+        </div>
+
+        <!-- VÍDEO DIREITO -->
+        <div style="
+            background-color: #0a0a0a;
+            border: 2px solid red;
+            border-radius: 12px;
+            padding: 15px;
+            width: 360px;
+            box-shadow: 0 0 20px rgba(255,0,0,0.6);
+        ">
+            <h3 style="color: #ff4040; text-align: center; margin-bottom: 10px;">Como Baixar Após Extrair</h3>
+            <iframe 
+                width="100%" height="200" 
+                src="https://www.youtube.com/embed/SEU_VIDEO_DIREITO" 
+                title="Como baixar o jogo após extrair" 
+                frameborder="0" allowfullscreen
+                style="border-radius: 8px;"
+            ></iframe>
+        </div>
+
+    </div>
+`;
+    };
 
 
-                // 4. Links de BIOS e CRACK (e outros extras) - Adaptados para centralização e bloco
-                if (jogo.linkbios && jogo.linkbios !== '') {
-                    botoesDownloadJogo += `
-                <a href="${jogo.linkbios}" target="_blank" style="
-                    display: block; /* Um debaixo do outro */
-                    width: fit-content;
-                    margin: 10px auto;
-                    padding: 15px 30px;
-                    background: #0066cc;
-                    color: white;
-                    border-radius: 5px;
-                    font-size: 1.1em;
-                    font-weight: bold;
-                    text-decoration: none;
-                    box-shadow: 0 4px 20px rgba(0, 102, 204, 0.6);
-                    transition: all 0.3s ease;
-                    border: 1px solid rgba(255, 255, 255, 0.2);
-                " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#0080ff';" 
-                onmouseout="this.style.transform='scale(1)'; this.style.background='#0066cc';">DOWNLOAD BIOS</a>
-            `;
-                }
-                if (jogo.linkcrack && jogo.linkcrack !== '') {
-                    botoesDownloadJogo += `
-                <a href="${jogo.linkcrack}" target="_blank" style="
-                    display: block; /* Um debaixo do outro */
-                    width: fit-content;
-                    margin: 10px auto;
-                    padding: 15px 30px;
-                    background: #0066cc;
-                    color: white;
-                    border-radius: 5px;
-                    font-size: 1.1em;
-                    font-weight: bold;
-                    text-decoration: none;
-                    box-shadow: 0 4px 20px rgba(0, 102, 204, 0.6);
-                    transition: all 0.3s ease;
-                    border: 1px solid rgba(255, 255, 255, 0.2);
-                " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#0080ff';" 
-                onmouseout="this.style.transform='scale(1)'; this.style.background='#0066cc';">DOWNLOAD CRACK</a>
-            `;
-                }
-
-                // 5. Links Extras - Adaptados para centralização e bloco
-                if (jogo.linksExtras && jogo.linksExtras.length > 0) {
-                    jogo.linksExtras.forEach((linkExtra, index) => {
-                        botoesDownloadJogo += `
-                    <a href="${linkExtra.url}" target="_blank" style="
-                        display: block; /* Um debaixo do outro */
-                        width: fit-content;
-                        margin: 10px auto;
-                        padding: 15px 30px;
-                        background: #00a86b;
-                        color: white;
-                        border-radius: 5px;
-                        font-size: 1.1em;
-                        font-weight: bold;
-                        text-decoration: none;
-                        box-shadow: 0 4px 20px rgba(0, 168, 107, 0.6);
-                        transition: all 0.3s ease;
-                        border: 1px solid rgba(255, 255, 255, 0.2);
-                    " onmouseover="this.style.transform='scale(1.05)'; this.style.background='#00cc88';" 
-                    onmouseout="this.style.transform='scale(1)'; this.style.background='#00a86b';">${linkExtra.nome}</a>
-                `;
-                    });
-                }
-
-                // --- JUNÇÃO DO GIF AO LADO DOS BOTÕES DE DOWNLOAD ---
-
-                if (botoesDownloadJogo !== '') {
-                    // Contêiner principal usando flexbox para colocar o GIF ao lado do grupo de downloads
-                    botoesHTML = `
-                <div style="
-                    display: flex;
-                    align-items: flex-start; /* Alinha os itens ao topo */
-                    justify-content: center; /* Centraliza o grupo inteiro */
-                    width: 100%;
-                ">
-                    ${gifSeta} <div style="
-                        display: flex;
-                        flex-direction: column; /* Coloca os downloads um debaixo do outro */
-                        align-items: center; /* Centraliza os botões dentro deste container */
-                        margin: 20px 10;
-                    ">
-                        ${botoesDownloadJogo}
-                    </div>
-
-                    ${gifSeta} </div>
-            `;
-                } else {
-                    // 6. Tratamento de Erro (Se não houver links, centraliza a mensagem de erro)
-                    botoesHTML = `
-                <div style="text-align: center;">
-                    <button style="
-                        padding: 15px 30px;
-                        margin: 10px auto; /* Centraliza o botão */
-                        background: rgba(102, 102, 102, 0.7);
-                        color: white;
-                        border: none;
-                        border-radius: 5px;
-                        font-size: 1.1em;
-                        font-weight: bold;
-                        cursor: not-allowed;
-                        backdrop-filter: blur(5px);
-                    ">LINK INDISPONÍVEL</button>
-                </div>
-            `;
-                }
+    // aqui continua o restante da sua função...
 
 
-                return botoesHTML;
-            };
-
-            // ... restante da sua função criarPaginaJogo
-
-
-            // Criar estrutura HTML da página do jogo
-            const gamePageHTML = `
+    // Criar estrutura HTML da página do jogo
+    // Os spans de avaliação inicial no HTML são IDs que serão preenchidos via JS.
+    const gamePageHTML = `
         <div class="game-page" style="
             position: fixed;
             top: 0;
@@ -2168,6 +2058,8 @@
             z-index: 1000;
             overflow-y: auto;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            /* === CORREÇÃO: ADICIONANDO ROLAGEM SUAVE AQUI === */
+            scroll-behavior: smooth; 
         ">
             <a href="javascript:void(0)" onclick="fecharPaginaJogo()" style="
                 position: fixed;
@@ -2210,74 +2102,83 @@
                     <img src="${jogo.imagem}" alt="${jogo.nome}" style="width: 100%; height: auto; display: block;">
                 </div>
 
- ${jogo.imagensDemo && jogo.imagensDemo.length > 0 ? `
-    <div class="demo-images" style="
-        width: 100%;
-        max-width: 900px;
-        margin: 32px auto 0 auto;
-        display: flex;
-        gap: 24px;
-        justify-content: center;
-        flex-wrap: wrap;
-    ">
-        ${jogo.imagensDemo.map(img => `
-            <img src="${img}" alt="Demo ${jogo.nome}" style="
-                width: 260px;
-                height: 160px;
-                object-fit: cover;
-                border-radius: 16px;
-                box-shadow: 0 0 18px #ff0000; /* ALTERADO PARA VERMELHO */
-                background: #111;
-                margin-bottom: 12px;
-            ">
-        `).join('')}
-    </div>
-` : ''}
-
-${jogo.videosDemo && jogo.videosDemo.length > 0 ? `
-    <div class="demo-videos" style="
-        width: 100%;
-        max-width: 900px;
-        margin: 32px auto 0 auto;
-        display: flex;
-        gap: 24px;
-        justify-content: center;
-        flex-wrap: wrap;
-    ">
-        ${jogo.videosDemo.map(videoUrl => `
-            <div style="text-align: center;">
-                <iframe
-                    src="${videoUrl}"
-                    title="Vídeo Demo ${jogo.nome}"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    style="
-                        width: 500px;
-                        height: 260px;
-                        border-radius: 16px;
-                        box-shadow: 0 0 18px #ff0000;
-                        background: #111;
-                        margin-bottom: 5px; /* Reduzimos a margem de baixo do vídeo */
-                    "
-                ></iframe>
-                
-                <p style="
-                    font-size: 1.1em; 
-                    color: #ff1a3d; /* Cor vermelha para o texto */
-                    font-weight: bold;
-                    letter-spacing: 2px;
-                    text-shadow: 0 0 5px rgba(255, 26, 61, 0.5);
-                    margin-top: 5px; /* Pequeno espaçamento entre vídeo e texto */
-                    margin-bottom: 20px; /* Margem para separar do próximo item */
+                ${jogo.imagensDemo && jogo.imagensDemo.length > 0 ? `
+                <div class="demo-images" style="
+                    width: 100%;
+                    max-width: 900px;
+                    margin: 32px auto 0 auto;
+                    display: flex;
+                    gap: 24px;
+                    justify-content: center;
+                    flex-wrap: wrap;
                 ">
-                    TRAILER
-                </p>
-            </div>
-        `).join('')}
-    </div>
-` : ''}
+                    ${jogo.imagensDemo.map(img => `
+                        <img src="${img}" alt="Demo ${jogo.nome}" style="
+                            width: 260px;
+                            height: 160px;
+                            object-fit: cover;
+                            border-radius: 16px;
+                            box-shadow: 0 0 18px #ff0000;
+                            background: #111;
+                            margin-bottom: 12px;
+                        ">
+                    `).join('')}
+                </div>
+                ` : ''}
+
+                ${jogo.videosDemo && jogo.videosDemo.length > 0 ? `
+                <div class="demo-videos" style="
+                    width: 100%;
+                    max-width: 900px;
+                    margin: 32px auto 0 auto;
+                    display: flex;
+                    gap: 24px;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                ">
+                    ${jogo.videosDemo.map(videoUrl => `
+                        <div style="text-align: center;">
+                            <iframe
+                                src="${videoUrl}"
+                                title="Vídeo Demo ${jogo.nome}"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                                style="
+                                    width: 500px;
+                                    height: 260px;
+                                    border-radius: 16px;
+                                    box-shadow: 0 0 18px #ff0000;
+                                    background: #111;
+                                    margin-bottom: 5px;
+                                "
+                            ></iframe>
+                            
+                            <p style="
+                                font-size: 1.1em; 
+                                color: #ff1a3d; 
+                                font-weight: bold;
+                                letter-spacing: 2px;
+                                text-shadow: 0 0 5px rgba(255, 26, 61, 0.5);
+                                margin-top: 5px;
+                                margin-bottom: 20px;
+                            ">
+                                TRAILER
+                            </p>
+                        </div>
+                    `).join('')}
+                </div>
+                ` : ''}
             </header>
+            
+            <div class="divider" style="
+                width: 80%; 
+                max-width: 1000px; 
+                height: 1px; 
+                background: linear-gradient(to right, rgba(230, 0, 35, 0), rgba(230, 0, 35, 0.5), rgba(230, 0, 35, 0)); 
+                margin: 0 auto; 
+                box-shadow: 0 0 10px rgba(230, 0, 35, 0.5);
+            "></div>
 
             <section class="requirements-section" style="
                 padding: 60px 20px;
@@ -2340,6 +2241,15 @@ ${jogo.videosDemo && jogo.videosDemo.length > 0 ? `
                     ${gerarBotoesDownload()}
                 </div>
             </section>
+            
+            <div class="divider" style="
+                width: 80%; 
+                max-width: 1000px; 
+                height: 1px; 
+                background: linear-gradient(to right, rgba(230, 0, 35, 0), rgba(230, 0, 35, 0.5), rgba(230, 0, 35, 0)); 
+                margin: 0 auto; 
+                box-shadow: 0 0 10px rgba(230, 0, 35, 0.5);
+            "></div>
 
             <section class="feedback-section" style="
                 padding: 60px 20px;
@@ -2351,23 +2261,36 @@ ${jogo.videosDemo && jogo.videosDemo.length > 0 ? `
                 font-family: Arial, sans-serif;
             ">
                 <img src="pages/web/Tecnologia/baner/p.png.png" alt="Logo" style="width:80px; margin-bottom:15px; opacity:0.9;">
+                
+                <div style="margin-bottom: 40px;">
+                    <span id="estrelasMedia" style="font-size: 2.5em; color: #ffcc00; text-shadow: 0 0 10px #ffcc00;">★★★★★</span>
+                    <p style="font-size: 1.2em; color: #fff; margin-top: 5px;">
+                        <strong id="textoMedia" style="color: #ff1a3d;">4,5 DE 5 ESTRELAS</strong>
+                        <span id="contagemAvaliacoes" style="color: #999;"> • 6,4 mil Avaliações</span>
+                    </p>
+                </div>
+                
                 <h2 style="font-size:2em; margin-bottom:8px;">Avalie Nosso Jogo</h2>
                 <p style="color:#ccc; margin-bottom:35px;">Compartilhe sua experiência e nos ajude a melhorar continuamente</p>
 
                 <div style="background:rgba(20,20,20,0.8); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:25px; max-width:600px; margin:auto;">
                     <h3 style="text-align:left; color:#ff1a3d; margin-bottom:20px;">⭐ Deixe seu Feedback</h3>
 
-                    <label style="display:block; text-align:left; margin-bottom:5px;">Nome:</label>
-                    <input id="nomeFeedback" type="text" placeholder="Seu nome" style="
-                        width:100%; padding:10px; border-radius:6px; border:none; margin-bottom:15px;
-                        background:rgba(255,255,255,0.1); color:white; outline:none;
-                    ">
+                    <div style="display: flex; flex-direction: column; text-align: left; margin-bottom: 15px;">
+                        <label for="nomeFeedback" style="margin-bottom:5px;">Nome:</label>
+                        <input id="nomeFeedback" type="text" placeholder="Seu nome" style="
+                            width:100%; padding:10px; border-radius:6px; border:none;
+                            background:rgba(255,255,255,0.1); color:white; outline:none;
+                        ">
+                    </div>
 
-                    <label style="display:block; text-align:left; margin-bottom:5px;">Comentário:</label>
-                    <textarea id="comentarioFeedback" placeholder="Escreva seu comentário..." style="
-                        width:100%; height:100px; border-radius:6px; border:none;
-                        padding:10px; resize:none; background:rgba(255,255,255,0.1); color:white; outline:none;
-                    "></textarea>
+                    <div style="display: flex; flex-direction: column; text-align: left; margin-bottom: 20px;">
+                        <label for="comentarioFeedback" style="margin-bottom:5px;">Comentário:</label>
+                        <textarea id="comentarioFeedback" placeholder="Escreva seu comentário..." style="
+                            width:100%; height:100px; border-radius:6px; border:none;
+                            padding:10px; resize:none; background:rgba(255,255,255,0.1); color:white; outline:none;
+                        "></textarea>
+                    </div>
 
                     <div id="estrelasFeedback" style="font-size:30px; margin:20px 0; cursor:pointer;">★★★★★</div>
 
@@ -2383,8 +2306,15 @@ ${jogo.videosDemo && jogo.videosDemo.length > 0 ? `
                 <div style="margin-top:40px; text-align:left; max-width:600px; margin-left:auto; margin-right:auto;">
                     <h3 style="color:#fff; margin-bottom:15px;">💬 Comentários</h3>
                     <div id="listaFeedback" style="
-                        background:rgba(20,20,20,0.8); border:1px solid rgba(255,255,255,0.1);
-                        border-radius:10px; padding:20px; min-height:50px;
+                        background:rgba(20,20,20,0.8); 
+                        border:1px solid rgba(255,255,255,0.1);
+                        border-radius:10px; 
+                        padding:20px; 
+                        min-height:50px;
+                        /* === CORREÇÃO: ADICIONANDO ROLAGEM AQUI === */
+                        max-height: 400px; /* Altura máxima para o bloco de comentários */
+                        overflow-y: auto; /* Adiciona barra de rolagem vertical quando o conteúdo excede a altura máxima */
+                        /* ======================================= */
                     ">
                         <p style="color:#999; text-align:center;">Nenhum comentário ainda.</p>
                     </div>
@@ -2396,298 +2326,238 @@ ${jogo.videosDemo && jogo.videosDemo.length > 0 ? `
             </footer>
         </div>
     `;
+    
 
-            // Adicionar a página ao body
-            document.body.insertAdjacentHTML('beforeend', gamePageHTML);
+    // Adicionar a página ao body
+    document.body.insertAdjacentHTML('beforeend', gamePageHTML);
 
-            // ==========================================================
-            // FEEDBACK DO JOGO - Salva comentários no localStorage (CÓDIGO 2)
-            // ==========================================================
-            // Esta função foi colocada aqui DENTRO de criarPaginaJogo para garantir que ela
-            // seja definida e chamada APÓS a criação dos elementos HTML de feedback.
-            function inicializarFeedback() {
-                const estrelas = document.getElementById("estrelasFeedback");
-                const nome = document.getElementById("nomeFeedback");
-                const comentario = document.getElementById("comentarioFeedback");
-                const lista = document.getElementById("listaFeedback");
-                const botao = document.getElementById("enviarFeedback");
+    // ==========================================================
+    // FEEDBACK DO JOGO - Salva comentários no localStorage 
+    // ==========================================================
+    function inicializarFeedback() {
+        const estrelasInput = document.getElementById("estrelasFeedback");
+        const nomeInput = document.getElementById("nomeFeedback");
+        const comentarioInput = document.getElementById("comentarioFeedback");
+        const listaComentarios = document.getElementById("listaFeedback");
+        const botaoEnviar = document.getElementById("enviarFeedback");
 
-                // É crucial verificar novamente, pois os elementos só existem DENTRO da gamePageHTML
-                if (!estrelas || !botao || !nome || !comentario || !lista) {
-                    console.error("Elementos de Feedback não encontrados após a criação da página do jogo.");
-                    return;
-                }
+        const estrelasMediaDisplay = document.getElementById("estrelasMedia");
+        const textoMediaDisplay = document.getElementById("textoMedia");
+        const contagemAvaliacoesDisplay = document.getElementById("contagemAvaliacoes");
 
-                let avaliacao = 0;
 
-                // Esta linha foi adaptada. O seletor '.hero-section h1' aponta para o h1 DENTRO da gamePageHTML.
-                const jogoAtual = document.querySelector(".game-page .hero-section h1")?.textContent || "Jogo";
-                const chaveStorage = `feedback_${jogoAtual}`;
+        if (!estrelasInput || !botaoEnviar || !nomeInput || !comentarioInput || !listaComentarios || !estrelasMediaDisplay || !textoMediaDisplay || !contagemAvaliacoesDisplay) {
+            console.error("Elementos de Feedback não encontrados após a criação da página do jogo.");
+            return;
+        }
 
-                // Renderiza as estrelas
-                estrelas.innerHTML = "";
-                for (let i = 1; i <= 5; i++) {
-                    const star = document.createElement("span");
-                    star.textContent = "★";
-                    star.style.margin = "0 3px";
-                    star.style.transition = "0.2s";
-                    star.addEventListener("click", () => {
-                        avaliacao = i;
-                        atualizarEstrelas();
-                    });
-                    estrelas.appendChild(star);
-                }
+        let avaliacaoSelecionada = 0;
 
-                function atualizarEstrelas() {
-                    estrelas.querySelectorAll("span").forEach((s, idx) => {
-                        s.style.color = (idx < avaliacao) ? "#ffcc00" : "#555";
-                        // AQUI ESTAVA O ERRO DE DIGITAÇÃO: 'avalacao' -> 'avaliacao'
-                        s.style.transform = (idx < avaliacao) ? "scale(1.2)" : "scale(1)";
-                    });
-                }
+        const jogoAtual = document.querySelector(".game-page .hero-section h1")?.textContent || "Jogo";
+        const chaveStorage = `feedback_${jogoAtual}`;
 
-                // Carregar comentários salvos
-                const comentariosSalvos = JSON.parse(localStorage.getItem(chaveStorage)) || [];
-                renderizarComentarios(comentariosSalvos);
-
-                // Envio do feedback
-                botao.addEventListener("click", () => {
-                    if (nome.value.trim() === "" || comentario.value.trim() === "" || avaliacao === 0) {
-                        alert("Preencha nome, comentário e selecione uma avaliação!");
-                        return;
-                    }
-
-                    const novo = {
-                        nome: nome.value.trim(),
-                        comentario: comentario.value.trim(),
-                        estrelas: avaliacao,
-                        data: new Date().toLocaleString()
-                    };
-
-                    comentariosSalvos.push(novo);
-                    localStorage.setItem(chaveStorage, JSON.stringify(comentariosSalvos));
-
-                    renderizarComentarios(comentariosSalvos);
-
-                    nome.value = "";
-                    comentario.value = "";
-                    avaliacao = 0;
-                    atualizarEstrelas();
-                });
-
-                function renderizarComentarios(listaComentarios) {
-                    lista.innerHTML = "";
-                    if (listaComentarios.length === 0) {
-                        lista.innerHTML = `<p style="color:#999; text-align:center;">Nenhum comentário ainda.</p>`;
-                        return;
-                    }
-
-                    // Invertendo a ordem para mostrar os mais recentes primeiro
-                    [...listaComentarios].reverse().forEach(c => {
-                        const div = document.createElement("div");
-                        div.style.borderBottom = "1px solid rgba(255,255,255,0.1)";
-                        div.style.padding = "10px 0";
-                        div.innerHTML = `
-                    <strong style="color:#ff1a3d;">${c.nome}</strong>
-                    <span style="color:#ffcc00;">${"★".repeat(c.estrelas)}</span><br>
-                    <p style="margin:5px 0; color:#ddd;">${c.comentario}</p>
-                    <small style="color:#777;">${c.data}</small>
-                `;
-                        lista.appendChild(div);
-                    });
-                }
-
-                // Chamamos atualizarEstrelas inicialmente para limpar o "★★★★★"
-                atualizarEstrelas();
+        // ------------------------------------------------------------------------
+        // NOVIDADE: Calcula e formata a média
+        // ------------------------------------------------------------------------
+        function calcularMediaAvaliacoes(comentarios) {
+            if (comentarios.length === 0) {
+                return { media: 0, count: 0, estrelasHTML: "☆☆☆☆☆" };
             }
 
-            // CHAMADA: Inicializa o feedback imediatamente após a inserção do HTML.
-            inicializarFeedback();
+            const totalEstrelas = comentarios.reduce((sum, c) => sum + c.estrelas, 0);
+            const media = (totalEstrelas / comentarios.length);
+            const mediaArredondada = Math.round(media * 2) / 2; // Arredonda para o meio (0.5 ou 1.0)
+            
+            // Cria a representação visual das estrelas (cheia/meia/vazia)
+            let estrelasHTML = '';
+            for (let i = 1; i <= 5; i++) {
+                if (media >= i) {
+                    estrelasHTML += '★'; // Estrela cheia
+                } else if (media >= i - 0.5) {
+                    estrelasHTML += '½'; // Meia estrela (ou use a lógica de cor/máscara se quiser algo mais sofisticado)
+                } else {
+                    estrelasHTML += '☆'; // Estrela vazia
+                }
+            }
+            
+            return {
+                media: mediaArredondada,
+                count: comentarios.length,
+                estrelasHTML: estrelasHTML.replace('½', '★') // MANTENDO ESTRELAS CHEIAS PARA SIMPLIFICAR A VISUALIZAÇÃO AQUI
+            };
+        }
+        
+        // ------------------------------------------------------------------------
+        // Atualiza a exibição da média no topo
+        // ------------------------------------------------------------------------
+        function atualizarDisplayMedia(comentarios) {
+            const { media, count, estrelasHTML } = calcularMediaAvaliacoes(comentarios);
+            
+            if (count > 0) {
+                // Atualiza o texto da média
+                textoMediaDisplay.textContent = `${media.toFixed(1).replace('.', ',')} DE 5 ESTRELAS`;
+                
+                // Atualiza a contagem
+                contagemAvaliacoesDisplay.textContent = ` • ${count} Avaliaç${count === 1 ? 'ão' : 'ões'}`;
+                
+                // Atualiza o visual das estrelas (usando a estrela completa para simplificar)
+                const estrelasPreenchidas = '★'.repeat(Math.round(media));
+                const estrelasVazias = '☆'.repeat(5 - Math.round(media));
+                estrelasMediaDisplay.textContent = estrelasPreenchidas + estrelasVazias;
+
+            } else {
+                // Estado inicial
+                textoMediaDisplay.textContent = `Aguardando Avaliações`;
+                contagemAvaliacoesDisplay.textContent = ``;
+                estrelasMediaDisplay.textContent = '☆☆☆☆☆';
+            }
         }
 
 
-        // ======================================================================
-        // FUNÇÃO PARA PROCESSAR REQUISITOS EM HTML
-        // ======================================================================
-        function processarRequisitosHTML(requisitos) {
-            if (!requisitos) {
-                return `
+        // Renderiza as estrelas de INPUT
+        estrelasInput.innerHTML = "";
+        for (let i = 1; i <= 5; i++) {
+            const star = document.createElement("span");
+            star.textContent = "★";
+            star.style.margin = "0 3px";
+            star.style.transition = "0.2s";
+            star.addEventListener("click", () => {
+                avaliacaoSelecionada = i;
+                atualizarEstrelasInput();
+            });
+            estrelasInput.appendChild(star);
+        }
+
+        function atualizarEstrelasInput() {
+            estrelasInput.querySelectorAll("span").forEach((s, idx) => {
+                s.style.color = (idx < avaliacaoSelecionada) ? "#ffcc00" : "#555";
+                s.style.transform = (idx < avaliacaoSelecionada) ? "scale(1.2)" : "scale(1)";
+            });
+        }
+
+        // Carregar comentários salvos
+        const comentariosSalvos = JSON.parse(localStorage.getItem(chaveStorage)) || [];
+        renderizarComentarios(comentariosSalvos);
+        atualizarDisplayMedia(comentariosSalvos); // Chamar ao carregar
+
+        // Envio do feedback
+        botaoEnviar.addEventListener("click", () => {
+            if (nomeInput.value.trim() === "" || comentarioInput.value.trim() === "" || avaliacaoSelecionada === 0) {
+                alert("Preencha nome, comentário e selecione uma avaliação!");
+                return;
+            }
+
+            const novo = {
+                nome: nomeInput.value.trim(),
+                comentario: comentarioInput.value.trim(),
+                estrelas: avaliacaoSelecionada,
+                data: new Date().toLocaleString('pt-BR')
+            };
+
+            comentariosSalvos.push(novo);
+            localStorage.setItem(chaveStorage, JSON.stringify(comentariosSalvos));
+
+            renderizarComentarios(comentariosSalvos);
+            atualizarDisplayMedia(comentariosSalvos); // Chamar após novo comentário
+
+            // Limpar formulário
+            nomeInput.value = "";
+            comentarioInput.value = "";
+            avaliacaoSelecionada = 0;
+            atualizarEstrelasInput();
+        });
+
+        function renderizarComentarios(lista) {
+            listaComentarios.innerHTML = "";
+            if (lista.length === 0) {
+                listaComentarios.innerHTML = `<p style="color:#999; text-align:center;">Nenhum comentário ainda.</p>`;
+                return;
+            }
+
+            // Invertendo a ordem para mostrar os mais recentes primeiro
+            [...lista].reverse().forEach(c => {
+                const div = document.createElement("div");
+                div.style.borderBottom = "1px solid rgba(255,255,255,0.1)";
+                div.style.padding = "10px 0";
+                div.innerHTML = `
+                    <strong style="color:#ff1a3d;">${c.nome}</strong>
+                    <span style="color:#ffcc00; margin-left: 8px;">${"★".repeat(c.estrelas)}</span><br>
+                    <p style="margin:5px 0; color:#ddd;">${c.comentario}</p>
+                    <small style="color:#777;">${c.data}</small>
+                `;
+                listaComentarios.appendChild(div);
+            });
+        }
+
+        // Chamamos atualizarEstrelasInput inicialmente para limpar o "★★★★★"
+        atualizarEstrelasInput();
+    }
+
+    // CHAMADA: Inicializa o feedback imediatamente após a inserção do HTML.
+    inicializarFeedback();
+}
+
+// ======================================================================
+// FUNÇÃO PARA PROCESSAR REQUISITOS EM HTML (MANTIDA)
+// ======================================================================
+function processarRequisitosHTML(requisitos) {
+    if (!requisitos) {
+        return `
             <div style="margin-bottom: 20px; padding: 15px; border-radius: 5px; background: #121212; border-left: 3px solid #e60023;">
                 <p style="font-weight: bold; color: #00e6e6; margin-bottom: 5px;">REQUISITOS:</p>
                 <p>Requisitos não especificados</p>
             </div>
         `;
-            }
+    }
 
-            let html = '';
+    let html = '';
 
-            if (requisitos.includes('|')) {
-                const partes = requisitos.split('|').map(p => p.trim());
+    if (requisitos.includes('|')) {
+        const partes = requisitos.split('|').map(p => p.trim());
 
-                partes.forEach((parte, index) => {
-                    const tipo = index === 0 ? 'MÍNIMOS:' : 'RECOMENDADOS:';
-                    html += `
+        partes.forEach((parte, index) => {
+            const tipo = index === 0 ? 'MÍNIMOS:' : 'RECOMENDADOS:';
+            html += `
                 <div style="margin-bottom: 20px; padding: 15px; border-radius: 5px; background: #121212; border-left: 3px solid #e60023;">
                     <p style="font-weight: bold; color: #00e6e6; margin-bottom: 5px;">${tipo}</p>
                     <p>${parte}</p>
                 </div>
             `;
-                });
-            } else {
-                html = `
+        });
+    } else {
+        html = `
             <div style="margin-bottom: 20px; padding: 15px; border-radius: 5px; background: #121212; border-left: 3px solid #e60023;">
                 <p style="font-weight: bold; color: #00e6e6; margin-bottom: 5px;">REQUISITOS:</p>
                 <p>${requisitos}</p>
             </div>
         `;
-            }
+    }
 
-            return html;
-        }
-        // ======================================================================
-        // FUNÇÃO PARA FECHAR PÁGINA DO JOGO
-        // ======================================================================
-        function fecharPaginaJogo() {
-            const gamePage = document.querySelector('.game-page');
-            if (gamePage) {
-                gamePage.remove();
-            }
+    return html;
+}
 
-            // Reabrir o modal de jogos
-            const modalJogos = document.getElementById('modalJogos');
-            if (modalJogos) {
-                modalJogos.classList.add('active');
+// ======================================================================
+// FUNÇÃO PARA FECHAR PÁGINA DO JOGO (MANTIDA)
+// ======================================================================
+function fecharPaginaJogo() {
+    const gamePage = document.querySelector('.game-page');
+    if (gamePage) {
+        gamePage.remove();
+    }
 
-                // Manter o estado atual (com pesquisa se houver)
-                const searchInput = document.getElementById('searchInputJogos');
-                const termoPesquisa = searchInput ? searchInput.value : '';
+    // Reabrir o modal de jogos
+    const modalJogos = document.getElementById('modalJogos');
+    if (modalJogos) {
+        modalJogos.classList.add('active');
 
-                // Mostrar a lista de jogos com o termo de pesquisa atual
-                showJogos('acao', termoPesquisa);
-            }
-        }
-    </script>
-    </head>
+        // Manter o estado atual (com pesquisa se houver)
+        const searchInput = document.getElementById('searchInputJogos');
+        const termoPesquisa = searchInput ? searchInput.value : '';
 
-    <body>
-
-        <div id="feedback-widget-container">
-            <span id="feedback-text">Deixe sua Opinião</span>
-
-            <div id="chat-button" onclick="toggleBot()">
-                <i class="fas fa-comment-alt" id="chat-icon"></i>
-            </div>
-        </div>
-
-        <div id="bot-container" onclick="closeBot(event)">
-            <iframe src="pages/web/Feedback/feedback.html" frameborder="0" onclick="event.stopPropagation()"
-                style="background: transparent;" allowtransparency="true"></iframe>
-        </div>
-
-        <!-- Incluir Font Awesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-        <script>
-            function toggleBot() {
-                document.getElementById('bot-container').classList.toggle('active');
-            }
-
-            function closeBot(event) {
-                if (event.target === document.getElementById('bot-container')) {
-                    toggleBot();
-                }
-            }
-
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape') {
-                    document.getElementById('bot-container').classList.remove('active');
-                }
-            });
-
-            document.getElementById('bot-container').addEventListener('click', function (e) {
-                if (e.target.tagName === 'IFRAME') {
-                    e.stopPropagation();
-                }
-            });
-
-            // android e cursos cards//
-            // Adicione este bloco ao final do seu arquivo, após as funções dos outros modais.
-
-            // ===================== MODAL ANDROID =====================
-            function voltarAndroid() {
-                document.getElementById("android-categorias").style.display = "block";
-                document.getElementById("android-arquivos").style.display = "none";
-                document.getElementById("voltarAndroid").style.display = "none";
-                document.getElementById("search-container-android").style.display = "none";
-                document.getElementById("searchInputAndroid").value = "";
-                document.querySelector("#modalJogosMobile .modal-card h2").textContent = "Escolha uma categoria de Android";
-            }
-
-            function showAndroid(cat, termoPesquisa = '') {
-                document.getElementById("android-categorias").style.display = "none";
-                document.getElementById("android-arquivos").style.display = "block";
-                document.getElementById("voltarAndroid").style.display = "inline-block";
-                document.getElementById("search-container-android").style.display = "flex";
-                const titulos = {
-                    apps: "Aplicativos Android",
-                    jogos: "Jogos Android",
-                    sites: "Sites Úteis para Android"
-                };
-                document.querySelector("#modalJogosMobile .modal-card h2").textContent = titulos[cat] || "Android";
-                const ul = document.getElementById("android-arquivos");
-                ul.dataset.categoria = cat;
-                const termo = (termoPesquisa || document.getElementById("searchInputAndroid").value || '').toLowerCase();
-                const filtrados = (dadosAndroid[cat] || []).filter(item => item.nome.toLowerCase().includes(termo));
-                ul.innerHTML = filtrados.length === 0
-                    ? `<li style="justify-content:center;">Nenhum resultado para "${termo}"</li>`
-                    : '';
-                filtrados.forEach(item => {
-                    const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '';
-                    ul.innerHTML += `
-            <li>
-                ${imageHtml}
-                <a href="${item.link}" target="_blank">${item.nome}</a>
-            </li>
-        `;
-                });
-            }
-
-            // ===================== MODAL CURSOS =====================
-            function voltarCursos() {
-                document.getElementById("cursos-categorias").style.display = "block";
-                document.getElementById("cursos-arquivos").style.display = "none";
-                document.getElementById("voltarCursos").style.display = "none";
-                document.getElementById("search-container-cursos").style.display = "none";
-                document.getElementById("searchInputCursos").value = "";
-                document.querySelector("#modalNovidades .modal-card h2").textContent = "Escolha uma categoria de Cursos";
-            }
-
-            function showCursos(cat, termoPesquisa = '') {
-                document.getElementById("cursos-categorias").style.display = "none";
-                document.getElementById("cursos-arquivos").style.display = "block";
-                document.getElementById("voltarCursos").style.display = "inline-block";
-                document.getElementById("search-container-cursos").style.display = "flex";
-                const titulos = {
-                    programacao: "Cursos de Programação",
-                };
-                document.querySelector("#modalNovidades .modal-card h2").textContent = titulos[cat] || "Cursos";
-                const ul = document.getElementById("cursos-arquivos");
-                ul.dataset.categoria = cat;
-                const termo = (termoPesquisa || document.getElementById("searchInputCursos").value || '').toLowerCase();
-                const filtrados = (dadosCursos[cat] || []).filter(item => item.nome.toLowerCase().includes(termo));
-                ul.innerHTML = filtrados.length === 0
-                    ? `<li style="justify-content:center;">Nenhum resultado para "${termo}"</li>`
-                    : '';
-                filtrados.forEach(item => {
-                    const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '';
-                    ul.innerHTML += `
-            <li>
-                ${imageHtml}
-                <a href="${item.link}" target="_blank">${item.nome}</a>
-            </li>
-        `;
-                });
-            }
+        // Mostrar a lista de jogos com o termo de pesquisa atual
+        showJogos('acao', termoPesquisa);
+    }
+}
 
             // ===================== EVENTOS DE PESQUISA =====================
             document.addEventListener('DOMContentLoaded', function () {
@@ -2709,11 +2579,13 @@ ${jogo.videosDemo && jogo.videosDemo.length > 0 ? `
                 }
             });
         </script>
+        <!-- Ícone da Comunidade -->
+<a href="pages/web/Feedback/Comunidade.html" class="comunidade-btn" title="Ir para a Comunidade">
+    <img src="Assets/banner/1.png" alt="Comunidade" class="comunidade-icon">
+    <span class="comunidade-text">Comunidade</span>
+</a>
+
 
     </body>
 
 </html>
-
-
-
-
