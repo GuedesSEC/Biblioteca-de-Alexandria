@@ -2028,3 +2028,53 @@ div[style*="width:100%; display:flex; justify-content:center"] {
                 transform: translateX(0);
             }
         }
+        .comunidade-btn {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    /* --- Alterações aqui: Inicia o Flexbox em Coluna --- */
+    display: flex;
+    flex-direction: column; /* Alinha os itens verticalmente (coluna) */
+    align-items: center;    /* Centraliza os itens horizontalmente */
+    gap: 4px; /* Reduzi o gap para a separação vertical */
+    /* ---------------------------------------------------- */
+    text-decoration: none;
+    color: #00ff88;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    text-shadow: 0 0 8px #00ff88;
+    transition: all 0.3s ease;
+    background: transparent;
+    border: none;
+    outline: none;
+    z-index: 1000;
+    cursor: pointer; /* Adiciona cursor de ponteiro para indicar que é clicável */
+    padding: 10px; /* Adiciona padding para aumentar a área de clique */
+}
+
+.comunidade-icon {
+    /* Mantenha o tamanho do ícone */
+    height: 100px;
+    width: 100px;
+    filter: drop-shadow(0 0 6px #00ff88); /* brilho do ícone */
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.comunidade-btn:hover .comunidade-icon {
+    transform: scale(1.05); /* Reduzi a escala para não ficar muito grande, mas ajuste se quiser */
+    filter: drop-shadow(0 0 12px #00ffaa);
+}
+
+.comunidade-text {
+    letter-spacing: 0.6px;
+    transition: text-shadow 0.3s ease, color 0.3s ease;
+    /* Certifica que o texto não tem um tamanho fixo que atrapalhe o alinhamento */
+    white-space: nowrap; 
+    margin-top: 5px; /* Adiciona uma margem extra entre o ícone e o texto */
+}
+
+.comunidade-btn:hover .comunidade-text {
+    color: #00ffaa;
+    text-shadow: 0 0 12px #00ffaa;
+}
