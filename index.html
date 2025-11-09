@@ -2608,32 +2608,33 @@ function fecharPaginaJogo() {
   z-index: 9999;
   box-shadow: 0 0 10px #00ff00;
 ">
-  Visitas: <span id="visitas">0</span>
+  visitas: <span id="visitas">0</span>
 </div>
 
 <script>
 async function contarAcessoUnico() {
-  const key = 'device-id-guedesec';
-  let id = localStorage.getItem(key);
-
-  // Se o navegador ainda não tem ID, cria um novo
-  if (!id) {
-    id = Math.random().toString(36).substring(2, 15);
-    localStorage.setItem(key, id);
-
-    // Só conta na primeira vez
-    await fetch(`https://api.countapi.xyz/hit/guedesec.github.io/unique`);
+  // gera um nome único baseado no domínio do site
+  const siteKey = location.hostname.replace(/\./g, '_');
+  const localKey = `visitado_${siteKey}`;
+  
+  // verifica se o usuário já foi contado neste dispositivo
+  if (!localStorage.getItem(localKey)) {
+    localStorage.setItem(localKey, "true");
+    await fetch(`https://api.countapi.xyz/hit/${siteKey}/unique`);
   }
 
-  // Atualiza o número total exibido
-  const res = await fetch(`https://api.countapi.xyz/get/guedesec.github.io/unique`);
-  const data = await res.json();
-  document.getElementById("visitas").textContent = data.value.toLocaleString();
+  // pega o total atualizado
+  try {
+    const res = await fetch(`https://api.countapi.xyz/get/${siteKey}/unique`);
+    const data = await res.json();
+    document.getElementById("visitas").textContent = data.value.toLocaleString();
+  } catch (err) {
+    console.error("Erro ao buscar contador:", err);
+  }
 }
 
 contarAcessoUnico();
 </script>
-
 
     </body>
 
