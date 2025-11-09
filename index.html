@@ -2595,46 +2595,6 @@ function fecharPaginaJogo() {
     <img src="Assets/icon/Categorias/comunidade.png" alt="Comunidade" class="comunidade-icon">
     <span class="comunidade-text">Comunidade</span>
 </a>
-<div id="contador-total" style="
-  position: fixed;
-  top: 10px;
-  right: 15px;
-  color: #00ff00;
-  background: rgba(0,0,0,0.7);
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-family: 'Courier New', monospace;
-  font-size: 14px;
-  z-index: 9999;
-  box-shadow: 0 0 10px #00ff00;
-">
-  visitas: <span id="visitas">0</span>
-</div>
-<script>
-async function contarAcessoUnico() {
-  const siteKey = location.hostname.replace(/\./g, '_');
-  const localKey = `visitado_${siteKey}`;
-
-  // registra visita (cria a chave se não existir)
-  if (!localStorage.getItem(localKey)) {
-    localStorage.setItem(localKey, "true");
-    await fetch(`https://api.countapi.xyz/update/${siteKey}/unique?amount=1`);
-  }
-
-  // pega o total atualizado
-  try {
-    const res = await fetch(`https://api.countapi.xyz/get/${siteKey}/unique`);
-    const data = await res.json();
-    document.getElementById("visitas").textContent = data.value.toLocaleString();
-  } catch (err) {
-    console.error("Erro ao buscar contador:", err);
-  }
-}
-
-contarAcessoUnico();
-</script>
->
-
     </body>
 
 </html>
