@@ -764,12 +764,6 @@
                 {
                     "nome": "Miles Morales",
                     "linkJogo": "https://seulink.net/tTCbgtT",
-                    "linkJogo2": "https://seulink.net/tTCbgtT",
-                    "linkJogo3": "https://seulink.net/tTCbgtT",
-                    "linkJogo4": "https://seulink.net/tTCbgtT",
-                    "linkJogo5": "https://seulink.net/tTCbgtT",
-
-
                     "linkDublagem": "https://fir3.net/xRl9USZhi",
                     "imagem": "Assets/icon/Categorias 2/Torrent/Jp/1.png",
                     videosDemo: [
@@ -1908,56 +1902,73 @@
     // ==========================================================
     // 1. Função para gerar os botões de download dinamicamente
     // ==========================================================
-    const gerarBotoesDownload = () => {
-        let botoesDownloadJogo = '';
-        const corPadraoBotao = '#e60023'; 
-        const corHoverPadrao = '#ff1a3d'; 
+   const gerarBotoesDownload = () => {
+    let botoesDownloadJogo = '';
+    const corPadraoBotao = '#e60023'; 
+    const corHoverPadrao = '#ff1a3d'; 
+    
+    // 💡 DEFINIÇÃO DE ESTILOS PARA O BOTÃO DE DUBLAGEM (ADICIONADO AQUI)
+    const dublagemCor = '#008000'; // Cor verde para Dublagem
+    const dublagemHoverCor = '#00aa00';
+    
+    const dublagemStyle = `background: ${dublagemCor}; box-shadow: 0 4px 15px rgba(0, 128, 0, 0.6);`;
+    const dublagemHover = `onmouseover="this.style.transform='scale(1.05)'; this.style.background='${dublagemHoverCor}'; this.style.boxShadow='0 4px 25px rgba(0, 170, 0, 0.8)';" onmouseout="this.style.transform='scale(1)'; this.style.background='${dublagemCor}'; this.style.boxShadow='0 4px 15px rgba(0, 128, 0, 0.6)';"`;
+    // FIM da definição de estilos de Dublagem
 
-        const baseStyle = `
-            display: block; 
-            width: 100%; 
-            margin: 10px 0; 
-            padding: 15px 30px;
-            color: white;
-            border-radius: 5px;
-            font-size: 1.1em; 
-            font-weight: bold;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            text-align: center; 
-            white-space: nowrap; 
-            background: ${corPadraoBotao}; 
-            border: 1px solid rgba(255, 255, 255, 0.2); 
-            box-shadow: 0 4px 15px rgba(230, 0, 35, 0.6); 
-        `;
+    const baseStyle = `
+        display: block; 
+        width: 100%; 
+        margin: 10px 0; 
+        padding: 15px 30px;
+        color: white;
+        border-radius: 5px;
+        font-size: 1.1em; 
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        text-align: center; 
+        white-space: nowrap; 
+        background: ${corPadraoBotao}; 
+        border: 1px solid rgba(255, 255, 255, 0.2); 
+        box-shadow: 0 4px 15px rgba(230, 0, 35, 0.6); 
+    `;
 
-        const hoverEffects = `
-            onmouseover="this.style.transform='scale(1.05)'; this.style.background='${corHoverPadrao}'; this.style.boxShadow='0 4px 25px rgba(255, 26, 61, 0.8)';" 
-            onmouseout="this.style.transform='scale(1)'; this.style.background='${corPadraoBotao}'; this.style.boxShadow='0 4px 15px rgba(230, 0, 35, 0.6)';"
-        `;
+    const hoverEffects = `
+        onmouseover="this.style.transform='scale(1.05)'; this.style.background='${corHoverPadrao}'; this.style.boxShadow='0 4px 25px rgba(255, 26, 61, 0.8)';" 
+        onmouseout="this.style.transform='scale(1)'; this.style.background='${corPadraoBotao}'; this.style.boxShadow='0 4px 15px rgba(230, 0, 35, 0.6)';"
+    `;
 
-        if (jogo.linkJogo && jogo.linkJogo !== '') {
-            botoesDownloadJogo += `<a href="${jogo.linkJogo}" target="_blank" style="${baseStyle}" ${hoverEffects}>DOWNLOAD PRINCIPAL</a>`;
+    if (jogo.linkJogo && jogo.linkJogo !== '') {
+        botoesDownloadJogo += `<a href="${jogo.linkJogo}" target="_blank" style="${baseStyle}" ${hoverEffects}>DOWNLOAD PRINCIPAL</a>`;
+    }
+
+    [jogo.linkJogo2, jogo.linkJogo3, jogo.linkJogo4, jogo.linkJogo5].forEach((link, index) => {
+        if (link && link !== '') {
+            botoesDownloadJogo += `<a href="${link}" target="_blank" style="${baseStyle}" ${hoverEffects}>DOWNLOAD OPÇÃO ${index + 2}</a>`;
         }
+    });
 
-        [jogo.linkJogo2, jogo.linkJogo3, jogo.linkJogo4, jogo.linkJogo5].forEach((link, index) => {
-            if (link && link !== '') {
-                botoesDownloadJogo += `<a href="${link}" target="_blank" style="${baseStyle}" ${hoverEffects}>DOWNLOAD OPÇÃO ${index + 2}</a>`;
-            }
+    // 🆕 NOVO: LÓGICA DO DOWNLOAD DUBLAGEM ADICIONADA AQUI
+    if (jogo.linkDublagem && jogo.linkDublagem !== '') {
+        botoesDownloadJogo += `<a href="${jogo.linkDublagem}" target="_blank" style="${baseStyle} ${dublagemStyle}" ${dublagemHover}>DOWNLOAD DUBLAGEM 🗣️</a>`;
+    }
+
+    if (jogo.linkbios && jogo.linkbios !== '') {
+        botoesDownloadJogo += `<a href="${jogo.linkbios}" target="_blank" style="${baseStyle}" ${hoverEffects}>DOWNLOAD BIOS</a>`;
+    }
+    if (jogo.linkcrack && jogo.linkcrack !== '') {
+        botoesDownloadJogo += `<a href="${jogo.linkcrack}" target="_blank" style="${baseStyle}" ${hoverEffects}>DOWNLOAD CRACK</a>`;
+    }
+
+    if (jogo.linksExtras && jogo.linksExtras.length > 0) {
+        jogo.linksExtras.forEach((linkExtra) => {
+            botoesDownloadJogo += `<a href="${linkExtra.url}" target="_blank" style="${baseStyle}" ${hoverEffects}>${linkExtra.nome}</a>`;
         });
+    
 
-        if (jogo.linkbios && jogo.linkbios !== '') {
-            botoesDownloadJogo += `<a href="${jogo.linkbios}" target="_blank" style="${baseStyle}" ${hoverEffects}>DOWNLOAD BIOS</a>`;
-        }
-        if (jogo.linkcrack && jogo.linkcrack !== '') {
-            botoesDownloadJogo += `<a href="${jogo.linkcrack}" target="_blank" style="${baseStyle}" ${hoverEffects}>DOWNLOAD CRACK</a>`;
-        }
-
-        if (jogo.linksExtras && jogo.linksExtras.length > 0) {
-            jogo.linksExtras.forEach((linkExtra) => {
-                botoesDownloadJogo += `<a href="${linkExtra.url}" target="_blank" style="${baseStyle}" ${hoverEffects}>${linkExtra.nome}</a>`;
-            });
-        }
+    // RETORNA O HTML DOS BOTÕES
+    return botoesDownloadJogo; 
+};
 
         // ==========================================================
         // 2. Layout com os vídeos e botões de download centralizados
@@ -1985,7 +1996,7 @@
             <h3 style="color: #ff4040; text-align: center; margin-bottom: 10px;">Como Passar pelo Encurtador</h3>
             <iframe 
                 width="100%" height="200" 
-                src="Assets/video/3.MP4" 
+                src="https://drive.google.com/file/d/1e6tL4KRZmxT0cbFurja5imxEmNmCq-ar/preview" 
                 title="Como passar pelo encurtador" 
                 frameborder="0" allowfullscreen
                 style="border-radius: 8px;"
@@ -2026,7 +2037,7 @@
             <h3 style="color: #ff4040; text-align: center; margin-bottom: 10px;">Como Baixar Após Extrair</h3>
             <iframe 
                 width="100%" height="200" 
-                src="https://www.youtube.com/embed/SEU_VIDEO_DIREITO" 
+                src="https://drive.google.com/file/d/1t0rZBIcJxhuGqTt7OlXeet58PHc-Hsmd/preview" 
                 title="Como baixar o jogo após extrair" 
                 frameborder="0" allowfullscreen
                 style="border-radius: 8px;"
