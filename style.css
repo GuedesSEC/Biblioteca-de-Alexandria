@@ -2039,11 +2039,11 @@ div[style*="width:100%; display:flex; justify-content:center"] {
     gap: 4px; /* Reduzi o gap para a separação vertical */
     /* ---------------------------------------------------- */
     text-decoration: none;
-    color: #00ff88;
+    color: #ffffff;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 16px;
-    text-shadow: 0 0 8px #00ff88;
+    text-shadow: 0 0 8px #ffffff;
     transition: all 0.3s ease;
     background: transparent;
     border: none;
@@ -2055,16 +2055,12 @@ div[style*="width:100%; display:flex; justify-content:center"] {
 
 .comunidade-icon {
     /* Mantenha o tamanho do ícone */
-    height: 100px;
-    width: 100px;
-    filter: drop-shadow(0 0 6px #00ff88); /* brilho do ícone */
+    height: 70px;
+    width: 70px;
+    filter: drop-shadow(0 0 6px #000000); /* brilho do ícone */
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.comunidade-btn:hover .comunidade-icon {
-    transform: scale(1.05); /* Reduzi a escala para não ficar muito grande, mas ajuste se quiser */
-    filter: drop-shadow(0 0 12px #00ffaa);
-}
 
 .comunidade-text {
     letter-spacing: 0.6px;
@@ -2074,7 +2070,3 @@ div[style*="width:100%; display:flex; justify-content:center"] {
     margin-top: 5px; /* Adiciona uma margem extra entre o ícone e o texto */
 }
 
-.comunidade-btn:hover .comunidade-text {
-    color: #00ffaa;
-    text-shadow: 0 0 12px #00ffaa;
-}
