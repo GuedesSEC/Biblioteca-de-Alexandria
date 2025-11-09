@@ -2595,6 +2595,44 @@ function fecharPaginaJogo() {
     <img src="Assets/icon/Categorias/comunidade.png" alt="Comunidade" class="comunidade-icon">
     <span class="comunidade-text">Comunidade</span>
 </a>
+<div id="contador-total" style="
+  position: fixed;
+  top: 10px;
+  right: 15px;
+  color: #00ff00;
+  background: rgba(0,0,0,0.7);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  z-index: 9999;
+  box-shadow: 0 0 10px #00ff00;
+">
+  Visitas: <span id="visitas">0</span>
+</div>
+
+<script>
+async function contarAcessoUnico() {
+  const key = 'device-id-guedesec';
+  let id = localStorage.getItem(key);
+
+  // Se o navegador ainda não tem ID, cria um novo
+  if (!id) {
+    id = Math.random().toString(36).substring(2, 15);
+    localStorage.setItem(key, id);
+
+    // Só conta na primeira vez
+    await fetch(`https://api.countapi.xyz/hit/guedesec.github.io/unique`);
+  }
+
+  // Atualiza o número total exibido
+  const res = await fetch(`https://api.countapi.xyz/get/guedesec.github.io/unique`);
+  const data = await res.json();
+  document.getElementById("visitas").textContent = data.value.toLocaleString();
+}
+
+contarAcessoUnico();
+</script>
 
 
     </body>
