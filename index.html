@@ -2610,17 +2610,15 @@ function fecharPaginaJogo() {
 ">
   visitas: <span id="visitas">0</span>
 </div>
-
 <script>
 async function contarAcessoUnico() {
-  // gera um nome único baseado no domínio do site
   const siteKey = location.hostname.replace(/\./g, '_');
   const localKey = `visitado_${siteKey}`;
-  
-  // verifica se o usuário já foi contado neste dispositivo
+
+  // registra visita (cria a chave se não existir)
   if (!localStorage.getItem(localKey)) {
     localStorage.setItem(localKey, "true");
-    await fetch(`https://api.countapi.xyz/hit/${siteKey}/unique`);
+    await fetch(`https://api.countapi.xyz/update/${siteKey}/unique?amount=1`);
   }
 
   // pega o total atualizado
@@ -2635,6 +2633,7 @@ async function contarAcessoUnico() {
 
 contarAcessoUnico();
 </script>
+>
 
     </body>
 
