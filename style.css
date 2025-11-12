@@ -2054,11 +2054,16 @@ div[style*="width:100%; display:flex; justify-content:center"] {
 }
 
 .comunidade-icon {
-    /* Mantenha o tamanho do ícone */
-    height: 70px;
-    width: 70px;
-    filter: drop-shadow(0 0 6px #000000); /* brilho do ícone */
+    height: 110px;
+    width: 110px;
+    border-radius: 50%; /* deixa o ícone redondo */
+    object-fit: cover;  /* garante que a imagem preencha o círculo sem deformar */
+    filter: drop-shadow(0 0 6px #3d3c3c); /* brilho verde */
     transition: transform 0.3s ease, filter 0.3s ease;
+}
+.comunidade-icon:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 12px #00ff4c);
 }
 
 
