@@ -448,7 +448,7 @@
             </div>
             <ul class="modal-list" id="cursos-categorias">
                 <li onclick="showCursos('programacao')"><img src="Assets/icon/Categorias 2/Cursos/Perfil/1.png"
-                        alt="Programação" class="list-icon"> Programação</li>
+                        alt="Programação" class="list-icon">Programação</li>
             </ul>
             <ul class="modal-list" id="cursos-arquivos" style="display:none;"></ul>
         </div>
@@ -1113,7 +1113,7 @@
                     "videosDemo": [
                         "https://www.youtube.com/embed/W-SpP-Z0Uu8"
                     ]
-                },
+                               },
                 {
                     "nome": "Nymphomaniac: Sex Addict – v11750 + Windows 7 Fix",
                     "linkJogo": "https://fir3.net/aFWbaIyc",
@@ -1579,19 +1579,18 @@
         // ======================================================================
 
         function openModal(id) {
-            console.log('Abrindo modal:', id);
             const modal = document.getElementById(id);
             if (modal) {
                 modal.classList.add('active');
-                console.log('Modal aberto com sucesso');
 
-                if (id === 'modalIsos') {
-                    console.log('Iniciando categorias ISOs');
-                    mostrarCategoriasIsos();
-                }
+                if (id === 'modalIsos') mostrarCategoriasIsos();
                 if (id === 'modalLivros') voltarLivros();
                 if (id === 'modalJogos') voltarJogos();
                 if (id === 'modalSites') voltarSites();
+
+                // garantir que cursos e android iniciem mostrando categorias
+                if (id === 'modalNovidades') voltarCursos();
+                if (id === 'modalJogosMobile') voltarAndroid();
             } else {
                 console.error('Modal não encontrado:', id);
             }
@@ -1608,6 +1607,7 @@
         // ======================================================================
         // FECHAR MODAL AO CLICAR FORA E COM ESC
         // ======================================================================
+        
         const modals = ["modalIsos", "modalLivros", "modalJogos", "modalSites", "modalJogosMobile", "modalNovidades"];
 
         // Fechar ao clicar fora
@@ -2590,6 +2590,49 @@ function fecharPaginaJogo() {
     }
 }
 
+        // ======================================================================
+        // MODAL DE CURSOS (NOVIDADES)
+        // ======================================================================
+        function voltarCursos() {
+            document.getElementById("cursos-categorias").style.display = "block";
+            document.getElementById("cursos-arquivos").style.display = "none";
+            document.getElementById("voltarCursos").style.display = "none";
+            document.getElementById("search-container-cursos").style.display = "none";
+            document.getElementById("searchInputCursos").value = "";
+            document.querySelector("#modalNovidades .modal-card h2").textContent = "Escolha uma categoria de Cursos";
+        }
+
+        function showCursos(cat, termoPesquisa = '') {
+            document.getElementById("cursos-categorias").style.display = "none";
+            document.getElementById("cursos-arquivos").style.display = "block";
+            document.getElementById("voltarCursos").style.display = "inline-block";
+            document.getElementById("search-container-cursos").style.display = "flex";
+
+            const ul = document.getElementById("cursos-arquivos");
+            ul.dataset.categoria = cat;
+            const termo = (termoPesquisa || document.getElementById("searchInputCursos").value || '').toLowerCase();
+
+            const cursosFiltrados = (dadosCursos[cat] || []).filter(item => item.nome.toLowerCase().includes(termo));
+
+            const titulos = {
+                programacao: "Cursos de Programação",
+            };
+            document.querySelector("#modalNovidades .modal-card h2").textContent = titulos[cat] || "Cursos";
+
+            ul.innerHTML = cursosFiltrados.length === 0
+                ? `<li style="justify-content:center;">Nenhum curso encontrado para "${termo}"</li>`
+                : '';
+
+            cursosFiltrados.forEach(item => {
+                const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-graduation-cap"></i>';
+                ul.innerHTML += `
+            <li>
+                ${imageHtml}
+                <a href="${item.link}" target="_blank">${item.nome}</a>
+            </li>
+        `;
+            });
+        }
             // ===================== EVENTOS DE PESQUISA =====================
             document.addEventListener('DOMContentLoaded', function () {
                 const searchInputAndroid = document.getElementById("searchInputAndroid");
@@ -2619,7 +2662,3 @@ function fecharPaginaJogo() {
     </body>
 
 </html>
-
-
-
-
