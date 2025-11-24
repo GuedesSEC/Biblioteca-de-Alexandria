@@ -408,6 +408,8 @@
                         alt="Editores" class="list-icon">Dark Web.onion</li>
                 <li onclick="showSites('Esporte_e_Tv_aberta')"><img src="Assets/icon/Categorias 2/Sites/tv aberta/1.png"
                         alt="Editores" class="list-icon">Esporte e Tv aberta</li>
+                <li onclick="showSites('Fontes')"><img src="https://cdn-icons-png.flaticon.com/512/425/425865.png"
+                        alt="Editores" class="list-icon">Fontes</li>        
             </ul>
             <ul class="modal-list" id="Sites-arquivos" style="display:none;">Sites</ul>
         </div>
@@ -501,6 +503,9 @@
 
                 <div class="footer-text">
                     <p>GuedesSEC &copy; 24/08/2025</p>
+                    <p>Dev. ArkanRoot</p>
+
+                    <p>Dev. Snot</p>
                 </div>
             </div>
             <div style="display: flex; align-items: center; gap: 32px;">
@@ -1577,6 +1582,13 @@
                     link: "https://televisao.tv/sbt",
                     imagem: "Assets/icon/Categorias 2/Sites/tv aberta/tv aberta.png"
                 },
+            ],
+            Fontes: [
+                {
+                    nome: "DaFont",
+                    link: "https://www.dafont.com/pt/",
+                    imagem: "https://tse3.mm.bing.net/th/id/OIP.QiKINvol8MdxG2-47e5n5AHaM9?rs=1&pid=ImgDetMain&o=7&rm=3"
+                },
 
             ]
 
@@ -1774,7 +1786,7 @@
             );
 
             const tituloModal = document.querySelector("#modalJogos .modal-card h2");
-            if (cat === 'acao') tituloModal.textContent = "Explore Jogos Piratas e mergulhe na diversão!";
+            if (cat === 'acao') tituloModal.textContent = "Explore 41 Jogos Piratas e mergulhe na diversão!";
 
             lista.innerHTML = "";
 
@@ -2671,5 +2683,3 @@ function fecharPaginaJogo() {
     </body>
 
 </html>
-
-
