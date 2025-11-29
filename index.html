@@ -96,14 +96,17 @@
             </div>
 
             <div id="anuncio-rotativo"
-                style="flex:1; max-width:400px; display:flex; flex-direction:column; align-items:center;">
+                style="flex:1; max-width:400px; display:flex; flex-direction:row; align-items:center; justify-content:center;">
+                <!-- Navegação à esquerda -->
                 <button id="anuncio-prev"
-                    style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin-right:12px;">&#8592;</button>
+                    style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin:0 12px; height:40px; display:flex; align-items:center; justify-content:center;">&#8592;</button>
+                <!-- Slide central (ocupa o espaço disponível e mantém centro) -->
                 <div id="anuncio-slide"
-                    style="width:320px; height:220px; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; border-radius:16px; box-shadow:0 0 24px #00ff00; background:#000;">
+                    style="flex: 0 0 320px; height:220px; display:flex; align-items:center; justify-content:center; overflow:hidden; border-radius:16px; box-shadow:0 0 24px #00ff00; background:#000; margin:0 8px;">
                 </div>
+                <!-- Navegação à direita -->
                 <button id="anuncio-next"
-                    style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin-left:12px;">&#8594;</button>
+                    style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin:0 12px; height:40px; display:flex; align-items:center; justify-content:center;">&#8594;</button>
             </div>
 
             <a href="#" onclick="openModal('modalNovidades'); voltarCursos(); return false;"
@@ -126,10 +129,10 @@
         </div>
         <!-- ...existing code... -->
         <!-- ANÚNCIO ROTATIVO -->
-        <div id="anuncio-rotativo"
+        <div id="anuncio-rotativo-full"
             style="width:100%; display:flex; justify-content:center; align-items:center; margin:24px 0;">
-            <button id="anuncio-prev"
-                style="background:none; border:none; font-size:2em; color:#00ff00; cursor:pointer; margin-right:12px;"
+            <button id="anuncio-prev-full"
+                style="background:none; border:none; font-size:2em; color:#f1f1f1; cursor:pointer; margin-right:12px;"
                 </button>
                 <!-- Imagem e nome do anúncio serão inseridos via JS -->
         </div>
@@ -157,22 +160,49 @@
 
             let anuncioAtual = 0;
 
-            // Função para mostrar o anúncio atual
+            // Função para mostrar o anúncio atual (imagem preenche slide; sem nome visível)
             function mostrarAnuncio(idx) {
                 const slide = document.getElementById('anuncio-slide');
                 slide.innerHTML = `
         <img src="${anuncios[idx].imagem}" alt="${anuncios[idx].nome}" 
-            style="width:100%; height:180px; object-fit:cover; border-radius:16px; box-shadow:0 0 16px #00ff00; background:#000;">
-        <div style="width:100%; text-align:center; margin-top:8px;">
-            <span style="color:#00ff00; font-size:1.1em; font-family:'JetBrains Mono',monospace; font-weight:bold; text-shadow:0 0 8px #00ff00;">${anuncios[idx].nome}</span>
-        </div>
+            style="width:100%; height:100%; object-fit:cover; border-radius:16px; box-shadow:0 0 16px #00ff00; background:#000; display:block;">
     `;
             }
 
+            // Função auxiliar: encontra a categoria do jogo pelo nome (procura exata e parcial)
+            function findMatchJogo(nomeJogo) {
+                // evita erro se a variável de dados não existe ainda
+                if (typeof jogos === 'undefined') return null;
+                const termo = (nomeJogo || '').toLowerCase().trim();
+                // Procura correspondência exata
+                for (const key in jogos) {
+                    if (!Object.prototype.hasOwnProperty.call(jogos, key)) continue;
+                    const itemExata = (jogos[key] || []).find(item => (item.nome || '').toLowerCase() === termo);
+                    if (itemExata) return { cat: key, item: itemExata };
+                }
+                // Procura correspondência parcial
+                for (const key in jogos) {
+                    if (!Object.prototype.hasOwnProperty.call(jogos, key)) continue;
+                    const itemParcial = (jogos[key] || []).find(item => (item.nome || '').toLowerCase().includes(termo));
+                    if (itemParcial) return { cat: key, item: itemParcial };
+                }
+                return null;
+            }
+
             // Função para abrir a página do jogo ao clicar na imagem
+            document.getElementById('anuncio-slide').style.cursor = 'pointer';
             document.getElementById('anuncio-slide').onclick = function () {
                 const nomeJogo = anuncios[anuncioAtual].nome;
-                abrirPaginaJogo('acao', nomeJogo);
+                console.log('anuncio clicado:', nomeJogo);
+                const match = findMatchJogo(nomeJogo);
+                if (match) {
+                    console.log('encontrado match em categoria', match.cat, 'item', match.item.nome);
+                    abrirPaginaJogo(match.cat, match.item.nome);
+                } else {
+                    console.log('nenhum match direto encontrado, abrindo modal e pesquisando por', nomeJogo);
+                    openModal('modalJogos');
+                    setTimeout(() => showJogos('jogos', nomeJogo), 60);
+                }
             };
 
             // Botões de navegação
@@ -1796,29 +1826,73 @@
 
             const termo = (termoPesquisa || document.getElementById("searchInputJogos").value || '').toLowerCase().trim();
 
-            const jogosFiltrados = (jogos[cat] || []).filter(item =>
-                item.nome.toLowerCase().includes(termo)
-            );
+            const todosJogos = (jogos[cat] || []);
 
             const tituloModal = document.querySelector("#modalJogos .modal-card h2");
             if (cat === 'acao') tituloModal.textContent = "Explore 41 Jogos Piratas e mergulhe na diversão!";
 
+            // Renderiza todos os jogos, e depois destaca os que batem com o termo
             lista.innerHTML = "";
-
-            if (jogosFiltrados.length === 0) {
-                lista.innerHTML = `<li style="justify-content:center; color:#ff4444;">Nenhum jogo encontrado para "${termo}"</li>`;
-                return;
-            }
-
-            jogosFiltrados.forEach(item => {
+            todosJogos.forEach(item => {
                 const imageHtml = item.imagem && item.imagem !== '' ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-gamepad"></i>';
                 lista.innerHTML += `
-            <li onclick="abrirPaginaJogo('${cat}', '${item.nome.replace(/'/g, "\\'")}')">
+            <li class="jogo-item" data-nome="${item.nome.toLowerCase()}" onclick="abrirPaginaJogo('${cat}', '${item.nome.replace(/'/g, "\\'")}')">
                 ${imageHtml}
                 <span>${item.nome}</span>
             </li>
         `;
             });
+
+            // Se houver termo, adiciona classes de destaque em vez de remover itens
+            if (termo && termo.length > 0) {
+                const lis = lista.querySelectorAll('.jogo-item');
+                let matches = 0;
+                lis.forEach(li => {
+                    const nomeLi = li.dataset.nome || '';
+                    if (nomeLi.includes(termo)) {
+                        li.classList.add('search-match');
+                        li.style.visibility = 'visible';
+                        li.style.pointerEvents = '';
+                        matches++;
+                    } else {
+                        li.classList.remove('search-match');
+                        li.style.visibility = 'hidden';
+                        li.style.pointerEvents = 'none';
+                    }
+                });
+
+                // Exibe mensagem se não houver nenhuma correspondência
+                if (matches === 0) {
+                    // Não remover os itens; apenas exibe uma mensagem sem alterar a altura do container
+                    let msg = lista.querySelector('.no-match-message');
+                    if (!msg) {
+                        msg = document.createElement('li');
+                        msg.className = 'no-match-message';
+                        msg.style.justifyContent = 'center';
+                        msg.style.color = '#ff4444';
+                        lista.appendChild(msg);
+                    }
+                    msg.textContent = `Nenhum jogo encontrado para "${termo}"`;
+                    msg.style.display = 'flex';
+                    return;
+                } else {
+                    // remove message if it exists
+                    const msg = lista.querySelector('.no-match-message');
+                    if (msg) msg.style.display = 'none';
+                }
+                // Se houver matches, foca no primeiro e rola para ele
+                const firstMatch = lista.querySelector('.search-match');
+                if (firstMatch) {
+                    // Rolagem suave para o item
+                    firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            } else {
+                // Limpa as classes de pesquisa quando não há termo e mostra todos
+                lista.querySelectorAll('.jogo-item').forEach(li => {
+                    li.style.display = '';
+                    li.classList.remove('search-match');
+                });
+            }
         }
 
         // ======================================================================
@@ -1885,11 +1959,47 @@
                 });
             }
 
-            // Pesquisa de Jogos
+            // Pesquisa de Jogos (usa a categoria ativa do modal)
             const searchInputJogos = document.getElementById("searchInputJogos");
             if (searchInputJogos) {
                 searchInputJogos.addEventListener("keyup", function () {
-                    showJogos('acao', this.value);
+                    const lista = document.getElementById("jogos-arquivos");
+                    const cat = lista && lista.dataset ? lista.dataset.categoria : null;
+                    // Se não houver categoria selecionada, pesquisa em 'jogos' padrão
+                    showJogos(cat || 'jogos', this.value);
+                });
+                // Abrir resultado quando o usuário pressiona Enter
+                searchInputJogos.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter') {
+                        const termo = (this.value || '').toLowerCase().trim();
+                        if (!termo) return;
+                        const lista = document.getElementById("jogos-arquivos");
+                        const cat = lista && lista.dataset ? lista.dataset.categoria : null;
+
+                        let found = null;
+                        // Primeiro tenta na categoria ativa
+                        if (cat) {
+                            found = (jogos[cat] || []).find(item => item.nome.toLowerCase().includes(termo));
+                            if (found) {
+                                abrirPaginaJogo(cat, found.nome);
+                                return;
+                            }
+                        }
+
+                        // Se não encontrou na categoria, procura em todas as categorias
+                        for (const key in jogos) {
+                            if (Object.prototype.hasOwnProperty.call(jogos, key)) {
+                                const match = (jogos[key] || []).find(item => item.nome.toLowerCase().includes(termo));
+                                if (match) {
+                                    abrirPaginaJogo(key, match.nome);
+                                    return;
+                                }
+                            }
+                        }
+
+                        // Se chegou até aqui, não encontrou nada
+                        alert(`Nenhum jogo encontrado para "${termo}"`);
+                    }
                 });
             }
 
@@ -2612,17 +2722,15 @@ function fecharPaginaJogo() {
         gamePage.remove();
     }
 
-    // Reabrir o modal de jogos
-    const modalJogos = document.getElementById('modalJogos');
-    if (modalJogos) {
-        modalJogos.classList.add('active');
+    // Fecha quaisquer modais que possam estar abertos (se houver)
+    document.querySelectorAll('.modal-overlay.active').forEach(m => m.classList.remove('active'));
 
-        // Manter o estado atual (com pesquisa se houver)
-        const searchInput = document.getElementById('searchInputJogos');
-        const termoPesquisa = searchInput ? searchInput.value : '';
+    // Voltar para o topo da página principal (tela inicial)
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        // Mostrar a lista de jogos com o termo de pesquisa atual
-        showJogos('acao', termoPesquisa);
+    // Opcional: desfocar qualquer elemento em foco
+    if (document.activeElement) {
+        try { document.activeElement.blur(); } catch (e) { /* ignore */ }
     }
 }
 
@@ -2683,7 +2791,7 @@ function fecharPaginaJogo() {
                 if (searchInputCursos) {
                     searchInputCursos.addEventListener("keyup", function () {
                         const ul = document.getElementById("cursos-arquivos");
-                        const cat = ul.dataset.categoria;
+                        const cyat = ul.dataset.categoria;
                         if (cat) showCursos(cat, this.value);
                     });
                 }
