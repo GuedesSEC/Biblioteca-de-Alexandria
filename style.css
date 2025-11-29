@@ -596,6 +596,44 @@ div[style*="width:100%; display:flex; justify-content:center"] {
         max-width: 100% !important;
         width: 100%;
     }
+
+/* Desktop: announce carousel nav on left/right (keeps Android and Cursos in place) */
+#anuncio-rotativo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Make slide fix width and avoid pushing siblings */
+#anuncio-rotativo #anuncio-slide {
+    flex: 0 0 320px;
+    max-width: 320px;
+}
+
+#anuncio-rotativo #anuncio-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 14px; /* keeps the rounded corners */
+}
+
+/* On narrow screens, stack vertically (arrows above/below) */
+@media (max-width: 700px) {
+    #anuncio-rotativo {
+        flex-direction: column !important;
+        align-items: center;
+    }
+    #anuncio-rotativo #anuncio-prev, #anuncio-rotativo #anuncio-next {
+        margin: 8px 0 !important;
+        height: 36px !important;
+    }
+    #anuncio-rotativo #anuncio-slide {
+        width: 100% !important;
+        flex: none !important;
+    }
+}
     
     div[style*="max-width:320px; margin-left:0;"] {
         order: 2;
@@ -803,6 +841,46 @@ div[style*="width:100%; display:flex; justify-content:center"] {
         justify-content: center;
         margin: 0 auto 10px auto;
     }
+}
+
+/* Estilos para destacar resultados da pesquisa no modal de jogos */
+#modalJogos .jogo-item {
+    transition: opacity 0.2s ease, transform 0.15s ease, filter 0.2s ease;
+    opacity: 1;
+    transform-origin: left center;
+}
+
+/* Antes, itens não corresponderiam eram atenuados. Agora ocultamos não-matches via JS, portanto removemos regras de atenuação */
+
+#modalJogos .jogo-item.search-match {
+    opacity: 1;
+    transform: scale(1.02);
+    box-shadow: 0 6px 18px rgba(0, 255, 0, 0.08);
+}
+
+/* Pequeno ajuste visual para quando não há resultados, mantém layout coerente */
+#modalJogos li[style*="justify-content:center"] {
+    display: flex;
+    justify-content: center;
+    padding: 24px 12px;
+    color: #ff4444;
+}
+
+/* Mantém o container do modal com uma altura mínima para evitar que a grade encolha */
+#jogos-arquivos {
+    min-height: 260px;
+}
+
+/* Garante altura consistente dos itens da lista */
+#modalJogos .jogo-item {
+    min-height: 64px;
+}
+
+/* Estilo para a mensagem de 'Nenhum jogo encontrado' */
+.no-match-message {
+    display: none; /* inicialmente oculto até ser necessário */
+    justify-content: center;
+    color: #ff4444;
 }
 @media (max-width: 700px) {
     /* ... outras regras ... */
