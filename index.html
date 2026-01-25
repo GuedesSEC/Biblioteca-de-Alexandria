@@ -498,12 +498,12 @@
             </div>
             <ul class="modal-list" id="sala-categorias">
                 <li onclick="showSalaDeMAquinas('Processador')"><img src="https://canalbpv.com/wp-content/uploads/2023/07/O-que-e-um-Processador-e-Como-ele-Funciona-BPV.jpg" alt="Builds" class="list-icon">Processador</li>
-                <li onclick="showSalaDeMAquinas('Placa de video')"><img src="https://cdn.custompc.com/wp-content/sites/custompc/2023/03/nvidia-geforce-rtx-4090-review-01.jpg" alt="Componentes" class="list-icon">Placa de Video</li>
-                <li onclick="showSalaDeMAquinas('Placa mãe')"><img src="https://png.pngtree.com/png-vector/20230728/ourlarge/pngtree-motherboard-clipart-green-computer-motherboard-on-a-white-background-cartoon-vector-png-image_6814263.png" alt="Compatibilidade" class="list-icon">Placa mãe</li>
-                <li onclick="showSalaDeMAquinas('Memioria ram')"><img src="Assets/banner/p.png.png" alt="Overclock" class="list-icon">Memória RAM</li>
+                <li onclick="showSalaDeMAquinas('PlacaV')"><img src="https://cdn.custompc.com/wp-content/sites/custompc/2023/03/nvidia-geforce-rtx-4090-review-01.jpg" alt="Componentes" class="list-icon">Placa de Video</li>
+                <li onclick="showSalaDeMAquinas('PlacaM')"><img src="https://png.pngtree.com/png-vector/20230728/ourlarge/pngtree-motherboard-clipart-green-computer-motherboard-on-a-white-background-cartoon-vector-png-image_6814263.png" alt="Compatibilidade" class="list-icon">Placa mãe</li>
+                <li onclick="showSalaDeMAquinas('MemoriaR')"><img src="Assets/banner/p.png.png" alt="Overclock" class="list-icon">Memória RAM</li>
                 <li onclick="showSalaDeMAquinas('armazenamento')"><img src="Assets/banner/p.png.png" alt="Overclock" class="list-icon">armazenamento</li>
                 <li onclick="showSalaDeMAquinas('Fonte')"><img src="Assets/banner/p.png.png" alt="Overclock" class="list-icon">Fonte</li>
-                <li onclick="showSalaDeMAquinas('Gabinete')"><img src="Assets/banner/p.png.png" alt="Overclock" class="list-icon">Gabinete/li>
+                <li onclick="showSalaDeMAquinas('Gabinete')"><img src="Assets/banner/p.png.png" alt="Overclock" class="list-icon">Gabinetem</li>
             </ul>
             <ul class="modal-list" id="sala-arquivos" style="display:none;"></ul>
         </div>
@@ -2929,30 +2929,28 @@
 
             const dadosSala = {
                 Processador: [
-                    { nome: "Build Gamer High-End", link: "#", imagem: null },
-                    { nome: "Build Produção 4K", link: "#", imagem: null },
-                    { nome: "Build Programação", link: "#", imagem: null },
-                    { nome: "Build Entry-Level", link: "#", imagem: null }
+                    { nome: "INTEL", link: "#", imagem: null },
+                    { nome: "RYZEN", link: "#", imagem: null },
+                    { nome: "XEON", link: "#", imagem: null },
                 ],
-                Placa: [
-                    { nome: "Processadores", link: "#", imagem: null },
-                    { nome: "Placas Mãe", link: "#", imagem: null },
-                    { nome: "Memória RAM", link: "#", imagem: null },
-                    { nome: "Placas de Vídeo", link: "#", imagem: null },
-                    { nome: "SSDs e HDDs", link: "#", imagem: null },
-                    { nome: "Fontes de Alimentação", link: "#", imagem: null }
+                PlacaV: [
+                    { nome: "AMD", link: "#", imagem: null },
+                    { nome: "NIVIDIA", link: "#", imagem: null },
                 ],
-                placaM: [
-                    { nome: "Compatibilidade de Processadores", link: "#", imagem: null },
-                    { nome: "Compatibilidade de Placas de Vídeo", link: "#", imagem: null },
-                    { nome: "Requisitos de Energia", link: "#", imagem: null },
-                    { nome: "Tamanho de Gabinetes", link: "#", imagem: null }
+                PlacaM: [
+                    { nome: "?", link: "#", imagem: null },
                 ],
-                overclock: [
-                    { nome: "Overclock de CPU", link: "#", imagem: null },
-                    { nome: "Overclock de GPU", link: "#", imagem: null },
-                    { nome: "Arrefecimento Customizado", link: "#", imagem: null },
-                    { nome: "Benchmarks", link: "#", imagem: null }
+                MemoriaR: [
+                    { nome: "?", link: "#", imagem: null },
+                ],
+                armazenamento: [
+                   { nome: "?", link: "#", imagem: null },
+                ],
+                Fonte: [
+                    { nome: "?", link: "#", imagem: null },
+                ],
+                Gabinete: [
+                    { nome: "?", link: "#", imagem: null },
                 ]
             };
 
