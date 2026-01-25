@@ -53,7 +53,7 @@
                     <li>
                         <div class="social-icons">
                             <a href="https://discord.gg/MgUc3x6nCC"><i class="fab fa-discord"></i> Discord</a>
-                            <a href="https://github.com/GuedesSEC/Biblioteca-de-Alexandria"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://github.com/GuedesSEC"><i class="fab fa-github"></i> GitHub</a>
                             <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i> Instagram</a>
                             <a href="https://w.app/zxpm5j"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                         </div>
@@ -77,23 +77,23 @@
         <!-- Substitua o bloco do anúncio rotativo por este novo bloco para exibir os cards ao lado do anúncio -->
         <div style="width:100%; display:flex; justify-content:center; align-items:center; gap:32px; margin:24px 0;">
 
-            <div
-                style="max-width:320px; margin-left:0; border: 1px solid #333; box-shadow: 0 0 10px #333; cursor: not-allowed; display: block;">
-                <div style="display:flex; align-items:center; gap:18px; opacity: 0.5; padding: 15px;">
+            <a href="#" onclick="openModal('modalSalaDeMAquinas'); voltarSalaDeMAquinas(); document.querySelector('#modalSalaDeMAquinas .modal-card h2').textContent='Sala de Máquinas'; return false;"
+                style="max-width:320px; margin-left:0; border: 1px solid #333; box-shadow: 0 0 px #333; cursor: pointer; text-decoration: none; color: inherit; display: block;">
+                <div style="display:flex; align-items:center; gap:18px; opacity: 1; padding: 15px;">
                     <div class="category-icon">
-                        <img src="Assets/icon/Categorias/Android.png" alt="Jogos Mobile"
-                            style="height:70px; width:70px; object-fit:contain;">
+                        <img src="Assets/icon/Categorias/Sala de Maquinas.png" alt="Estudos"
+                            style="height:150px; width:px; object-fit:contain;">
                     </div>
                     <div>
-                        <h3>Android</h3>
-                        <p>Tudo sobre Android.</p>
+                        <h3>Sala de Máquinas</h3>
+                        <p>compatibilidade de componentes.</p>
                         <div
-                            style="background:#555; color:#000; font-weight:bold; padding: 5px 10px; margin-top: 10px; border-radius: 4px; text-align: center; width: 80px;">
-                            Inativo
+                            style="background:green; color:#fff; font-weight:bold; padding: 5px 10px; margin-top: 10px; border-radius: 4px; text-align: center; width: 80px;">
+                            Acessar
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
 
             <div id="anuncio-rotativo"
                 style="flex:1; max-width:400px; display:flex; flex-direction:row; align-items:center; justify-content:center;">
@@ -114,11 +114,11 @@
                 <div style="display:flex; align-items:center; gap:18px; opacity: 1; padding: 15px;">
                     <div class="category-icon">
                         <img src="Assets/icon/Categorias/Cursos.png" alt="Novidades"
-                            style="height:70px; width:70px; object-fit:contain;">
+                            style="height:150px; width:70px; object-fit:contain;">
                     </div>
                     <div>
                         <h3>Cursos</h3>
-                        <p>Confira os melhores cursos.</p>
+                        <p>Melhore seus conhecimentos com os melhores cursos.</p>
                         <div
                             style="background:green; color:#fff; font-weight:bold; padding: 5px 10px; margin-top: 10px; border-radius: 4px; text-align: center; width: 80px;">
                             Acessar
@@ -486,6 +486,29 @@
         </div>
     </div>
 
+    <!-- Modal Sala de Máquinas -->
+    <div id="modalSalaDeMAquinas" class="modal-overlay">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('modalSalaDeMAquinas')">&times;</button>
+            <h2>Sala de Máquinas</h2>
+            <button id="voltarSalaDeMAquinas" class="modal-back" onclick="voltarSalaDeMAquinas()" style="display:none;">Voltar</button>
+            <div class="search-container" id="search-container-salaMAquinas">
+                <input type="text" id="searchInputSalaMAquinas" class="search-input" placeholder="Pesquisar componentes/builds...">
+                <span class="search-icon">&#128269;</span>
+            </div>
+            <ul class="modal-list" id="sala-categorias">
+                <li onclick="showSalaDeMAquinas('Processador')"><img src="https://canalbpv.com/wp-content/uploads/2023/07/O-que-e-um-Processador-e-Como-ele-Funciona-BPV.jpg" alt="Builds" class="list-icon">Processador</li>
+                <li onclick="showSalaDeMAquinas('Placa de video')"><img src="https://cdn.custompc.com/wp-content/sites/custompc/2023/03/nvidia-geforce-rtx-4090-review-01.jpg" alt="Componentes" class="list-icon">Placa de Video</li>
+                <li onclick="showSalaDeMAquinas('Placa mãe')"><img src="https://png.pngtree.com/png-vector/20230728/ourlarge/pngtree-motherboard-clipart-green-computer-motherboard-on-a-white-background-cartoon-vector-png-image_6814263.png" alt="Compatibilidade" class="list-icon">Placa mãe</li>
+                <li onclick="showSalaDeMAquinas('Memioria ram')"><img src="Assets/banner/p.png.png" alt="Overclock" class="list-icon">Memória RAM</li>
+                <li onclick="showSalaDeMAquinas('armazenamento')"><img src="Assets/banner/p.png.png" alt="Overclock" class="list-icon">armazenamento</li>
+                <li onclick="showSalaDeMAquinas('Fonte')"><img src="Assets/banner/p.png.png" alt="Overclock" class="list-icon">Fonte</li>
+                <li onclick="showSalaDeMAquinas('Gabinete')"><img src="Assets/banner/p.png.png" alt="Overclock" class="list-icon">Gabinete/li>
+            </ul>
+            <ul class="modal-list" id="sala-arquivos" style="display:none;"></ul>
+        </div>
+    </div>
+
     <div id="privacyModal" class="modal-overlay">
         <div class="modal-card" style="background:#181818; color:#00ff00; font-family:monospace;">
             <button class="modal-close" onclick="closeModal('privacyModal')" style="color:#00ff00;">&times;</button>
@@ -534,8 +557,6 @@
                 <div class="footer-text">
                     <p>GuedesSEC &copy; 24/08/2025</p>
                     <p>Dev. ArkanRoot</p>
-
-                    <p>Dev. Snot</p>
                 </div>
             </div>
             <div style="display: flex; align-items: center; gap: 32px;">
@@ -815,12 +836,12 @@
             "jogos": [
                 {
             "nome": "Far Cry 1",
-            "linkJogo": "https://encurtalink.online/oTAzQXgSWS",
+            "linkJogo": "xt=urn:btih:fc23af879dd338888071d31d664ce9a8f472bf00&dn=Cyberpunk%202077%20-%20Ultimate%20Edition%20%5BSteam-Rip%5D%20by%20Ksenia&tr=http%3a%2f%2fbt.piratbit.club%2f0012c87e9bda94fbe36d7baa708bb010%2fannounce",
             "linkJogo2": "https://reidoplacar.com/post/ab1843",
             "linkJogo3": "https://shortmine.com/e602d3",
             "imagem": "https://cdn1.epicgames.com/71f938f91f0a4ccfaba0be708a930e8a/offer/GameName_Store_Landscape_2560x1440-2560x1440-83f5fc72a43aa3aaec79d56b094b8505.jpg",
             "videosDemo": [
-                "https://shortmine.com/e602d3"
+                "https://www.youtube.com/watch?v=NeyY5P35ARs."
             ],
             "requisitos": {
                 "intel": "Mínimo: Pentium III 1 GHz; Recomendado: Pentium 4 2-3 GHz.",
@@ -1761,6 +1782,7 @@
                 // garantir que cursos e android iniciem mostrando categorias
                 if (id === 'modalNovidades') voltarCursos();
                 if (id === 'modalJogosMobile') voltarAndroid();
+                if (id === 'modalSalaDeMAquinas') voltarSalaDeMAquinas();
             } else {
                 console.error('Modal não encontrado:', id);
             }
@@ -1778,7 +1800,7 @@
         // FECHAR MODAL AO CLICAR FORA E COM ESC
         // ======================================================================
 
-        const modals = ["modalIsos", "modalLivros", "modalJogos", "modalSites", "modalJogosMobile", "modalNovidades"];
+        const modals = ["modalIsos", "modalLivros", "modalJogos", "modalSites", "modalJogosMobile", "modalNovidades", "modalSalaDeMAquinas"];
 
         // Fechar ao clicar fora
         modals.forEach(id => {
@@ -2881,6 +2903,84 @@
         `;
             });
         }
+
+        // ======================================================================
+        // MODAL DE SALA DE MÁQUINAS
+        // ======================================================================
+
+        function voltarSalaDeMAquinas() {
+            document.getElementById("sala-categorias").style.display = "block";
+            document.getElementById("sala-arquivos").style.display = "none";
+            document.getElementById("voltarSalaDeMAquinas").style.display = "none";
+            document.getElementById("search-container-salaMAquinas").style.display = "none";
+            document.getElementById("searchInputSalaMAquinas").value = "";
+            document.querySelector("#modalSalaDeMAquinas .modal-card h2").textContent = "Sala de Máquinas";
+        }
+
+        function showSalaDeMAquinas(cat, termoPesquisa = '') {
+            document.getElementById("sala-categorias").style.display = "none";
+            document.getElementById("sala-arquivos").style.display = "block";
+            document.getElementById("voltarSalaDeMAquinas").style.display = "inline-block";
+            document.getElementById("search-container-salaMAquinas").style.display = "flex";
+
+            const ul = document.getElementById("sala-arquivos");
+            ul.dataset.categoria = cat;
+            const termo = (termoPesquisa || document.getElementById("searchInputSalaMAquinas").value || '').toLowerCase();
+
+            const dadosSala = {
+                Processador: [
+                    { nome: "Build Gamer High-End", link: "#", imagem: null },
+                    { nome: "Build Produção 4K", link: "#", imagem: null },
+                    { nome: "Build Programação", link: "#", imagem: null },
+                    { nome: "Build Entry-Level", link: "#", imagem: null }
+                ],
+                Placa: [
+                    { nome: "Processadores", link: "#", imagem: null },
+                    { nome: "Placas Mãe", link: "#", imagem: null },
+                    { nome: "Memória RAM", link: "#", imagem: null },
+                    { nome: "Placas de Vídeo", link: "#", imagem: null },
+                    { nome: "SSDs e HDDs", link: "#", imagem: null },
+                    { nome: "Fontes de Alimentação", link: "#", imagem: null }
+                ],
+                placaM: [
+                    { nome: "Compatibilidade de Processadores", link: "#", imagem: null },
+                    { nome: "Compatibilidade de Placas de Vídeo", link: "#", imagem: null },
+                    { nome: "Requisitos de Energia", link: "#", imagem: null },
+                    { nome: "Tamanho de Gabinetes", link: "#", imagem: null }
+                ],
+                overclock: [
+                    { nome: "Overclock de CPU", link: "#", imagem: null },
+                    { nome: "Overclock de GPU", link: "#", imagem: null },
+                    { nome: "Arrefecimento Customizado", link: "#", imagem: null },
+                    { nome: "Benchmarks", link: "#", imagem: null }
+                ]
+            };
+
+            const itemsFiltrados = (dadosSala[cat] || []).filter(item => item.nome.toLowerCase().includes(termo));
+
+            const titulos = {
+                builds: "Builds de PC",
+                componentes: "Componentes",
+                compatibilidade: "Compatibilidade",
+                overclock: "Overclock"
+            };
+            document.querySelector("#modalSalaDeMAquinas .modal-card h2").textContent = titulos[cat] || "Sala de Máquinas";
+
+            ul.innerHTML = itemsFiltrados.length === 0
+                ? `<li style="justify-content:center;">Nenhum item encontrado para "${termo}"</li>`
+                : '';
+
+            itemsFiltrados.forEach(item => {
+                const imageHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" class="list-icon">` : '<i class="fas fa-microchip"></i>';
+                ul.innerHTML += `
+            <li>
+                ${imageHtml}
+                <a href="${item.link}" target="_blank">${item.nome}</a>
+            </li>
+        `;
+            });
+        }
+
         // ===================== EVENTOS DE PESQUISA =====================
         document.addEventListener('DOMContentLoaded', function () {
             const searchInputAndroid = document.getElementById("searchInputAndroid");
@@ -2895,20 +2995,23 @@
             if (searchInputCursos) {
                 searchInputCursos.addEventListener("keyup", function () {
                     const ul = document.getElementById("cursos-arquivos");
-                    const cyat = ul.dataset.categoria;
+                    const cat = ul ? ul.dataset.categoria : null;
                     if (cat) showCursos(cat, this.value);
+                });
+            }
+
+            // Evento de pesquisa para Sala de Máquinas
+            const searchInputSalaMAquinas = document.getElementById("searchInputSalaMAquinas");
+            if (searchInputSalaMAquinas) {
+                searchInputSalaMAquinas.addEventListener("keyup", function () {
+                    const ul = document.getElementById("sala-arquivos");
+                    const cat = ul ? ul.dataset.categoria : null;
+                    if (cat) showSalaDeMAquinas(cat, this.value);
                 });
             }
         });
     </script>
-    <!-- Ícone da Comunidade -->
-    <a href="pages/web/Feedback/Comunidade.html" class="comunidade-btn" title="Ir para a Comunidade">
-        <img src="Assets/banner/3.png" class="comunidade-icon" alt="Comunidade">
-        <span class="comunidade-text"></span>
-    </a>
 
 </body>
 
 </html>
-
-
