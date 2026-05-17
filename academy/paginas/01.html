@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Front End Academy</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    background:#000;
+    overflow-x:hidden;
+    font-family:'JetBrains Mono', monospace;
+    color:#fff;
+    position:relative;
+}
+
+/* MATRIX */
+
+#matrix-canvas{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:-5;
+    opacity:.22;
+}
+
+/* GRID */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background-image:
+    linear-gradient(rgba(0,255,100,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,100,.05) 1px, transparent 1px);
+
+    background-size:40px 40px;
+
+    z-index:-4;
+}
+
+/* GLOW */
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background:
+    radial-gradient(circle at top, rgba(0,255,120,.18), transparent 35%),
+    radial-gradient(circle at bottom, rgba(0,255,100,.08), transparent 40%);
+
+    z-index:-3;
+}
+
+.container{
+    width:100%;
+    max-width:1500px;
+    margin:auto;
+    padding:40px;
+}
+
+/* TOPO */
+
+.topo{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.topo h1{
+    font-size:90px;
+    color:#7dff7d;
+    letter-spacing:10px;
+
+    text-shadow:
+    0 0 10px #00ff66,
+    0 0 25px #00ff66,
+    0 0 50px #00ff66;
+
+    animation:glow 2s infinite alternate;
+}
+
+.topo p{
+    margin-top:20px;
+    color:#d9d9d9;
+    font-size:20px;
+    letter-spacing:3px;
+}
+
+@keyframes glow{
+
+    from{
+        text-shadow:
+        0 0 10px #00ff66,
+        0 0 20px #00ff66;
+    }
+
+    to{
+        text-shadow:
+        0 0 20px #00ff66,
+        0 0 40px #00ff66,
+        0 0 70px #00ff66;
+    }
+}
+
+/* GRID CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:35px;
+}
+
+/* CARD */
+
+.card{
+    position:relative;
+
+    background:rgba(0,0,0,.85);
+
+    border:2px solid rgba(0,255,100,.35);
+
+    border-radius:26px;
+
+    padding:35px 25px;
+
+    min-height:340px;
+
+    overflow:hidden;
+
+    transition:.5s ease;
+
+    backdrop-filter:blur(8px);
+
+    box-shadow:
+    0 0 15px rgba(0,255,100,.12),
+    inset 0 0 20px rgba(0,255,100,.03);
+}
+
+.card:hover{
+
+    transform:translateY(-12px) scale(1.02);
+
+    border-color:#00ff88;
+
+    box-shadow:
+    0 0 20px rgba(0,255,100,.25),
+    0 0 50px rgba(0,255,100,.15);
+}
+
+/* BRILHO */
+
+
+
+/* ICON */
+
+.icon{
+    width:110px;
+    height:110px;
+
+    margin:auto;
+    margin-bottom:30px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:22px;
+
+    background:rgba(0,255,100,.08);
+
+    border:1px solid rgba(0,255,100,.18);
+
+    box-shadow:
+    0 0 20px rgba(0,255,100,.12);
+}
+
+.icon img{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+
+    filter:drop-shadow(0 0 10px rgba(0,255,100,.5));
+}
+
+/* TITULO */
+
+.card h2{
+    text-align:center;
+    color:#7dff7d;
+    font-size:34px;
+    margin-bottom:18px;
+
+    text-shadow:
+    0 0 10px rgba(0,255,100,.5);
+}
+
+/* TEXTO */
+
+.card p{
+    text-align:center;
+    color:#d9d9d9;
+    line-height:1.7;
+    font-size:16px;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:900px){
+
+    .topo h1{
+        font-size:55px;
+        letter-spacing:5px;
+    }
+
+    .topo p{
+        font-size:15px;
+    }
+
+    .container{
+        padding:25px;
+    }
+}
+
+  </style>
+</head>
+<body>
+
+<canvas id="matrix-canvas"></canvas>
+
+<div class="container">
+
+    <header class="topo">
+        <h1>FRONT END</h1>
+
+        <p>
+            ESCOLHA UM TEMA PARA APROFUNDAR SEUS CONHECIMENTOS
+        </p>
+    </header>
+
+    <section class="cards">
+
+        <div class="card">
+            <div class="icon">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg">
+            </div>
+
+            <h2>HTML5</h2>
+
+            <p>
+                Estrutura e semântica para criação de páginas modernas.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg">
+            </div>
+
+            <h2>CSS3</h2>
+
+            <p>
+                Estilização avançada, responsividade e animações.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+            </div>
+
+            <h2>JAVASCRIPT</h2>
+
+            <p>
+                Lógica, interatividade e dinamismo para aplicações web.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg">
+            </div>
+
+            <h2>REACT</h2>
+
+            <p>
+                Biblioteca moderna para construção de interfaces.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg">
+            </div>
+
+            <h2>ANGULAR</h2>
+
+            <p>
+                Framework robusto para aplicações escaláveis.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg">
+            </div>
+
+            <h2>BOOTSTRAP</h2>
+
+            <p>
+                Componentes rápidos e layouts responsivos.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg">
+            </div>
+
+            <h2>SASS</h2>
+
+            <p>
+                CSS avançado com variáveis e organização profissional.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg">
+            </div>
+
+            <h2>FIGMA</h2>
+
+            <p>
+                Criação de interfaces, protótipos e design systems.
+            </p>
+        </div>
+
+    </section>
+
+</div>
+
+<script>
+
+const canvas = document.getElementById('matrix-canvas');
+const ctx = canvas.getContext('2d');
+
+const chars = '01<>[]{}#@ABCDEFGHIJKLMNOPQRSTUVXYZ';
+
+let fontSize = 18;
+let columns;
+let drops = [];
+
+function setupMatrix(){
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    columns = Math.floor(canvas.width / fontSize);
+
+    drops = [];
+
+    for(let i = 0; i < columns; i++){
+        drops[i] = Math.random() * -100;
+    }
+}
+
+setupMatrix();
+
+window.addEventListener('resize', setupMatrix);
+
+function drawMatrix(){
+
+    ctx.fillStyle = 'rgba(0,0,0,0.08)';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    ctx.font = fontSize + 'px monospace';
+
+    for(let i = 0; i < drops.length; i++){
+
+        const text = chars[Math.floor(Math.random() * chars.length)];
+
+        const x = i * fontSize;
+        const y = drops[i] * fontSize;
+
+        ctx.fillStyle = '#00ff66';
+
+        ctx.shadowColor = '#00ff66';
+        ctx.shadowBlur = 10;
+
+        ctx.fillText(text, x, y);
+
+        if(y > canvas.height && Math.random() > 0.975){
+            drops[i] = 0;
+        }
+
+        drops[i]++;
+    }
+}
+
+setInterval(drawMatrix, 35);
+
+</script>
+
+</body>
+</html>
